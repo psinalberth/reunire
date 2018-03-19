@@ -50,10 +50,7 @@ public class RelatorioBuilder {
 	}
 	
 	public RelatorioService getService() {
-		
-		RelatorioService service = new RelatorioService(tipoRelatorio, ente, orgao, unidadeGestora, exercicio, formato);
-		
-		return service;
+		return null;
 	}
 	
 	public String build() {

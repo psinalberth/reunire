@@ -2,27 +2,16 @@ package br.gov.ma.tce.reunire.viewmodel;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
-import org.zkoss.bind.BindUtils;
-import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.ContextParam;
-import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.util.media.AMedia;
 import org.zkoss.util.media.Media;
-import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.select.Selectors;
-import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Iframe;
 
-import br.gov.ma.tce.reunire.service.RelatorioBuilder;
 import br.gov.ma.tce.reunire.service.RelatorioService;
 
 public class RelatorioViewModel {
@@ -37,7 +26,7 @@ public class RelatorioViewModel {
 	private Integer unidadeGestora;
 	private Integer exercicio;
 	
-	private List<String> formatosRelatorio = Arrays.asList(new String [] {"CSV", "Excel", "HTML", "PDF"});
+	private List<String> formatosRelatorio = Arrays.asList(new String [] {"CSV", "XLS", "HTML", "PDF"});
 	
 	private List<?> result;
 	
@@ -48,7 +37,7 @@ public class RelatorioViewModel {
 	private static final String PATH_RELATORIOS = Executions.getCurrent().getDesktop().getWebApp().getRealPath("/_reports");
 	
 	@Init
-	@NotifyChange({"formatosRelatorio", "urlRetorno", "formatoRelatorio", "media"})
+	@NotifyChange({"formatosRelatorio", "urlRetorno", "formatoRelatorio", "media", "result"})
 	public void init() {
 		
 		tipoPecaRelatorio = Integer.parseInt(Executions.getCurrent().getParameter("tipoRelatorio"));
@@ -57,26 +46,39 @@ public class RelatorioViewModel {
 		urlRetorno = "http://br.yahoo.com";
 		
 		gerarRelatorio();
+		exportarRelatorio();
 	}
 	
-	private void gerar() {
+	@Command
+	@NotifyChange("media")
+	public void exportarRelatorio() {
 		
+		if (result != null && result.size() > 0) {
+			
+			File arquivo = RelatorioService.gerarArquivo(PATH_RELATORIOS, tipoPecaRelatorio, result, formatoRelatorio);
+			
+			try {
+				
+				String formato = formatoRelatorio.toUpperCase();
+				
+				if (formato.equals("PDF")) {
+					media = new AMedia("teste", "pdf", "application/pdf", arquivo, true);
+					
+				} else if (formato.equals("CSV")) {
+					media = new AMedia("teste", "csv", "application/csv", arquivo, true);
+					
+				} else if (formato.equals("XLS")) {
+					media = new AMedia("teste", "xls", "application/vnd.ms-excel", arquivo, true);
+				}
+				
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
-	private File recuperarArquivo() {
-		return null;
-	}
-	
-	/*@Command
-	@NotifyChange("conteudo")*/
 	public void gerarRelatorio() {
-		
-		file = RelatorioBuilder.criar()
-			.tipoRelatorio(tipoPecaRelatorio)
-			.ente(ente)
-			.exercicio(exercicio)
-			.formato(formatoRelatorio).getService().getFile();
-		// conteudo = "http://www.axmag.com/download/pdfurl-guide.pdf";
+		result = RelatorioService.recuperarDados(tipoPecaRelatorio, ente, orgao, unidadeGestora, exercicio);
 	}
 	
 	@Command

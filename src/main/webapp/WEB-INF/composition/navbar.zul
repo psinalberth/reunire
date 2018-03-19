@@ -1,5 +1,5 @@
 <zk>
-  <div class="navbar has-shadow is-fixed-top" viewModel="@id('vm') @init('br.gov.ma.tce.reunire.viewmodel.RelatorioViewModel')">
+  <div class="navbar has-shadow is-fixed-top">
     <div class="navbar-brand">
       <a sclass="navbar-item" label="REUNIRE" onClick="@global-command('irPara', conteudo='index.zul')" />
     </div>
@@ -12,7 +12,8 @@
         <div class="field-body">
           <div class="field is-narrow">
             <div class="control">
-              <combobox sclass="input" readonly="true" model="@load(vm.formatosRelatorio)" selectedItem="@bind(vm.formatoRelatorio)">
+              <combobox sclass="input" readonly="true" model="@load(vm.formatosRelatorio)" selectedItem="@bind(vm.formatoRelatorio)" 
+                        onSelect="@command('exportarRelatorio')">
               </combobox>
             </div>
           </div>
