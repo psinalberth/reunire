@@ -1,0 +1,20 @@
+<?page title="SAE - Sistema de Auditoria Eletrônica" contentType="text/html;charset=UTF-8"?>
+<?meta name="theme-color" content="#e6535b" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<zk xmlns:n="native">
+  <style src="./_assets/bulma/bulma.css" />
+  <style src="./_assets/style/style.css" />
+  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"/>
+  
+  <n:body style="padding-top: 3.25rem;">
+  
+    <!-- Navbar -->  
+    <include src="/WEB-INF/composition/navbar.zul" />
+    	
+    <div class="container is-fluid" style="padding-top: 3.25rem;">
+  	  <div class="columns">
+  	    <include self="@define(content)" viewModel="@id('navegador') @init('br.ps.teste.viewmodel.NavegacaoViewModel')" data="@load(navegador.id)" src="@load(navegador.conteudo)" />
+  	  </div>
+  	</div>
+  </n:body>
+</zk>

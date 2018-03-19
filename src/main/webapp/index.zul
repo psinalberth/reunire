@@ -1,0 +1,13 @@
+<?page title="Reunire" contentType="text/html;charset=UTF-8"?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<zk>
+  <style src="./_assets/bulma/bulma.css" />
+  <style src="./_assets/style/style.css" />
+  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"/>
+  
+  <!-- <include src="/WEB-INF/composition/navbar.zul" /> -->
+  <div height="100%" style="padding-top: 3.25rem;" viewModel="@id('vm') @init('br.gov.ma.tce.reunire.viewmodel.RelatorioViewModel')">
+    <label value="@load(vm.file)" />
+    <iframe id="iframe" width="100%" vflex="true" content="@load(vm.media)" />
+  </div>
+</zk>

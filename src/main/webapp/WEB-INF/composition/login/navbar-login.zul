@@ -1,0 +1,46 @@
+<zk>
+  <div class="navbar has-shadow">
+    <div class="navbar-menu">
+      <div class="navbar-start" children="@load(vm.gruposDocumentacao) @template(empty each.documentacao ? 'menuitem' : 'menu')">
+        <template name="menuitem" var="node">
+          <a href="#" sclass="navbar-item">
+            <vlayout sclass="icon has-text-primary">
+              <vlayout sclass="@load(node.icone)" />
+            </vlayout>
+            <label value="@load(node.nome)" />
+          </a>
+        </template>
+        <template name="menu" var="node">
+          <div sclass="navbar-item has-dropdown is-hoverable is-mega">
+            <div sclass="navbar-link">
+              <vlayout sclass="icon has-text-primary">
+                <vlayout sclass="@load(node.icone)" />
+              </vlayout>
+              <label value="@load(node.nome)" />
+            </div>
+            <div class="navbar-dropdown">
+              <div class="container is-fluid">
+                <div class="columns is-multiline" children="@load(node.documentacao) @template('documentacao')">
+                  <template name="documentacao" var="node">
+                    <div class="column is-one-quarter">
+                      <label sclass="title is-6 is-mega-menu-title" style="padding-left: 1rem" value="@load(node.nome)"/>
+                      <div children="@load(node.documentacoes) @template('documentacoes')">
+                        <template name="documentacoes" var="node">
+                          <a sclass="navbar-item is-6" label="@load(node.nome)" href="#"/>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+      <div class="navbar-end">
+        <a sclass="navbar-item" tooltiptext="Acompanhe-nos no Facebook" href="https://facebook.com/TCEMAOficial" iconSclass="icon has-text-link fab fa-2x fa-facebook-square" />
+        <a sclass="navbar-item" tooltiptext="Siga-nos no Twitter" href="" iconSclass="icon has-text-info fab fa-2x fa-twitter-square" />
+      </div>
+    </div>
+  </div>
+</zk>

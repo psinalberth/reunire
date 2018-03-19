@@ -1,0 +1,73 @@
+body,
+input,
+.z-label,
+h1, h2, h3, .z-a,
+.z-textbox,
+.z-bandbox-input,
+.z-datebox-input,
+.z-combobox-input,
+.z-groupbox > .z-groupbox-header,
+.z-listheader-content,
+.z-caption-content {
+	font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.z-listheader-content, .z-listcell-content, .z-listgroup-content, .z-listgroupfoot-content, .z-listfooter-content {
+	font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.navbar-item.is-mega {
+  position: static;
+}
+
+.is-mega-menu-title {
+   margin-bottom: 0;
+   padding: .375rem 1rem;
+ }
+
+.sidebar {
+	min-height: 100% !important;
+}
+
+.z-bandbox.input, .z-combobox.input {
+	width: 100% !important;
+	padding: 0px;
+}
+
+.z-bandbox.input.is-large > .z-bandbox-input, .z-bandbox.input.is-large > .z-bandbox-button {
+	height: 2.2em;
+	font-size: 1.5rem;
+	padding: 0px;
+}
+
+.z-bandbox.input.is-large > .z-bandbox-button {
+	padding-top: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	width: 5% !important;
+}
+
+.z-bandbox.input > .z-bandbox-input, .z-combobox.input > .z-combobox-input {
+	border: none;
+	padding-left: 0px;
+	width: 100% !important;
+	padding-left: calc(0.625em - 1px);
+}
+
+.z-bandbox.input > .z-bandbox-button, .z-combobox.input > .z-combobox-button {
+	border: none;
+	border-left: 1px solid #d9d9d9;
+}
+
+@media(max-width:500px) {
+	
+	.buttons .button:not(:last-child) {
+    	margin-right: 0px;
+	}
+	
+	.button {
+		margin: 0;
+		width: 100% !important;
+		display: block;
+	}
+}

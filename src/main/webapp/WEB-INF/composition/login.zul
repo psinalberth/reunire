@@ -1,0 +1,13 @@
+<zk>
+  <div viewModel="@id('vm') @init('br.ps.teste.viewmodel.LoginViewModel')">
+    
+    <!-- Fragmento para o formulário de login, exibido apenas quando o usuário não estiver logado -->
+    <include src="/WEB-INF/composition/login/formulario-login.zul" if="${not vm.usuarioLogado}"/>
+  
+    <!-- Fragmento para a finalização do login de usuários internos (PeriodoAvaliacao), após realizar autenticação -->
+    <include src="/WEB-INF/composition/login/login-interno.zul" if="${vm.usuarioInterno}"/>
+  
+    <!-- Fragmento para a finalização do login de usuários externos (Mandato), após realizar autenticação -->
+    <include src="/WEB-INF/composition/login/login-externo.zul" if="${vm.usuarioExterno}"/>
+  </div>
+</zk>

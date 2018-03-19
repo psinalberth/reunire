@@ -1,0 +1,48 @@
+<zk>
+  <div class="navbar has-shadow is-fixed-top" viewModel="@id('vm') @init('br.gov.ma.tce.reunire.viewmodel.RelatorioViewModel')">
+    <div class="navbar-brand">
+      <a sclass="navbar-item" label="REUNIRE" onClick="@global-command('irPara', conteudo='index.zul')" />
+    </div>
+
+    <div class="column is-5 is-offset-2">
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label value="Exportar para:" sclass="label is-2 is-normal" />
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <div class="control">
+              <combobox sclass="input" readonly="true" model="@load(vm.formatosRelatorio)" selectedItem="@bind(vm.formatoRelatorio)">
+              </combobox>
+            </div>
+          </div>
+          <div class="field">
+            <a href="" class="button" onClick="@command('imprimir')">
+              <vlayout sclass="icon has-text-info">
+                <vlayout sclass="fas fa-print" />
+              </vlayout>
+              <label value="Imprimir" />
+            </a>
+          </div>
+          <div class="field">
+            <a href="" class="button">
+              <vlayout sclass="icon has-text-danger">
+                <vlayout sclass="fas fa-times" />
+              </vlayout>
+              <label value="Fechar" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <a sclass="navbar-item" onClick="@command('voltar')">
+        <vlayout sclass="icon has-text-info">
+          <vlayout sclass="fas fa-arrow-left" />
+        </vlayout>
+        <label value="Voltar" />
+      </a>
+    </div>
+  </div>
+</zk>
