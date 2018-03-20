@@ -1,5 +1,6 @@
 package br.gov.ma.tce.reunire.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
