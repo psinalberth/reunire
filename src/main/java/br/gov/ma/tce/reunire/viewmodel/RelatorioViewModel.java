@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
@@ -16,31 +17,37 @@ import br.gov.ma.tce.reunire.service.RelatorioService;
 
 public class RelatorioViewModel {
 	
-	/** Parâmetros vindos da URL **/
+	/** Parâmetros os quais podem ser passados na URL */
 	
 	private String urlRetorno;
 	private String formatoRelatorio;
-	private Integer tipoPecaRelatorio;
+	private Integer tipoRelatorio;
 	private Integer ente;
 	private Integer orgao;
 	private Integer unidadeGestora;
 	private Integer exercicio;
 	
+	/** Coleção de formatos disponíveis para exportação */
+	
 	private List<String> formatosRelatorio = Arrays.asList(new String [] {"CSV", "XLS", "HTML", "PDF"});
 	
-	private List<?> result;
+	/** Coleção de objetos recuperados na consulta: mantidos aqui para evitar acessos consecutivos ao mesmo registro durante exportação */
 	
-	/** Propriedade ZK **/
+	private List<?> dados;
+	
+	/** Propriedades ZK */
 	
 	private Media media;
+	
+	/** Diretório em que se localizam os arquivos .jasper */
 	
 	private static final String PATH_RELATORIOS = Executions.getCurrent().getDesktop().getWebApp().getRealPath("/_reports");
 	
 	@Init
-	@NotifyChange({"formatosRelatorio", "urlRetorno", "formatoRelatorio", "media", "result"})
+	@NotifyChange("*")
 	public void init() {
 		
-		tipoPecaRelatorio = Integer.parseInt(Executions.getCurrent().getParameter("tipoRelatorio"));
+		tipoRelatorio = Integer.parseInt(Executions.getCurrent().getParameter("tipoRelatorio"));
 		formatoRelatorio = Executions.getCurrent().getParameter("formato");
 		
 		urlRetorno = "http://br.yahoo.com";
@@ -53,23 +60,18 @@ public class RelatorioViewModel {
 	@NotifyChange("media")
 	public void exportarRelatorio() {
 		
-		if (result != null && result.size() > 0) {
+		if (dados != null && dados.size() > 0) {
 			
-			File arquivo = RelatorioService.gerarArquivo(PATH_RELATORIOS, tipoPecaRelatorio, result, formatoRelatorio);
+			Properties properties = RelatorioService.getProperties(PATH_RELATORIOS, tipoRelatorio, dados, formatoRelatorio);
+			
+			String titulo = String.valueOf(properties.get("titulo"));
+			String extensao = String.valueOf(properties.get("extensao"));
+			String formato = String.valueOf(properties.get("formato"));
+			File arquivo = (File) properties.get("arquivo");
 			
 			try {
 				
-				String formato = formatoRelatorio.toUpperCase();
-				
-				if (formato.equals("PDF")) {
-					media = new AMedia("teste", "pdf", "application/pdf", arquivo, true);
-					
-				} else if (formato.equals("CSV")) {
-					media = new AMedia("teste", "csv", "application/csv", arquivo, true);
-					
-				} else if (formato.equals("XLS")) {
-					media = new AMedia("teste", "xls", "application/vnd.ms-excel", arquivo, true);
-				}
+				media = new AMedia(titulo, extensao, formato, arquivo, true);
 				
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
@@ -78,7 +80,7 @@ public class RelatorioViewModel {
 	}
 	
 	public void gerarRelatorio() {
-		result = RelatorioService.recuperarDados(tipoPecaRelatorio, ente, orgao, unidadeGestora, exercicio);
+		dados = RelatorioService.recuperarDados(tipoRelatorio, ente, orgao, unidadeGestora, exercicio);
 	}
 	
 	@Command
@@ -90,6 +92,8 @@ public class RelatorioViewModel {
 	public void voltar() {
 		Executions.getCurrent().sendRedirect(urlRetorno);
 	}
+	
+	// Getters e Setters
 	
 	public String getFormatoRelatorio() {
 		return formatoRelatorio;
@@ -116,11 +120,11 @@ public class RelatorioViewModel {
 	}
 
 	public Integer getTipoPecaRelatorio() {
-		return tipoPecaRelatorio;
+		return tipoRelatorio;
 	}
 
 	public void setTipoPecaRelatorio(Integer tipoPecaRelatorio) {
-		this.tipoPecaRelatorio = tipoPecaRelatorio;
+		this.tipoRelatorio = tipoPecaRelatorio;
 	}
 
 	public Integer getEnte() {

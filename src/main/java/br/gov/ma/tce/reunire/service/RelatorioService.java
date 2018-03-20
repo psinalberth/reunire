@@ -2,6 +2,7 @@ package br.gov.ma.tce.reunire.service;
 
 import java.io.File;
 import java.util.List;
+import java.util.Properties;
 
 import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
 import br.gov.ma.tce.reunire.dao.TipoRelatorioDao;
@@ -14,7 +15,14 @@ public class RelatorioService {
 		
 	private static final String PATH_DAO_IMPL = "br.gov.ma.tce.reunire.dao.impl.";
 	
+	static RelatorioService service;
+	private TipoRelatorio tipoRelatorio;
+	
 	public static List<?> recuperarDados(Integer tipoRelatorio, Integer ente, Integer orgao, Integer unidadeGestora, Integer exercicio) {
+		
+		if (service == null) {
+			service = new RelatorioService();
+		}
 		
 		try {
 			
@@ -52,5 +60,15 @@ public class RelatorioService {
 		}
 		
 		return Report.criarRelatorio(pathRelatorios, result, dao.getNomeRelatorio(), formato);
+	}
+
+	public static Properties getProperties(String pathRelatorios, Integer tipoPecaRelatorio, List<?> dados,
+			String formato) {
+		
+		return Report.getProperties(pathRelatorios, dados, relatorio, formato);
+	}
+	
+	private TipoRelatorio getTipoRelatorio() {
+		return tipoRelatorio;
 	}
 }
