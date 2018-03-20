@@ -12,4 +12,9 @@
             <property name="hibernate.enable_lazy_load_no_trans" value="true" />
 		</properties>
 	</persistence-unit>
+	
+	<persistence-unit name="sae" transaction-type="JTA">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<jta-data-source>java:jboss/datasources/saeDS</jta-data-source>
+	</persistence-unit>
 </persistence>
