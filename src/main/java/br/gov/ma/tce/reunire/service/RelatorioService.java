@@ -1,37 +1,53 @@
 package br.gov.ma.tce.reunire.service;
 
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
 import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
-import br.gov.ma.tce.reunire.dao.TipoRelatorioDao;
-import br.gov.ma.tce.reunire.dao.impl.TipoRelatorioDaoImpl;
-import br.gov.ma.tce.reunire.model.TipoRelatorio;
 import br.gov.ma.tce.reunire.util.Lookup;
 import br.gov.ma.tce.reunire.util.Report;
 
 public class RelatorioService {
-		
-	private static final String PATH_DAO_IMPL = "br.gov.ma.tce.reunire.dao.impl.";
 	
-	static RelatorioService service;
-	private TipoRelatorio tipoRelatorio;
+	private Integer ente;
+	private Integer orgao;
+	private Integer unidadeGestora;
+	private Integer exercicio;
+	private String diretorioRelatorios;
 	
-	public static List<?> recuperarDados(Integer tipoRelatorio, Integer ente, Integer orgao, Integer unidadeGestora, Integer exercicio) {
+	private Properties properties;
+	
+	@SuppressWarnings("rawtypes")
+	private DemonstrativoDao dao;
+	
+	@SuppressWarnings("rawtypes")
+	public RelatorioService(String diretorioRelatorios, String tipoRelatorio, Integer ente, Integer orgao, Integer unidadeGestora, Integer exercicio) {
 		
-		if (service == null) {
-			service = new RelatorioService();
-		}
+		this.diretorioRelatorios = diretorioRelatorios;
+		this.ente = ente;
+		this.orgao = orgao;
+		this.unidadeGestora = unidadeGestora;
+		this.exercicio = exercicio;
+		this.properties = carregarProperties();
+		
+		Class<?> classe;
 		
 		try {
 			
-			TipoRelatorio tipo = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).byId(tipoRelatorio);
+			classe = Class.forName(properties.getProperty(tipoRelatorio));
+			dao = (DemonstrativoDao) Lookup.dao(classe);
 			
-			Class<?> classe = Class.forName(PATH_DAO_IMPL + tipo.getClasse());
-			
-			@SuppressWarnings("rawtypes")
-			DemonstrativoDao dao = (DemonstrativoDao) Lookup.dao(classe);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	public List<?> recuperarDados() {
+		
+		try {
 			
 			List<?> result = dao.recuperaDados(ente, orgao, unidadeGestora, exercicio);
 			
@@ -42,33 +58,27 @@ public class RelatorioService {
 		}
 	}
 	
-	@SuppressWarnings("rawtypes")
-	public static File gerarArquivo(String pathRelatorios, Integer tipoRelatorio, List<?> result, String formato) {
+	private Properties carregarProperties() {
 		
-		TipoRelatorio tipo = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).byId(tipoRelatorio);
-		
-		Class<?> classe = null;
-		DemonstrativoDao dao = null;
+		Properties properties = new Properties();
 		
 		try {
 			
-			classe = Class.forName(PATH_DAO_IMPL + tipo.getClasse());
-			dao = (DemonstrativoDao) Lookup.dao(classe);
+			InputStream is = this.getClass().getClassLoader().getResourceAsStream("META-INF/daoimpl.properties");
 			
-		} catch (ClassNotFoundException e) {
+			properties.load(is);
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		return Report.criarRelatorio(pathRelatorios, result, dao.getNomeRelatorio(), formato);
+		return properties;
 	}
 
-	public static Properties getProperties(String pathRelatorios, Integer tipoPecaRelatorio, List<?> dados,
-			String formato) {
-		
-		return Report.getProperties(pathRelatorios, dados, relatorio, formato);
-	}
-	
-	private TipoRelatorio getTipoRelatorio() {
-		return tipoRelatorio;
+	public Properties getProperties(List<?> dados, String formato) {
+		return Report.getProperties(diretorioRelatorios, dados, dao.getNomeRelatorio(), formato);
 	}
 }

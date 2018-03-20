@@ -24,10 +24,6 @@ import net.sf.jasperreports.export.SimpleWriterExporterOutput;
 public class Report {
 	
 	public static Properties getProperties(String pathRelatorios, List<?> dados, String relatorio, String formato) {
-		return null;
-	}
-	
-	public static File criarRelatorio(String pathRelatorios, List<?> dados, String relatorio, String formato) {
 		
 		try {
 			
@@ -37,9 +33,22 @@ public class Report {
 			
 			String diretorioFinalRelatorio = System.getProperty("java.io.tmpdir");
 			
-			File file = null;
+			Properties properties = null;
 			
-			return file;
+			if (formato.toUpperCase().equals("PDF")) {
+				properties = exportarPDF(diretorioFinalRelatorio, jasperPrint);
+				
+			} else if (formato.toUpperCase().equals("XLS")) {
+				properties = exportarXLS(diretorioFinalRelatorio, jasperPrint);
+				
+			} else if (formato.toUpperCase().equals("CSV")) {
+				properties = exportarCSV(diretorioFinalRelatorio, jasperPrint);
+				
+			} else if (formato.toUpperCase().equals("HTML")) {
+				properties = exportarHTML(diretorioFinalRelatorio, jasperPrint);
+			}
+			
+			return properties;
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -47,12 +56,14 @@ public class Report {
 		} catch (JRException e) {
 			e.printStackTrace();
 			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 	
-	private Properties criarProperties(JasperPrint jasperPrint, String extensao, String formato, File arquivo) {
+	private static Properties criarProperties(JasperPrint jasperPrint, String extensao, String formato, File arquivo) {
 		
 		Properties properties = new Properties();
 		
@@ -64,7 +75,7 @@ public class Report {
 		return properties;
 	}
 	
-	private Properties exportarPDF(String path, JasperPrint jasperPrint) throws IOException, JRException {
+	private static Properties exportarPDF(String path, JasperPrint jasperPrint) throws IOException, JRException {
 		
 		File file = File.createTempFile(jasperPrint.getName(), ".pdf", new File(path));
 		JasperExportManager.exportReportToPdfFile(jasperPrint, file.getAbsolutePath());
@@ -76,7 +87,7 @@ public class Report {
 	
 	
 	
-	private Properties exportarXLS(String path, JasperPrint jasperPrint) throws IOException, JRException {
+	private static Properties exportarXLS(String path, JasperPrint jasperPrint) throws IOException, JRException {
 		
 		File file = File.createTempFile(jasperPrint.getName(), ".xls", new File(path));	
         FileOutputStream fos = new FileOutputStream(file);
@@ -92,7 +103,7 @@ public class Report {
 		return properties;
 	}
 	
-	private Properties exportarCSV(String path, JasperPrint jasperPrint) throws IOException, JRException {
+	private static Properties exportarCSV(String path, JasperPrint jasperPrint) throws IOException, JRException {
 		
 		File file = File.createTempFile(jasperPrint.getName(), ".csv", new File(path));
 		
@@ -113,7 +124,7 @@ public class Report {
 		return properties;
 	}
 	
-	private Properties exportarHTML() {
+	private static Properties exportarHTML(String diretorioFinalRelatorio, JasperPrint jasperPrint) {
 		return null;
 	}
 }

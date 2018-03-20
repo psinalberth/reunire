@@ -21,7 +21,7 @@ public class RelatorioViewModel {
 	
 	private String urlRetorno;
 	private String formatoRelatorio;
-	private Integer tipoRelatorio;
+	private String tipoRelatorio;
 	private Integer ente;
 	private Integer orgao;
 	private Integer unidadeGestora;
@@ -43,14 +43,18 @@ public class RelatorioViewModel {
 	
 	private static final String PATH_RELATORIOS = Executions.getCurrent().getDesktop().getWebApp().getRealPath("/_reports");
 	
+	private RelatorioService service;
+	
 	@Init
 	@NotifyChange("*")
 	public void init() {
 		
-		tipoRelatorio = Integer.parseInt(Executions.getCurrent().getParameter("tipoRelatorio"));
+		tipoRelatorio = Executions.getCurrent().getParameter("tipoRelatorio");
 		formatoRelatorio = Executions.getCurrent().getParameter("formato");
 		
 		urlRetorno = "http://br.yahoo.com";
+		
+		service = new RelatorioService(PATH_RELATORIOS, tipoRelatorio, ente, orgao, unidadeGestora, exercicio);
 		
 		gerarRelatorio();
 		exportarRelatorio();
@@ -62,7 +66,7 @@ public class RelatorioViewModel {
 		
 		if (dados != null && dados.size() > 0) {
 			
-			Properties properties = RelatorioService.getProperties(PATH_RELATORIOS, tipoRelatorio, dados, formatoRelatorio);
+			Properties properties = service.getProperties(dados, formatoRelatorio);
 			
 			String titulo = String.valueOf(properties.get("titulo"));
 			String extensao = String.valueOf(properties.get("extensao"));
@@ -80,7 +84,7 @@ public class RelatorioViewModel {
 	}
 	
 	public void gerarRelatorio() {
-		dados = RelatorioService.recuperarDados(tipoRelatorio, ente, orgao, unidadeGestora, exercicio);
+		dados = service.recuperarDados();
 	}
 	
 	@Command
@@ -119,11 +123,11 @@ public class RelatorioViewModel {
 		this.urlRetorno = urlRetorno;
 	}
 
-	public Integer getTipoPecaRelatorio() {
+	public String getTipoPecaRelatorio() {
 		return tipoRelatorio;
 	}
 
-	public void setTipoPecaRelatorio(Integer tipoPecaRelatorio) {
+	public void setTipoPecaRelatorio(String tipoPecaRelatorio) {
 		this.tipoRelatorio = tipoPecaRelatorio;
 	}
 
