@@ -16,19 +16,24 @@ public class RelatorioPpaTextoDaLeiDaoImpl extends SAEDAOImpl<PpaTextoDaLeiVO> i
 	public List<PpaTextoDaLeiVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer exercicio) {
 		
 		String sql = "SELECT ID_PPA, ENTE FROM SAE_PPA " + 
-					 "WHERE ENTE = :ente ";
+					 "WHERE ENTE = 999999 ";
 		
-		List<PpaTextoDaLeiVO> rows =  entityManager.createNativeQuery(sql, PpaTextoDaLeiVO.class)
-				.setParameter("ente", 999999)
+		List<Object[]> rows =  entityManager.createNativeQuery(sql)
 				.getResultList();
 		
 		List<PpaTextoDaLeiVO> listaPpaTextoDaLeiVO = new ArrayList<>();
 		
-		for (PpaTextoDaLeiVO ppaTextoDaLeiVO : rows) {
+		for (Object[] ppaTextoDaLeiVO : rows) {
 			
 			PpaTextoDaLeiVO ppa = new PpaTextoDaLeiVO();
 			
-			ppa.setId(ppaTextoDaLeiVO.getId());
+			Integer i = Integer.valueOf(ppaTextoDaLeiVO[0].toString());
+			System.out.println(i);
+			
+			Integer i2 = Integer.valueOf(ppaTextoDaLeiVO[1].toString());
+			
+			ppa.setId((int) i);
+			ppa.setEnte((int) i2);
 			
 			listaPpaTextoDaLeiVO.add(ppa);
 		}
@@ -38,6 +43,6 @@ public class RelatorioPpaTextoDaLeiDaoImpl extends SAEDAOImpl<PpaTextoDaLeiVO> i
 
 	@Override
 	public String getNomeRelatorio() {
-		return null;
+		return "rel_ppa_texto_lei.jasper";
 	}
 }

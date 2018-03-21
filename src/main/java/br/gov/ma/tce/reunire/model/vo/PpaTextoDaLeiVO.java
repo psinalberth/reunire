@@ -27,6 +27,9 @@ public class PpaTextoDaLeiVO extends EntidadeBase{
 	@Column(name="TEXTO_LEI")
 	@Lob
 	private String textoDaLei;
+	
+	@Column(name="ENTE")
+	private int ente;
 
 	public int getId() {
 		return id;
@@ -42,6 +45,14 @@ public class PpaTextoDaLeiVO extends EntidadeBase{
 
 	public void setTextoDaLei(String textoDaLei) {
 		this.textoDaLei = textoDaLei;
+	}
+
+	public int getEnte() {
+		return ente;
+	}
+
+	public void setEnte(int ente) {
+		this.ente = ente;
 	}
 
 }
