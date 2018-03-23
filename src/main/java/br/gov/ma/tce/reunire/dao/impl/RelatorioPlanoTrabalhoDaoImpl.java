@@ -1,5 +1,7 @@
 package br.gov.ma.tce.reunire.dao.impl;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -23,33 +25,36 @@ public class RelatorioPlanoTrabalhoDaoImpl extends SAEDAOImpl<RelatorioPlanoTrab
 					"		INNER JOIN SAE_FUNCAO_SUB_FUNCAO FSF ON A.ID_FUNCAO_SUB_FUNCAO = FSF.ID_FUNCAO_SUB_FUNCAO " + 
 					"		INNER JOIN SAE_FUNCAO_GOVERNO FG ON FSF.ID_FUNCAO_GOVERNO = FG.ID_FUNCAO_GOVERNO " + 
 					"		INNER JOIN SAE_SUB_FUNCAO_GOVERNO SFG ON FSF.ID_SUB_FUNCAO_GOVERNO = SFG.ID_SUB_FUNCAO_GOVERNO " + 
-					"		WHERE DOT.UNIDADE_GESTORA = :unidade";						
-				
-			List<Object[]> lista = entityManager.createNativeQuery(sql)				
+					"		WHERE DOT.UNIDADE_GESTORA = :unidade ORDER BY DOT_UNIDADE_GESTORA, P_CODIGO, A_CODIGO_PREFEITURA";
+			
+			
+			List<RelatorioPlanoTrabalhoVO> listaPlanoRelatorioPojo = new ArrayList<>();
+			
+			List<Object[]> listaPlanoRelatorio = entityManager.createNativeQuery(sql)						
 					.setParameter("unidade", 150016034)
 					.getResultList();
 			
-			List<RelatorioPlanoTrabalhoVO> listaPlanoRelatorioVO = new ArrayList<>();
+			for(Object[] l : listaPlanoRelatorio) {
+				RelatorioPlanoTrabalhoVO relatorioPojo = new RelatorioPlanoTrabalhoVO();
+				relatorioPojo.setIdUnidadeGestora(Integer.parseInt(l[0].toString()));
+				relatorioPojo.setCodigoFuncao(l[1].toString());
+				relatorioPojo.setNomeFuncao(l[2].toString());
+				relatorioPojo.setCodigoSubfuncao(l[3].toString());
+				relatorioPojo.setNomeSubFuncao(l[4].toString());
+				relatorioPojo.setCodigoPrograma(l[5].toString());
+				relatorioPojo.setNomePrograma(l[6].toString());
+				relatorioPojo.setCodigoAcao(l[7].toString());
+				relatorioPojo.setNomeAcao(l[8].toString());
+				relatorioPojo.setValorExercicio(new BigDecimal(l[9].toString()));
+				listaPlanoRelatorioPojo.add(relatorioPojo);
+			}	
 			
-			for(Object [] l : lista) {
-				
-				RelatorioPlanoTrabalhoVO relatorio = new RelatorioPlanoTrabalhoVO();
-				relatorio.setIdUnidadeGestora((int) l[0]);
-				relatorio.setNomeUnidadeGestora((String) l[1]);
-				relatorio.setCodigoFuncao((String) l[2]);
-				relatorio.setNomeFuncao((String) l[3]);			
-				
-				listaPlanoRelatorioVO.add(relatorio);
-				
-			}		
-		
-			
-			return listaPlanoRelatorioVO;
+			return listaPlanoRelatorioPojo;
 		}
 
 		@Override
 		public String getNomeRelatorio() {
-			return "rel_plano_trabalho.jasper";
-		}
-	
+			return "RelatorioPlanoTrabalho.jasper";
+		}		
+		
 }
