@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="despesa_funcao_vinculo_recursos" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4ed26dd3-bb6a-4054-b339-f183b205b9b6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ente" class="java.lang.String"/>
+	<parameter name="orgao" class="java.lang.String"/>
+	<parameter name="unidade" class="java.lang.String"/>
+	<parameter name="dataInicio" class="java.util.Date"/>
+	<parameter name="dataFim" class="java.util.Date"/>
+	<parameter name="unidades" class="java.util.List"/>
+	<parameter name="conexaoSaePlan" class="java.sql.Connection"/>
+	<parameter name="jurisdicionado" class="java.lang.String"/>
+	<field name="funcaoGoverno" class="java.lang.String">
+		<fieldDescription><![CDATA[funcaoGoverno]]></fieldDescription>
+	</field>
+	<field name="subfuncaoGoverno" class="java.lang.String">
+		<fieldDescription><![CDATA[subfuncaoGoverno]]></fieldDescription>
+	</field>
+	<field name="programa" class="java.lang.String">
+		<fieldDescription><![CDATA[programa]]></fieldDescription>
+	</field>
+	<field name="orgao" class="java.lang.String">
+		<fieldDescription><![CDATA[orgao]]></fieldDescription>
+	</field>
+	<field name="unidade" class="java.lang.String">
+		<fieldDescription><![CDATA[unidade]]></fieldDescription>
+	</field>
+	<field name="valorOrdinario" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[valorOrdinario]]></fieldDescription>
+	</field>
+	<field name="valorVinculado" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[valorVinculado]]></fieldDescription>
+	</field>
+	<variable name="VALOR_ORD_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorOrdinario}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_VIN_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorVinculado}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_ORD_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorOrdinario}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_VIN_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorVinculado}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_ORD_PROG" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorOrdinario}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_VIN_PROG" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorVinculado}]]></variableExpression>
+	</variable>
+	<group name="ORGAO">
+		<groupExpression><![CDATA[$F{orgao}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField evaluationTime="Group" evaluationGroup="ORGAO">
+					<reportElement uuid="25a4cfa5-0798-4348-9825-7ed5a9f7debc" mode="Transparent" x="42" y="0" width="760" height="20" backcolor="#282828"/>
+					<box leftPadding="5"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{orgao}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="ebd7d69e-e689-4588-a029-8348ef3c4f3a" x="0" y="0" width="42" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ÓRGÃO:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="UNIDADE">
+		<groupExpression><![CDATA[$F{unidade}]]></groupExpression>
+		<groupHeader>
+			<band height="45">
+				<textField evaluationTime="Group" evaluationGroup="UNIDADE">
+					<reportElement uuid="1cc27b40-a4c8-4a07-b1c0-2e840e70512a" mode="Transparent" x="50" y="0" width="752" height="20" backcolor="#D3D3D3"/>
+					<box leftPadding="5"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{unidade}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="3b7d93f9-2e38-44f7-9c6f-92215bdcc372" mode="Transparent" x="0" y="25" width="117" height="20" forecolor="#000000" backcolor="#777777"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#000000"/>
+						<topPen lineWidth="0.5" lineColor="#000000"/>
+						<leftPen lineWidth="0.5" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CÓDIGO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="5e92e453-93ac-4e6f-8d42-5082c3841b51" mode="Transparent" x="117" y="25" width="400" height="20" forecolor="#000000" backcolor="#777777"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#000000"/>
+						<topPen lineWidth="0.5" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ESPECIFICAÇÃO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9c2a8577-27e5-47c6-9b19-d2b846d756cd" mode="Transparent" x="612" y="25" width="95" height="20" forecolor="#000000" backcolor="#777777"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#000000"/>
+						<topPen lineWidth="0.5" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VINCULADO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="a3e9ff38-5d15-4326-99de-53bafb6f4f5e" mode="Transparent" x="707" y="25" width="95" height="20" forecolor="#000000" backcolor="#777777"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#000000"/>
+						<topPen lineWidth="0.5" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="34de1a4e-1c49-403d-b465-533f43ed763e" mode="Transparent" x="517" y="25" width="95" height="20" forecolor="#000000" backcolor="#777777"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#000000"/>
+						<topPen lineWidth="0.5" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ORDINÁRIO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="732c159a-792f-4abd-8f64-a8a86024ff1f" x="0" y="0" width="50" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[UNIDADE:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="12">
+				<staticText>
+					<reportElement uuid="72986091-a764-49e6-8a14-77a6b4db6dee" x="0" y="0" width="802" height="12"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+					</box>
+					<textElement/>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="FUNCAO_GOVERNO">
+		<groupExpression><![CDATA[$F{funcaoGoverno}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement uuid="a4589350-ad71-480e-8cd7-63193921b3f9" mode="Transparent" x="0" y="0" width="117" height="20" forecolor="#000000" backcolor="#CFCFCF"/>
+					<box leftPadding="5" rightPadding="0">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{funcaoGoverno}.split(" - ")[0]]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="24f3cac6-e346-4a4c-bd2d-5caba277dd9f" mode="Transparent" x="117" y="0" width="400" height="20" forecolor="#000000" backcolor="#CFCFCF"/>
+					<box leftPadding="5">
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{funcaoGoverno}.split(" - ")[1]]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement uuid="32be48e2-eea2-499b-9f62-6b1ca73c9de9" mode="Transparent" x="517" y="0" width="95" height="20" forecolor="#000000" backcolor="#CFCFCF"/>
+					<box rightPadding="5">
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_ORD_FUNCAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement uuid="66622b77-403a-4020-ac99-2c388d9be78c" mode="Transparent" x="612" y="0" width="95" height="20" forecolor="#000000" backcolor="#CFCFCF"/>
+					<box rightPadding="5">
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_VIN_FUNCAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement uuid="14307bb3-7c7a-4abc-b583-ab718f155665" mode="Transparent" x="707" y="0" width="95" height="20" forecolor="#000000" backcolor="#CFCFCF"/>
+					<box rightPadding="5">
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_ORD_FUNCAO} + $V{VALOR_VIN_FUNCAO}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="SUBFUNCAO_GOVERNO">
+		<groupExpression><![CDATA[$F{subfuncaoGoverno}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement uuid="00502f54-fc7a-4c92-ba03-b37a2e8c3c16" mode="Transparent" x="117" y="0" width="400" height="20" backcolor="#BFBFBF"/>
+					<box leftPadding="10">
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{subfuncaoGoverno}.split(" - ")[1]]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="ec51c349-fdd3-4915-bf2d-6ed4395470ef" mode="Transparent" x="0" y="0" width="117" height="20" backcolor="#BFBFBF"/>
+					<box leftPadding="5" rightPadding="0">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{funcaoGoverno}.split(" - ")[0] + "." + $F{subfuncaoGoverno}.split(" - ")[0]]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="SUBFUNCAO_GOVERNO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement uuid="c065645e-202f-40a4-8e95-f55cdba45bb7" mode="Transparent" x="612" y="0" width="95" height="20" backcolor="#BFBFBF"/>
+					<box rightPadding="5">
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_VIN_SUBFUNCAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="SUBFUNCAO_GOVERNO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement uuid="179e298f-b675-496e-a659-7847419d730d" mode="Transparent" x="707" y="0" width="95" height="20" backcolor="#BFBFBF"/>
+					<box rightPadding="5">
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_ORD_SUBFUNCAO} + $V{VALOR_VIN_SUBFUNCAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="SUBFUNCAO_GOVERNO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement uuid="a0768e26-d01c-4666-99aa-b4162c11f041" mode="Transparent" x="517" y="0" width="95" height="20" backcolor="#BFBFBF"/>
+					<box rightPadding="5">
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_ORD_SUBFUNCAO}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="PROGRAMA">
+		<groupExpression><![CDATA[$F{programa}]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00;(#,##0.00)">
+					<reportElement uuid="e956e397-7c80-4bea-9aa4-cf8ff9457ee3" x="707" y="1" width="95" height="20"/>
+					<box rightPadding="5">
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_ORD_PROG} + $V{VALOR_VIN_PROG}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00;(#,##0.00)">
+					<reportElement uuid="eac88b95-1783-4cc1-930f-61ae3a06e1ca" x="612" y="1" width="95" height="20"/>
+					<box rightPadding="5">
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_VIN_PROG}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="6feea67b-8a84-4d8f-a285-644344209e85" x="0" y="1" width="117" height="20"/>
+					<box leftPadding="5" rightPadding="0">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{funcaoGoverno}.split(" - ")[0] + "." + $F{subfuncaoGoverno}.split(" - ")[0] + "." + $F{programa}.split(" - ")[0]]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00;(#,##0.00)">
+					<reportElement uuid="bc1c57c0-686a-4d6e-bdca-3aaacde63d4e" x="517" y="1" width="95" height="20"/>
+					<box rightPadding="5">
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_ORD_PROG}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="f268e20c-3e79-445c-a9d6-5be6663923d6" x="117" y="1" width="400" height="20"/>
+					<box leftPadding="15">
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{programa}.split(" - ")[1]]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="140" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="3aeea305-4526-4354-b2bf-647294633783" x="0" y="40" width="802" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{orgao} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ÓRGÃO: " + $P{orgao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b2b8c653-3269-4848-a499-7ca2b4cfa2c8" x="0" y="120" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PERÍODO: " + new SimpleDateFormat("dd/MM/yyyy").format($P{dataInicio}) + " A " +  new SimpleDateFormat("dd/MM/yyyy").format($P{dataFim})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8beb088d-f7b8-4da4-8b24-38bc8c0c7b7e" x="0" y="100" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ANEXO VIII - DEMONSTRATIVO DE DESPESAS POR FUNÇÕES CONFORME O VÍNCULO DE RECURSOS"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4742f7cc-990a-426b-9bff-9b70e05c1af0" x="0" y="60" width="802" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{unidade} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b749cf73-b07b-40c3-80f9-06aeb920684f" x="0" y="0" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SISTEMA DE AUDITORIA ELETRÔNICA - SAE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d4ab3bb1-3b2e-45ab-928a-f434bd7c9ef3" x="0" y="20" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ENTE: " + $P{ente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d20a2dc9-de02-47fc-890c-cdba33f0894d" x="0" y="80" width="802" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{jurisdicionado} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["JURISDICIONADO: " + $P{jurisdicionado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement uuid="e153fce1-ffe0-4796-b7cd-d85a71b26ccc" x="682" y="0" width="80" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fa599fa9-1597-4b05-b18c-e943c3870382" x="0" y="0" width="682" height="18"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FONTE: SAE       " + "Emitido em " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="c0b61d3f-4b83-4295-bf26-4064b4f91028" x="762" y="0" width="40" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
