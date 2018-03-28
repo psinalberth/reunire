@@ -6,8 +6,6 @@ public class RelatorioPlanoTrabalhoVO {
 
 	private int idUnidadeGestora;
 
-	private String nomeUnidadeGestora;
-
 	private String codigoFuncao;
 
 	private String nomeFuncao;
@@ -15,7 +13,7 @@ public class RelatorioPlanoTrabalhoVO {
 	private String codigoSubfuncao;
 
 	private String nomeSubFuncao;
-
+ 
 	private String codigoPrograma;
 
 	private String nomePrograma;
@@ -24,9 +22,7 @@ public class RelatorioPlanoTrabalhoVO {
 
 	private String nomeAcao;
 
-	private String descricao;
-
-	private BigDecimal valorExercicio;
+	private BigDecimal valorExercicio;	
 
 	public int getIdUnidadeGestora() {
 		return idUnidadeGestora;
@@ -34,14 +30,6 @@ public class RelatorioPlanoTrabalhoVO {
 
 	public void setIdUnidadeGestora(int idUnidadeGestora) {
 		this.idUnidadeGestora = idUnidadeGestora;
-	}
-
-	public String getNomeUnidadeGestora() {
-		return nomeUnidadeGestora;
-	}
-
-	public void setNomeUnidadeGestora(String nomeUnidadeGestora) {
-		this.nomeUnidadeGestora = nomeUnidadeGestora;
 	}
 
 	public String getCodigoFuncao() {
@@ -106,15 +94,7 @@ public class RelatorioPlanoTrabalhoVO {
 
 	public void setNomeAcao(String nomeAcao) {
 		this.nomeAcao = nomeAcao;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+	}	
 
 	public BigDecimal getValorExercicio() {
 		return valorExercicio;

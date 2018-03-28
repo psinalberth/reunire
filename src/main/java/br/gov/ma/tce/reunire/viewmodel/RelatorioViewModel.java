@@ -68,7 +68,7 @@ public class RelatorioViewModel {
 			
 			Properties properties = service.getProperties(dados, formatoRelatorio);
 			
-			String titulo = String.valueOf(properties.get("titulo"));
+			String titulo = String.valueOf(properties.get("nome"));
 			String extensao = String.valueOf(properties.get("extensao"));
 			String formato = String.valueOf(properties.get("formato"));
 			File arquivo = (File) properties.get("arquivo");

@@ -28,7 +28,7 @@ public class RelatorioPlanoTrabalhoDaoImpl extends SAEDAOImpl<RelatorioPlanoTrab
 					"		WHERE DOT.UNIDADE_GESTORA = :unidade ORDER BY DOT_UNIDADE_GESTORA, P_CODIGO, A_CODIGO_PREFEITURA";
 			
 			
-			List<RelatorioPlanoTrabalhoVO> listaPlanoRelatorioPojo = new ArrayList<>();
+			List<RelatorioPlanoTrabalhoVO> listaPlanoRelatorioPojo = new ArrayList<>(); 
 			
 			List<Object[]> listaPlanoRelatorio = entityManager.createNativeQuery(sql)						
 					.setParameter("unidade", 150016034)

@@ -5,7 +5,7 @@ import javax.persistence.PersistenceContext;
 
 public class SAEDAOImpl<T> {
 	
-	@PersistenceContext(unitName="sae")
+	@PersistenceContext(unitName="relatorioSae")
 	protected EntityManager entityManager;
 	
 	public EntityManager getEntityManager() {
