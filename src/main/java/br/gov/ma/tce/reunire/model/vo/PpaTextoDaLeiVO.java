@@ -1,5 +1,6 @@
 package br.gov.ma.tce.reunire.model.vo;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 
 import javax.persistence.Column;
@@ -10,15 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import br.gov.ma.tce.reunire.model.EntidadeBase;
-
 @Entity
 @Table(name="SAE_PPA")
-public class PpaTextoDaLeiVO extends EntidadeBase{
+public class PpaTextoDaLeiVO implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -9023663347383906236L;
 
 	@Id

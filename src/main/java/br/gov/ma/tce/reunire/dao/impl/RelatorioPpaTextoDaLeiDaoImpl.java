@@ -9,7 +9,7 @@ import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
 import br.gov.ma.tce.reunire.model.vo.PpaTextoDaLeiVO;
 
 @Stateless
-public class RelatorioPpaTextoDaLeiDaoImpl extends SAEDAOImpl<PpaTextoDaLeiVO> implements DemonstrativoDao<PpaTextoDaLeiVO>{
+public class RelatorioPpaTextoDaLeiDaoImpl extends SaeDaoImpl<PpaTextoDaLeiVO> implements DemonstrativoDao<PpaTextoDaLeiVO>{
 	
 	@SuppressWarnings("unchecked")
 	@Override

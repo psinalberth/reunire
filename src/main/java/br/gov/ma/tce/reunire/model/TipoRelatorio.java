@@ -1,32 +1,33 @@
 package br.gov.ma.tce.reunire.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TIPO_RELATORIO")
-public class TipoRelatorio extends EntidadeBase {
+@Table(schema="reunire", name="tipo_relatorio")
+@SequenceGenerator(name = "se_tipo_relatorio", sequenceName = "se_tipo_relatorio", allocationSize = 1)
+public class TipoRelatorio implements Serializable {
 	
 	private static final long serialVersionUID = 6115024177358859427L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_TIPO_RELATORIO", columnDefinition="TINYINT(3)")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="se_tipo_relatorio")
+	@Column(name="id_tipo_relatorio", columnDefinition="int(4)")
 	private int id;
 	
-	@Column(name="CODIGO", length=20)
+	@Column(name="codigo", length=20)
 	private String codigo;
 	
-	@Column(name="NOME", length=100)
-	private String nome;
+	@Column(name="descricao", length=100)
+	private String descricao;
 	
-	@Column(name="CLASSE", length=45)
-	private String classe;
-
 	public int getId() {
 		return id;
 	}
@@ -43,19 +44,11 @@ public class TipoRelatorio extends EntidadeBase {
 		this.codigo = codigo;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getClasse() {
-		return classe;
-	}
-
-	public void setClasse(String classe) {
-		this.classe = classe;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 }

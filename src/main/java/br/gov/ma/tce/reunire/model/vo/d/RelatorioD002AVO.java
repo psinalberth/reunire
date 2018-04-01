@@ -1,4 +1,4 @@
-package br.gov.ma.tce.reunire.model.vo;
+package br.gov.ma.tce.reunire.model.vo.d;
 
 import java.math.BigDecimal;
 

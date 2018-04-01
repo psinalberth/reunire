@@ -3,9 +3,9 @@ package br.gov.ma.tce.reunire.dao.impl;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public class DAOImpl<T> {
+public class PrestacaoDaoImpl<T> {
 	
-	@PersistenceContext(unitName="reunire")
+	@PersistenceContext(unitName="prestacao")
 	protected EntityManager entityManager;
 	
 	public EntityManager getEntityManager() {

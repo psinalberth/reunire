@@ -5,10 +5,58 @@
   <style src="./_assets/style/style.css" />
   <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"/>
   
-  <div height="100%" viewModel="@id('vm') @init('br.gov.ma.tce.reunire.viewmodel.RelatorioViewModel')">
-    <include src="/WEB-INF/composition/navbar.zul" />
-    <div height="100%" style="padding-top: 3.25rem;">
-      <iframe id="iframe" width="100%" vflex="true" content="@load(vm.media)" />
+  <div sclass="column is-10 is-offset-1" style="padding: 3rem 0" viewModel="@id('vm') @init('br.gov.ma.tce.reunire.viewmodel.IndexViewModel')">
+    
+    <label sclass="title is-3" value="Relatórios" />
+    
+    <div class="field has-addons" style="padding: 2rem 0">
+      <div class="control is-expanded">
+        <textbox sclass="input" placeholder="Demonstrativo para pesquisar" value="@save(vm.filtroRelatorio)" onOK="@command('pesquisar')"/>
+        <label sclass="help" value="Digite parte do código ou descrição do demonstrativo" />
+      </div>
+      <div class="control">
+        <a sclass="button is-primary" onClick="@command('pesquisar')">
+          <vlayout sclass="icon">
+          	<vlayout sclass="fas fa-search" />
+          </vlayout>
+          <label value="Pesquisar" />
+        </a>
+      </div>
     </div>
+    
+    <listbox model="@load(vm.listaRelatorios)" multiple="true" checkmark="true" nonselectableTags="*" 
+             selectedItems="@bind(vm.listaRelatoriosSelecionados)"
+             emptyMessage="Nenhum registro encontrado para o critério selecionado.">
+      <listhead>
+      	<listheader align="center" width="50px" />
+      	<listheader align="center" label="#" width="50px" />
+        <listheader align="center" label="Código" hflex="min" />
+        <listheader label="Descrição"  />
+        <listheader align="center" width="180px">
+          <a sclass="has-text-white" disabled="@load(empty vm.listaRelatoriosSelecionados)">
+            <vlayout sclass="icon">
+            	<vlayout sclass="fas fa-print" />
+            </vlayout>
+            <label value="Imprimir Seleção" />
+          </a>
+        </listheader>
+      </listhead>
+      <template name="model">
+        <listitem>
+      	  <listcell />
+      	  <listcell label="${forEachStatus.index + 1}" />
+      	  <listcell label="@load(each.codigo)" />
+          <listcell label="@load(each.descricao)" />
+          <listcell>
+            <a sclass="button" onClick="@command('imprimirRelatorio', tipoRelatorio=each)">
+              <vlayout sclass="icon has-text-warning">
+                <vlayout sclass="fas fa-print"/>
+              </vlayout>
+              <label value="Imprimir" />
+            </a>
+          </listcell>
+        </listitem>
+      </template>
+    </listbox>
   </div>
 </zk>

@@ -10,7 +10,7 @@ import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
 import br.gov.ma.tce.reunire.model.vo.RelatorioPlanoTrabalhoVO;
 
 @Stateless
-public class RelatorioPlanoTrabalhoDaoImpl extends SAEDAOImpl<RelatorioPlanoTrabalhoVO> implements DemonstrativoDao<RelatorioPlanoTrabalhoVO>{
+public class RelatorioPlanoTrabalhoDaoImpl extends SaeDaoImpl<RelatorioPlanoTrabalhoVO> implements DemonstrativoDao<RelatorioPlanoTrabalhoVO>{
 
 		@SuppressWarnings("unchecked")
 		@Override
