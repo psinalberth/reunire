@@ -3,12 +3,14 @@ package br.gov.ma.tce.reunire.dao.impl.d;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.ejb.Stateless;
 
 import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
 import br.gov.ma.tce.reunire.dao.impl.PrestacaoDaoImpl;
 import br.gov.ma.tce.reunire.model.vo.d.RelatorioD002AVO;
+import br.gov.ma.tce.reunire.model.vo.gestor.UnidadeVO;
 
 @Stateless
 public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> implements DemonstrativoDao<RelatorioD002AVO> {
@@ -40,6 +42,10 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 		List<RelatorioD002AVO> listaVo = new ArrayList<>();
 		List<Integer> listaIdsUnidades = recuperarIdsUnidades(ente, orgao, poder, unidadeGestora);
 		
+		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(ente, orgao, poder, unidadeGestora);
+		
+		/*Optional<UnidadeVO> vo = listaUnidadeVO.stream().filter(ug -> ug.getId() == 228).findFirst();
+		System.out.println(vo.get().getNome());*/
 		List<Object[]> lista = entityManager.createNativeQuery(sql)
 				.setParameter("unidade", listaIdsUnidades)				
 				.getResultList();

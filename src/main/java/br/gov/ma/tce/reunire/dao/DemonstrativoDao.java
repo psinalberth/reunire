@@ -1,5 +1,6 @@
 package br.gov.ma.tce.reunire.dao;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +32,28 @@ public interface DemonstrativoDao<T> {
 			
 		} else if(unidadeGestora != null) {
 			listaIdsUnidades = Arrays.asList(new Integer[] {unidadeGestora});
+		}
+		
+		return listaIdsUnidades;
+	}
+	
+	public default List<UnidadeVO> recuperarUnidades(Integer ente, Integer orgao, Integer poder, Integer unidadeGestora) {
+		
+		List<UnidadeVO> listaIdsUnidades = new ArrayList<>();
+		
+		UnidadeVODaoImpl dao = Lookup.dao(UnidadeVODaoImpl.class);
+		
+		if (ente != null && poder == null) {
+			listaIdsUnidades = dao.byEnte(ente);
+			
+		} else if (orgao != null) {
+			listaIdsUnidades = dao.byOrgao(orgao);
+			
+		} else if (poder != null) {
+			listaIdsUnidades = dao.byPoder(ente, poder);
+			
+		} else if(unidadeGestora != null) {
+			listaIdsUnidades.add(dao.byId(unidadeGestora));
 		}
 		
 		return listaIdsUnidades;

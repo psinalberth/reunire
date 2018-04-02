@@ -7,6 +7,7 @@ public class RelatorioD002AVO {
 protected static final long serialVersionUID = 4376323486224609426L;
 	
 	private Integer idUnidade;
+	private String descricaoUnidade;
 	private String codigoCategoriaEconomica;
 	private String descricaoCategoriaEconomica;
 	private String codigoOrigem;
@@ -25,6 +26,14 @@ protected static final long serialVersionUID = 4376323486224609426L;
 
 	public void setIdUnidade(Integer idUnidade) {
 		this.idUnidade = idUnidade;
+	}
+
+	public String getDescricaoUnidade() {
+		return descricaoUnidade;
+	}
+
+	public void setDescricaoUnidade(String descricaoUnidade) {
+		this.descricaoUnidade = descricaoUnidade;
 	}
 
 	public String getCodigoCategoriaEconomica() {
