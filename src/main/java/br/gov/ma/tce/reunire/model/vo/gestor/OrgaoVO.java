@@ -25,4 +25,36 @@ public class OrgaoVO {
 	@ManyToOne
 	@JoinColumn(name="TIPO_ORGAO_ID")
 	private TipoOrgaoVO tipoOrgao;
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public EnteVO getEnte() {
+		return ente;
+	}
+	
+	public void setEnte(EnteVO ente) {
+		this.ente = ente;
+	}
+	
+	public TipoOrgaoVO getTipoOrgao() {
+		return tipoOrgao;
+	}
+	
+	public void setTipoOrgao(TipoOrgaoVO tipoOrgao) {
+		this.tipoOrgao = tipoOrgao;
+	}
 }

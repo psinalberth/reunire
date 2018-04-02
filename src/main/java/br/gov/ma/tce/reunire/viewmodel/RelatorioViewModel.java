@@ -54,6 +54,8 @@ public class RelatorioViewModel {
 		
 		urlRetorno = "http://br.yahoo.com";
 		
+		Executions.getCurrent().getParameterMap().entrySet().forEach(item -> System.out.println(item.getKey() + " --> " + item.getValue()[0]));
+		
 		service = new RelatorioService(PATH_RELATORIOS, tipoRelatorio, ente, orgao, unidadeGestora, exercicio);
 		
 		gerarRelatorio();

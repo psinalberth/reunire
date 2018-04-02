@@ -7,11 +7,11 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
-import br.gov.ma.tce.reunire.dao.impl.SaeDaoImpl;
+import br.gov.ma.tce.reunire.dao.impl.PrestacaoDaoImpl;
 import br.gov.ma.tce.reunire.model.vo.d.RelatorioD002AVO;
 
 @Stateless
-public class RelatorioD002ADaoImpl extends SaeDaoImpl<RelatorioD002AVO> implements DemonstrativoDao<RelatorioD002AVO> {
+public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> implements DemonstrativoDao<RelatorioD002AVO> {
 
 	@SuppressWarnings("unchecked")
 	@Override
