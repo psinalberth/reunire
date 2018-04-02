@@ -15,7 +15,7 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<RelatorioD002AVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora,
+	public List<RelatorioD002AVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer poder,
 			Integer exercicio) {
 		
 		String sql = "select d.unidade_id unidade," + 
@@ -33,13 +33,15 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 				"		inner join sae.sae_especie e on e.id_especie = nr.id_especie and e.ativo = 'S' " + 
 				"		inner join sae.sae_rubrica r on r.id_rubrica = nr.id_rubrica and r.ativo = 'S' " + 
 				"		inner join sae.sae_alinea a on a.id_alinea = nr.id_alinea and a.ativo = 'S' "+ 
-				//"		where d.unidade_id = 228 "+
+				"		where d.unidade_id in(:unidade)"+
 				"		group by unidade, cod_cat, desc_cat, cod_ori, desc_ori, cod_esp, desc_esp, cod_rub, desc_rub, cod_ali, desc_ali "+
 				"		order by unidade, cod_cat, cod_ori, cod_esp, cod_rub, cod_ali";
 		
 		List<RelatorioD002AVO> listaVo = new ArrayList<>();
+		List<Integer> listaIdsUnidades = recuperarIdsUnidades(ente, orgao, poder, unidadeGestora);
 		
 		List<Object[]> lista = entityManager.createNativeQuery(sql)
+				.setParameter("unidade", listaIdsUnidades)				
 				.getResultList();
 		
 		for(Object[] l : lista) {

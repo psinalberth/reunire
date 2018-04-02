@@ -25,6 +25,7 @@ public class RelatorioViewModel {
 	private Integer ente;
 	private Integer orgao;
 	private Integer unidadeGestora;
+	private Integer poder;
 	private Integer exercicio;
 	
 	/** Coleção de formatos disponíveis para exportação */
@@ -51,12 +52,16 @@ public class RelatorioViewModel {
 		
 		tipoRelatorio = Executions.getCurrent().getParameter("tipoRelatorio");
 		formatoRelatorio = Executions.getCurrent().getParameter("formato");
+		ente = Executions.getCurrent().getParameter("ente") != null ? Integer.parseInt(Executions.getCurrent().getParameter("ente")) : null;
+		orgao = Executions.getCurrent().getParameter("orgao") != null ? Integer.parseInt(Executions.getCurrent().getParameter("orgao")) : null;
+		unidadeGestora = Executions.getCurrent().getParameter("unidade") != null ? Integer.parseInt(Executions.getCurrent().getParameter("unidade")) : null;
+		poder = Executions.getCurrent().getParameter("poder") != null ? Integer.parseInt(Executions.getCurrent().getParameter("poder")) : null;
 		
 		urlRetorno = "http://br.yahoo.com";
 		
 		Executions.getCurrent().getParameterMap().entrySet().forEach(item -> System.out.println(item.getKey() + " --> " + item.getValue()[0]));
 		
-		service = new RelatorioService(PATH_RELATORIOS, tipoRelatorio, ente, orgao, unidadeGestora, exercicio);
+		service = new RelatorioService(PATH_RELATORIOS, tipoRelatorio, ente, orgao, unidadeGestora,poder, exercicio);
 		
 		gerarRelatorio();
 		exportarRelatorio();

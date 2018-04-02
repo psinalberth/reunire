@@ -13,7 +13,7 @@ public class RelatorioPpaTextoDaLeiDaoImpl extends SaeDaoImpl<PpaTextoDaLeiVO> i
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<PpaTextoDaLeiVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer exercicio) {
+	public List<PpaTextoDaLeiVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer poder, Integer exercicio) {
 		
 		String sql = "SELECT ID_PPA, ENTE, TEXTO_LEI FROM SAE_PPA " + 
 					 "WHERE ENTE = 999999 ";

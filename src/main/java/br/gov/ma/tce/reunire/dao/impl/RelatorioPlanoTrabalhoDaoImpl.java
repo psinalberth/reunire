@@ -14,7 +14,7 @@ public class RelatorioPlanoTrabalhoDaoImpl extends SaeDaoImpl<RelatorioPlanoTrab
 
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<RelatorioPlanoTrabalhoVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora,
+		public List<RelatorioPlanoTrabalhoVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer poder,
 				Integer exercicio) {
 			
 			String sql = "SELECT DOT.UNIDADE_GESTORA DOT_UNIDADE_GESTORA, FG.CODIGO FG_CODIGO, FG.DESCRICAO FG_DESCRICAO, SFG.CODIGO SFG_CODIGO, SFG.DESCRICAO SFG_DESCRICAO, P.CODIGO P_CODIGO, P.DENOMINACAO P_DENOMINACAO, A.CODIGO_PREFEITURA A_CODIGO_PREFEITURA, A.DESCRICAO A_DESCRICAO, DAN.VALOR DAN_VALOR " + 

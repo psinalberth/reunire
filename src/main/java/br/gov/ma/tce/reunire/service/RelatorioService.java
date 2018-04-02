@@ -15,6 +15,7 @@ public class RelatorioService {
 	private Integer ente;
 	private Integer orgao;
 	private Integer unidadeGestora;
+	private Integer poder;
 	private Integer exercicio;
 	private String diretorioRelatorios;
 	
@@ -24,12 +25,13 @@ public class RelatorioService {
 	private DemonstrativoDao dao;
 	
 	@SuppressWarnings("rawtypes")
-	public RelatorioService(String diretorioRelatorios, String tipoRelatorio, Integer ente, Integer orgao, Integer unidadeGestora, Integer exercicio) {
+	public RelatorioService(String diretorioRelatorios, String tipoRelatorio, Integer ente, Integer orgao, Integer unidadeGestora, Integer poder, Integer exercicio) {
 		
 		this.diretorioRelatorios = diretorioRelatorios;
 		this.ente = ente;
 		this.orgao = orgao;
 		this.unidadeGestora = unidadeGestora;
+		this.poder = poder;
 		this.exercicio = exercicio;
 		this.properties = carregarProperties();
 		
@@ -49,7 +51,7 @@ public class RelatorioService {
 		
 		try {
 			
-			List<?> result = dao.recuperaDados(ente, orgao, unidadeGestora, exercicio);
+			List<?> result = dao.recuperaDados(ente, orgao, unidadeGestora, poder, exercicio);
 			
 			return result;
 			
