@@ -3,7 +3,6 @@ package br.gov.ma.tce.reunire.dao.impl.d;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.ejb.Stateless;
 
@@ -44,8 +43,8 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 		
 		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(ente, orgao, poder, unidadeGestora);
 		
-		/*Optional<UnidadeVO> vo = listaUnidadeVO.stream().filter(ug -> ug.getId() == 228).findFirst();
-		System.out.println(vo.get().getNome());*/
+
+		
 		List<Object[]> lista = entityManager.createNativeQuery(sql)
 				.setParameter("unidade", listaIdsUnidades)				
 				.getResultList();
@@ -53,6 +52,13 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 		for(Object[] l : lista) {
 			RelatorioD002AVO relatorio = new RelatorioD002AVO();
 			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
+			
+			for(UnidadeVO listaUnidade : listaUnidadeVO) {
+				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue()) {
+					relatorio.setDescricaoUnidade(listaUnidade.getNome());
+				}
+			}
+			
 			relatorio.setCodigoCategoriaEconomica(l[1].toString());
 			relatorio.setDescricaoCategoriaEconomica(l[2].toString());
 			relatorio.setCodigoOrigem(l[3].toString());
