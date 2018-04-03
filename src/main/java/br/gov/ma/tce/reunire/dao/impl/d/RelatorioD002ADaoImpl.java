@@ -16,8 +16,7 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<RelatorioD002AVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer poder,
-			Integer exercicio) {
+	public List<RelatorioD002AVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer poder, Integer exercicio) {
 		
 		String sql = "select d.unidade_id unidade," + 
 				"	   cr.codigo || '.0.0.0.00.00' cod_cat, cr.descricao desc_cat, " +
@@ -27,8 +26,8 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 				"	   cr.codigo || '.'|| o.codigo || '.' ||  e.codigo || '.' || r.codigo || '.' || to_char(a.codigo, 'FM00') || '.00' cod_ali, a.descricao desc_ali, " + 
 				"	   sum (d.valor_atual) valor " + 
 				"	   from prestacao.d002a d " + 
-				"		inner join sae.vw_natureza_receita vw_rc on regexp_replace(d.natureza_receita, '[.]', '', 'g') = regexp_replace(vw_rc.codigo_natureza_receita, '[.]','','g') and vw_rc.ativo = 'S' " + 
-				"		inner join sae.sae_natureza_receita nr on nr.id_natureza_receita = vw_rc.id_natureza_receita and nr.ativo = 'S' " + 
+				"		inner join sae.vw_natureza_receita vw_nr on regexp_replace(d.natureza_receita, '[.]', '', 'g') = regexp_replace(vw_nr.codigo_natureza_receita, '[.]','','g') and vw_nr.ativo = 'S' " + 
+				"		inner join sae.sae_natureza_receita nr on nr.id_natureza_receita = vw_nr.id_natureza_receita and nr.ativo = 'S' " + 
 				"		inner join sae.sae_categoria_ec_receita cr on cr.id_categoria_ec_receita = nr.id_categoria_ec_receita and cr.ativo = 'S' " + 
 				"		inner join sae.sae_origem o on o.id_origem = nr.id_origem and o.ativo = 'S' " + 
 				"		inner join sae.sae_especie e on e.id_especie = nr.id_especie and e.ativo = 'S' " + 
@@ -39,14 +38,13 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 				"		order by unidade, cod_cat, cod_ori, cod_esp, cod_rub, cod_ali";
 		
 		List<RelatorioD002AVO> listaVo = new ArrayList<>();
+		
 		List<Integer> listaIdsUnidades = recuperarIdsUnidades(ente, orgao, poder, unidadeGestora);
 		
 		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(ente, orgao, poder, unidadeGestora);
-		
-
-		
+				
 		List<Object[]> lista = entityManager.createNativeQuery(sql)
-				.setParameter("unidade", 228)				
+				.setParameter("unidade", listaIdsUnidades)
 				.getResultList();
 		
 		for(Object[] l : lista) {
@@ -80,6 +78,5 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 	public String getNomeRelatorio() {
 		return "lei4320anexoii_receita.jasper";
 	}
-		
 
 }

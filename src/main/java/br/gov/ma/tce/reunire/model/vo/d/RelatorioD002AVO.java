@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class RelatorioD002AVO {
 	
-protected static final long serialVersionUID = 4376323486224609426L;
+	protected static final long serialVersionUID = 4376323486224609426L;
 	
 	private Integer idUnidade;
 	private String descricaoUnidade;
