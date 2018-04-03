@@ -46,7 +46,7 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 
 		
 		List<Object[]> lista = entityManager.createNativeQuery(sql)
-				.setParameter("unidade", listaIdsUnidades)				
+				.setParameter("unidade", 228)				
 				.getResultList();
 		
 		for(Object[] l : lista) {
