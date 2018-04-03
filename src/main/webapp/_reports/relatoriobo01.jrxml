@@ -20,6 +20,78 @@
 	<field name="previsaoInicial" class="java.math.BigDecimal"/>
 	<field name="previsaoAtualizada" class="java.math.BigDecimal"/>
 	<field name="receitasRealizadas" class="java.math.BigDecimal"/>
+	<variable name="SOMA_PIN_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoInicial}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PAT_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoAtualizada}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_RRE_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{receitasRealizadas}]]></variableExpression>
+	</variable>
+	<variable name="SALDO_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA">
+		<variableExpression><![CDATA[$V{SOMA_RRE_CATEGORIA}.subtract($V{SOMA_PAT_CATEGORIA})]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PIN_ORIGEM" class="java.math.BigDecimal" resetType="Group" resetGroup="ORIGEM" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoInicial}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PAT_ORIGEM" class="java.math.BigDecimal" resetType="Group" resetGroup="ORIGEM" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoAtualizada}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_RRE_ORIGEM" class="java.math.BigDecimal" resetType="Group" resetGroup="ORIGEM" calculation="Sum">
+		<variableExpression><![CDATA[$F{receitasRealizadas}]]></variableExpression>
+	</variable>
+	<variable name="SALDO_ORIGEM" class="java.math.BigDecimal" resetType="Group" resetGroup="ORIGEM">
+		<variableExpression><![CDATA[$V{SOMA_RRE_ORIGEM}.subtract($V{SOMA_PAT_ORIGEM})]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PIN_ESPECIE" class="java.math.BigDecimal" resetType="Group" resetGroup="ESPECIE" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoInicial}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PAT_ESPECIE" class="java.math.BigDecimal" resetType="Group" resetGroup="ESPECIE" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoAtualizada}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_RRE_ESPECIE" class="java.math.BigDecimal" resetType="Group" resetGroup="ESPECIE" calculation="Sum">
+		<variableExpression><![CDATA[$F{receitasRealizadas}]]></variableExpression>
+	</variable>
+	<variable name="SALDO_ESPECIE" class="java.math.BigDecimal" resetType="Group" resetGroup="ESPECIE">
+		<variableExpression><![CDATA[$V{SOMA_RRE_ESPECIE}.subtract($V{SOMA_PAT_ESPECIE})]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PIN_TOTAL_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL_CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoInicial}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PAT_TOTAL_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL_CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoAtualizada}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_RRE_TOTAL_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL_CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{receitasRealizadas}]]></variableExpression>
+	</variable>
+	<variable name="SALDO_TOTAL_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL_CATEGORIA">
+		<variableExpression><![CDATA[$V{SOMA_RRE_TOTAL_CATEGORIA}.subtract($V{SOMA_PAT_TOTAL_CATEGORIA})]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PIN_SUBTOTAL" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTOTAL" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoInicial}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PAT_SUBTOTAL" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTOTAL" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoAtualizada}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_RRE_SUBTOTAL" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTOTAL" calculation="Sum">
+		<variableExpression><![CDATA[$F{receitasRealizadas}]]></variableExpression>
+	</variable>
+	<variable name="SALDO_SUBTOTAL" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTOTAL">
+		<variableExpression><![CDATA[$V{SOMA_RRE_SUBTOTAL}.subtract($V{SOMA_PAT_SUBTOTAL})]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PIN_TOTAL" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoInicial}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_PAT_TOTAL" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL" calculation="Sum">
+		<variableExpression><![CDATA[$F{previsaoAtualizada}]]></variableExpression>
+	</variable>
+	<variable name="SOMA_RRE_TOTAL" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL" calculation="Sum">
+		<variableExpression><![CDATA[$F{receitasRealizadas}]]></variableExpression>
+	</variable>
+	<variable name="SALDO_TOTAL" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL">
+		<variableExpression><![CDATA[$V{SOMA_RRE_TOTAL}.subtract($V{SOMA_PAT_TOTAL})]]></variableExpression>
+	</variable>
 	<group name="ENTE">
 		<groupExpression><![CDATA[$P{ente}]]></groupExpression>
 		<groupHeader>
@@ -32,7 +104,7 @@
 						<bottomPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<text><![CDATA[RECEITAS ORÇAMENTÁRIAS]]></text>
 				</staticText>
@@ -43,7 +115,7 @@
 						<leftPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Previsão]]></text>
 				</staticText>
@@ -54,7 +126,7 @@
 						<bottomPen lineWidth="0.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Inicial]]></text>
 				</staticText>
@@ -65,7 +137,7 @@
 						<leftPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Previsão]]></text>
 				</staticText>
@@ -76,7 +148,7 @@
 						<bottomPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Arial" size="9"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<text><![CDATA[(b)]]></text>
 				</staticText>
@@ -87,7 +159,7 @@
 						<leftPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Receitas]]></text>
 				</staticText>
@@ -98,7 +170,7 @@
 						<bottomPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Arial" size="9"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<text><![CDATA[(c)]]></text>
 				</staticText>
@@ -110,7 +182,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Saldo]]></text>
 				</staticText>
@@ -122,7 +194,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Arial" size="9"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<text><![CDATA[(d) = (c - b)]]></text>
 				</staticText>
@@ -133,7 +205,7 @@
 						<bottomPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Arial" size="9"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<text><![CDATA[(a)]]></text>
 				</staticText>
@@ -144,7 +216,7 @@
 						<bottomPen lineWidth="0.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Inicial]]></text>
 				</staticText>
@@ -155,7 +227,7 @@
 						<bottomPen lineWidth="0.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Realizadas]]></text>
 				</staticText>
@@ -167,7 +239,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Inicial]]></text>
 				</staticText>
@@ -184,12 +256,65 @@
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<box leftPadding="5">
-						<leftPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="TOTAL" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="280" y="0" width="130" height="13" uuid="67b907d6-7ede-4c2d-ba78-bbdbde72f489">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PIN_TOTAL}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="TOTAL" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="410" y="0" width="130" height="13" uuid="a79ebef7-0ce7-4f62-b97f-99ce5cae93ef">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PAT_TOTAL}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="TOTAL" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="540" y="0" width="131" height="13" uuid="f425e70c-b02f-4f10-985d-f8f069d0a02a">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_RRE_TOTAL}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="TOTAL" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="671" y="0" width="131" height="13" uuid="62c87772-7df2-4697-9510-9661854a6883">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SALDO_TOTAL}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -204,12 +329,65 @@
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<box leftPadding="5">
-						<leftPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="SUBTOTAL" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="280" y="0" width="130" height="13" uuid="043ad50a-49ac-4f4f-9264-264817d32204">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PIN_SUBTOTAL}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="SUBTOTAL" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="410" y="0" width="130" height="13" uuid="fb778581-e906-4890-a5e2-66c2ebe18e74">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PAT_SUBTOTAL}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="SUBTOTAL" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="540" y="0" width="131" height="13" uuid="0a6eeacb-6410-48e7-90c6-9f3c869f4c66">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_RRE_SUBTOTAL}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="SUBTOTAL" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="671" y="0" width="131" height="13" uuid="2bede649-f135-4553-bad0-4d6a19fd870f">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SALDO_SUBTOTAL}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -224,12 +402,65 @@
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<box leftPadding="5">
-						<leftPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{totalCategoria}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="TOTAL_CATEGORIA" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="280" y="0" width="130" height="13" uuid="13888654-09e1-485d-9dde-25420c672b7f">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PIN_TOTAL_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="TOTAL_CATEGORIA" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="410" y="0" width="130" height="13" uuid="887788ed-1601-4729-b9c6-48cb35c2e6a6">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PAT_TOTAL_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="TOTAL_CATEGORIA" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="540" y="0" width="131" height="13" uuid="b18f6f61-8fdd-4afe-b10d-efc0817fe06e">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_RRE_TOTAL_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="TOTAL_CATEGORIA" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="671" y="0" width="131" height="13" uuid="dfd576b4-e9ba-440c-87f2-040fd63b8763">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SALDO_TOTAL_CATEGORIA}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -244,12 +475,65 @@
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<box leftPadding="5">
-						<leftPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="280" y="0" width="130" height="13" uuid="e1df7789-1b8f-4a94-bf81-c5b116241851">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PIN_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="410" y="0" width="130" height="13" uuid="e2556a96-666d-4561-9684-eb3fdf70ef73">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PAT_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="540" y="0" width="131" height="13" uuid="3cbfe75c-b79a-48ab-b0e6-b564241c6b8e">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_RRE_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="671" y="0" width="131" height="13" uuid="5dc5f1cc-0b61-49fc-b0b7-acc0c991fad6">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SALDO_CATEGORIA}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -265,12 +549,65 @@
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<box leftPadding="10">
-						<leftPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Arial" size="9"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{origem}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ORIGEM" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="410" y="0" width="130" height="13" uuid="15f66173-0397-44de-bcdd-205fb9f5ecd4">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PAT_ORIGEM}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ORIGEM" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="671" y="0" width="131" height="13" uuid="9add6460-c423-4434-b5f8-066408da5438">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SALDO_ORIGEM}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ORIGEM" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="280" y="0" width="130" height="13" uuid="e0e9f8ea-e3bf-46b9-bbd6-1f67e26c9a81">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PIN_ORIGEM}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ORIGEM" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="540" y="0" width="131" height="13" uuid="965bba96-876d-4dc5-9767-ea90ca42ef16">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_RRE_ORIGEM}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -286,12 +623,65 @@
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<box leftPadding="15">
-						<leftPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Arial" size="9"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{especie}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ESPECIE" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="280" y="0" width="130" height="13" uuid="d7c3997f-38c8-4b7b-b7c9-a6f14bdfa153">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PIN_ESPECIE}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ESPECIE" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="410" y="0" width="130" height="13" uuid="abe5a4ff-d1d6-4206-a126-377c15f2ed95">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_PAT_ESPECIE}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ESPECIE" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="540" y="0" width="131" height="13" uuid="242d3adc-7bc8-4707-960c-a14ee96ee3fc">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SOMA_RRE_ESPECIE}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ESPECIE" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement x="671" y="0" width="131" height="13" uuid="a10a2fd6-9328-42a2-9b36-95d4cdb9bfe7">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SALDO_ESPECIE}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -301,14 +691,14 @@
 			<textField>
 				<reportElement x="0" y="0" width="802" height="16" uuid="a9f283f6-8ca0-431d-aac8-8e2815827674"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10" isBold="true"/>
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SISTEMA DE AUDITORIA ELETRÔNICA - SAE"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="16" width="802" height="16" uuid="4a9e80ba-20f0-40e6-99b9-a11e082fbdaa"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10" isBold="true"/>
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["ENTE: " + $P{ente}]]></textFieldExpression>
 			</textField>
@@ -317,7 +707,7 @@
 					<printWhenExpression><![CDATA[$P{orgao} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10" isBold="true"/>
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["ÓRGÃO: " + $P{orgao}]]></textFieldExpression>
 			</textField>
@@ -326,7 +716,7 @@
 					<printWhenExpression><![CDATA[$P{poder} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10" isBold="true"/>
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["PODER: " + $P{poder}]]></textFieldExpression>
 			</textField>
@@ -335,21 +725,21 @@
 					<printWhenExpression><![CDATA[$P{unidade} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10" isBold="true"/>
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="80" width="802" height="16" uuid="bee15dec-1c75-42ce-914b-543df545871b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10" isBold="true"/>
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["BALANÇO ORÇAMENTÁRIO"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="96" width="802" height="16" uuid="e260c081-e154-4ff1-839a-37fc4d2f98fd"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10" isBold="false"/>
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["ORÇAMENTOS FISCAL E DA SEGURIDADE SOCIAL"]]></textFieldExpression>
 			</textField>
@@ -360,7 +750,7 @@
 			<textField>
 				<reportElement x="0" y="0" width="702" height="12" uuid="787a6201-b8cc-4446-896d-7d0a2c4a7adc"/>
 				<textElement>
-					<font fontName="Arial" size="8"/>
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["FONTE: SAE"]]></textFieldExpression>
 			</textField>
