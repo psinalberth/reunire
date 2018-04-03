@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import net.sf.jasperreports.engine.JRException;
@@ -23,13 +24,13 @@ import net.sf.jasperreports.export.SimpleWriterExporterOutput;
 
 public class Report {
 	
-	public static Properties getProperties(String pathRelatorios, List<?> dados, String relatorio, String formato) {
+	public static Properties getProperties(String pathRelatorios, List<?> dados, String relatorio, Map<String, Object> params, String formato) {
 		
 		try {
 			
 			InputStream input = new FileInputStream(pathRelatorios + "/" + relatorio);
 			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dados);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(input, null, dataSource);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(input, params, dataSource);
 			
 			String diretorioFinalRelatorio = System.getProperty("java.io.tmpdir");
 			

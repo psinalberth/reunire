@@ -30,6 +30,14 @@ public class UnidadeVO {
 		this.id = id;
 	}
 	
+	public OrgaoVO getOrgao() {
+		return orgao;
+	}
+	
+	public void setOrgao(OrgaoVO orgao) {
+		this.orgao = orgao;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
