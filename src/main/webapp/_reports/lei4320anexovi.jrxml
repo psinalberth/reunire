@@ -30,6 +30,43 @@
 	<field name="nomePrograma" class="java.lang.String"/>
 	<field name="valorAtividade" class="java.math.BigDecimal"/>
 	<field name="valorProjeto" class="java.math.BigDecimal"/>
+	<field name="nomeAcao" class="java.lang.String"/>
+	<variable name="VALOR_ATIVIDADE_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorAtividade}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_PROJETO_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_ATIVIDADE_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorAtividade}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_PROJETO_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_ATIVIDADE_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorAtividade}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_PROJETO_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_ATIVIDADE_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorAtividade}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_PROJETO_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_TOTAL_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO">
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_FUNCAO}.subtract( $V{VALOR_ATIVIDADE_FUNCAO})]]></variableExpression>
+	</variable>
+	<variable name="VALOR_TOTAL_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO">
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_SUBFUNCAO}.subtract( $V{VALOR_ATIVIDADE_SUBFUNCAO})]]></variableExpression>
+	</variable>
+	<variable name="VALOR_TOTAL_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA">
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_PROGRAMA}.subtract( $V{VALOR_ATIVIDADE_PROGRAMA})]]></variableExpression>
+	</variable>
+	<variable name="VALOR_TOTAL_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO">
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_ACAO}.subtract( $V{VALOR_ATIVIDADE_ACAO})]]></variableExpression>
+	</variable>
 	<group name="UNIDADE">
 		<groupHeader>
 			<band height="45">
@@ -62,7 +99,7 @@
 					<text><![CDATA[ESPECIFICAÇÃO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="612" y="25" width="95" height="20" forecolor="#FEFEFE" backcolor="#777777" uuid="9c2a8577-27e5-47c6-9b19-d2b846d756cd"/>
+					<reportElement mode="Opaque" x="510" y="25" width="100" height="20" forecolor="#FEFEFE" backcolor="#777777" uuid="9c2a8577-27e5-47c6-9b19-d2b846d756cd"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -73,10 +110,10 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<text><![CDATA[ATIVIDADES]]></text>
+					<text><![CDATA[PROJETOS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="707" y="25" width="95" height="20" forecolor="#FEFEFE" backcolor="#777777" uuid="a3e9ff38-5d15-4326-99de-53bafb6f4f5e"/>
+					<reportElement mode="Opaque" x="694" y="25" width="108" height="20" forecolor="#FEFEFE" backcolor="#777777" uuid="a3e9ff38-5d15-4326-99de-53bafb6f4f5e"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -90,7 +127,7 @@
 					<text><![CDATA[TOTAL]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="517" y="25" width="95" height="20" forecolor="#FEFEFE" backcolor="#777777" uuid="34de1a4e-1c49-403d-b465-533f43ed763e"/>
+					<reportElement mode="Opaque" x="610" y="25" width="84" height="20" forecolor="#FEFEFE" backcolor="#777777" uuid="34de1a4e-1c49-403d-b465-533f43ed763e"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -101,7 +138,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<text><![CDATA[PROJETOS]]></text>
+					<text><![CDATA[ATIVIDADES]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
 					<reportElement x="0" y="0" width="802" height="25" isRemoveLineWhenBlank="true" uuid="0050e93f-6a6c-464e-8160-5c041a7c8219">
@@ -135,21 +172,29 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{nomeFuncao}]]></textFieldExpression>
 				</textField>
-				<textField>
-					<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="517" y="0" width="95" height="20" backcolor="#BFBFBF" uuid="ced02100-7a85-4152-916b-22e55c7daabb"/>
+				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.###;(#,##0.###)">
+					<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="610" y="0" width="84" height="20" backcolor="#BFBFBF" uuid="ced02100-7a85-4152-916b-22e55c7daabb"/>
 					<box leftPadding="5"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{valorAtividade}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_FUNCAO}]]></textFieldExpression>
 				</textField>
-				<textField>
-					<reportElement mode="Opaque" x="612" y="0" width="95" height="20" backcolor="#BFBFBF" uuid="e151e73a-17dd-4cdb-953e-6ecf5c23d7aa"/>
+				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.###;(#,##0.###)">
+					<reportElement mode="Opaque" x="510" y="0" width="100" height="20" backcolor="#BFBFBF" uuid="e151e73a-17dd-4cdb-953e-6ecf5c23d7aa"/>
 					<box leftPadding="5"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{valorProjeto}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_PROJETO_FUNCAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.###;(#,##0.###)">
+					<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="694" y="0" width="108" height="20" backcolor="#BFBFBF" uuid="ebeaece2-a913-4c43-b16d-dddcbd9590e1"/>
+					<box leftPadding="5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_FUNCAO}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -157,9 +202,9 @@
 	<group name="SUBFUNCAO_GOVERNO">
 		<groupExpression><![CDATA[$F{subfuncaoGoverno}]]></groupExpression>
 		<groupHeader>
-			<band height="20">
+			<band height="22">
 				<textField>
-					<reportElement mode="Transparent" x="117" y="0" width="400" height="20" backcolor="#BFBFBF" uuid="00502f54-fc7a-4c92-ba03-b37a2e8c3c16"/>
+					<reportElement mode="Transparent" x="117" y="-2" width="400" height="22" backcolor="#BFBFBF" uuid="00502f54-fc7a-4c92-ba03-b37a2e8c3c16"/>
 					<box leftPadding="10"/>
 					<textElement verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
@@ -174,21 +219,29 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{funcaoGoverno} + "." + $F{subfuncaoGoverno}]]></textFieldExpression>
 				</textField>
-				<textField>
-					<reportElement mode="Transparent" x="517" y="0" width="95" height="20" backcolor="#BFBFBF" uuid="d19cba33-f9a8-44fa-8cdb-8f8d8283fbca"/>
+				<textField evaluationTime="Group" evaluationGroup="SUBFUNCAO_GOVERNO" pattern="#,##0.###;(#,##0.###)">
+					<reportElement mode="Transparent" x="610" y="-2" width="84" height="22" backcolor="#BFBFBF" uuid="d19cba33-f9a8-44fa-8cdb-8f8d8283fbca"/>
 					<box leftPadding="10"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{valorAtividade}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_SUBFUNCAO}]]></textFieldExpression>
 				</textField>
-				<textField>
-					<reportElement mode="Transparent" x="612" y="0" width="95" height="20" backcolor="#BFBFBF" uuid="f15a9068-aa09-4fc6-be2b-fbc4feaf5d80"/>
+				<textField evaluationTime="Group" evaluationGroup="SUBFUNCAO_GOVERNO" pattern="#,##0.###;(#,##0.###)">
+					<reportElement mode="Transparent" x="510" y="-2" width="100" height="22" backcolor="#BFBFBF" uuid="f15a9068-aa09-4fc6-be2b-fbc4feaf5d80"/>
 					<box leftPadding="10"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{valorProjeto}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_PROJETO_SUBFUNCAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="SUBFUNCAO_GOVERNO" pattern="#,##0.###;(#,##0.###)">
+					<reportElement mode="Transparent" x="694" y="-2" width="108" height="22" backcolor="#BFBFBF" uuid="2c5391a5-694b-4083-9205-9b595d9053ee"/>
+					<box leftPadding="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_SUBFUNCAO}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -213,21 +266,29 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{nomePrograma}]]></textFieldExpression>
 				</textField>
-				<textField>
-					<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="517" y="0" width="95" height="20" backcolor="#DEDEDE" uuid="81f9b256-ffeb-49bd-b116-8a924c75750e"/>
+				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.###;(#,##0.###)">
+					<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="610" y="0" width="84" height="22" backcolor="#DEDEDE" uuid="81f9b256-ffeb-49bd-b116-8a924c75750e"/>
 					<box leftPadding="20"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{valorAtividade}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_PROGRAMA}]]></textFieldExpression>
 				</textField>
-				<textField>
-					<reportElement mode="Opaque" x="612" y="0" width="95" height="20" backcolor="#DEDEDE" uuid="1c949d33-0a9a-4732-883a-1d4a70208d3a"/>
+				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.###;(#,##0.###)">
+					<reportElement mode="Opaque" x="510" y="0" width="100" height="22" backcolor="#DEDEDE" uuid="1c949d33-0a9a-4732-883a-1d4a70208d3a"/>
 					<box leftPadding="20"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{valorProjeto}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_PROJETO_PROGRAMA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.###;(#,##0.###)">
+					<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="694" y="0" width="108" height="22" backcolor="#DEDEDE" uuid="e697d38a-b75e-48d9-bedf-739c3d6aa399"/>
+					<box leftPadding="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_PROGRAMA}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -235,7 +296,7 @@
 	<group name="ACAO">
 		<groupExpression><![CDATA[$F{acao}]]></groupExpression>
 		<groupHeader>
-			<band height="20">
+			<band height="25">
 				<textField>
 					<reportElement x="0" y="0" width="117" height="20" uuid="32699289-5df5-49fb-9528-2687956e51e1"/>
 					<box leftPadding="0" rightPadding="5"/>
@@ -250,7 +311,31 @@
 					<textElement verticalAlignment="Middle">
 						<font fontName="Arial"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{acao}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{nomeAcao}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.###;(#,##0.###)">
+					<reportElement mode="Transparent" x="610" y="0" width="84" height="20" backcolor="#BFBFBF" uuid="844daa12-9227-4842-9a5b-c2725793d06e"/>
+					<box leftPadding="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_ACAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.###;(#,##0.###)">
+					<reportElement mode="Transparent" x="510" y="0" width="100" height="20" backcolor="#BFBFBF" uuid="4fba17b4-082e-4738-a77b-db22c9c077ae"/>
+					<box leftPadding="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_PROJETO_ACAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.###;(#,##0.###)">
+					<reportElement mode="Transparent" x="694" y="-1" width="108" height="21" backcolor="#BFBFBF" uuid="8e3b4c57-5143-47f6-be04-84fe879a9799"/>
+					<box leftPadding="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_ACAO}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

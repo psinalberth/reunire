@@ -20,21 +20,26 @@ public class RelatorioD006DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 			Integer exercicio) {
 		
 		String sql = "select d.unidade_id as UNIDADE, d.funcao, d.subfuncao, " + 
-				"d.acao, d.programa, f.nome as nomeFuncao, sub.nome as nomeSubFuncao, d.valor_atual " + 
-				"from prestacao.d006 d, remessa.funcao f, remessa.subfuncao sub " + 
-				"where d.funcao = f.funcao_id "
-				+"and d.subfuncao = sub.subfuncao_id "
-				+"and d.unidade_id in (:unidade)";
+				"d.acao, d.programa, f.nome as nomeFuncao, sub.nome as nomeSubFuncao, " + 
+				"prog.denominacao, acao.descricao, coalesce(d.valor_atual, 0) " +  
+				"from prestacao.d006 d, remessa.funcao f, remessa.subfuncao sub, sae.sae_programa prog, sae.sae_acao acao " + 
+				"where d.funcao = f.funcao_id " +
+				"and d.subfuncao = sub.subfuncao_id " + 
+				"and d.programa = prog.codigo " + 
+				"and d.acao = acao.codigo_prefeitura " +
+				"and d.unidade_id in (:unidade) " +	
+				"order by d.unidade_id, d.funcao, d.subfuncao, d.programa, d.acao ";
 		
 		List<RelatorioD006AVO> listaVo = new ArrayList<>();
-		//List<Integer> listaIdsUnidades = recuperarIdsUnidades(ente, orgao, poder, unidadeGestora);
+		
+		List<Integer> listaIdsUnidades = recuperarIdsUnidades(ente, orgao, poder, unidadeGestora);
 		
 		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(ente, orgao, poder, unidadeGestora);
 		
 
 		
 		List<Object[]> lista = entityManager.createNativeQuery(sql)
-				.setParameter("unidade", 228)				
+				.setParameter("unidade", listaIdsUnidades)				
 				.getResultList();
 		
 		for(Object[] l : lista) {
@@ -53,15 +58,17 @@ public class RelatorioD006DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 			relatorio.setPrograma(l[4].toString());
 			relatorio.setNomeFuncao(l[5].toString());
 			relatorio.setNomeSubFuncao(l[6].toString());
+			relatorio.setNomePrograma(l[7].toString());
+			relatorio.setNomeAcao(l[8].toString());
 			
 			
 			Integer codigoAcao = Integer.valueOf(l[3].toString());
 			
 			if(codigoAcao % 2 == 0) {
-				relatorio.setValorAtividade(new BigDecimal((new Double(l[7].toString()))));
+				relatorio.setValorAtividade(new BigDecimal((new Double(l[9].toString()))));
 				relatorio.setValorProjeto(new BigDecimal(new Double(0)));
 			}else {
-				relatorio.setValorProjeto(new BigDecimal((new Double(l[7].toString()))));
+				relatorio.setValorProjeto(new BigDecimal((new Double(l[9].toString()))));
 				relatorio.setValorAtividade(new BigDecimal(new Double(0)));
 			}
 			

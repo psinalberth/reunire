@@ -14,6 +14,7 @@ public class RelatorioD006AVO {
 	private String nomeFuncao;
 	private String nomeSubFuncao;
 	private String nomePrograma;
+	private String nomeAcao;
 	private BigDecimal valorProjeto;
 	private BigDecimal valorAtividade;
 	
@@ -79,7 +80,6 @@ public class RelatorioD006AVO {
 	public String getNomeFuncao() {
 		return nomeFuncao;
 	}
-
 	public void setNomeFuncao(String nomeFuncao) {
 		this.nomeFuncao = nomeFuncao;
 		
@@ -88,7 +88,6 @@ public class RelatorioD006AVO {
 	public String getNomeSubFuncao() {
 		return nomeSubFuncao;
 	}
-
 	public void setNomeSubFuncao(String nomeSubFuncao) {
 		this.nomeSubFuncao = nomeSubFuncao;
 	}
@@ -96,9 +95,15 @@ public class RelatorioD006AVO {
 	public String getNomePrograma() {
 		return nomePrograma;
 	}
-
 	public void setNomePrograma(String nomePrograma) {
 		this.nomePrograma = nomePrograma;
+	}
+	
+	public String getNomeAcao() {
+		return nomeAcao;
+	}
+	public void setNomeAcao(String nomeAcao) {
+		this.nomeAcao = nomeAcao;
 	}
 
 	public BigDecimal getValorProjeto() {
