@@ -1,9 +1,9 @@
 select
-	total, total_categoria, categoria, origem, especie, sum(val_pin) val_pin, sum(val_pat) val_pat, sum(val_rre) val_rre 
+	total, subtotal, total_categoria, categoria, origem, especie, sum(val_pin) val_pin, sum(val_pat) val_pat, sum(val_rre) val_rre 
 from (
 select
 	'TOTAL (VII) = (V + VI)' total,
-	'SUBTOTAL DAS RECEITAS (III) = (I + II)' total_categoria,
+	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' subtotal, 'SUBTOTAL DAS RECEITAS (III) = (I + II)' total_categoria,
 	(case when vw.codigo_natureza_receita ~ '^[179]' then 'Receitas Correntes (I)' else 'Receitas de Capital (II)' end) categoria, 
 	(case 
 		when vw.codigo_natureza_receita ~ '^[17].1' then 'Receita Tributária'
@@ -39,9 +39,15 @@ where
 		
 union all
 
+select 'TOTAL (VII) = (V + VI)' total,
+	   'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' subtotal, 'SUBTOTAL DAS RECEITAS (III) = (I + II)' total_categoria, 
+	   'Recursos Arrecadados em Exercícios Anteriores (III)' categoria, '' origem, '' especie, null val_pin, null val_pat, null val_rre
+
+union all
+
 select
 	'TOTAL (VII) = (V + VI)' total,
-	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
+	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' subtotal, '' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
 	(case when vw.codigo_natureza_receita like '2.1.1.%' then 'Operações de Crédito Internas' else 'Operações de Crédito Externas' end) origem,
 	(case when vw.codigo_natureza_receita ~ '2.1.(1.1|2.2).01.00' then 'Mobiliária' else 'Contratual' end) especie,
 	coalesce(bo.val_pin, 0) val_pin, coalesce(bo.val_pat, 0) val_pat, coalesce(bo.val_rre, 0) val_rre
@@ -64,62 +70,31 @@ union all
 
 select
 	'TOTAL (VII) = (V + VI)' total,
-	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
+	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' subtotal, '' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
 	'Operações de Crédito Externas' origem, 'Mobiliária' especie, null val_pin, null val_pat, null val_rre
   
 union all
   
 select
 	'TOTAL (VII) = (V + VI)' total,
-	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
+	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' subtotal, '' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
 	'Operações de Crédito Externas' origem, 'Contratual' especie, 0 val_pin, 0 val_pat, 0 val_rre
     
 union all
 
 select
 	'TOTAL (VII) = (V + VI)' total,
-	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
+	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' subtotal, '' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
 	'Operações de Crédito Internas' origem, 'Mobiliária' especie, null val_pin, null val_pat, null val_rre
 	
 union all
 
 select
 	'TOTAL (VII) = (V + VI)' total,
-	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
-	'Operações de Crédito Internas' origem, 'Contratual' especie, 0 val_pin, 0 val_pat, 0 val_rre
-	
-union all
-
-select
-	'TOTAL (VII) = (V + VI)' total,
-	'' total_categoria, '' categoria, 
-	'Déficit (VI)' origem, '' especie, null val_pin, null val_pat, null val_rre
-	
-union all
-
-select
-	'' total, '' total_categoria, 'Saldos de Exercícios Anteriores (Utilizados Para Créditos Adicionais)' categoria,
-	'Recursos Arrecadados em Exercícios Anteriores' origem, '' especie, null val_pin, sum(coalesce(arrecadado_anterior, 0)) val_pat, 0 val_rre
-from 
-	prestacao.bo05 where unidade_id in (:unidades)
-
-union all
-
-select
-	'' total, '' total_categoria, 'Saldos de Exercícios Anteriores (Utilizados Para Créditos Adicionais)' categoria,
-	'Superávit Financeiro' origem, '' especie, null val_pin, sum(coalesce(superavit_financeiro, 0)) val_pat, 0 val_rre
-from 
-	prestacao.bo05 where unidade_id in (:unidades)
-	
-union all
-
-select
-	'' total, '' total_categoria, 'Saldos de Exercícios Anteriores (Utilizados Para Créditos Adicionais)' categoria,
-	'Reabertura de Créditos Adicionais' origem, '' especie, null val_pin, sum(coalesce(credito_adicional, 0)) val_pat, 0 val_rre
-from 
-	prestacao.bo05 where unidade_id in (:unidades)) result
+	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' subtotal, '' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
+	'Operações de Crédito Internas' origem, 'Contratual' especie, 0 val_pin, 0 val_pat, 0 val_rre) result
 group by
-	total, total_categoria, categoria, origem, especie
+	total, subtotal, total_categoria, categoria, origem, especie
 order by
 (case 
 	when total = 'TOTAL (VII) = (V + VI)' then 1
@@ -147,9 +122,6 @@ end),
     when origem = 'Outras Receitas de Capital' then 13
     when origem = 'Operações de Crédito Internas' then 14
     when origem = 'Operações de Crédito Externas' then 15
-    when origem = 'Recursos Arrecadados em Exercícios Anteriores' then 16
-    when origem = 'Superávit Financeiro' then 17
-    when origem = 'Reabertura de Créditos Adicionais' then 18
   end),
 (case 
 	when especie = 'Mobiliária' then 1

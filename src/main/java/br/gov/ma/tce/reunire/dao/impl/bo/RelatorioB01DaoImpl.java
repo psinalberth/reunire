@@ -41,14 +41,14 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 			RelatorioB01VO dado = new RelatorioB01VO();
 			
 			dado.setTotal(String.valueOf(row[0]));
-			dado.setSubtotal(String.valueOf(row[1]));
-			dado.setTotalCategoria(String.valueOf(row[2]));
-			dado.setCategoria(String.valueOf(row[3]));
-			dado.setOrigem(String.valueOf(row[4]));
-			dado.setEspecie(String.valueOf(row[5]));
-			dado.setPrevisaoInicial(row[6] != null ? new BigDecimal(row[6].toString()) : null);
-			dado.setPrevisaoAtualizada(row[7] != null ? new BigDecimal(row[7].toString()) : null);
-			dado.setReceitasRealizadas(row[8] != null ? new BigDecimal(row[8].toString()) : null);
+			//dado.setSubtotal(String.valueOf(row[1]));
+			dado.setTotalCategoria(String.valueOf(row[1]));
+			dado.setCategoria(String.valueOf(row[2]));
+			dado.setOrigem(String.valueOf(row[3]));
+			dado.setEspecie(String.valueOf(row[4]));
+			dado.setPrevisaoInicial(row[5] != null ? new BigDecimal(row[5].toString()) : null);
+			dado.setPrevisaoAtualizada(row[6] != null ? new BigDecimal(row[6].toString()) : null);
+			dado.setReceitasRealizadas(row[7] != null ? new BigDecimal(row[7].toString()) : null);
 			
 			dados.add(dado);
 		}
@@ -58,6 +58,6 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 
 	@Override
 	public String getNomeRelatorio() {
-		return "relatoriobo01.jasper";
+		return "relatoriobo2.jasper";
 	}
 }
