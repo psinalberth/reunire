@@ -56,16 +56,16 @@
 		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
 	</variable>
 	<variable name="VALOR_TOTAL_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_FUNCAO}.subtract( $V{VALOR_ATIVIDADE_FUNCAO})]]></variableExpression>
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_FUNCAO}.add( $V{VALOR_ATIVIDADE_FUNCAO})]]></variableExpression>
 	</variable>
 	<variable name="VALOR_TOTAL_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_SUBFUNCAO}.subtract( $V{VALOR_ATIVIDADE_SUBFUNCAO})]]></variableExpression>
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_SUBFUNCAO}.add( $V{VALOR_ATIVIDADE_SUBFUNCAO})]]></variableExpression>
 	</variable>
 	<variable name="VALOR_TOTAL_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_PROGRAMA}.subtract( $V{VALOR_ATIVIDADE_PROGRAMA})]]></variableExpression>
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_PROGRAMA}.add( $V{VALOR_ATIVIDADE_PROGRAMA})]]></variableExpression>
 	</variable>
 	<variable name="VALOR_TOTAL_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_ACAO}.subtract( $V{VALOR_ATIVIDADE_ACAO})]]></variableExpression>
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_ACAO}.add( $V{VALOR_ATIVIDADE_ACAO})]]></variableExpression>
 	</variable>
 	<group name="UNIDADE">
 		<groupHeader>
@@ -155,7 +155,7 @@
 	<group name="FUNCAO_GOVERNO">
 		<groupExpression><![CDATA[$F{funcaoGoverno}]]></groupExpression>
 		<groupHeader>
-			<band height="22">
+			<band height="20">
 				<textField>
 					<reportElement mode="Opaque" x="0" y="0" width="117" height="20" backcolor="#BFBFBF" uuid="a4589350-ad71-480e-8cd7-63193921b3f9"/>
 					<box leftPadding="0" rightPadding="5"/>
@@ -202,7 +202,7 @@
 	<group name="SUBFUNCAO_GOVERNO">
 		<groupExpression><![CDATA[$F{subfuncaoGoverno}]]></groupExpression>
 		<groupHeader>
-			<band height="22">
+			<band height="20">
 				<textField>
 					<reportElement mode="Transparent" x="117" y="-2" width="400" height="22" backcolor="#BFBFBF" uuid="00502f54-fc7a-4c92-ba03-b37a2e8c3c16"/>
 					<box leftPadding="10"/>
@@ -296,7 +296,7 @@
 	<group name="ACAO">
 		<groupExpression><![CDATA[$F{acao}]]></groupExpression>
 		<groupHeader>
-			<band height="25">
+			<band height="21">
 				<textField>
 					<reportElement x="0" y="0" width="117" height="20" uuid="32699289-5df5-49fb-9528-2687956e51e1"/>
 					<box leftPadding="0" rightPadding="5"/>
@@ -344,7 +344,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="121" splitType="Stretch">
+		<band height="100" splitType="Stretch">
 			<textField isBlankWhenNull="true">
 				<reportElement x="0" y="40" width="802" height="20" isRemoveLineWhenBlank="true" uuid="3aeea305-4526-4354-b2bf-647294633783">
 					<printWhenExpression><![CDATA[$P{orgao} != null]]></printWhenExpression>

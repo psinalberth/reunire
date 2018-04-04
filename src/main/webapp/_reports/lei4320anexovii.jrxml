@@ -31,6 +31,7 @@
 	<field name="valorAtividade" class="java.math.BigDecimal"/>
 	<field name="valorProjeto" class="java.math.BigDecimal"/>
 	<field name="nomeAcao" class="java.lang.String"/>
+	<field name="valorOperacoesEspeciais" class="java.math.BigDecimal"/>
 	<variable name="VALOR_ATIVIDADE_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorAtividade}]]></variableExpression>
 	</variable>
@@ -56,16 +57,28 @@
 		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
 	</variable>
 	<variable name="VALOR_TOTAL_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_FUNCAO}.subtract( $V{VALOR_ATIVIDADE_FUNCAO})]]></variableExpression>
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_FUNCAO}.add( $V{VALOR_ATIVIDADE_FUNCAO}).add($V{VALOR_OPERACOES_FUNCAO})]]></variableExpression>
 	</variable>
 	<variable name="VALOR_TOTAL_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_SUBFUNCAO}.subtract( $V{VALOR_ATIVIDADE_SUBFUNCAO})]]></variableExpression>
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_SUBFUNCAO}.add( $V{VALOR_ATIVIDADE_SUBFUNCAO}).add($V{VALOR_OPERACOES_SUBFUNCAO})]]></variableExpression>
 	</variable>
 	<variable name="VALOR_TOTAL_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_PROGRAMA}.subtract( $V{VALOR_ATIVIDADE_PROGRAMA})]]></variableExpression>
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_PROGRAMA}.add( $V{VALOR_ATIVIDADE_PROGRAMA}).add($V{VALOR_OPERACOES_PROGRAMA})]]></variableExpression>
 	</variable>
 	<variable name="VALOR_TOTAL_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_ACAO}.subtract( $V{VALOR_ATIVIDADE_ACAO})]]></variableExpression>
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_ACAO}.add( $V{VALOR_ATIVIDADE_ACAO}).add($V{VALOR_OPERACOES_ACAO})]]></variableExpression>
+	</variable>
+	<variable name="VALOR_OPERACOES_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_OPERACOES_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_OPERACOES_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_OPERACOES_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
 	</variable>
 	<group name="UNIDADE">
 		<groupHeader>
@@ -169,7 +182,7 @@
 	<group name="FUNCAO_GOVERNO">
 		<groupExpression><![CDATA[$F{funcaoGoverno}]]></groupExpression>
 		<groupHeader>
-			<band height="22">
+			<band height="20">
 				<textField>
 					<reportElement mode="Opaque" x="0" y="0" width="117" height="20" backcolor="#BFBFBF" uuid="a4589350-ad71-480e-8cd7-63193921b3f9"/>
 					<box leftPadding="0" rightPadding="5"/>
@@ -195,7 +208,7 @@
 					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_FUNCAO}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.###;(#,##0.###)">
-					<reportElement mode="Opaque" x="430" y="0" width="90" height="22" backcolor="#BFBFBF" uuid="e151e73a-17dd-4cdb-953e-6ecf5c23d7aa"/>
+					<reportElement mode="Opaque" x="430" y="0" width="90" height="19" backcolor="#BFBFBF" uuid="e151e73a-17dd-4cdb-953e-6ecf5c23d7aa"/>
 					<box leftPadding="5"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
@@ -203,7 +216,7 @@
 					<textFieldExpression><![CDATA[$V{VALOR_PROJETO_FUNCAO}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.###;(#,##0.###)">
-					<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="720" y="0" width="82" height="21" backcolor="#BFBFBF" uuid="ebeaece2-a913-4c43-b16d-dddcbd9590e1"/>
+					<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="720" y="0" width="82" height="18" backcolor="#BFBFBF" uuid="ebeaece2-a913-4c43-b16d-dddcbd9590e1"/>
 					<box leftPadding="5"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
@@ -211,12 +224,12 @@
 					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_FUNCAO}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.###;(#,##0.###)">
-					<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="610" y="0" width="110" height="21" backcolor="#BFBFBF" uuid="b2e097b9-d9d7-4de9-91a3-96cb909efc7f"/>
+					<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="610" y="0" width="110" height="18" backcolor="#BFBFBF" uuid="b2e097b9-d9d7-4de9-91a3-96cb909efc7f"/>
 					<box leftPadding="5"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_FUNCAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_FUNCAO}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -271,7 +284,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_SUBFUNCAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_SUBFUNCAO}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -326,7 +339,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_PROGRAMA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_PROGRAMA}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -334,7 +347,7 @@
 	<group name="ACAO">
 		<groupExpression><![CDATA[$F{acao}]]></groupExpression>
 		<groupHeader>
-			<band height="23">
+			<band height="22">
 				<textField>
 					<reportElement x="0" y="0" width="117" height="20" uuid="32699289-5df5-49fb-9528-2687956e51e1"/>
 					<box leftPadding="0" rightPadding="5"/>
@@ -381,7 +394,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_ACAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_ACAO}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -390,7 +403,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="121" splitType="Stretch">
+		<band height="101" splitType="Stretch">
 			<textField isBlankWhenNull="true">
 				<reportElement x="0" y="40" width="802" height="20" isRemoveLineWhenBlank="true" uuid="3aeea305-4526-4354-b2bf-647294633783">
 					<printWhenExpression><![CDATA[$P{orgao} != null]]></printWhenExpression>

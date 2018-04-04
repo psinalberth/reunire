@@ -63,16 +63,25 @@ public class RelatorioD007DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 			
 			
 			Integer codigoAcao = Integer.valueOf(l[3].toString());
+			Integer codigoFuncao = Integer.valueOf(l[1].toString());
 			
 			if(codigoAcao % 2 == 0) {
 				relatorio.setValorAtividade(new BigDecimal((new Double(l[9].toString()))));
 				relatorio.setValorProjeto(new BigDecimal(new Double(0)));
-			}else {
+				relatorio.setValorOperacoesEspeciais(new BigDecimal(new Double(0)));
+				
+			}else if(codigoFuncao == 28) {
+				relatorio.setValorOperacoesEspeciais(new BigDecimal((new Double(l[9].toString()))));
+				relatorio.setValorProjeto(new BigDecimal(new Double(0)));
+				relatorio.setValorAtividade(new BigDecimal(new Double(0)));
+			
+			}
+			else {
 				relatorio.setValorProjeto(new BigDecimal((new Double(l[9].toString()))));
 				relatorio.setValorAtividade(new BigDecimal(new Double(0)));
+				relatorio.setValorOperacoesEspeciais(new BigDecimal(new Double(0)));
 			}
 			
-			/*relatorio.setValorOperacoesEspeciais(new BigDecimal((new Double(l[7].toString()))));*/
 			
 			listaVo.add(relatorio);
 		}

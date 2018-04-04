@@ -17,9 +17,8 @@ public class RelatorioD006AVO {
 	private String nomeAcao;
 	private BigDecimal valorProjeto;
 	private BigDecimal valorAtividade;
+	private BigDecimal valorOperacoesEspeciais;
 	
-	/*private BigDecimal valorOperacoesEspeciais;
-	*/
 	
 	public Integer getIdUnidade() {
 		return idUnidade;
@@ -122,13 +121,13 @@ public class RelatorioD006AVO {
 		this.valorAtividade = valorAtividade;
 	}
 
-	/*public BigDecimal getValorOperacoesEspeciais() {
+	public BigDecimal getValorOperacoesEspeciais() {
 		return valorOperacoesEspeciais;
 	}
 
 	public void setValorOperacoesEspeciais(BigDecimal valorOperacoesEspeciais) {
 		this.valorOperacoesEspeciais = valorOperacoesEspeciais;
-	}*/
+	}
 
 	
 
