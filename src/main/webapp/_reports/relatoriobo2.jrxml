@@ -174,7 +174,7 @@
 					<text><![CDATA[(c)]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="671" y="0" width="131" height="12" uuid="0c505503-cf82-424a-aa67-d5bd2b1aa5ed">
+					<reportElement x="671" y="0" width="131" height="24" uuid="0c505503-cf82-424a-aa67-d5bd2b1aa5ed">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -239,20 +239,6 @@
 						<font fontName="Arial" size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Realizadas]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="671" y="12" width="131" height="12" uuid="f2b5ed52-7837-42d0-963f-c7fbf32c6126">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Arial" size="9" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Inicial]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
@@ -731,7 +717,7 @@
 	<pageFooter>
 		<band height="24" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="702" height="12" uuid="787a6201-b8cc-4446-896d-7d0a2c4a7adc"/>
+				<reportElement x="0" y="0" width="802" height="12" uuid="787a6201-b8cc-4446-896d-7d0a2c4a7adc"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 				</box>
