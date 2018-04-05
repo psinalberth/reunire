@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="diario_rel" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7036b9e9-3bce-4c6b-a60c-b6b2cf98e20c">
+	<property name="ireport.zoom" value="1.2100000000000066"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="idUnidade" class="java.lang.String"/>
+	<parameter name="ente" class="java.lang.String"/>
+	<parameter name="orgao" class="java.lang.String"/>
+	<parameter name="unidade" class="java.lang.String"/>
+	<parameter name="dataInicial" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dataFinal" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select
+	doc.ano || trim( to_char( doc.unidade_gestora, '00000000' ) ) ||
+	esp.codigo || trim( to_char( doc.sequencial, '00000000' ) ) || '/' ||
+	doc.sequencia
+	as documento,
+	tip.descricao as tipo,
+	to_char( ev.classe_evento, '00' ) || '.' || trim( to_char(ev.codigo, '000') )
+	as evento,
+	pla.conta_contabil,
+	lan.campo1,
+	lan.campo2,
+	lan.campo3,
+	lan.campo4,
+	lan.campo5,
+	lan.campo6,
+	lan.valor,
+	lan.natureza_evento
+from SAE_LANCAMENTO lan
+	inner join SAE_DOCUMENTO doc on doc.id_documento = lan.id_documento
+	inner join SAEPLAN_ESPECIE_DOCUMENTO esp on esp.id_especie_documento = doc.id_especie_documento
+	inner join SAEPLAN_TIPO_DOC_LANCAMENTO tip on tip.ID_TIPO_DOC_LANCAMENTO = doc.id_tipo_documento
+	inner join SAE_EVENTO ev on ev.id_evento = lan.id_evento
+	inner join SAE_PLANO_CONTAS pla on pla.conta_contabil = lan.conta_contabil
+where doc.unidade_gestora = $P{idUnidade}
+	and doc.data_contabil between $P{dataInicial} and $P{dataFinal}
+order by doc.ano desc, doc.unidade_gestora, doc.sequencial, doc.sequencia, tip.codigo desc, lan.id_lancamento]]>
+	</queryString>
+	<field name="DOCUMENTO" class="java.lang.String"/>
+	<field name="TIPO" class="java.lang.String"/>
+	<field name="EVENTO" class="java.lang.String"/>
+	<field name="CONTA_CONTABIL" class="java.lang.String"/>
+	<field name="CAMPO1" class="java.lang.String"/>
+	<field name="CAMPO2" class="java.lang.String"/>
+	<field name="CAMPO3" class="java.lang.String"/>
+	<field name="CAMPO4" class="java.lang.String"/>
+	<field name="CAMPO5" class="java.lang.String"/>
+	<field name="CAMPO6" class="java.lang.String"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="NATUREZA_EVENTO" class="java.lang.String"/>
+	<variable name="VALOR_1" class="java.lang.Integer" resetType="Group" resetGroup="DOCUMENTO" incrementType="Group" incrementGroup="DOCUMENTO" calculation="Highest">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<group name="DOCUMENTO">
+		<groupExpression><![CDATA[$F{DOCUMENTO}]]></groupExpression>
+		<groupFooter>
+			<band height="1">
+				<textField evaluationTime="Report">
+					<reportElement uuid="9b56e52b-2855-460f-b9a8-95b20b5abc6b" positionType="FixRelativeToBottom" x="0" y="0" width="802" height="1"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+					</box>
+					<textElement/>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="EVENTO">
+		<groupExpression><![CDATA[$F{EVENTO}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<textField>
+				<reportElement uuid="e645d316-e954-4408-bc59-a953f18f7565" x="0" y="24" width="802" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="82124aa9-e56f-49e9-86c7-092b4e8a0f51" x="0" y="0" width="802" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MUNICÍPIO: " + $P{ente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="25ec3c36-b771-444f-9440-f7e295dd517c" x="0" y="12" width="802" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ÓRGÃO: " + $P{orgao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8050904d-51ea-41cf-afc0-20067a0a4535" x="0" y="36" width="802" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DIÁRIO]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="34bfadd9-56d5-4d7e-82ac-19705ed7ff79" x="0" y="48" width="802" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Período: " + new SimpleDateFormat("dd/MM/yyyy").format($P{dataInicial}) + " a " + new SimpleDateFormat("dd/MM/yyyy").format($P{dataFinal})]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="12" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="50c1fb29-15fe-4b48-acae-692c75f08bcb" mode="Opaque" x="0" y="0" width="149" height="12" backcolor="#D7D7D7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e21b4f43-d314-498e-9991-c46a96c0c8ac" mode="Opaque" x="149" y="0" width="55" height="12" backcolor="#D7D7D7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EVENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dbd64297-8df3-4bb0-b9e8-bb73dff9d922" mode="Opaque" x="204" y="0" width="85" height="12" backcolor="#D7D7D7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="377a060e-d28f-420b-b5db-a22033745d8d" mode="Opaque" x="289" y="0" width="409" height="12" backcolor="#D7D7D7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTA CORRENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3a2f27d7-8a1d-47e7-8d6a-3c0d59f070fa" mode="Opaque" x="698" y="0" width="82" height="12" backcolor="#D7D7D7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="af7c3502-d277-41c6-8e06-a8465856498b" mode="Opaque" x="780" y="0" width="22" height="12" backcolor="#D7D7D7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[D/C]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement uuid="7b44ad96-cb33-49a6-abc3-cd8321fc5500" isPrintRepeatedValues="false" mode="Opaque" x="1" y="0" width="149" height="12" backcolor="#FEFEFE"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{DOCUMENTO_COUNT} == 1 ? $F{DOCUMENTO} : $F{TIPO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement uuid="e967df2e-4495-4a48-9ca4-8172299a7766" x="204" y="0" width="85" height="12"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CONTA_CONTABIL}.substring(0,1) + "." +
+$F{CONTA_CONTABIL}.substring(1,2) + "." +
+$F{CONTA_CONTABIL}.substring(2,3) + "." +
+$F{CONTA_CONTABIL}.substring(3,4) + "." +
+$F{CONTA_CONTABIL}.substring(4,5) + "." +
+$F{CONTA_CONTABIL}.substring(5,7) + "." +
+$F{CONTA_CONTABIL}.substring(7)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement uuid="2e01d46b-185c-4f15-b022-5c1fcdc94441" x="698" y="0" width="82" height="12"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e9a37210-a179-49f5-ba65-d7a3fa056fd4" isPrintRepeatedValues="false" mode="Opaque" x="150" y="0" width="54" height="12" printWhenGroupChanges="DOCUMENTO" backcolor="#FEFEFE"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EVENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fb5e715c-0bc6-40ff-97ad-60e54396b373" x="289" y="0" width="409" height="12"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{CAMPO1} != null ? $F{CAMPO1} : "") +
+($F{CAMPO2} != null ? "+" + $F{CAMPO2} : "") +
+($F{CAMPO3} != null ? "+" + $F{CAMPO3} : "") +
+($F{CAMPO4} != null ? "+" + $F{CAMPO4} : "") +
+($F{CAMPO5} != null ? "+" + $F{CAMPO5} : "") +
+($F{CAMPO6} != null ? "+" + $F{CAMPO6} : "")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1607a774-f709-4640-8994-65c13f4923c2" x="780" y="0" width="22" height="12"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NATUREZA_EVENTO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="d4704d71-9a24-40fc-b4a3-b1ebca1d0ad9" x="149" y="0" width="1" height="12"/>
+			</line>
+			<line>
+				<reportElement uuid="16c6406a-d8a7-4ff8-9a75-efd85f8c0102" x="0" y="0" width="1" height="12"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement uuid="8c18f2ea-9891-4fc7-a5ff-1b8d515c4f80" positionType="Float" x="682" y="0" width="80" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="2ba644a4-68c8-4fc6-b391-0d367a539397" positionType="FixRelativeToBottom" x="762" y="0" width="40" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement uuid="cf1e916f-2424-44c8-b4c5-4060eea6082e" x="2" y="0" width="270" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FONTE: SAE"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement uuid="b0167371-d9c5-43af-a8e4-05e7c5da1f5d" x="2" y="12" width="270" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Emitido em " + new SimpleDateFormat("dd/MM/yyy HH:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
