@@ -7,10 +7,17 @@
 	<parameter name="unidade" class="java.lang.String"/>
 	<parameter name="poder" class="java.lang.String"/>
 	<parameter name="mesBalanco" class="java.lang.Integer"/>
+	<parameter name="exercicio" class="java.lang.Integer"/>
 	<parameter name="unidades" class="java.util.List"/>
 	<parameter name="anoBalanco" class="java.lang.Integer"/>
 	<parameter name="dataInicio" class="java.util.Date"/>
 	<parameter name="dataFim" class="java.util.Date"/>
+	<parameter name="DATA2" class="java.util.List"/>
+	<parameter name="DATA3" class="java.util.List"/>
+	<parameter name="DATA4" class="java.util.List"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/saeti18/git/reunire/src/main/webapp/_reports/"]]></defaultValueExpression>
+	</parameter>
 	<field name="categoria" class="java.lang.String"/>
 	<field name="origem" class="java.lang.String"/>
 	<field name="especie" class="java.lang.String"/>
@@ -242,6 +249,55 @@
 				</staticText>
 			</band>
 		</groupHeader>
+		<groupFooter>
+			<band height="160">
+				<subreport>
+					<reportElement x="0" y="0" width="802" height="46" uuid="47dcf5ef-7c47-4373-912b-294e26a3bbf4"/>
+					<subreportParameter name="ente">
+						<subreportParameterExpression><![CDATA[$P{ente}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="orgao">
+						<subreportParameterExpression><![CDATA[$P{orgao}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="unidade">
+						<subreportParameterExpression><![CDATA[$P{unidade}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="poder">
+						<subreportParameterExpression><![CDATA[$P{poder}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{DATA2})]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "relatoriobo02.jasper"]]></subreportExpression>
+				</subreport>
+				<break>
+					<reportElement x="0" y="46" width="802" height="1" uuid="7b2787ab-a5e3-4c02-a0e2-e1bcd0c87dcb"/>
+				</break>
+				<subreport>
+					<reportElement x="0" y="49" width="802" height="54" uuid="a1bc06d4-d2a5-4f11-91c6-063316441fa3"/>
+					<subreportParameter name="ente">
+						<subreportParameterExpression><![CDATA[$P{ente}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="exercicio">
+						<subreportParameterExpression><![CDATA[$P{exercicio}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{DATA3})]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "relatoriobo03.jasper"]]></subreportExpression>
+				</subreport>
+				<break>
+					<reportElement x="0" y="103" width="801" height="1" uuid="c924bf9f-5a70-4fbd-82ff-02caea8df707"/>
+				</break>
+				<subreport>
+					<reportElement x="0" y="104" width="802" height="56" uuid="0886b600-a91f-4d57-bbbf-0b4b7f95cb5f"/>
+					<subreportParameter name="ente">
+						<subreportParameterExpression><![CDATA[$P{ente}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="exercicio">
+						<subreportParameterExpression><![CDATA[$P{exercicio}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{DATA4})]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "relatoriobo04.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupFooter>
 	</group>
 	<group name="TOTAL">
 		<groupExpression><![CDATA[$F{total}]]></groupExpression>
@@ -706,7 +762,9 @@
 	<columnFooter>
 		<band height="14">
 			<staticText>
-				<reportElement x="0" y="0" width="802" height="10" uuid="25129dd4-536a-4e5e-97c2-473cc77c4bc8"/>
+				<reportElement x="0" y="0" width="802" height="10" uuid="25129dd4-536a-4e5e-97c2-473cc77c4bc8">
+					<printWhenExpression><![CDATA[$V{PAGE_NUMBER} <= 1]]></printWhenExpression>
+				</reportElement>
 				<box>
 					<topPen lineWidth="0.5"/>
 				</box>
@@ -717,7 +775,7 @@
 	<pageFooter>
 		<band height="24" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="802" height="12" uuid="787a6201-b8cc-4446-896d-7d0a2c4a7adc"/>
+				<reportElement x="0" y="0" width="712" height="12" uuid="787a6201-b8cc-4446-896d-7d0a2c4a7adc"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 				</box>
@@ -727,14 +785,28 @@
 				<textFieldExpression><![CDATA["Data de Emissão: " + new java.text.SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="12" width="702" height="12" uuid="968a2400-c794-41f4-8c72-61215d53ad89"/>
+				<reportElement x="0" y="12" width="802" height="12" uuid="968a2400-c794-41f4-8c72-61215d53ad89"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 				</box>
 				<textElement>
 					<font fontName="Arial" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Fonte: SAE"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Fonte: e-PCA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="724" y="0" width="38" height="12" uuid="5e5f4659-4e31-4d49-bc39-0c7df7181297"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="0" width="40" height="12" uuid="9d93323e-a488-4569-a07f-509707c37c00"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

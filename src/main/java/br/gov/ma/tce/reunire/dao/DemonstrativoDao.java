@@ -3,6 +3,7 @@ package br.gov.ma.tce.reunire.dao;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import br.gov.ma.tce.reunire.dao.impl.gestor.UnidadeVODaoImpl;
@@ -13,7 +14,31 @@ public interface DemonstrativoDao<T> {
 	
 	public List<T> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer poder, Integer exercicio);
 	
+	public List<T> recuperaDados(Map<String, Object> params);
+	
 	public String getNomeRelatorio();
+	
+	public default List<UnidadeVO> recuperarUnidades(Map<String, Object> params) {
+		
+		UnidadeVODaoImpl dao = Lookup.dao(UnidadeVODaoImpl.class);
+		
+		List<UnidadeVO> listaUnidades = new ArrayList<>();
+		
+		if (params.get("enteId") != null && params.get("poderId") == null) {
+			listaUnidades = dao.byEnte((Integer) params.get("enteId")); 
+			
+		} else if (params.get("orgaoId") != null) {
+			listaUnidades = dao.byOrgao((Integer) params.get("orgaoId"));
+			
+		} else if (params.get("poderId") != null) {
+			listaUnidades = dao.byPoder((Integer) params.get("enteId"), (Integer) params.get("poderId"));
+			
+		} else if (params.get("unidadeId") != null) {
+			listaUnidades.add(dao.byId((Integer) params.get("unidadeId")));
+		}
+		
+		return listaUnidades;
+	}
 	
 	public default List<Integer> recuperarIdsUnidades(Integer ente, Integer orgao, Integer poder, Integer unidadeGestora) {
 		
@@ -65,7 +90,7 @@ public interface DemonstrativoDao<T> {
 	 * @param unidades Coleção de unidades a ter seus identificadores extraídos.
 	 * @return Retorna uma coleção de ids da coleção de Unidades.
 	 */
-	static List<Integer> extrairIds(List<UnidadeVO> unidades) {
+	public default List<Integer> extrairIds(List<UnidadeVO> unidades) {
 		return unidades.stream().map(unidade -> unidade.getId()).collect(Collectors.toList());
 	}
 }

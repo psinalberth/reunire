@@ -3,7 +3,6 @@ package br.gov.ma.tce.reunire.service;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -19,46 +18,36 @@ import br.gov.ma.tce.reunire.util.Report;
 
 public class RelatorioService {
 	
-	private Integer ente;
-	private Integer orgao;
-	private Integer unidadeGestora;
-	private Integer poder;
-	private Integer exercicio;
-	private String diretorioRelatorios;
+	private Map<String, Object> params;
 	
 	private Properties properties;
 	
 	@SuppressWarnings("rawtypes")
 	private DemonstrativoDao dao;
+		
 	
 	@SuppressWarnings("rawtypes")
-	public RelatorioService(String diretorioRelatorios, String tipoRelatorio, Integer ente, Integer orgao, Integer unidadeGestora, Integer poder, Integer exercicio) {
+	public RelatorioService(Map<String, Object> params) {
 		
-		this.diretorioRelatorios = diretorioRelatorios;
-		this.ente = ente;
-		this.orgao = orgao;
-		this.unidadeGestora = unidadeGestora;
-		this.poder = poder;
-		this.exercicio = exercicio;
+		this.params = params;
 		this.properties = carregarProperties();
-		
-		Class<?> classe;
 		
 		try {
 			
-			classe = Class.forName(properties.getProperty(tipoRelatorio));
+			Class<?> classe = this.getClass().getClassLoader().loadClass(properties.getProperty((String) params.get("tipoRelatorio")));
 			dao = (DemonstrativoDao) Lookup.dao(classe);
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-	}	
-	
+	}
+
+	@SuppressWarnings("unchecked")
 	public List<?> recuperarDados() {
 		
 		try {
 			
-			List<?> result = dao.recuperaDados(ente, orgao, unidadeGestora, poder, exercicio);
+			List<?> result = dao.recuperaDados(params);
 			
 			return result;
 			
@@ -88,41 +77,49 @@ public class RelatorioService {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Properties getProperties(List<?> dados, String formato) {
-		
-		Map<String , Object> params = new HashMap<String, Object>();
+	public Properties getProperties(List<?> dados,  Map<String, Object> params, String formato) {
 		
 		ConsultasGestoresImpl daoGestores = Lookup.dao(ConsultasGestoresImpl.class);
 		
-		if (ente != null) {
-			params.put("ente", ((EnteVO) daoGestores.byId(EnteVO.class, ente)).getNome().toUpperCase());
+		if (params.get("enteId") != null) {
+			params.put("ente", ((EnteVO) daoGestores.byId(EnteVO.class, (Integer) params.get("enteId"))).getNome().toUpperCase());
 		}
 		
-		if (poder != null) {
+		if (params.get("poderId") != null) {
 			
-			PoderVO poderVO = ((PoderVO) daoGestores.byId(PoderVO.class, poder));
+			PoderVO poderVO = ((PoderVO) daoGestores.byId(PoderVO.class, (Integer) params.get("poderId")));
 			
 			params.put("poder", poderVO.getNome().toUpperCase());
 			params.put("jurisdicionado", poderVO.getNome().toUpperCase());
 		}
 		
-		if (orgao != null) {
+		if (params.get("orgaoId") != null) {
 			
-			OrgaoVO orgaoVO = (OrgaoVO) daoGestores.byId(OrgaoVO.class, orgao);
+			OrgaoVO orgaoVO = (OrgaoVO) daoGestores.byId(OrgaoVO.class, (Integer) params.get("orgaoId"));
 			
 			params.put("ente", orgaoVO.getEnte().getNome().toUpperCase());
 			params.put("orgao", orgaoVO.getNome().toUpperCase());
 		}
 		
-		if (unidadeGestora != null) {
+		if (params.get("unidadeId") != null) {
 			
-			UnidadeVO unidadeVO = (UnidadeVO) daoGestores.byId(UnidadeVO.class, unidadeGestora);
+			UnidadeVO unidadeVO = (UnidadeVO) daoGestores.byId(UnidadeVO.class, (Integer) params.get("unidadeId"));
 			
 			params.put("unidade", unidadeVO.getNome().toUpperCase());
 			params.put("orgao", unidadeVO.getOrgao().getNome().toUpperCase());
 			params.put("ente", unidadeVO.getOrgao().getEnte().getNome().toUpperCase());
 		}
 		
-		return Report.getProperties(diretorioRelatorios, dados, dao.getNomeRelatorio(), params, formato);
+		params.put("SUBREPORT_DIR", params.get("reportDir") + "/");
+		
+		return Report.getProperties((String) params.get("reportDir"), dados, dao.getNomeRelatorio(), params, formato);
+	}
+	
+	public Map<String, Object> getParams() {
+		return params;
+	}
+	
+	public void setParams(Map<String, Object> params) {
+		this.params = params;
 	}
 }

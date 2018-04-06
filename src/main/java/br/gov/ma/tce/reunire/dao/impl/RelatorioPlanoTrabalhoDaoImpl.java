@@ -3,6 +3,7 @@ package br.gov.ma.tce.reunire.dao.impl;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 
@@ -55,6 +56,12 @@ public class RelatorioPlanoTrabalhoDaoImpl extends SaeDaoImpl<RelatorioPlanoTrab
 		@Override
 		public String getNomeRelatorio() {
 			return "RelatorioPlanoTrabalho.jasper";
+		}
+
+		@Override
+		public List<RelatorioPlanoTrabalhoVO> recuperaDados(Map<String, Object> params) {
+			// TODO Auto-generated method stub
+			return null;
 		}		
 		
 }

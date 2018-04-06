@@ -3,7 +3,9 @@ package br.gov.ma.tce.reunire.viewmodel;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.zkoss.bind.annotation.Command;
@@ -12,6 +14,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.util.media.AMedia;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.util.Clients;
 
 import br.gov.ma.tce.reunire.service.RelatorioService;
 
@@ -20,13 +23,7 @@ public class RelatorioViewModel {
 	/** Parâmetros os quais podem ser passados na URL */
 	
 	private String urlRetorno;
-	private String formatoRelatorio;
-	private String tipoRelatorio;
-	private Integer ente;
-	private Integer orgao;
-	private Integer unidadeGestora;
-	private Integer poder;
-	private Integer exercicio;
+	private Map<String, Object> params;
 	
 	/** Coleção de formatos disponíveis para exportação */
 	
@@ -46,22 +43,39 @@ public class RelatorioViewModel {
 	
 	private RelatorioService service;
 	
+	private String formatoRelatorio;
+	
 	@Init
 	@NotifyChange("*")
 	public void init() {
 		
-		tipoRelatorio = Executions.getCurrent().getParameter("tipoRelatorio");
-		formatoRelatorio = Executions.getCurrent().getParameter("formato");
-		ente = Executions.getCurrent().getParameter("ente") != null ? Integer.parseInt(Executions.getCurrent().getParameter("ente")) : null;
-		orgao = Executions.getCurrent().getParameter("orgao") != null ? Integer.parseInt(Executions.getCurrent().getParameter("orgao")) : null;
-		unidadeGestora = Executions.getCurrent().getParameter("unidade") != null ? Integer.parseInt(Executions.getCurrent().getParameter("unidade")) : null;
-		poder = Executions.getCurrent().getParameter("poder") != null ? Integer.parseInt(Executions.getCurrent().getParameter("poder")) : null;
+		params = new HashMap<String, Object>();
+		
+		params.put("reportDir", PATH_RELATORIOS);
+		params.put("tipoRelatorio", Executions.getCurrent().getParameter("tipoRelatorio"));
+		params.put("formato", Executions.getCurrent().getParameter("formato"));
+		
+		formatoRelatorio = Executions.getCurrent().getParameter("formato").toUpperCase();
+		
+		if (Executions.getCurrent().getParameter("ente") != null) {
+			params.put("enteId", Integer.parseInt(Executions.getCurrent().getParameter("ente")));
+		}
+		
+		if (Executions.getCurrent().getParameter("orgao") != null) {
+			params.put("orgaoId", Integer.parseInt(Executions.getCurrent().getParameter("orgao")));
+		}
+		
+		if (Executions.getCurrent().getParameter("unidade") != null) {
+			params.put("unidadeId", Integer.parseInt(Executions.getCurrent().getParameter("unidade")));
+		}
+		
+		if (Executions.getCurrent().getParameter("poder") != null) {
+			params.put("poderId", Integer.parseInt(Executions.getCurrent().getParameter("poder")));
+		}
+		
+		service = new RelatorioService(params);
 		
 		urlRetorno = "http://br.yahoo.com";
-		
-		Executions.getCurrent().getParameterMap().entrySet().forEach(item -> System.out.println(item.getKey() + " --> " + item.getValue()[0]));
-		
-		service = new RelatorioService(PATH_RELATORIOS, tipoRelatorio, ente, orgao, unidadeGestora,poder, exercicio);
 		
 		gerarRelatorio();
 		exportarRelatorio();
@@ -73,7 +87,7 @@ public class RelatorioViewModel {
 		
 		if (dados != null && dados.size() > 0) {
 			
-			Properties properties = service.getProperties(dados, formatoRelatorio);
+			Properties properties = service.getProperties(dados, params, formatoRelatorio);
 			
 			String titulo = String.valueOf(properties.get("nome"));
 			String extensao = String.valueOf(properties.get("extensao"));
@@ -96,7 +110,7 @@ public class RelatorioViewModel {
 	
 	@Command
 	public void imprimir() {
-		System.out.println("Printing...");
+		Clients.evalJavaScript("iframe.print()");
 	}
 	
 	@Command
@@ -105,14 +119,6 @@ public class RelatorioViewModel {
 	}
 	
 	// Getters e Setters
-	
-	public String getFormatoRelatorio() {
-		return formatoRelatorio;
-	}
-	
-	public void setFormatoRelatorio(String formatoRelatorio) {
-		this.formatoRelatorio = formatoRelatorio;
-	}
 	
 	public List<String> getFormatosRelatorio() {
 		return formatosRelatorio;
@@ -129,45 +135,13 @@ public class RelatorioViewModel {
 	public void setUrlRetorno(String urlRetorno) {
 		this.urlRetorno = urlRetorno;
 	}
-
-	public String getTipoPecaRelatorio() {
-		return tipoRelatorio;
+	
+	public Map<String, Object> getParams() {
+		return params;
 	}
-
-	public void setTipoPecaRelatorio(String tipoPecaRelatorio) {
-		this.tipoRelatorio = tipoPecaRelatorio;
-	}
-
-	public Integer getEnte() {
-		return ente;
-	}
-
-	public void setEnte(Integer ente) {
-		this.ente = ente;
-	}
-
-	public Integer getOrgao() {
-		return orgao;
-	}
-
-	public void setOrgao(Integer orgao) {
-		this.orgao = orgao;
-	}
-
-	public Integer getUnidadeGestora() {
-		return unidadeGestora;
-	}
-
-	public void setUnidadeGestora(Integer unidadeGestora) {
-		this.unidadeGestora = unidadeGestora;
-	}
-
-	public Integer getExercicio() {
-		return exercicio;
-	}
-
-	public void setExercicio(Integer exercicio) {
-		this.exercicio = exercicio;
+	
+	public void setParams(Map<String, Object> params) {
+		this.params = params;
 	}
 	
 	public Media getMedia() {
@@ -176,5 +150,13 @@ public class RelatorioViewModel {
 	
 	public void setMedia(Media media) {
 		this.media = media;
+	}
+	
+	public String getFormatoRelatorio() {
+		return formatoRelatorio;
+	}
+	
+	public void setFormatoRelatorio(String formatoRelatorio) {
+		this.formatoRelatorio = formatoRelatorio;
 	}
 }

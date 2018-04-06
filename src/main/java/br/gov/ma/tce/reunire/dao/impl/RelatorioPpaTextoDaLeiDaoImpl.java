@@ -2,6 +2,7 @@ package br.gov.ma.tce.reunire.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 
@@ -46,5 +47,11 @@ public class RelatorioPpaTextoDaLeiDaoImpl extends SaeDaoImpl<PpaTextoDaLeiVO> i
 	@Override
 	public String getNomeRelatorio() {
 		return "rel_ppa_texto_lei.jasper";
+	}
+
+	@Override
+	public List<PpaTextoDaLeiVO> recuperaDados(Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

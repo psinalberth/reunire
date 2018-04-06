@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.0.final using JasperReports Library version 6.5.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="balanco_orcamentario_3" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ebc11caa-8e06-477a-a9c5-969d62aba9b1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ente" class="java.lang.String"/>
+	<parameter name="mesBalanco" class="java.lang.Integer"/>
+	<parameter name="exercicio" class="java.lang.Integer"/>
+	<field name="categoria" class="java.lang.String"/>
+	<field name="grupo" class="java.lang.String"/>
+	<field name="restosExercicioAnterior" class="java.math.BigDecimal"/>
+	<field name="restosTrintaEUm" class="java.math.BigDecimal"/>
+	<field name="restosLiquidados" class="java.math.BigDecimal"/>
+	<field name="restosPagos" class="java.math.BigDecimal"/>
+	<field name="restosCancelados" class="java.math.BigDecimal"/>
+	<variable name="RIA_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosExercicioAnterior}]]></variableExpression>
+	</variable>
+	<variable name="RIE_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosTrintaEUm}]]></variableExpression>
+	</variable>
+	<variable name="RLI_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosLiquidados}]]></variableExpression>
+	</variable>
+	<variable name="RPG_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosPagos}]]></variableExpression>
+	</variable>
+	<variable name="RCN_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosCancelados}]]></variableExpression>
+	</variable>
+	<variable name="SALDO_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA">
+		<variableExpression><![CDATA[$V{RIA_CATEGORIA}
+.add($V{RIE_CATEGORIA})
+.subtract($V{RLI_CATEGORIA})
+.subtract($V{RCN_CATEGORIA})]]></variableExpression>
+	</variable>
+	<variable name="RIA_DESCRICAO" class="java.math.BigDecimal" resetType="Group" resetGroup="GRUPO" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosExercicioAnterior}]]></variableExpression>
+	</variable>
+	<variable name="RIE_DESCRICAO" class="java.math.BigDecimal" resetType="Group" resetGroup="GRUPO" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosTrintaEUm}]]></variableExpression>
+	</variable>
+	<variable name="RLI_DESCRICAO" class="java.math.BigDecimal" resetType="Group" resetGroup="GRUPO" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosLiquidados}]]></variableExpression>
+	</variable>
+	<variable name="RPG_DESCRICAO" class="java.math.BigDecimal" resetType="Group" resetGroup="GRUPO" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosPagos}]]></variableExpression>
+	</variable>
+	<variable name="RCN_DESCRICAO" class="java.math.BigDecimal" resetType="Group" resetGroup="GRUPO" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosCancelados}]]></variableExpression>
+	</variable>
+	<variable name="SALDO_DESCRICAO" class="java.math.BigDecimal" resetType="Group" resetGroup="GRUPO">
+		<variableExpression><![CDATA[$V{RIA_DESCRICAO}
+.add($V{RIE_DESCRICAO})
+.subtract($V{RLI_DESCRICAO})
+.subtract($V{RCN_DESCRICAO})]]></variableExpression>
+	</variable>
+	<variable name="RIA_MASTER" class="java.math.BigDecimal" resetType="Group" resetGroup="MASTER" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosExercicioAnterior}]]></variableExpression>
+	</variable>
+	<variable name="RIE_MASTER" class="java.math.BigDecimal" resetType="Group" resetGroup="MASTER" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosTrintaEUm}]]></variableExpression>
+	</variable>
+	<variable name="RLI_MASTER" class="java.math.BigDecimal" resetType="Group" resetGroup="MASTER" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosLiquidados}]]></variableExpression>
+	</variable>
+	<variable name="RPG_MASTER" class="java.math.BigDecimal" resetType="Group" resetGroup="MASTER" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosPagos}]]></variableExpression>
+	</variable>
+	<variable name="RCN_MASTER" class="java.math.BigDecimal" resetType="Group" resetGroup="MASTER" calculation="Sum">
+		<variableExpression><![CDATA[$F{restosCancelados}]]></variableExpression>
+	</variable>
+	<variable name="SALDO_MASTER" class="java.math.BigDecimal" resetType="Group" resetGroup="MASTER">
+		<variableExpression><![CDATA[$V{RIA_MASTER}
+.add($V{RIE_MASTER})
+.subtract($V{RLI_MASTER})
+.subtract($V{RCN_MASTER})]]></variableExpression>
+	</variable>
+	<group name="MASTER">
+		<groupExpression><![CDATA[$P{ente}]]></groupExpression>
+		<groupFooter>
+			<band height="13">
+				<staticText>
+					<reportElement x="0" y="0" width="280" height="13" uuid="0120d6ad-8bf0-4a1d-8f6b-481135840270">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL]]></text>
+				</staticText>
+				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="280" y="0" width="87" height="13" uuid="1836d28d-4b15-4102-8bbd-974d1c450248">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RIA_MASTER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="367" y="0" width="87" height="13" uuid="cc79fb60-9821-41bc-b2a1-e13a9df88185">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RIE_MASTER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="454" y="0" width="87" height="13" uuid="42152857-4352-442b-b2f1-1bc03d8f77eb">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RLI_MASTER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="541" y="0" width="87" height="13" uuid="53f280bd-1d21-4642-b15b-17cb4139918b">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RPG_MASTER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="628" y="0" width="87" height="13" uuid="22113df1-0eb5-43ee-89d9-88fdf52d2968">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RCN_MASTER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="715" y="0" width="87" height="13" uuid="3d5f37b0-f92f-43dd-b704-a81f7321d656">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SALDO_MASTER}]]></textFieldExpression>
+				</textField>
+				<break>
+					<reportElement x="0" y="12" width="802" height="1" uuid="626a5d94-c8d8-4742-8468-ec25ac1367b8">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+				</break>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="CATEGORIA">
+		<groupExpression><![CDATA[$F{categoria}]]></groupExpression>
+		<groupHeader>
+			<band height="13">
+				<textField>
+					<reportElement x="0" y="0" width="280" height="13" uuid="2ddf3bb2-c767-49d9-a0a2-866cbf73809b">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="280" y="0" width="87" height="13" uuid="d0781c49-273c-4dd7-ad75-0299362a65ef">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RIA_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="367" y="0" width="87" height="13" uuid="724b4534-e347-4920-babf-c0f5b38dbbc5">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RIE_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="454" y="0" width="87" height="13" uuid="6758bede-0968-46f7-8ff5-ea194a9eb446">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RLI_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="541" y="0" width="87" height="13" uuid="3e8a2c16-4bc8-48a1-ad1f-d07e51e431d7">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RPG_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="628" y="0" width="87" height="13" uuid="4eec36f9-4d18-42cc-a2bd-272a7f1c0322">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RCN_CATEGORIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="715" y="0" width="87" height="13" uuid="b08e4e0e-5fd2-4e54-b080-62329b02f1c5">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SALDO_CATEGORIA}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="GRUPO">
+		<groupExpression><![CDATA[$F{grupo}]]></groupExpression>
+		<groupHeader>
+			<band height="13">
+				<textField>
+					<reportElement x="0" y="0" width="280" height="13" uuid="a19da9c3-18ef-40c4-bd79-4a784a8b0c6d">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="10">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{grupo}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="280" y="0" width="87" height="13" uuid="3b0b703f-ad2e-4669-85a6-6298d5c69c77">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RIA_DESCRICAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="367" y="0" width="87" height="13" uuid="c316e0be-1fb2-4bf4-b075-06883086db36">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RIE_DESCRICAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="454" y="0" width="87" height="13" uuid="a9135ae7-f75b-45e4-aafa-836069fe3982">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RLI_DESCRICAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="541" y="0" width="87" height="13" uuid="c9777aa6-4940-45a2-84b0-f47599ee1cf6">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RPG_DESCRICAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="628" y="0" width="87" height="13" uuid="b9282c0c-c83a-4592-8405-9a4dcc8bcd1f">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RCN_DESCRICAO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="715" y="0" width="87" height="13" uuid="08dea04c-31ad-47d5-bc19-2e7650be6b07">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SALDO_DESCRICAO}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52">
+			<textField>
+				<reportElement x="0" y="16" width="802" height="16" uuid="1f7ca8c5-28db-40ea-8e2d-94bf49a45573"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["EXECUÇÃO DOS RESTOS A PAGAR NÃO PROCESSADOS"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="802" height="16" uuid="06e6ab6f-7fb4-4444-82ca-b87f4bda4970"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ENTE: " + $P{ente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="40" width="802" height="12" uuid="dd7cb3b8-9368-40a7-b3d6-36b98982866d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["EXERCÍCIO: "]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="18" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="81">
+			<staticText>
+				<reportElement x="0" y="0" width="280" height="81" uuid="c9b73a53-894d-4c22-bf31-8b8a1b2baaf9"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="174" height="14" uuid="e1f3cb88-a07d-4671-972b-23bb35638a58"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inscritos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="14" width="87" height="53" uuid="5d1e3a14-dc02-4d7c-9232-8ac4880c040b"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Em Exercícios Anteriores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="14" width="87" height="53" uuid="663895f0-d4e6-445a-9e98-a8210f78f772"/>
+				<box leftPadding="5" rightPadding="5">
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Em 31 de Dezembro do Exercício Anterior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="0" width="87" height="67" uuid="a30812d5-fa9b-4595-aee5-af637e9b4da7"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Liquidados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="541" y="0" width="87" height="67" uuid="e0be32ad-82ee-42cf-94e5-69459572387b"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pagos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="628" y="0" width="87" height="67" uuid="a6326704-0ab8-4128-bcf7-38cbadc9beea"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cancelados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="715" y="0" width="87" height="67" uuid="0f3a4567-e880-47fe-8c28-0820c6893095"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="67" width="87" height="14" uuid="ddbc7d62-f1fa-4780-b18b-fb0d9cf56ba4"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="541" y="67" width="87" height="14" uuid="9332351c-3d42-4335-ad34-f64c539f30e1"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[(d)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="67" width="87" height="14" uuid="fc57e3b8-51f7-4161-b108-2142ed451003"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[(b)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="67" width="87" height="14" uuid="52f1df89-5e6c-429c-87a4-7c2cadd52b9b"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[(c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="628" y="67" width="87" height="14" uuid="40eb0a18-6800-4fb6-95fe-08bf395f45d4"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[(e)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="715" y="67" width="87" height="14" uuid="57652f5b-68e3-4a64-acb4-89e6ae95000d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[(f) = (a + b - c - e)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+</jasperReport>

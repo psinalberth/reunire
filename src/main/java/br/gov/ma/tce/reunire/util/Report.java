@@ -15,10 +15,12 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.HtmlExporter;
 import net.sf.jasperreports.engine.export.JRCsvExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.export.SimpleCsvExporterConfiguration;
 import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleHtmlExporterOutput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimpleWriterExporterOutput;
 
@@ -125,7 +127,19 @@ public class Report {
 		return properties;
 	}
 	
-	private static Properties exportarHTML(String diretorioFinalRelatorio, JasperPrint jasperPrint) {
-		return null;
+	private static Properties exportarHTML(String path, JasperPrint jasperPrint) throws IOException, JRException {
+		
+		File file = File.createTempFile(jasperPrint.getName(), ".html", new File(path));
+		FileOutputStream output = new FileOutputStream(file);
+		
+		HtmlExporter exporter = new HtmlExporter();
+		exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+		exporter.setExporterOutput(new SimpleHtmlExporterOutput(output));
+		
+		exporter.exportReport();
+		
+		Properties properties = criarProperties(jasperPrint, "html", "text/html", file);
+		
+		return properties;
 	}
 }
