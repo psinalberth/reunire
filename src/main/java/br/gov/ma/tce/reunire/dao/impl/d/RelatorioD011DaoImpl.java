@@ -19,13 +19,21 @@ public class RelatorioD011DaoImpl extends PrestacaoDaoImpl<RelatorioD011AVO> imp
 	public List<RelatorioD011AVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer poder,
 			Integer exercicio) {
 		
-		String sql = "select d.unidade_id, d.funcao, d.subfuncao, d.programa, d.acao, acao.descricao descricaoAcao, " + 
-				"		d.descricao descricaoNaturezaDespesa, d.credito_suplementar,  " + 
-				"		d.credito_extraordinario, d.despesa_realizada " + 
-				"	from prestacao.d011 d,  sae.sae_acao acao " + 
-				"	where d.acao = acao.codigo_prefeitura " +
-				"	and d.unidade_id in (:unidade) "
-				/*"order by d.unidade_id, d.funcao, d.subfuncao, d.programa, d.acao "*/;
+		String sql = "select d.unidade_id, d.funcao, d.subfuncao, " + 
+					 "d.programa, d.acao,  d.acaoDescricao, nd.descricao, " + 
+					 "d.credito_suplementar, d.credito_extraordinario, d.despesa_realizada " + 
+					 "	from sae.vw_natureza_despesa nd " + 
+					"	inner join ( " + 
+					"	select d.descricao, d.unidade_id, d.funcao, " + 
+					"		d.subfuncao, d.programa, d.acao, acao.descricao acaoDescricao, " + 
+					"		sum(d.credito_suplementar) credito_suplementar, " + 
+					"		sum(d.credito_extraordinario) credito_extraordinario, " + 
+					"		sum(d.despesa_realizada) despesa_realizada " + 
+					"	from prestacao.d011 d, sae.sae_acao acao " + 
+					"	where d.acao = acao.codigo_prefeitura " + 
+					"	and d.unidade_id in (:unidade) "+  
+					"	group by d.descricao, d.unidade_id, d.funcao, d.subfuncao, d.programa, d.acao, acao.descricao ) " + 
+					"d on d.descricao = regexp_replace(nd.descricao, '[ ]', '', 'g')";
 		
 		List<RelatorioD011AVO> listaVo = new ArrayList<>();
 		
