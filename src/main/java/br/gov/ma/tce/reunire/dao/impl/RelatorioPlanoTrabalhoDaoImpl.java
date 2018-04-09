@@ -14,7 +14,6 @@ import br.gov.ma.tce.reunire.model.vo.RelatorioPlanoTrabalhoVO;
 public class RelatorioPlanoTrabalhoDaoImpl extends SaeDaoImpl<RelatorioPlanoTrabalhoVO> implements DemonstrativoDao<RelatorioPlanoTrabalhoVO>{
 
 		@SuppressWarnings("unchecked")
-		@Override
 		public List<RelatorioPlanoTrabalhoVO> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer poder,
 				Integer exercicio) {
 			

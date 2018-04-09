@@ -12,8 +12,6 @@ import br.gov.ma.tce.reunire.util.Lookup;
 
 public interface DemonstrativoDao<T> {
 	
-	public List<T> recuperaDados(Integer ente, Integer orgao, Integer unidadeGestora, Integer poder, Integer exercicio);
-	
 	public List<T> recuperaDados(Map<String, Object> params);
 	
 	public String getNomeRelatorio();
@@ -38,28 +36,6 @@ public interface DemonstrativoDao<T> {
 		}
 		
 		return listaUnidades;
-	}
-	
-	public default List<Integer> recuperarIdsUnidades(Integer ente, Integer orgao, Integer poder, Integer unidadeGestora) {
-		
-		List<Integer> listaIdsUnidades = null;
-		
-		UnidadeVODaoImpl dao = Lookup.dao(UnidadeVODaoImpl.class);
-		
-		if (ente != null && poder == null) {
-			listaIdsUnidades = extrairIds(dao.byEnte(ente));
-			
-		} else if (orgao != null) {
-			listaIdsUnidades = extrairIds(dao.byOrgao(orgao));
-			
-		} else if (poder != null) {
-			listaIdsUnidades = extrairIds(dao.byPoder(ente, poder));
-			
-		} else if(unidadeGestora != null) {
-			listaIdsUnidades = Arrays.asList(new Integer[] {unidadeGestora});
-		}
-		
-		return listaIdsUnidades;
 	}
 	
 	public default List<UnidadeVO> recuperarUnidades(Integer ente, Integer orgao, Integer poder, Integer unidadeGestora) {

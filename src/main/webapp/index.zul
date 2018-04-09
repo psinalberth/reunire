@@ -58,5 +58,69 @@
         </listitem>
       </template>
     </listbox>
+    
+    <window width="50rem" border="none" mode="modal" title="Imprimir Relatório">
+      <div class="content">
+        <div class="column">
+          <div class="field">
+            <label sclass="label" value="Abrangência" />
+            <div class="control">
+              <combobox sclass="input" />
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label sclass="label" value="Ente"></label>
+            <div class="control">
+              <combobox sclass="input" model="@load(vm.entes)" onSelect="@command('preencherOrgaos')" selectedItem="@bind(vm.ente)">
+                <template name="model">
+                  <comboitem label="@load(each.nome)" value="@load(each.id)" />
+                </template>
+              </combobox>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label sclass="label" value="Órgão"></label>
+            <div class="control">
+              <combobox sclass="input" model="@load(vm.orgaos)">
+                <template name="model">
+                  <comboitem label="@load(each.nome)" value="@load(each.id)" />
+                </template>
+              </combobox>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label sclass="label" value="Poder"></label>
+            <div class="control">
+              <combobox sclass="input"></combobox>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label sclass="label" value="Unidade Gestora"></label>
+            <div class="control">
+              <combobox sclass="input"></combobox>
+            </div>
+          </div>
+        </div>
+        <div class="level">
+          <div class="level-item">
+            <a sclass="button is-primary">
+	          <vlayout sclass="icon">
+	            <vlayout sclass="fas fa-print"/>
+	          </vlayout>
+	          <label value="Imprimir" />
+	        </a>
+          </div>
+        </div>
+      </div>
+    </window>
+    
   </div>
 </zk>
