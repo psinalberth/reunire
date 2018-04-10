@@ -69,6 +69,36 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		List<RelatorioB03VO> dadosPagina4 = recuperarDadosPagina4(listaIdsUnidades);
 		params.put("DATA4", dadosPagina4);
 		
+		BigDecimal totalPrevisaoInicial = dados.stream().filter(d -> d.getPrevisaoInicial() != null)
+				.map(RelatorioB01VO::getPrevisaoInicial).reduce(BigDecimal.ZERO, BigDecimal::add);
+		
+		BigDecimal totalDotacaoInicial = dadosPagina2.stream().filter(d -> d.getDotacaoInicial() != null)
+				.map(RelatorioB02VO::getDotacaoInicial).reduce(BigDecimal.ZERO, BigDecimal::add);
+		
+		BigDecimal totalPrevisaoAtualizada = dados.stream().filter(d -> d.getPrevisaoAtualizada() != null)
+				.map(RelatorioB01VO::getPrevisaoAtualizada).reduce(BigDecimal.ZERO, BigDecimal::add);
+		
+		BigDecimal totalDotacaoAtualizada = dadosPagina2.stream().filter(d -> d.getDotacaoAtualizada() != null)
+				.map(RelatorioB02VO::getDotacaoAtualizada).reduce(BigDecimal.ZERO, BigDecimal::add);
+		
+		BigDecimal totalReceitasRealizadas = dados.stream().filter(d -> d.getReceitasRealizadas() != null)
+				.map(RelatorioB01VO::getReceitasRealizadas).reduce(BigDecimal.ZERO, BigDecimal::add);
+		
+		BigDecimal totalDespesasEmpenhadas = dadosPagina2.stream().filter(d -> d.getDespesasEmpenhadas() != null)
+				.map(RelatorioB02VO::getDespesasEmpenhadas).reduce(BigDecimal.ZERO, BigDecimal::add);
+		
+		RelatorioB01VO deficit = dados.get(17);
+		
+		deficit.setPrevisaoInicial(totalPrevisaoInicial.compareTo(totalDotacaoInicial) < 0 ? totalDotacaoInicial.subtract(totalPrevisaoInicial) : null);
+		deficit.setPrevisaoAtualizada(totalPrevisaoAtualizada.compareTo(totalDotacaoAtualizada) < 0 ? totalDotacaoAtualizada.subtract(totalPrevisaoAtualizada) : null);
+		deficit.setReceitasRealizadas(totalReceitasRealizadas.compareTo(totalDespesasEmpenhadas) < 0 ? totalDespesasEmpenhadas.subtract(totalReceitasRealizadas) : null);
+		
+		RelatorioB02VO superavit = dadosPagina2.get(11);
+		
+		superavit.setDotacaoInicial(totalPrevisaoInicial.compareTo(totalDotacaoInicial) > 0 ? totalPrevisaoInicial.subtract(totalDotacaoInicial) : null);
+		superavit.setDotacaoAtualizada(totalPrevisaoAtualizada.compareTo(totalDotacaoAtualizada) > 0 ? totalPrevisaoAtualizada.subtract(totalDotacaoAtualizada) : null);
+		superavit.setDespesasEmpenhadas(totalReceitasRealizadas.compareTo(totalDespesasEmpenhadas) > 0 ? totalReceitasRealizadas.subtract(totalDespesasEmpenhadas) : null);
+		
 		return dados;
 	}
 	
