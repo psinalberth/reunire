@@ -480,7 +480,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["ANEXO VII - DEMONSTRATIVO DE FUNÇÕES, SUBFUNÇÕES E PROGRAMAS - POR PROJETOS E ATIVIDADES"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["ANEXO XI - COMPARATIVO DA DESPESA AUTORIZADA COM A REALIZADA"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="0" y="60" width="802" height="20" isRemoveLineWhenBlank="true" uuid="4742f7cc-990a-426b-9bff-9b70e05c1af0">
