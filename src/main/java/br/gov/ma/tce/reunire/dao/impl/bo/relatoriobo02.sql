@@ -7,7 +7,8 @@ from (
 		'SUBTOTAL DAS DESPESAS (XI) = (VIII + IX + X)' total_categoria,
 		(case 
 			when vw.codigo ~ '^3' then 'Despesas Correntes (VIII)'
-	      	when vw.codigo ~ '^4' then 'Despesas de Capital (IX)' 
+	      	when vw.codigo ~ '^4' then 'Despesas de Capital (IX)'
+	      	when vw.codigo ~ '^9' then 'Reserva de Contingência (X)'
 		end) categoria,
 		(case 
 			when vw.codigo ~ '^3.1' then 'Pessoal e Encargos Pessoais'
@@ -15,7 +16,7 @@ from (
 	      	when vw.codigo ~ '^3.3' then 'Outras Despesas Correntes'
 	      	when vw.codigo ~ '^4.4' then 'Investimentos'
 	      	when vw.codigo ~ '^4.5' then 'Inversões Financeiras'
-	      	when vw.codigo ~ '^4.6' then 'Amortização da Dívida' 
+	      	when vw.codigo ~ '^4.6' then 'Amortização da Dívida' else ''
 		end) grupo, '' modalidade,
 		coalesce(bo.val_din, 0) val_din, coalesce(bo.val_dat, 0) val_dat, coalesce(bo.val_dee, 0) val_dee,
 		coalesce(bo.val_del, 0) val_del, coalesce(bo.val_dep, 0) val_dep
@@ -33,11 +34,11 @@ from (
 		group by
 			regexp_replace(bo.natureza_despesa, '[.]', '', 'g')) bo on bo.nd = regexp_replace(vw.codigo, '[.]', '', 'g')
 	where
-		vw.codigo ~ '^(3.[123]|4.[45])' and vw.ativo = 'S'
+		vw.codigo ~ '^(3.[123]|4.[456]|9)' and not vw.codigo ~ '4.6.90.7[67].00' and vw.ativo = 'S'
 		
-	union all
+  union all
 	
-	select 
+  select 
     'TOTAL (XIV) = (XII + XIII)' total, 'SUBTOTAL COM REFINANCIAMENTO (XIII) = (XI + XII)' total_categoria, 'Amortização da Dívida/Refinanciamento (XII)' categoria,
     'Amortização da Dívida Interna' grupo, 'Dívida Mobiliária' modalidade, 0 val_din, 0 val_dat, 0 val_dee,0 val_del, 0 val_dep
 
@@ -60,14 +61,28 @@ from (
 	'' total_categoria, '' categoria, 
 	'Superávit (XIII)' grupo, '' modalidade, null val_din, null val_dat, null val_dee, null val_del, null val_dep
 	
-	union all
+  union all
 
   select 
     'TOTAL (XIV) = (XII + XIII)' total, 'SUBTOTAL COM REFINANCIAMENTO (XIII) = (XI + XII)' total_categoria, 'Amortização da Dívida/Refinanciamento (XII)' categoria,
-    'Amortização da Dívida Externa' grupo, 'Outras Dívidas' modalidade, 0 val_din, 0 val_dat, 0 val_dee,0 val_del, 0 val_dep) result
+    'Amortização da Dívida Externa' grupo, 'Outras Dívidas' modalidade, 0 val_din, 0 val_dat, 0 val_dee,0 val_del, 0 val_dep
+    
+  union all
+  
+  select 
+  	'Reserva do RPPS' total, '' total_categoria, '' categoria, '' grupo, '' modalidade, 
+  	null val_din, sum(coalesce(bo.reserva_rpps, 0)) val_dat, null val_dee, null val_del, null val_dep
+  from 
+  	prestacao.bo05 bo where bo.unidade_id in (:unidades)
+  group by
+  	total, total_categoria, categoria, grupo, modalidade) result
 group by
 	total, total_categoria, categoria, grupo, modalidade
 order by
+	(case 
+		when total = 'TOTAL (XIV) = (XII + XIII)' then 1 
+		else 2
+	end),
 	(case 
 	    when categoria = 'Despesas Correntes (VIII)' then 1
 	    when categoria = 'Despesas de Capital (IX)' then 2

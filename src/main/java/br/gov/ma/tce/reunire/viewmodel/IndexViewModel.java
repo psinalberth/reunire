@@ -11,6 +11,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 import br.gov.ma.tce.reunire.dao.TipoRelatorioDao;
 import br.gov.ma.tce.reunire.dao.impl.TipoRelatorioDaoImpl;
 import br.gov.ma.tce.reunire.dao.impl.gestor.ConsultasGestoresImpl;
+import br.gov.ma.tce.reunire.dao.impl.gestor.UnidadeVODaoImpl;
 import br.gov.ma.tce.reunire.model.TipoRelatorio;
 import br.gov.ma.tce.reunire.model.vo.gestor.EnteVO;
 import br.gov.ma.tce.reunire.model.vo.gestor.OrgaoVO;
@@ -44,6 +45,7 @@ public class IndexViewModel {
 		 
 		 listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAll();
 		 entes = daoGestores.findAll(EnteVO.class);
+		 poderes = daoGestores.findAll(PoderVO.class);
 	}
 	
 	@Command
@@ -61,12 +63,35 @@ public class IndexViewModel {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Command
-	@NotifyChange("orgaos")
+	@NotifyChange({"orgaos", "orgao", "unidade"})
 	public void preencherOrgaos() {
 		
 		if (ente != null) {
+			
 			orgaos = daoGestores.findAllByEnte(OrgaoVO.class, ente.getId());
+			orgao = null;
+			unidade = null;
+			
+			preencherUnidades();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Command
+	@NotifyChange({"unidades", "unidade"})
+	public void preencherUnidades() {
+		
+		if (orgao != null) {
+			
+			unidades = daoGestores.findAllByOrgao(UnidadeVO.class, orgao.getId());
+			unidade = null;
+			
+		} else if (ente != null) {
+			
+			UnidadeVODaoImpl daoUnidade = Lookup.dao(UnidadeVODaoImpl.class);
+			unidades = daoUnidade.byEnte(ente.getId());
 		}
 	}
 	

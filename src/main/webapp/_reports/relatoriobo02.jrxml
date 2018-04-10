@@ -35,22 +35,22 @@
 	<variable name="SALDO_TOTAL" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL">
 		<variableExpression><![CDATA[$V{DAT_TOTAL}.subtract($V{DEE_TOTAL})]]></variableExpression>
 	</variable>
-	<variable name="DIN_TOTAL_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL_CATEGORIA" calculation="Sum">
+	<variable name="DIN_TOTAL_CATEGORIA" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{dotacaoInicial}]]></variableExpression>
 	</variable>
-	<variable name="DAT_TOTAL_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL_CATEGORIA" calculation="Sum">
+	<variable name="DAT_TOTAL_CATEGORIA" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{dotacaoAtualizada}]]></variableExpression>
 	</variable>
-	<variable name="DEE_TOTAL_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL_CATEGORIA" calculation="Sum">
+	<variable name="DEE_TOTAL_CATEGORIA" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{despesasEmpenhadas}]]></variableExpression>
 	</variable>
-	<variable name="DEL_TOTAL_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL_CATEGORIA" calculation="Sum">
+	<variable name="DEL_TOTAL_CATEGORIA" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{despesasLiquidadas}]]></variableExpression>
 	</variable>
-	<variable name="DEP_TOTAL_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL_CATEGORIA" calculation="Sum">
+	<variable name="DEP_TOTAL_CATEGORIA" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{despesasPagas}]]></variableExpression>
 	</variable>
-	<variable name="SALDO_TOTAL_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="TOTAL_CATEGORIA">
+	<variable name="SALDO_TOTAL_CATEGORIA" class="java.math.BigDecimal">
 		<variableExpression><![CDATA[$V{DAT_TOTAL_CATEGORIA}.subtract($V{DEE_TOTAL_CATEGORIA})]]></variableExpression>
 	</variable>
 	<variable name="DIN_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA" calculation="Sum">
