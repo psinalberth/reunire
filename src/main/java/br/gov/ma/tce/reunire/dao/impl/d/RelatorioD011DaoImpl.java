@@ -17,27 +17,24 @@ public class RelatorioD011DaoImpl extends PrestacaoDaoImpl<RelatorioD011AVO> imp
 	
 	@Override
 	public String getNomeRelatorio() {
-		return "lei4320anexoxiTESTE.jasper";
+		return "lei4320anexoxiFINAL.jasper";
 	}
 
 	@Override
 	public List<RelatorioD011AVO> recuperaDados(Map<String, Object> params) {
 		
-		String sql = "select d.unidade_id, d.funcao, d.subfuncao, " + 
-				 "d.programa, d.acao,  d.acaoDescricao, nd.descricao, " + 
-				 "d.credito_suplementar, d.credito_extraordinario, d.despesa_realizada " + 
-				 "	from sae.vw_natureza_despesa nd " + 
-				"	inner join ( " + 
-				"	select d.descricao, d.unidade_id, d.funcao, " + 
-				"		d.subfuncao, d.programa, d.acao, acao.descricao acaoDescricao, " + 
-				"		sum(d.credito_suplementar) credito_suplementar, " + 
-				"		sum(d.credito_extraordinario) credito_extraordinario, " + 
-				"		sum(d.despesa_realizada) despesa_realizada " + 
-				"	from prestacao.d011 d, sae.sae_acao acao " + 
-				"	where d.acao = acao.codigo_prefeitura " + 
-				"	and d.unidade_id in (:unidade) "+  
-				"	group by d.descricao, d.unidade_id, d.funcao, d.subfuncao, d.programa, d.acao, acao.descricao ) " + 
-				"d on d.descricao = regexp_replace(nd.descricao, '[ ]', '', 'g')";
+		String sql = "select d.unidade_id as UNIDADE, d.funcao, d.subfuncao, " + 
+				"				d.acao, d.programa, f.nome as nomeFuncao, sub.nome as nomeSubFuncao, " + 
+				"				prog.denominacao, acao.descricao, coalesce(d.credito_suplementar, 0) as VALOR_SUPLE, " + 
+				"				coalesce(d.credito_extraordinario, 0) as VALOR_EXTRA, coalesce(d.despesa_realizada, 0) AS DESPESA" + 
+				"				from prestacao.d011 d, remessa.funcao f, remessa.subfuncao sub, " + 
+				"				sae.sae_programa prog, sae.sae_acao acao " + 
+				"				where d.funcao = f.funcao_id " + 
+				"				and d.subfuncao = sub.subfuncao_id " + 
+				"				and d.programa = prog.codigo " + 
+				"				and d.acao = acao.codigo_prefeitura " + 
+				"				and d.unidade_id in (:unidade) " + 
+				"				order by d.unidade_id, d.funcao, d.subfuncao, d.programa, d.acao";
 		
 		List<RelatorioD011AVO> listaVo = new ArrayList<>();
 		
@@ -59,15 +56,18 @@ public class RelatorioD011DaoImpl extends PrestacaoDaoImpl<RelatorioD011AVO> imp
 				}
 			}
 			
-			relatorio.setCodigoFuncao(l[1].toString());
-			relatorio.setCodigoSubFuncao(l[2].toString());
-			relatorio.setCodigoPrograma(l[3].toString());
-			relatorio.setCodigoAcao(l[4].toString());
-			relatorio.setDescricaoAcao(l[5].toString());
-			relatorio.setDescricaoNaturezaDespesa(l[6].toString());
-			relatorio.setValorCreditoOrcamentario(new BigDecimal(new Double(l[7].toString())));
-			relatorio.setValorCreditoEspecial(new BigDecimal(new Double(l[8].toString())));
-			relatorio.setValorDespesaRealizada(new BigDecimal(new Double(l[9].toString())));
+			relatorio.setFuncaoGoverno(l[1].toString());
+			relatorio.setSubfuncaoGoverno(l[2].toString());
+			relatorio.setAcao(l[3].toString());
+			relatorio.setPrograma(l[4].toString());
+			relatorio.setNomeFuncao(l[5].toString());
+			relatorio.setNomeSubFuncao(l[6].toString());
+			relatorio.setNomePrograma(l[7].toString());
+			relatorio.setNomeAcao(l[8].toString());
+			
+			relatorio.setValorCreditoOrcamentario(new BigDecimal(new Double(l[9].toString())));
+			relatorio.setValorCreditoEspecial(new BigDecimal(new Double(l[10].toString())));
+			relatorio.setValorDespesaRealizada(new BigDecimal(new Double(l[11].toString())));
 			
 			listaVo.add(relatorio);
 		}

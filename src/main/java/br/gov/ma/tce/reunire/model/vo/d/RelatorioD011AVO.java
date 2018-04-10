@@ -5,13 +5,16 @@ import java.math.BigDecimal;
 public class RelatorioD011AVO {
 	
 	private Integer idUnidade;
+	//private String orgao;
 	private String descricaoUnidade;
-	private String descricaoNaturezaDespesa;
-	private String codigoFuncao;
-	private String codigoSubFuncao;
-	private String codigoPrograma;
-	private String codigoAcao;
-	private String descricaoAcao;
+	private String funcaoGoverno;
+	private String subfuncaoGoverno;
+	private String programa;
+	private String acao;
+	private String nomeFuncao;
+	private String nomeSubFuncao;
+	private String nomePrograma;
+	private String nomeAcao;
 	private BigDecimal valorCreditoOrcamentario;
 	private BigDecimal valorCreditoEspecial;
 	private BigDecimal valorDespesaRealizada;
@@ -31,53 +34,69 @@ public class RelatorioD011AVO {
 	public void setDescricaoUnidade(String descricaoUnidade) {
 		this.descricaoUnidade = descricaoUnidade;
 	}
-
-	public String getDescricaoNaturezaDespesa() {
-		return descricaoNaturezaDespesa;
-	}
-
-	public void setDescricaoNaturezaDespesa(String decricaoNaturezaDespesa) {
-		this.descricaoNaturezaDespesa = decricaoNaturezaDespesa;
-	}
 	
-	public String getCodigoFuncao() {
-		return codigoFuncao;
+	public String getFuncaoGoverno() {
+		return funcaoGoverno;
 	}
 
-	public void setCodigoFuncao(String codigoFuncao) {
-		this.codigoFuncao = codigoFuncao;
+	public void setFuncaoGoverno(String funcaoGoverno) {
+		this.funcaoGoverno = funcaoGoverno;
 	}
 
-	public String getCodigoSubFuncao() {
-		return codigoSubFuncao;
+	public String getSubfuncaoGoverno() {
+		return subfuncaoGoverno;
 	}
 
-	public void setCodigoSubFuncao(String codigoSubFuncao) {
-		this.codigoSubFuncao = codigoSubFuncao;
+	public void setSubfuncaoGoverno(String subfuncaoGoverno) {
+		this.subfuncaoGoverno = subfuncaoGoverno;
 	}
 
-	public String getCodigoPrograma() {
-		return codigoPrograma;
+	public String getPrograma() {
+		return programa;
 	}
 
-	public void setCodigoPrograma(String codigoPrograma) {
-		this.codigoPrograma = codigoPrograma;
+	public void setPrograma(String programa) {
+		this.programa = programa;
 	}
 
-	public String getCodigoAcao() {
-		return codigoAcao;
+	public String getAcao() {
+		return acao;
 	}
 
-	public void setCodigoAcao(String codigoAcao) {
-		this.codigoAcao = codigoAcao;
+	public void setAcao(String acao) {
+		this.acao = acao;
 	}
 
-	public String getDescricaoAcao() {
-		return descricaoAcao;
+	public String getNomeFuncao() {
+		return nomeFuncao;
 	}
 
-	public void setDescricaoAcao(String descricaoAcao) {
-		this.descricaoAcao = descricaoAcao;
+	public void setNomeFuncao(String nomeFuncao) {
+		this.nomeFuncao = nomeFuncao;
+	}
+
+	public String getNomeSubFuncao() {
+		return nomeSubFuncao;
+	}
+
+	public void setNomeSubFuncao(String nomeSubFuncao) {
+		this.nomeSubFuncao = nomeSubFuncao;
+	}
+
+	public String getNomePrograma() {
+		return nomePrograma;
+	}
+
+	public void setNomePrograma(String nomePrograma) {
+		this.nomePrograma = nomePrograma;
+	}
+
+	public String getNomeAcao() {
+		return nomeAcao;
+	}
+
+	public void setNomeAcao(String nomeAcao) {
+		this.nomeAcao = nomeAcao;
 	}
 
 	public BigDecimal getValorCreditoEspecial() {
