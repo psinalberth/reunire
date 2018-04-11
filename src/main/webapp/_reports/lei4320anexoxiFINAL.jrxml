@@ -169,10 +169,10 @@
 					<reportElement x="0" y="0" width="802" height="25" isRemoveLineWhenBlank="true" uuid="0050e93f-6a6c-464e-8160-5c041a7c8219">
 						<printWhenExpression><![CDATA[$F{idUnidade} != null]]></printWhenExpression>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
+					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="Arial" size="11" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade} + " - " + $P{unidade}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement mode="Opaque" x="630" y="25" width="90" height="20" forecolor="#FEFEFE" backcolor="#777777" uuid="7af208df-434e-400c-8718-d4bca99eb044"/>
