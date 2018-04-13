@@ -1,0 +1,81 @@
+<zk>
+ <div class="content">
+   <div class="column">
+   	
+   	 <div style="padding-bottom: 2rem">
+   	   <label sclass="title is-4 has-text-info" value="@load(vm.tipoRelatorio.descricao)" />
+   	 </div>
+   
+     <div class="field">
+       <label sclass="label" value="Módulo" />
+       <div class="control">
+         <combobox sclass="input" model="@load(vm.modulos)" selectedItem="@bind(vm.modulo)">
+           <template name="model">
+             <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
+           </template>
+         </combobox>
+       </div>
+     </div>
+   </div>
+   <div class="column">
+     <div class="field">
+       <label sclass="label" value="Ente" />
+       <div class="control">
+         <combobox sclass="input" model="@load(vm.entes)" onSelect="@command('preencherOrgaos')" selectedItem="@bind(vm.ente)">
+           <template name="model">
+             <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
+           </template>
+         </combobox>
+       </div>
+     </div>
+   </div>
+   <div class="column">
+     <div class="field">
+       <label sclass="label" value="Órgão" />
+       <div class="control">
+         <combobox sclass="input" model="@load(vm.orgaos)" onSelect="@command('preencherUnidades')" selectedItem="@bind(vm.orgao)" value="@bind(vm.orgao.nome)">
+           <template name="model">
+             <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
+           </template>
+         </combobox>
+       </div>
+     </div>
+   </div>
+   <div class="column">
+     <div class="field">
+       <label sclass="label" value="Poder" />
+       <div class="control">
+         <combobox sclass="input" model="@load(vm.poderes)">
+           <template name="model">
+             <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
+           </template>
+         </combobox>
+       </div>
+     </div>
+   </div>
+   <div class="column">
+     <div class="field">
+       <label sclass="label" value="Unidade Gestora" />
+       <div class="control">
+         <combobox sclass="input" model="@load(vm.unidades)" selectedItem="@bind(vm.unidade)" value="@bind(vm.unidade.nome)">
+           <template name="model">
+             <comboitem label="@load(each.nome)" value="@load(each.id)" />
+           </template>
+         </combobox>
+       </div>
+     </div>
+   </div>
+   <div class="column">
+   <div class="level">
+     <div class="level-item">
+       <a sclass="button is-primary">
+      <vlayout sclass="icon">
+        <vlayout sclass="fas fa-print"/>
+      </vlayout>
+      <label value="Imprimir" />
+    </a>
+     </div>
+   </div>
+   </div>
+ </div>
+</zk>
