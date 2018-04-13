@@ -7,6 +7,8 @@
   
   <div sclass="column is-10 is-offset-1" style="padding: 3rem 0" viewModel="@id('vm') @init('br.gov.ma.tce.reunire.viewmodel.IndexViewModel')">
     
+    <div visible="@load(not vm.formularioVisivel)">
+    
     <label sclass="title is-3" value="Relatórios" />
     
     <div class="field has-addons" style="padding: 2rem 0">
@@ -58,77 +60,9 @@
         </listitem>
       </template>
     </listbox>
+    </div>
     
-    <window id="modal" visible="false" width="50rem" border="none" mode="modal" title="Imprimir Relatório" position="center,top" draggable="false">
-      <div class="content">
-        <div class="column">
-          <div class="field">
-            <label sclass="label" value="Abrangência" />
-            <div class="control">
-              <combobox sclass="input" />
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="field">
-            <label sclass="label" value="Ente" />
-            <div class="control">
-              <combobox sclass="input" model="@load(vm.entes)" onSelect="@command('preencherOrgaos')" selectedItem="@bind(vm.ente)">
-                <template name="model">
-                  <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
-                </template>
-              </combobox>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="field">
-            <label sclass="label" value="Órgão" />
-            <div class="control">
-              <combobox sclass="input" model="@load(vm.orgaos)" onSelect="@command('preencherUnidades')" selectedItem="@bind(vm.orgao)" value="@bind(vm.orgao.nome)">
-                <template name="model">
-                  <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
-                </template>
-              </combobox>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="field">
-            <label sclass="label" value="Poder" />
-            <div class="control">
-              <combobox sclass="input" model="@load(vm.poderes)">
-                <template name="model">
-                  <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
-                </template>
-              </combobox>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="field">
-            <label sclass="label" value="Unidade Gestora" />
-            <div class="control">
-              <combobox sclass="input" model="@load(vm.unidades)" selectedItem="@bind(vm.unidade)" value="@bind(vm.unidade.nome)">
-                <template name="model">
-                  <comboitem label="@load(each.nome)" value="@load(each.id)" />
-                </template>
-              </combobox>
-            </div>
-          </div>
-        </div>
-        <div class="level">
-          <div class="level-item">
-            <a sclass="button is-primary">
-	          <vlayout sclass="icon">
-	            <vlayout sclass="fas fa-print"/>
-	          </vlayout>
-	          <label value="Imprimir" />
-	        </a>
-          </div>
-        </div>
-      </div>
-    </window>
+    <include src="./WEB-INF/composition/form-report.zul" visible="@load(vm.formularioVisivel)"/>
     
   </div>
 </zk>

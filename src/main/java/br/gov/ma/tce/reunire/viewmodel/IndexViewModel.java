@@ -12,6 +12,8 @@ import br.gov.ma.tce.reunire.dao.TipoRelatorioDao;
 import br.gov.ma.tce.reunire.dao.impl.TipoRelatorioDaoImpl;
 import br.gov.ma.tce.reunire.dao.impl.gestor.ConsultasGestoresImpl;
 import br.gov.ma.tce.reunire.dao.impl.gestor.UnidadeVODaoImpl;
+import br.gov.ma.tce.reunire.dao.impl.prestacao.ConsultasPrestacaoImpl;
+import br.gov.ma.tce.reunire.model.ModuloRelatorioPrestacao;
 import br.gov.ma.tce.reunire.model.TipoRelatorio;
 import br.gov.ma.tce.reunire.model.vo.gestor.EnteVO;
 import br.gov.ma.tce.reunire.model.vo.gestor.OrgaoVO;
@@ -27,6 +29,8 @@ public class IndexViewModel {
 	private OrgaoVO orgao;
 	private UnidadeVO unidade;
 	private PoderVO poder;
+	private TipoRelatorio tipoRelatorio;
+	private ModuloRelatorioPrestacao modulo;
 	
 	private List<TipoRelatorio> listaRelatoriosSelecionados;
 	private List<TipoRelatorio> listaRelatorios;
@@ -34,9 +38,15 @@ public class IndexViewModel {
 	private List<OrgaoVO> orgaos;
 	private List<UnidadeVO> unidades;
 	private List<PoderVO> poderes;
+	private List<ModuloRelatorioPrestacao> modulos;
+	
+	private boolean formularioVisivel = false;
 	
 	@SuppressWarnings("rawtypes")
 	ConsultasGestoresImpl daoGestores = Lookup.dao(ConsultasGestoresImpl.class);
+	
+	@SuppressWarnings("rawtypes")
+	ConsultasPrestacaoImpl daoPrestacao = Lookup.dao(ConsultasPrestacaoImpl.class);
 	
 	@SuppressWarnings("unchecked")
 	@Init
@@ -46,6 +56,7 @@ public class IndexViewModel {
 		 listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAll();
 		 entes = daoGestores.findAll(EnteVO.class);
 		 poderes = daoGestores.findAll(PoderVO.class);
+		 modulos = daoPrestacao.findAll(ModuloRelatorioPrestacao.class);
 	}
 	
 	@Command
@@ -65,7 +76,7 @@ public class IndexViewModel {
 	
 	@SuppressWarnings("unchecked")
 	@Command
-	@NotifyChange({"orgaos", "orgao", "unidade"})
+	@NotifyChange({"orgaos", "orgao", "unidade", "unidades"})
 	public void preencherOrgaos() {
 		
 		if (ente != null) {
@@ -96,8 +107,11 @@ public class IndexViewModel {
 	}
 	
 	@Command
+	@NotifyChange({"formularioVisivel", "tipoRelatorio"})
 	public void imprimirRelatorio(@BindingParam("tipoRelatorio") TipoRelatorio tipoRelatorio) {
 		
+		formularioVisivel = true;
+		this.tipoRelatorio = tipoRelatorio;
 	}
 	
 	@Command
@@ -191,5 +205,37 @@ public class IndexViewModel {
 
 	public void setPoderes(List<PoderVO> poderes) {
 		this.poderes = poderes;
+	}
+	
+	public List<ModuloRelatorioPrestacao> getModulos() {
+		return modulos;
+	}
+	
+	public void setModulos(List<ModuloRelatorioPrestacao> modulos) {
+		this.modulos = modulos;
+	}
+	
+	public void setFormularioVisivel(boolean formularioVisivel) {
+		this.formularioVisivel = formularioVisivel;
+	}
+	
+	public boolean isFormularioVisivel() {
+		return formularioVisivel;
+	}
+	
+	public TipoRelatorio getTipoRelatorio() {
+		return tipoRelatorio;
+	}
+	
+	public void setTipoRelatorio(TipoRelatorio tipoRelatorio) {
+		this.tipoRelatorio = tipoRelatorio;
+	}
+	
+	public ModuloRelatorioPrestacao getModulo() {
+		return modulo;
+	}
+	
+	public void setModulo(ModuloRelatorioPrestacao modulo) {
+		this.modulo = modulo;
 	}
 }
