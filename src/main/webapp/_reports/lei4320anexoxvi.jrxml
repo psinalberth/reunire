@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.0.final using JasperReports Library version 6.5.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demonstrativo_divida_fundada" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a20000c8-8a2f-4e12-b0b2-6a03fcf39ca9">
 	<property name="ireport.zoom" value="0.9982500000000004"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="48"/>
 	<parameter name="ente" class="java.lang.String"/>
-	<parameter name="orgao" class="java.lang.String"/>
-	<parameter name="unidade" class="java.lang.String"/>
 	<parameter name="dataInicio" class="java.util.Date"/>
 	<parameter name="dataFim" class="java.util.Date"/>
-	<parameter name="unidades" class="java.util.List"/>
 	<parameter name="conexaoSaePlan" class="java.sql.Connection"/>
-	<parameter name="jurisdicionado" class="java.lang.String"/>
+	<parameter name="unidade" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
 	<field name="titulo" class="java.lang.String">
 		<fieldDescription><![CDATA[titulo]]></fieldDescription>
-	</field>
-	<field name="subtitulo" class="java.lang.String">
-		<fieldDescription><![CDATA[subtitulo]]></fieldDescription>
 	</field>
 	<field name="quantidade" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[quantidade]]></fieldDescription>
@@ -29,11 +24,11 @@
 	<field name="saldoAnterior" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[saldoAnterior]]></fieldDescription>
 	</field>
-	<field name="movimentoCredor" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[movimentoCredor]]></fieldDescription>
+	<field name="movimentoEmissao" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[movimentoEmissao]]></fieldDescription>
 	</field>
-	<field name="movimentoDevedor" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[movimentoDevedor]]></fieldDescription>
+	<field name="movimentoPagamento" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[movimentoPagamento]]></fieldDescription>
 	</field>
 	<field name="cancelamento" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[cancelamento]]></fieldDescription>
@@ -41,60 +36,15 @@
 	<field name="leis" class="java.lang.String">
 		<fieldDescription><![CDATA[leis]]></fieldDescription>
 	</field>
-	<variable name="LEIS_TITULO" class="java.lang.String" resetType="Group" resetGroup="TITULO" calculation="Sum">
-		<variableExpression><![CDATA[$F{leis}]]></variableExpression>
-	</variable>
-	<variable name="QUANTIDADE_TITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="TITULO" calculation="Sum">
-		<variableExpression><![CDATA[$F{quantidade}]]></variableExpression>
-	</variable>
-	<variable name="VALOR_EMISSAO_TITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="TITULO" calculation="Sum">
-		<variableExpression><![CDATA[$F{valorEmissao}]]></variableExpression>
-	</variable>
-	<variable name="SALDO_ANTERIOR_TITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="TITULO" calculation="Sum">
-		<variableExpression><![CDATA[$F{saldoAnterior}]]></variableExpression>
-	</variable>
-	<variable name="MOVIMENTO_CREDOR_TITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="TITULO" calculation="Sum">
-		<variableExpression><![CDATA[$F{movimentoCredor}]]></variableExpression>
-	</variable>
-	<variable name="MOVIMENTO_DEVEDOR_TITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="TITULO" calculation="Sum">
-		<variableExpression><![CDATA[$F{movimentoDevedor}]]></variableExpression>
-	</variable>
-	<variable name="CANCELAMENTO_TITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="TITULO" calculation="Sum">
-		<variableExpression><![CDATA[$F{cancelamento}]]></variableExpression>
-	</variable>
-	<variable name="SALDO_SEGUINTE_TITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="TITULO" calculation="Sum">
-		<variableExpression><![CDATA[]]></variableExpression>
-	</variable>
-	<variable name="LEIS_SUBTITULO" class="java.lang.String" resetType="Group" resetGroup="SUBTITULO">
-		<variableExpression><![CDATA[$F{leis}]]></variableExpression>
-	</variable>
-	<variable name="QUANTIDADE_SUBTITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTITULO">
-		<variableExpression><![CDATA[$F{quantidade}]]></variableExpression>
-	</variable>
-	<variable name="VALOR_EMISSAO_SUBTITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTITULO">
-		<variableExpression><![CDATA[$F{valorEmissao}]]></variableExpression>
-	</variable>
-	<variable name="SALDO_ANTERIOR_SUBTITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTITULO">
-		<variableExpression><![CDATA[$F{saldoAnterior}]]></variableExpression>
-	</variable>
-	<variable name="MOVIMENTO_CREDOR_SUBTITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTITULO">
-		<variableExpression><![CDATA[$F{movimentoCredor}]]></variableExpression>
-	</variable>
-	<variable name="MOVIMENTO_DEVEDOR_SUBTITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTITULO">
-		<variableExpression><![CDATA[$F{movimentoDevedor}]]></variableExpression>
-	</variable>
-	<variable name="CANCELAMENTO_SUBTITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTITULO">
-		<variableExpression><![CDATA[$F{cancelamento}]]></variableExpression>
-	</variable>
-	<variable name="SALDO_SEGUINTE_SUBTITULO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBTITULO" calculation="Sum">
-		<variableExpression><![CDATA[]]></variableExpression>
-	</variable>
+	<field name="idUnidade" class="java.lang.Integer"/>
+	<field name="dataDaLei" class="java.lang.String"/>
+	<field name="saldoSeguinte" class="java.math.BigDecimal"/>
 	<group name="TITULO">
 		<groupExpression><![CDATA[$F{titulo}]]></groupExpression>
 		<groupHeader>
 			<band height="27">
 				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30" x="342" y="0" width="107" height="27"/>
+					<reportElement x="390" y="0" width="90" height="27" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -105,10 +55,10 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_ANTERIOR_TITULO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{saldoAnterior}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="d65a0ded-6601-4675-b48b-0b14a489688a" x="449" y="0" width="82" height="27"/>
+					<reportElement x="480" y="0" width="80" height="27" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -119,10 +69,10 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{MOVIMENTO_CREDOR_TITULO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{movimentoEmissao}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef" x="531" y="0" width="72" height="27"/>
+					<reportElement x="560" y="0" width="80" height="27" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -133,10 +83,10 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{MOVIMENTO_DEVEDOR_TITULO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{movimentoPagamento}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="bd7163ca-da37-4f30-9879-cdcaa089c317" x="690" y="0" width="112" height="27"/>
+					<reportElement x="720" y="0" width="82" height="27" uuid="bd7163ca-da37-4f30-9879-cdcaa089c317"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -147,10 +97,10 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_ANTERIOR_TITULO}.add($V{MOVIMENTO_CREDOR_TITULO}).subtract($V{MOVIMENTO_DEVEDOR_TITULO})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{saldoSeguinte}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a" x="0" y="0" width="155" height="27"/>
+					<reportElement x="0" y="0" width="155" height="27" uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -164,7 +114,7 @@
 					<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TITULO" isBlankWhenNull="true">
-					<reportElement uuid="a35f421f-f7a8-4874-8f28-62c5d4484588" x="209" y="0" width="71" height="27" printWhenGroupChanges="TITULO"/>
+					<reportElement x="250" y="0" width="70" height="27" printWhenGroupChanges="TITULO" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -175,10 +125,10 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{QUANTIDADE_TITULO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3" x="280" y="0" width="62" height="27"/>
+					<reportElement x="320" y="0" width="70" height="27" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -189,10 +139,10 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_EMISSAO_TITULO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{valorEmissao}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="66b953ef-2962-41b9-951e-02589d771061" x="603" y="0" width="87" height="27"/>
+					<reportElement x="640" y="0" width="80" height="27" uuid="66b953ef-2962-41b9-951e-02589d771061"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -203,10 +153,10 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{CANCELAMENTO_TITULO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{cancelamento}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement uuid="f8264049-f6cc-47d0-9275-2e7f1fa4bb3a" x="155" y="0" width="54" height="27"/>
+					<reportElement x="155" y="0" width="95" height="27" uuid="f8264049-f6cc-47d0-9275-2e7f1fa4bb3a"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -217,140 +167,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{LEIS_TITULO}]]></textFieldExpression>
-				</textField>
-			</band>
-		</groupHeader>
-	</group>
-	<group name="SUBTITULO">
-		<groupExpression><![CDATA[$F{subtitulo}]]></groupExpression>
-		<groupHeader>
-			<band height="27">
-				<textField isBlankWhenNull="true">
-					<reportElement uuid="1b44edc3-5d2b-4316-8a24-4316f80df029" x="0" y="0" width="155" height="27"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{subtitulo}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="SUBTITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="aad4f4c3-8ed5-49ea-bf0d-7c4efb6ca43d" x="342" y="0" width="107" height="27"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_ANTERIOR_SUBTITULO}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="SUBTITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="dfec7213-9185-4649-81dc-1335b7a13127" x="449" y="0" width="82" height="27"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{MOVIMENTO_CREDOR_SUBTITULO}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="SUBTITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="9925b3d1-5970-411c-a726-36c45e89dc99" x="531" y="0" width="72" height="27"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{MOVIMENTO_DEVEDOR_SUBTITULO}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="SUBTITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="94000ed2-f9f2-4747-be5c-51cc540e1a99" x="690" y="0" width="112" height="27"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_ANTERIOR_SUBTITULO}.add($V{MOVIMENTO_CREDOR_SUBTITULO}).subtract($V{MOVIMENTO_DEVEDOR_SUBTITULO})]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="SUBTITULO" isBlankWhenNull="true">
-					<reportElement uuid="276c5302-68c4-4b12-a32c-839f68c02678" x="209" y="0" width="71" height="27" printWhenGroupChanges="TITULO"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{QUANTIDADE_SUBTITULO}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="SUBTITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="951b905e-f053-46c5-8e67-071d373e4ce0" x="280" y="0" width="62" height="27"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_EMISSAO_SUBTITULO}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="SUBTITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement uuid="7331612e-142d-4ab0-a1e2-ce4aedf07f1f" x="603" y="0" width="87" height="27"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{CANCELAMENTO_SUBTITULO}]]></textFieldExpression>
-				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement uuid="300dd8d3-71bb-4701-a42c-9fb5636fcd58" x="155" y="0" width="54" height="27"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{LEIS_SUBTITULO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{leis} + " - " +$F{dataDaLei}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -359,16 +176,16 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="150" splitType="Stretch">
+		<band height="112" splitType="Stretch">
 			<textField>
-				<reportElement uuid="f980721a-2884-4a56-b3fb-9074bce1b93b" x="0" y="10" width="802" height="20"/>
+				<reportElement x="0" y="10" width="802" height="20" uuid="f980721a-2884-4a56-b3fb-9074bce1b93b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SISTEMA DE AUDITORIA ELETRÔNICA - SAE"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="5106ac68-9687-4e87-a43a-c3412e1878ed" x="0" y="30" width="802" height="20" isRemoveLineWhenBlank="true">
+				<reportElement x="0" y="30" width="802" height="20" isRemoveLineWhenBlank="true" uuid="5106ac68-9687-4e87-a43a-c3412e1878ed">
 					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -377,52 +194,34 @@
 				<textFieldExpression><![CDATA["ENTE: "+ $P{ente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="32a2573b-b18a-4ab9-b470-ce4f00f2f05c" x="0" y="50" width="802" height="20" isRemoveLineWhenBlank="true">
-					<printWhenExpression><![CDATA[$P{orgao} != null]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["ÓRGÃO: "+ $P{orgao}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="db6ad213-fa1a-4e9b-94ae-df5688dc681f" x="0" y="70" width="802" height="20" isRemoveLineWhenBlank="true">
-					<printWhenExpression><![CDATA[$P{unidade} != null]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["UNIDADE: "+ $P{unidade}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="b5c6789f-89f1-4553-99f2-afe863d0dff6" x="0" y="110" width="802" height="20"/>
+				<reportElement x="0" y="70" width="802" height="20" uuid="b5c6789f-89f1-4553-99f2-afe863d0dff6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["ANEXO XVI - DEMONSTRAÇÃO DA DÍVIDA INTERNA FUNDADA"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="3c26636f-e35f-4201-b4a2-3534bdfe64e1" x="0" y="130" width="802" height="20"/>
+				<reportElement x="0" y="90" width="802" height="20" uuid="3c26636f-e35f-4201-b4a2-3534bdfe64e1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["PERÍODO: " + new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{dataInicio}) + " A " +  new SimpleDateFormat("dd/MM/yyyy").format($P{dataFim})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="bd9051a8-9792-4ccb-a31e-c77737dff345" x="0" y="90" width="802" height="20" isRemoveLineWhenBlank="true">
-					<printWhenExpression><![CDATA[$P{jurisdicionado} != null]]></printWhenExpression>
+				<reportElement x="0" y="50" width="802" height="20" isRemoveLineWhenBlank="true" uuid="335dd6bf-f55b-4714-9ece-55bfc71ad59d">
+					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["JURISDICIONADO: "+ $P{jurisdicionado}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
 	<columnHeader>
 		<band height="47" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="244e13af-d4b4-446b-bae9-c2ee9aa20639" mode="Transparent" x="155" y="24" width="54" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="155" y="24" width="95" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="244e13af-d4b4-446b-bae9-c2ee9aa20639"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -436,7 +235,7 @@
 				<text><![CDATA[LEIS (N° E DATA)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ea59d9c9-c998-4b00-a01c-42edaaecc89b" mode="Transparent" x="209" y="24" width="71" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="250" y="24" width="70" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="ea59d9c9-c998-4b00-a01c-42edaaecc89b"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -450,7 +249,7 @@
 				<text><![CDATA[QUANTIDADE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ff712ef9-f05e-4252-958a-57401e987135" mode="Transparent" x="280" y="24" width="62" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="320" y="24" width="70" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="ff712ef9-f05e-4252-958a-57401e987135"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -464,7 +263,7 @@
 				<text><![CDATA[VALOR DA EMISSÃO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="508c5153-1c46-4643-afe7-9c181bf2aac6" mode="Transparent" x="690" y="24" width="112" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="720" y="24" width="82" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="508c5153-1c46-4643-afe7-9c181bf2aac6"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -478,7 +277,7 @@
 				<text><![CDATA[VALOR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="4932a0f3-8188-4b7b-b791-076231206ac0" mode="Transparent" x="449" y="24" width="82" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="480" y="24" width="80" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="4932a0f3-8188-4b7b-b791-076231206ac0"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -492,7 +291,7 @@
 				<text><![CDATA[EMISSÃO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="e3a3513f-000d-42ed-a1ec-0773d50f5ca4" mode="Transparent" x="531" y="24" width="72" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="560" y="24" width="80" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="e3a3513f-000d-42ed-a1ec-0773d50f5ca4"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -506,7 +305,7 @@
 				<text><![CDATA[PAGAMENTO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="cacd5c3f-34d5-4732-9d63-72387813df3b" mode="Transparent" x="603" y="24" width="87" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="640" y="24" width="80" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="cacd5c3f-34d5-4732-9d63-72387813df3b"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -520,7 +319,7 @@
 				<text><![CDATA[CANCELAMENTO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="63729031-5b14-40bc-9820-aa83587b1f41" mode="Transparent" x="0" y="1" width="155" height="46" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="0" y="1" width="155" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="63729031-5b14-40bc-9820-aa83587b1f41"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -534,7 +333,7 @@
 				<text><![CDATA[TÍTULOS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="20616bb9-3377-4cef-a900-30c28b2832ca" mode="Transparent" x="155" y="1" width="187" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="155" y="1" width="235" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="20616bb9-3377-4cef-a900-30c28b2832ca"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -548,7 +347,7 @@
 				<text><![CDATA[AUTORIZAÇÕES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="4ced0248-6ceb-4ec1-8341-22a8a983cbd0" mode="Transparent" x="342" y="1" width="107" height="46" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="390" y="1" width="90" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="4ced0248-6ceb-4ec1-8341-22a8a983cbd0"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -562,7 +361,7 @@
 				<text><![CDATA[SALDO ANTERIOR EM CIRCULAÇÃO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="c9e25baa-5353-4662-ba5d-186a361806e8" mode="Transparent" x="449" y="1" width="241" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="480" y="1" width="240" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="c9e25baa-5353-4662-ba5d-186a361806e8"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -576,7 +375,7 @@
 				<text><![CDATA[MOVIMENTO NO EXERCÍCIO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="07a340ff-203a-477c-9b86-b9914e3d5d0f" mode="Transparent" x="690" y="1" width="112" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="720" y="1" width="82" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="07a340ff-203a-477c-9b86-b9914e3d5d0f"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -592,20 +391,18 @@
 		</band>
 	</columnHeader>
 	<pageFooter>
-		<band height="51" splitType="Stretch">
+		<band height="56" splitType="Stretch">
 			<textField>
-				<reportElement uuid="53d099b7-ec5c-4487-b709-3b69bdc42b14" x="690" y="31" width="72" height="20"/>
+				<reportElement x="690" y="31" width="72" height="20" uuid="53d099b7-ec5c-4487-b709-3b69bdc42b14"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement uuid="feac1ad8-3281-4167-af4a-36f54a1dd50e" x="762" y="31" width="40" height="20"/>
-				<textElement/>
+				<reportElement x="762" y="31" width="40" height="20" uuid="feac1ad8-3281-4167-af4a-36f54a1dd50e"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="2b98a614-ebf9-4893-a87b-fceeaf8a1818" x="0" y="31" width="434" height="20"/>
-				<textElement/>
+				<reportElement x="0" y="31" width="434" height="20" uuid="2b98a614-ebf9-4893-a87b-fceeaf8a1818"/>
 				<textFieldExpression><![CDATA["Emitido em " + new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
 			</textField>
 		</band>
