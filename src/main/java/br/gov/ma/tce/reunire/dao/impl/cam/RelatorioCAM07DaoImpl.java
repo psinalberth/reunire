@@ -30,8 +30,8 @@ public class RelatorioCAM07DaoImpl extends PrestacaoDaoImpl<RelatorioCAM07VO> im
 		"select " +
 			"unidade_id, " +
 			"(case " + 
-				"when length(cpf_cnpj_credor) = 11 then regexp_replace(cpf_cnpj_credor, '([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})', '\1.\2.\3-\4') " +
-				"when length(cpf_cnpj_credor) = 14 then regexp_replace(cpf_cnpj_credor, '([[:digit:]]{2})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{4})([[:digit:]]{2})', '\1.\2.\3/\4-\5') " +
+				"when length(cpf_cnpj_credor) = 11 then regexp_replace(cpf_cnpj_credor, '([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})', '\\1.\\2.\\3-\\4') " +
+				"when length(cpf_cnpj_credor) = 14 then regexp_replace(cpf_cnpj_credor, '([[:digit:]]{2})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{4})([[:digit:]]{2})', '\\1.\\2.\\3/\\4-\\5') " +
 				"else cpf_cnpj_credor " +
 			"end) cpf_cnpj_credor, upper(nome) nome, " +
 			"data_vencimento, valor_contrato, parcela " +

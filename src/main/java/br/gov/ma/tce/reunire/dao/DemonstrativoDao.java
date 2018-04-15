@@ -1,7 +1,6 @@
 package br.gov.ma.tce.reunire.dao;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,6 +11,7 @@ import br.gov.ma.tce.reunire.util.Lookup;
 
 public interface DemonstrativoDao<T> {
 	
+	@SuppressWarnings("all")
 	public List<T> recuperaDados(Map<String, Object> params);
 	
 	public String getNomeRelatorio();
