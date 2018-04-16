@@ -29,7 +29,7 @@ public class RelatorioCAM02DaoImpl extends PrestacaoDaoImpl<RelatorioCAM02VO> im
 		String sql = 
 				
 		"	select unidade_id, cnpj_concedente, cnpj_convenente, data_celebracao, " + 
-		"		valor, objeto, inicio_prazo, fim_prazo, situacao " +
+		"		valor, objeto, inicio_prazo, fim_prazo, situacao, cam02_id " +
 		"	from prestacao.cam02 cam " +
 		"	where cam.unidade_id in (:unidades) and " +
 		"	((:modulo is null) or (cam.modulo_id = :modulo)) ";
@@ -66,6 +66,7 @@ public class RelatorioCAM02DaoImpl extends PrestacaoDaoImpl<RelatorioCAM02VO> im
 			}
 			
 			dado.setSituacao(String.valueOf(row[8]));
+			dado.setId(Integer.parseInt(String.valueOf(row[9])));
 			
 			
 			dados.add(dado);

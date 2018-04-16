@@ -6,6 +6,7 @@ import br.gov.ma.tce.reunire.model.vo.generic.DemonstrativoVO;
 
 public class RelatorioCAM02VO extends DemonstrativoVO {
 	
+	private int id;
 	private String concedente;
 	private String convenente;
 	private String dataCelebracao;
@@ -15,6 +16,16 @@ public class RelatorioCAM02VO extends DemonstrativoVO {
 	private String fimPrazo;
 	private String situacao;
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getCodigoNaturezaReceita() {
 		return concedente;
 	}
