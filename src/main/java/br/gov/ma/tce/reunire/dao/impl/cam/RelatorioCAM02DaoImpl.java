@@ -54,13 +54,17 @@ public class RelatorioCAM02DaoImpl extends PrestacaoDaoImpl<RelatorioCAM02VO> im
 			dado.setConcedente(String.valueOf(row[1]));
 			dado.setConvenente(String.valueOf(row[2]));
 			
-			//dado.setDataCelebracao(getFormatador((Date) row[3]).toString());
+			dado.setDataCelebracao(getFormatador((Date) row[3]));
 			
 			
 			dado.setValor(row[4] != null ? new BigDecimal(row[4].toString()) : null);
 			dado.setObjeto(String.valueOf(row[5]));
-			//dado.setInicioPrazo(String.valueOf(row[6]));
-			//dado.setFimPrazo(String.valueOf(row[7]));
+			
+			if(row[6] != null && row[7] != null) {
+				dado.setInicioPrazo(getFormatador((Date) row[6]));
+				dado.setFimPrazo(getFormatador((Date) row[7]));
+			}
+			
 			dado.setSituacao(String.valueOf(row[8]));
 			
 			
@@ -70,12 +74,12 @@ public class RelatorioCAM02DaoImpl extends PrestacaoDaoImpl<RelatorioCAM02VO> im
 		return dados;
 	}
 	
-	public static Date getFormatador(Date data) {
+	public static String getFormatador(Date data) {
 		DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-		formatador.format(data);
-		return data;
+		String novaData = formatador.format(data);
+		return  novaData;
 	}
-
+	
 	@Override
 	public String getNomeRelatorio() {
 		return "relatoriocam02.jasper";
