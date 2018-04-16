@@ -34,7 +34,7 @@ left outer join (
 	group by
 		regexp_replace(bo.natureza_receita, '[.]', '', 'g')) bo on bo.nr = regexp_replace(vw.codigo_natureza_receita, '[.]', '', 'g')
 where
-	vw.codigo_natureza_receita ~ '^([17].[12345679]|[28].[123]|2.[45]|9.[7])' and vw.ativo = 'S' and
+	vw.codigo_natureza_receita ~ '^([17].[12345679]|[28].[123]|2.[45]|9.[7]).0.0.00.00' and vw.ativo = 'S' and
 		(not vw.codigo_natureza_receita ~ '^2.1.(1.4.06.00|2.3.07.00)')
 		
 union all
