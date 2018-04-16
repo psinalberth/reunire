@@ -8,7 +8,8 @@ import br.gov.ma.tce.reunire.model.vo.generic.DemonstrativoVO;
 public class RelatorioCAM03VO extends DemonstrativoVO {
 	
 	private Date dataAto;
-	private String tipoAto;
+	private String tipoCredito;
+	private String numeroAto;
 	private BigDecimal valor;
 	private BigDecimal dotacaoInicial;
 	
@@ -18,14 +19,22 @@ public class RelatorioCAM03VO extends DemonstrativoVO {
 
 	public void setDataAto(Date dataAto) {
 		this.dataAto = dataAto;
+	}	
+
+	public String getTipoCredito() {
+		return tipoCredito;
 	}
 
-	public String getTipoAto() {
-		return tipoAto;
+	public void setTipoCredito(String tipoCredito) {
+		this.tipoCredito = tipoCredito;
 	}
 
-	public void setTipoAto(String tipoAto) {
-		this.tipoAto = tipoAto;
+	public String getNumeroAto() {
+		return numeroAto;
+	}
+
+	public void setNumeroAto(String numeroAto) {
+		this.numeroAto = numeroAto;
 	}
 
 	public BigDecimal getValor() {
