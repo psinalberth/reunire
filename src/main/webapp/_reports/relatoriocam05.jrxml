@@ -38,7 +38,7 @@
 	<group name="TITULO">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 		<groupHeader>
-			<band height="29">
+			<band height="27">
 				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="110" height="27" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
 					<box>
@@ -144,7 +144,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="112" splitType="Stretch">
+		<band height="110" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="10" width="802" height="20" uuid="f980721a-2884-4a56-b3fb-9074bce1b93b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
