@@ -2,10 +2,10 @@ package br.gov.ma.tce.reunire.model.vo.cam;
 
 import java.math.BigDecimal;
 
-public class RelatorioCAM01VO {
+import br.gov.ma.tce.reunire.model.vo.generic.DemonstrativoVO;
+
+public class RelatorioCAM01VO extends DemonstrativoVO {
 	
-	private Integer idUnidade;
-	private String descricaoUnidade;
 	private String codigoNaturezaReceita;
 	private String descricao;
 	private BigDecimal valorAnoMenos3;
@@ -14,22 +14,6 @@ public class RelatorioCAM01VO {
 	private BigDecimal valorAno;
 	private BigDecimal valorAnoMais1;
 	private BigDecimal valorAnoMais2;
-	
-	public Integer getIdUnidade() {
-		return idUnidade;
-	}
-	
-	public void setIdUnidade(Integer idUnidade) {
-		this.idUnidade = idUnidade;
-	}
-	
-	public String getDescricaoUnidade() {
-		return descricaoUnidade;
-	}
-	
-	public void setDescricaoUnidade(String descricaoUnidade) {
-		this.descricaoUnidade = descricaoUnidade;
-	}
 	
 	public String getCodigoNaturezaReceita() {
 		return codigoNaturezaReceita;

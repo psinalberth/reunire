@@ -3,31 +3,14 @@ package br.gov.ma.tce.reunire.model.vo.cam;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class RelatorioCAM07VO {
+import br.gov.ma.tce.reunire.model.vo.generic.DemonstrativoVO;
+
+public class RelatorioCAM07VO extends DemonstrativoVO {
 	
-	private int idUnidade;
-	private String descricaoUnidade;
 	private String credor;
 	private Date dataVencimento;
 	private BigDecimal valorContrato;
-	
 	private BigDecimal parcelasResgatadas;
-
-	public int getIdUnidade() {
-		return idUnidade;
-	}
-
-	public void setIdUnidade(int idUnidade) {
-		this.idUnidade = idUnidade;
-	}
-
-	public String getDescricaoUnidade() {
-		return descricaoUnidade;
-	}
-
-	public void setDescricaoUnidade(String descricaoUnidade) {
-		this.descricaoUnidade = descricaoUnidade;
-	}
 
 	public String getCredor() {
 		return credor;

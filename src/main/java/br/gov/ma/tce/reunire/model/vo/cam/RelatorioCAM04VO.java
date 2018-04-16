@@ -1,28 +1,12 @@
 package br.gov.ma.tce.reunire.model.vo.cam;
 
-public class RelatorioCAM04VO {
+import br.gov.ma.tce.reunire.model.vo.generic.DemonstrativoVO;
+
+public class RelatorioCAM04VO extends DemonstrativoVO {
 	
-	private int idUnidade;
-	private String descricaoUnidade;
 	private String nomePovoado;
 	private String formaAcesso;
 	private Double distancia;
-
-	public int getIdUnidade() {
-		return idUnidade;
-	}
-
-	public void setIdUnidade(int idUnidade) {
-		this.idUnidade = idUnidade;
-	}
-
-	public String getDescricaoUnidade() {
-		return descricaoUnidade;
-	}
-
-	public void setDescricaoUnidade(String descricaoUnidade) {
-		this.descricaoUnidade = descricaoUnidade;
-	}
 
 	public String getNomePovoado() {
 		return nomePovoado;

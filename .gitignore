@@ -1,1 +1,4 @@
 /target/
+/src/main/webapp/_reports/.gitignore
+/src/main/webapp/_reports/.project
+/src/main/webapp/_reports/.settings/
