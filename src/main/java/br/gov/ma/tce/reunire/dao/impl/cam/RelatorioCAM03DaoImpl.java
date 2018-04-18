@@ -1,4 +1,3 @@
-
 package br.gov.ma.tce.reunire.dao.impl.cam;
 
 import java.math.BigDecimal;
@@ -23,7 +22,7 @@ public class RelatorioCAM03DaoImpl extends PrestacaoDaoImpl<RelatorioCAM03VO> im
 	@Override
 	public List<RelatorioCAM03VO> recuperaDados(Map<String, Object> params) {
 		
-		String sql = "select cam03.unidade_id, to_char(cam03.data_ato,'dd/MM/yyyy') data_ato, CAM03.tipo_credito tipo_credito, upper(cam03.tipo_ato) ||' nº '|| LPAD(cam03.numero_ato, '8', '0') numero_ato, cam03.valor valor, cam03.dotacao_inicial dotacao_inicial " + 
+		String sql = "select cam03.unidade_id, date(cam03.data_ato) data_ato, CAM03.tipo_credito tipo_credito, upper(cam03.tipo_ato) ||' nº '|| LPAD(cam03.numero_ato, '8', '0') numero_ato, cam03.valor valor, cam03.dotacao_inicial dotacao_inicial " + 
 				" from prestacao.cam03 cam03 " +
 				"where cam03.unidade_id in(:unidade) " +
 				" group by cam03.unidade_id, data_ato, tipo_credito,  numero_ato, cam03.tipo_ato, valor, dotacao_inicial " +
@@ -48,13 +47,13 @@ public class RelatorioCAM03DaoImpl extends PrestacaoDaoImpl<RelatorioCAM03VO> im
 				}
 			}
 			
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 			Date data = null;
 			try {
 				data = formato.parse(l[1].toString());
 			} catch (ParseException e) {
 				e.printStackTrace();
-			}
+			}			
 			relatorio.setDataAto(data);
 			
 			relatorio.setTipoCredito(l[2].toString());
