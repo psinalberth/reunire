@@ -1,6 +1,10 @@
 package br.gov.ma.tce.reunire.dao;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -68,5 +72,21 @@ public interface DemonstrativoDao<T> {
 	 */
 	public default List<Integer> extrairIds(List<UnidadeVO> unidades) {
 		return unidades.stream().map(unidade -> unidade.getId()).collect(Collectors.toList());
+	}
+	
+	public default Date toDate(Object obj) {
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(((Timestamp) obj).getTime());
+		
+		return calendar.getTime();
+	}
+	
+	public default BigDecimal toBigDecimal(Object obj) {
+		
+		if (obj == null)
+			return null;
+		
+		return new BigDecimal(String.valueOf(obj));
 	}
 }
