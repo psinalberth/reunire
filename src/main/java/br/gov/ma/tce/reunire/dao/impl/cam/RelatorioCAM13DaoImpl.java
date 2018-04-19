@@ -26,10 +26,7 @@ public class RelatorioCAM13DaoImpl extends PrestacaoDaoImpl<RelatorioCAM13VO> im
 				
 		"select " + 
 		"	unidade_id, nome, " + 
-		"	(case  " + 
-		"		when length(cpf) = 11 then regexp_replace(cpf, '([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})', '\\1.\\2.\\3-\\4') " + 
-		"		else cpf " + 
-		"	end)cpf,  " + 
+		"	regexp_replace(lpad(cpf, 11, '0'), '([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})', '\\1.\\2.\\3-\\4') cpf, " +  
 		"	data_inscricao, data_concessao, tipo_beneficio, provento " + 
 		"from  " + 
 		"	prestacao.cam13 cam " + 
