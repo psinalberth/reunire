@@ -1,6 +1,9 @@
 package br.gov.ma.tce.reunire.util;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -43,5 +46,13 @@ public class Util {
 		}
 		
 		return total;
+	}
+	
+	public static Date toDate(Object obj) {
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(((Timestamp) obj).getTime());
+		
+		return calendar.getTime();
 	}
 }
