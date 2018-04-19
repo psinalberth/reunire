@@ -1,5 +1,7 @@
 package br.gov.ma.tce.reunire.dao.impl.bo;
 
+import static br.gov.ma.tce.reunire.util.Util.soma;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -32,7 +34,66 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
 		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);
 		
-		String sql = null;
+		String sql = 
+				
+		"select " + 
+			"regexp_replace(bo.natureza_receita, '[.]', '', 'g') nr, " + 
+			"bo.previsao_inicial val_pin, bo.previsao_atualizada val_pat, bo.receita_realizada val_rre " + 
+		"from " + 
+			"prestacao.bo01 bo " +
+		"where " + 
+			"bo.unidade_id in (:unidades) and " +
+			"((:modulo is null) or (bo.modulo_id = :modulo)) and " +
+			"regexp_replace(bo.natureza_receita, '[.]', '', 'g') ~ '^([17][12345679]|[28][123]|2[45]|9[7])' and " +
+			"(not regexp_replace(bo.natureza_receita, '[.]', '', 'g') ~ '^21(140600|230700)') " +
+		"order by " +
+			"regexp_replace(bo.natureza_receita, '[.]', '', 'g')";
+		
+		List<Object[]> rows = entityManager.createNativeQuery(sql)
+				.setParameter("unidades", listaIdsUnidades)
+				.setParameter("modulo", 1)
+				.getResultList();
+		
+		List<RelatorioB01VO> dados = new ArrayList<RelatorioB01VO>();
+		
+		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Receita Tributária", 
+					  soma("^[17]1", rows, 1), soma("^[17]1", rows, 2), soma("^[17]1", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Receita de Contribuições", 
+				  soma("^[17]2", rows, 1), soma("^[17]2", rows, 2), soma("^[17]2", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Receita Patrimonial", 
+				  soma("^[17]3", rows, 1), soma("^[17]3", rows, 2), soma("^[17]3", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Receita Agropecuária", 
+				  soma("^[17]4", rows, 1), soma("^[17]4", rows, 2), soma("^[17]4", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Receita Industrial", 
+				  soma("^[17]5", rows, 1), soma("^[17]5", rows, 2), soma("^[17]5", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Receita de Serviços", 
+				  soma("^[17]6", rows, 1), soma("^[17]6", rows, 2), soma("^[17]6", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Transferências Correntes", 
+				  soma("^[179]7", rows, 1), soma("^[179]7", rows, 2), soma("^[179]7", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Outras Receitas Correntes", 
+				  soma("^[17]9", rows, 1), soma("^[17]9", rows, 2), soma("^[17]9", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas de Capital (II)", "Operações de Crédito", 
+				  soma("^21", rows, 1), soma("^21", rows, 2), soma("^21", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas de Capital (II)", "Alienação de Bens", 
+				  soma("^[28]2", rows, 1), soma("^[28]2", rows, 2), soma("^[28]2", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas de Capital (II)", "Amortizações de Empréstimos", 
+				  soma("^[28]3", rows, 1), soma("^[28]3", rows, 2), soma("^[28]3", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas de Capital (II)", "Transferências de Capital", 
+				  soma("^24", rows, 1), soma("^24", rows, 2), soma("^24", rows, 3)));
+		
+		dados.add(new RelatorioB01VO("Receitas de Capital (II)", "Outras Receitas de Capital", 
+				  soma("^25", rows, 1), soma("^25", rows, 2), soma("^25", rows, 3)));
 		
 		try {
 			sql = new String(Files.readAllBytes(Paths.get(this.getClass().getResource("relatoriobo01.sql").getFile())));
@@ -40,9 +101,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 			e.printStackTrace();
 		}
 		
-		List<Object[]> rows = entityManager.createNativeQuery(sql).setParameter("unidades", listaIdsUnidades).getResultList();
-		
-		List<RelatorioB01VO> dados = new ArrayList<RelatorioB01VO>(rows.size());
+		rows = entityManager.createNativeQuery(sql).setParameter("unidades", listaIdsUnidades).getResultList();
 		
 		for (Object[] row : rows) {
 			

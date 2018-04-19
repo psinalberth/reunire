@@ -3,44 +3,6 @@ select
 from (
 select
 	'TOTAL (VII) = (V + VI)' total,
-	'SUBTOTAL DAS RECEITAS (III) = (I + II)' total_categoria,
-	(case when vw.codigo_natureza_receita ~ '^[179]' then 'Receitas Correntes (I)' else 'Receitas de Capital (II)' end) categoria, 
-	(case 
-		when vw.codigo_natureza_receita ~ '^[17].1' then 'Receita Tributária'
-		when vw.codigo_natureza_receita ~ '^[17].2' then 'Receita de Contribuições'
-		when vw.codigo_natureza_receita ~ '^[17].3' then 'Receita Patrimonial'
-		when vw.codigo_natureza_receita ~ '^[17].4' then 'Receita Agropecuária'
-		when vw.codigo_natureza_receita ~ '^[17].5' then 'Receita Industrial'
-		when vw.codigo_natureza_receita ~ '^[17].6' then 'Receita de Serviços'
-		when vw.codigo_natureza_receita ~ '^[179].7' then 'Transferências Correntes'
-		when vw.codigo_natureza_receita ~ '^[17].9' then 'Outras Receitas Correntes'
-		when vw.codigo_natureza_receita ~ '^2.1' then 'Operações de Crédito'
-		when vw.codigo_natureza_receita ~ '^[28].2' then 'Alienação de Bens'
-		when vw.codigo_natureza_receita ~ '^[28].3' then 'Amortizações de Empréstimos'
-		when vw.codigo_natureza_receita ~ '^2.4' then 'Transferências de Capital'
-		when vw.codigo_natureza_receita ~ '^2.5' then 'Outras Receitas de Capital'
-	end) origem, '' especie,
-	coalesce(bo.val_pin, 0) val_pin, coalesce(bo.val_pat, 0) val_pat, coalesce(bo.val_rre, 0) val_rre
-from 
-	sae.vw_natureza_receita vw 
-left outer join (
-	select 
-		regexp_replace(bo.natureza_receita, '[.]', '', 'g') nr, 
-		sum(bo.previsao_inicial) val_pin, sum(bo.previsao_atualizada) val_pat, sum(bo.receita_realizada) val_rre 
-	from 
-		prestacao.bo01 bo
-	where 
-		bo.unidade_id in (:unidades)
-	group by
-		regexp_replace(bo.natureza_receita, '[.]', '', 'g')) bo on bo.nr = regexp_replace(vw.codigo_natureza_receita, '[.]', '', 'g')
-where
-	vw.codigo_natureza_receita ~ '^([17].[12345679]|[28].[123]|2.[45]|9.[7]).0.0.00.00' and vw.ativo = 'S' and
-		(not vw.codigo_natureza_receita ~ '^2.1.(1.4.06.00|2.3.07.00)')
-		
-union all
-
-select
-	'TOTAL (VII) = (V + VI)' total,
 	'SUBTOTAL COM REFINANCIAMENTO (V) =  (III + IV)' total_categoria, 'Operações de Crédito/Refinanciamento (IV)' categoria, 
 	(case when vw.codigo_natureza_receita like '2.1.1.%' then 'Operações de Crédito Internas' else 'Operações de Crédito Externas' end) origem,
 	(case when vw.codigo_natureza_receita ~ '2.1.(1.1|2.2).01.00' then 'Mobiliária' else 'Contratual' end) especie,
