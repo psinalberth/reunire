@@ -60,14 +60,33 @@ public class RelatorioCAM16DaoImpl extends PrestacaoDaoImpl<RelatorioCAM16VO> im
 			dado.setDataInstauracao(getFormatador((Date) row[4]));
 			dado.setValorDoDano(toBigDecimal(row[5]));
 			dado.setSituacao(String.valueOf(row[6]));
-			dado.setCpf1(String.valueOf(row[7]));
-			dado.setCpf2(String.valueOf(row[8]));
-			dado.setCpf3(String.valueOf(row[9]));
-			dado.setCpf4(String.valueOf(row[10]));
-			dado.setCpf5(String.valueOf(row[11]));
-			dado.setCpf6(String.valueOf(row[12]));
-			dado.setCpf7(String.valueOf(row[13]));
-			dado.setCpf8(String.valueOf(row[14]));
+			
+			if(row[7] != null) {
+				dado.setCpf1(String.valueOf(row[7]));
+				
+			}else if(row[8] != null){
+				dado.setCpf2(String.valueOf(row[8]));
+				
+			}else if(row[9] != null) {
+				dado.setCpf3(String.valueOf(row[9]));
+				
+			}else if(row[10] != null) {
+				dado.setCpf4(String.valueOf(row[10]));
+				
+			}else if(row[11] != null) {
+				dado.setCpf5(String.valueOf(row[11]));
+				
+			}else if(row[12] != null) {
+				dado.setCpf6(String.valueOf(row[12]));
+				
+			}else if(row[13] != null) {
+				dado.setCpf7(String.valueOf(row[13]));
+				
+			}else if(row[14] != null) {	
+				dado.setCpf8(String.valueOf(row[14]));
+			
+			}
+			
 			
 			dados.add(dado);
 		}
