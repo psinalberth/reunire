@@ -38,6 +38,9 @@
 	<field name="cpf3" class="java.lang.String"/>
 	<field name="cpf4" class="java.lang.String"/>
 	<field name="cpf5" class="java.lang.String"/>
+	<field name="cpf6" class="java.lang.String"/>
+	<field name="cpf7" class="java.lang.String"/>
+	<field name="cpf8" class="java.lang.String"/>
 	<group name="UNIDADE">
 		<groupHeader>
 			<band height="76">
@@ -270,7 +273,7 @@
 		<groupHeader>
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf2} != null]]></printWhenExpression>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF2" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="110" height="27" uuid="88dfb7d5-5935-487d-98bd-c05f100bf483"/>
 					<box>
 						<pen lineWidth="0.5"/>
@@ -376,7 +379,7 @@
 		<groupHeader>
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf3} != null]]></printWhenExpression>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF3" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="110" height="27" uuid="e546d8ea-82a7-404b-a003-28e9808c7dcd"/>
 					<box>
 						<pen lineWidth="0.5"/>
@@ -482,7 +485,7 @@
 		<groupHeader>
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf4} != null]]></printWhenExpression>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF4" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="110" height="27" uuid="c2db276b-553c-49c9-9c8b-3fcbf9450be9"/>
 					<box>
 						<pen lineWidth="0.5"/>
@@ -588,7 +591,7 @@
 		<groupHeader>
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf5} != null]]></printWhenExpression>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF5" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="110" height="27" uuid="947585cf-f1de-45ae-9f0b-909697a8cadb"/>
 					<box>
 						<pen lineWidth="0.5"/>
@@ -674,6 +677,324 @@
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement x="130" y="0" width="120" height="27" uuid="b4da845d-85fc-42b0-933d-3e0e69b88cf6"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="CPF6">
+		<groupExpression><![CDATA[$F{cpf6}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<printWhenExpression><![CDATA[$F{cpf6} != null]]></printWhenExpression>
+				<textField evaluationTime="Group" evaluationGroup="CPF6" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="440" y="0" width="110" height="27" uuid="3591c8b7-f397-47cf-b21a-370c2e7ac97e"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cpf6}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="550" y="0" width="120" height="27" uuid="329ee1eb-388e-48c8-83b0-8e12f30587ec"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="670" y="0" width="130" height="27" uuid="5e90319d-02a3-4287-b1f7-d17b04051bba"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="130" height="27" uuid="a45dbdf8-f309-4e32-928a-c897f06147f3"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
+					<reportElement x="250" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="107a725f-543f-4c73-ad4c-da6a101dc9ce"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="350" y="0" width="90" height="27" uuid="299007d9-41a6-44ae-ae98-349d5c5f1047"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="130" y="0" width="120" height="27" uuid="29e3012f-837e-4758-961a-bbf8dbdeb849"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="CPF7">
+		<groupExpression><![CDATA[$F{cpf7}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<printWhenExpression><![CDATA[$F{cpf7} != null]]></printWhenExpression>
+				<textField evaluationTime="Group" evaluationGroup="CPF7" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="440" y="0" width="110" height="27" uuid="df031b41-4414-4ea9-985b-a13792e2301a"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cpf7}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="550" y="0" width="120" height="27" uuid="66f7c385-2a8f-440c-8305-93cf4b2eb000"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="670" y="0" width="130" height="27" uuid="1ad9a7e7-32ba-4722-8c2a-87a22c4d8d86"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="130" height="27" uuid="d65f2a34-5aa7-4970-a62a-9c3916b92adc"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
+					<reportElement x="250" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="75da609a-5fc3-484d-b97a-74652435435b"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="350" y="0" width="90" height="27" uuid="c3b348de-1319-4650-ae59-c2298443a0e1"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="130" y="0" width="120" height="27" uuid="842a6035-ca86-4677-9b91-9afd10ded8f1"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="CPF8">
+		<groupExpression><![CDATA[$F{cpf8} != null]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<printWhenExpression><![CDATA[$F{cpf8} != null]]></printWhenExpression>
+				<textField evaluationTime="Group" evaluationGroup="CPF8" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="440" y="0" width="110" height="27" uuid="af4ff028-17e3-43a8-9e0a-d46781ecf98c"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cpf8}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="550" y="0" width="120" height="27" uuid="2c067cee-091d-495f-ae44-a9bdf2f6d83b"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="670" y="0" width="130" height="27" uuid="8ea1180e-6a5c-4057-881f-52e6269dab11"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="130" height="27" uuid="200c98cd-ced3-4278-8f1f-030ea72d881f"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
+					<reportElement x="250" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="a7835692-ef0f-4675-a91b-4b459dc5ff5c"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="350" y="0" width="90" height="27" uuid="936f16a7-c01e-4edd-9cb6-e2d8981e974e"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="130" y="0" width="120" height="27" uuid="47671fd4-e1da-493e-ad15-a1ef792c829d"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
