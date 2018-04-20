@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.0.final using JasperReports Library version 6.5.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demonstrativo_cam002" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a20000c8-8a2f-4e12-b0b2-6a03fcf39ca9">
+	<property name="ireport.zoom" value="0.9982500000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<parameter name="ente" class="java.lang.String"/>
+	<parameter name="dataInicio" class="java.util.Date"/>
+	<parameter name="dataFim" class="java.util.Date"/>
+	<parameter name="conexaoSaePlan" class="java.sql.Connection"/>
+	<parameter name="unidade" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="numeroProcesso" class="java.lang.String">
+		<fieldDescription><![CDATA[numeroProcesso]]></fieldDescription>
+	</field>
+	<field name="dataDoFato" class="java.lang.String">
+		<fieldDescription><![CDATA[dataDoFato]]></fieldDescription>
+	</field>
+	<field name="cpf1" class="java.lang.String">
+		<fieldDescription><![CDATA[cpf1]]></fieldDescription>
+	</field>
+	<field name="valorDoDano" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[valorDoDano]]></fieldDescription>
+	</field>
+	<field name="situacao" class="java.lang.String">
+		<fieldDescription><![CDATA[situacao]]></fieldDescription>
+	</field>
+	<field name="anoProcesso" class="java.lang.String">
+		<fieldDescription><![CDATA[anoProcesso]]></fieldDescription>
+	</field>
+	<field name="idUnidade" class="java.lang.Integer"/>
+	<field name="dataInstauracao" class="java.lang.String">
+		<fieldDescription><![CDATA[dataInstauracao]]></fieldDescription>
+	</field>
+	<field name="cpf2" class="java.lang.String"/>
+	<field name="cpf3" class="java.lang.String"/>
+	<field name="cpf4" class="java.lang.String"/>
+	<field name="cpf5" class="java.lang.String"/>
+	<group name="UNIDADE">
+		<groupHeader>
+			<band height="76">
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="30" width="130" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="63729031-5b14-40bc-9820-aa83587b1f41"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[N° DO PROCESSO¹]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="130" y="30" width="120" height="45" forecolor="#000000" backcolor="#FFFFFF" uuid="244e13af-d4b4-446b-bae9-c2ee9aa20639">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ANO DO PROCESSO¹]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="250" y="30" width="100" height="45" forecolor="#000000" backcolor="#FFFFFF" uuid="ea59d9c9-c998-4b00-a01c-42edaaecc89b">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DATA DO FATO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="350" y="30" width="90" height="45" forecolor="#000000" backcolor="#FFFFFF" uuid="ff712ef9-f05e-4252-958a-57401e987135">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DATA INSTAURAÇÃO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="440" y="30" width="110" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="4ced0248-6ceb-4ec1-8341-22a8a983cbd0"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CPF²]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="550" y="30" width="120" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="4932a0f3-8188-4b7b-b791-076231206ac0"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VALOR DO DANO³]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="670" y="30" width="130" height="45" forecolor="#000000" backcolor="#FFFFFF" uuid="e3a3513f-000d-42ed-a1ec-0773d50f5ca4">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SITUAÇÃO]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="10" width="802" height="20" isRemoveLineWhenBlank="true" uuid="8f7d0784-26bc-4aea-a786-7f2bdf7192de">
+						<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="CPF1">
+		<groupExpression><![CDATA[$F{cpf1}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<printWhenExpression><![CDATA[$F{cpf1} != null]]></printWhenExpression>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="440" y="0" width="110" height="27" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cpf1}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="550" y="0" width="120" height="27" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="670" y="0" width="130" height="27" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="130" height="27" uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
+					<reportElement x="250" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="350" y="0" width="90" height="27" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="130" y="0" width="120" height="27" uuid="f8264049-f6cc-47d0-9275-2e7f1fa4bb3a"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="CPF2">
+		<groupExpression><![CDATA[$F{cpf2}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<printWhenExpression><![CDATA[$F{cpf2} != null]]></printWhenExpression>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="440" y="0" width="110" height="27" uuid="88dfb7d5-5935-487d-98bd-c05f100bf483"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cpf2}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="550" y="0" width="120" height="27" uuid="88759cc3-e94b-478e-800d-c67333fc320f"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="670" y="0" width="130" height="27" uuid="6f9d715d-9b68-4a0b-b1c6-1535c256155a"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="130" height="27" uuid="f4d58b18-a2b9-4544-b5a1-82878b31d66d"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
+					<reportElement x="250" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="f822d3ba-ad23-411c-acac-e08f51b8f401"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="350" y="0" width="90" height="27" uuid="a0fb8c19-9f12-474d-bced-b99104dbd42e"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="130" y="0" width="120" height="27" uuid="3f6a108a-f0e4-424f-8fc2-d6a27fe94664"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="CPF3">
+		<groupExpression><![CDATA[$F{cpf3}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<printWhenExpression><![CDATA[$F{cpf3} != null]]></printWhenExpression>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="440" y="0" width="110" height="27" uuid="e546d8ea-82a7-404b-a003-28e9808c7dcd"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cpf3}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="550" y="0" width="120" height="27" uuid="e5df3245-d159-4ead-9dc1-e0889bbf257e"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="670" y="0" width="130" height="27" uuid="fc36359f-4f03-447b-b0c8-5c10d7ff5c69"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="130" height="27" uuid="783cc87b-223f-487e-b2af-923e664db108"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
+					<reportElement x="250" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="70a62e1f-1835-4d97-a3a6-6ed519912b2b"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="350" y="0" width="90" height="27" uuid="c245c6e9-e88b-4132-a892-57360202bf37"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="130" y="0" width="120" height="27" uuid="97b15e53-643b-40d6-8f80-faee28b63e68"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="CPF4">
+		<groupExpression><![CDATA[$F{cpf4}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<printWhenExpression><![CDATA[$F{cpf4} != null]]></printWhenExpression>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="440" y="0" width="110" height="27" uuid="c2db276b-553c-49c9-9c8b-3fcbf9450be9"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cpf4}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="550" y="0" width="120" height="27" uuid="1d33d78d-051d-4931-9fb5-99b9bb9b26ec"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="670" y="0" width="130" height="27" uuid="11601aba-2864-4298-8146-e7623eadaced"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="130" height="27" uuid="00462e89-5ca8-4f25-8f98-0c9929c12485"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
+					<reportElement x="250" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="2785dee5-df8c-4b30-8012-4bccf8641e96"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="350" y="0" width="90" height="27" uuid="518b792b-d2ad-4168-9324-58325b65324b"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="130" y="0" width="120" height="27" uuid="e00d4f68-4f2a-4fb0-b0cc-2f6fca82df17"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="CPF5">
+		<groupExpression><![CDATA[$F{cpf5}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<printWhenExpression><![CDATA[$F{cpf5} != null]]></printWhenExpression>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="440" y="0" width="110" height="27" uuid="947585cf-f1de-45ae-9f0b-909697a8cadb"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cpf5}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="550" y="0" width="120" height="27" uuid="e2716819-efde-4264-9ff9-a6c336087e5d"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="670" y="0" width="130" height="27" uuid="75b890a6-4a21-49a9-9dc5-f2b74455310a"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="130" height="27" uuid="407c1975-64e2-4d95-988f-727a70bb001b"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
+					<reportElement x="250" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="dce10a74-ed96-403c-8cdf-b228d070f803"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="350" y="0" width="90" height="27" uuid="e562a80f-390c-4981-a419-23b886c45e15"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="130" y="0" width="120" height="27" uuid="b4da845d-85fc-42b0-933d-3e0e69b88cf6"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="802" height="20" uuid="f980721a-2884-4a56-b3fb-9074bce1b93b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SISTEMA DE AUDITORIA ELETRÔNICA - SAE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="30" width="802" height="20" isRemoveLineWhenBlank="true" uuid="5106ac68-9687-4e87-a43a-c3412e1878ed">
+					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ENTE: "+ $P{ente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="70" width="802" height="20" uuid="b5c6789f-89f1-4553-99f2-afe863d0dff6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DEMONSTRATIVO N° 18: TOMADAS DE CONTAS ESPECIAIS INSTAURADAS"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="50" width="802" height="20" isRemoveLineWhenBlank="true" uuid="335dd6bf-f55b-4714-9ece-55bfc71ad59d">
+					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="56" splitType="Stretch">
+			<textField>
+				<reportElement x="690" y="31" width="72" height="20" uuid="53d099b7-ec5c-4487-b709-3b69bdc42b14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="31" width="40" height="20" uuid="feac1ad8-3281-4167-af4a-36f54a1dd50e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="31" width="434" height="20" uuid="2b98a614-ebf9-4893-a87b-fceeaf8a1818"/>
+				<textFieldExpression><![CDATA["Emitido em " + new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="61" splitType="Stretch"/>
+	</summary>
+</jasperReport>
