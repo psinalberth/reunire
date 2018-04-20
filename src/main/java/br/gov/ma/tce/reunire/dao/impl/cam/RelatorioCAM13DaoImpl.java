@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 
 import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
 import br.gov.ma.tce.reunire.dao.impl.PrestacaoDaoImpl;
-import br.gov.ma.tce.reunire.model.vo.RelatorioCAM13VO;
+import br.gov.ma.tce.reunire.model.vo.cam.RelatorioCAM13VO;
 import br.gov.ma.tce.reunire.model.vo.gestor.UnidadeVO;
 
 @Stateless
