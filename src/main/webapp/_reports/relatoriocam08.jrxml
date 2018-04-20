@@ -33,7 +33,7 @@
 						<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="Arial" size="11" isBold="true"/>
+						<font fontName="DejaVu Sans" size="11" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade}]]></textFieldExpression>
 				</textField>
@@ -47,7 +47,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[U.E]]></text>
 				</staticText>
@@ -61,7 +61,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[ENDEREÇO]]></text>
 				</staticText>
@@ -77,7 +77,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[CAPACIDADE DE ALUNOS NO ENSINO PRÉ-ESCOLAR]]></text>
 				</staticText>
@@ -93,7 +93,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[CAPACIDADE DE ALUNOS NO ENSINO FUDAMENTAL]]></text>
 				</staticText>
@@ -109,7 +109,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[CAPACIDADE DE ALUNOS NO ENSINO MÉDIO]]></text>
 				</staticText>
@@ -123,7 +123,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[N° DE SALAS DE AULA]]></text>
 				</staticText>
@@ -137,7 +137,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[N ° DE LAB.]]></text>
 				</staticText>
@@ -153,7 +153,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[N° DE BIBLIOTECAS]]></text>
 				</staticText>
@@ -169,7 +169,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[N° DE QUADRAS]]></text>
 				</staticText>
@@ -190,7 +190,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numeroSalaDeAula}]]></textFieldExpression>
 				</textField>
@@ -204,7 +204,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numeroLaboratorio}]]></textFieldExpression>
 				</textField>
@@ -218,7 +218,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numeroBiblioteca}]]></textFieldExpression>
 				</textField>
@@ -232,7 +232,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{unidadeEnsino}]]></textFieldExpression>
 				</textField>
@@ -246,7 +246,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{capacidadeAlunosFundamental}]]></textFieldExpression>
 				</textField>
@@ -260,7 +260,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{capacidadeAlunosEnsinoMedio}]]></textFieldExpression>
 				</textField>
@@ -274,7 +274,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{capacidadeAlunosPreEscolar}]]></textFieldExpression>
 				</textField>
@@ -288,7 +288,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numeroQuadraEsporte}]]></textFieldExpression>
 				</textField>
@@ -302,7 +302,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
 				</textField>
@@ -317,7 +317,7 @@
 			<textField>
 				<reportElement x="0" y="10" width="802" height="20" uuid="f980721a-2884-4a56-b3fb-9074bce1b93b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true"/>
+					<font fontName="DejaVu Sans" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SISTEMA DE AUDITORIA ELETRÔNICA - SAE"]]></textFieldExpression>
 			</textField>
@@ -326,14 +326,14 @@
 					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true"/>
+					<font fontName="DejaVu Sans" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["ENTE: "+ $P{ente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="70" width="802" height="20" uuid="b5c6789f-89f1-4553-99f2-afe863d0dff6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true"/>
+					<font fontName="DejaVu Sans" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["DEMONSTRATIVO N° 10: UNIDADES DE ENSINO (U.E.)"]]></textFieldExpression>
 			</textField>
@@ -342,7 +342,7 @@
 					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true"/>
+					<font fontName="DejaVu Sans" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
 			</textField>

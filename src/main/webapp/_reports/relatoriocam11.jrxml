@@ -58,7 +58,7 @@
 						<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="Arial" size="11" isBold="true"/>
+						<font fontName="DejaVu Sans" size="11" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade}]]></textFieldExpression>
 				</textField>
@@ -72,7 +72,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[DESPESA COM PESSOAL]]></text>
 				</staticText>
@@ -86,7 +86,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[QUANT. ANO X-1]]></text>
 				</staticText>
@@ -102,7 +102,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[VL. PAGO ANO X-1]]></text>
 				</staticText>
@@ -118,7 +118,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[QUANT. ANO X]]></text>
 				</staticText>
@@ -134,7 +134,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[VALOR PAGO ANO X]]></text>
 				</staticText>
@@ -148,7 +148,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[QUANT. ANO X+1]]></text>
 				</staticText>
@@ -162,7 +162,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[VL. PAGO ANO X+1]]></text>
 				</staticText>
@@ -178,7 +178,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[QUANT. ANO X+2]]></text>
 				</staticText>
@@ -194,7 +194,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<text><![CDATA[VL. PAGO ANO X+2]]></text>
 				</staticText>
@@ -215,7 +215,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeEfetivoAnoMais1}]]></textFieldExpression>
 				</textField>
@@ -229,7 +229,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorEfetivoAnoMais1}]]></textFieldExpression>
 				</textField>
@@ -243,7 +243,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeEfetivoAnoMais2}]]></textFieldExpression>
 				</textField>
@@ -257,7 +257,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{efetivo}]]></textFieldExpression>
 				</textField>
@@ -271,7 +271,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeEfetivo}]]></textFieldExpression>
 				</textField>
@@ -285,7 +285,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorEfetivo}]]></textFieldExpression>
 				</textField>
@@ -299,7 +299,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorEfetivoAnoMenos1}]]></textFieldExpression>
 				</textField>
@@ -313,7 +313,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorEfetivoAnoMais2}]]></textFieldExpression>
 				</textField>
@@ -327,7 +327,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeEfetivoAnoMenos1}]]></textFieldExpression>
 				</textField>
@@ -347,7 +347,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{comissionado}]]></textFieldExpression>
 				</textField>
@@ -361,7 +361,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionadoAnoMenos1}]]></textFieldExpression>
 				</textField>
@@ -375,7 +375,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionadoAnoMenos1}]]></textFieldExpression>
 				</textField>
@@ -389,7 +389,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionado}]]></textFieldExpression>
 				</textField>
@@ -403,7 +403,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionado}]]></textFieldExpression>
 				</textField>
@@ -417,7 +417,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionadoAnoMais1}]]></textFieldExpression>
 				</textField>
@@ -431,7 +431,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionadoAnoMais1}]]></textFieldExpression>
 				</textField>
@@ -445,7 +445,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionadoAnoMais2}]]></textFieldExpression>
 				</textField>
@@ -459,7 +459,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionadoAnoMais2}]]></textFieldExpression>
 				</textField>
@@ -479,7 +479,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{temporario}]]></textFieldExpression>
 				</textField>
@@ -493,7 +493,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeTemporarioAnoMenos1}]]></textFieldExpression>
 				</textField>
@@ -507,7 +507,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporarioAnoMenos1}]]></textFieldExpression>
 				</textField>
@@ -521,7 +521,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeTemporario}]]></textFieldExpression>
 				</textField>
@@ -535,7 +535,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporario}]]></textFieldExpression>
 				</textField>
@@ -549,7 +549,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionadoAnoMais1}]]></textFieldExpression>
 				</textField>
@@ -563,7 +563,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporarioAnoMais1}]]></textFieldExpression>
 				</textField>
@@ -577,7 +577,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionadoAnoMais2}]]></textFieldExpression>
 				</textField>
@@ -591,7 +591,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporarioAnoMais2}]]></textFieldExpression>
 				</textField>
@@ -611,7 +611,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{rcl}]]></textFieldExpression>
 				</textField>
@@ -625,7 +625,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{receitaLiquidaAnoMenos1}]]></textFieldExpression>
 				</textField>
@@ -639,7 +639,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{receitaLiquida}]]></textFieldExpression>
 				</textField>
@@ -653,7 +653,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{receitaLiquidaAnoMais1}]]></textFieldExpression>
 				</textField>
@@ -667,7 +667,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial" isBold="true"/>
+						<font fontName="DejaVu Sans" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{receitaLiquidaAnoMais2}]]></textFieldExpression>
 				</textField>
@@ -682,7 +682,7 @@
 			<textField>
 				<reportElement x="0" y="10" width="802" height="20" uuid="f980721a-2884-4a56-b3fb-9074bce1b93b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true"/>
+					<font fontName="DejaVu Sans" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SISTEMA DE AUDITORIA ELETRÔNICA - SAE"]]></textFieldExpression>
 			</textField>
@@ -691,14 +691,14 @@
 					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true"/>
+					<font fontName="DejaVu Sans" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["ENTE: "+ $P{ente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="70" width="802" height="20" uuid="b5c6789f-89f1-4553-99f2-afe863d0dff6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true"/>
+					<font fontName="DejaVu Sans" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["DEMONSTRATIVO N° 13: COMPROMETIMENTO DA RECEITA CORRENTE LÍQUIDA COM A DESPESA TOTAL COM PESSOAL"]]></textFieldExpression>
 			</textField>
@@ -707,7 +707,7 @@
 					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true"/>
+					<font fontName="DejaVu Sans" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
 			</textField>

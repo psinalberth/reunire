@@ -82,35 +82,35 @@ order by doc.ano desc, doc.unidade_gestora, doc.sequencial, doc.sequencia, tip.c
 			<textField>
 				<reportElement uuid="e645d316-e954-4408-bc59-a953f18f7565" x="0" y="24" width="802" height="12"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial"/>
+					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="82124aa9-e56f-49e9-86c7-092b4e8a0f51" x="0" y="0" width="802" height="12"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial"/>
+					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA["MUNICÍPIO: " + $P{ente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="25ec3c36-b771-444f-9440-f7e295dd517c" x="0" y="12" width="802" height="12"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial"/>
+					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA["ÓRGÃO: " + $P{orgao}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="8050904d-51ea-41cf-afc0-20067a0a4535" x="0" y="36" width="802" height="12"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RELATÓRIO DIÁRIO]]></text>
 			</staticText>
 			<textField>
 				<reportElement uuid="34bfadd9-56d5-4d7e-82ac-19705ed7ff79" x="0" y="48" width="802" height="12"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial"/>
+					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Período: " + new SimpleDateFormat("dd/MM/yyyy").format($P{dataInicial}) + " a " + new SimpleDateFormat("dd/MM/yyyy").format($P{dataFinal})]]></textFieldExpression>
 			</textField>
@@ -128,7 +128,7 @@ order by doc.ano desc, doc.unidade_gestora, doc.sequencial, doc.sequencia, tip.c
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DOCUMENTO]]></text>
 			</staticText>
@@ -142,7 +142,7 @@ order by doc.ano desc, doc.unidade_gestora, doc.sequencial, doc.sequencia, tip.c
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<text><![CDATA[EVENTO]]></text>
 			</staticText>
@@ -156,7 +156,7 @@ order by doc.ano desc, doc.unidade_gestora, doc.sequencial, doc.sequencia, tip.c
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CONTA]]></text>
 			</staticText>
@@ -170,7 +170,7 @@ order by doc.ano desc, doc.unidade_gestora, doc.sequencial, doc.sequencia, tip.c
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CONTA CORRENTE]]></text>
 			</staticText>
@@ -184,7 +184,7 @@ order by doc.ano desc, doc.unidade_gestora, doc.sequencial, doc.sequencia, tip.c
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<text><![CDATA[VALOR]]></text>
 			</staticText>
@@ -198,7 +198,7 @@ order by doc.ano desc, doc.unidade_gestora, doc.sequencial, doc.sequencia, tip.c
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<text><![CDATA[D/C]]></text>
 			</staticText>
@@ -216,7 +216,7 @@ order by doc.ano desc, doc.unidade_gestora, doc.sequencial, doc.sequencia, tip.c
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="false"/>
+					<font fontName="DejaVu Sans" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{DOCUMENTO_COUNT} == 1 ? $F{DOCUMENTO} : $F{TIPO}]]></textFieldExpression>
 			</textField>
@@ -229,7 +229,7 @@ order by doc.ano desc, doc.unidade_gestora, doc.sequencial, doc.sequencia, tip.c
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial"/>
+					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{CONTA_CONTABIL}.substring(0,1) + "." +
 $F{CONTA_CONTABIL}.substring(1,2) + "." +
@@ -248,7 +248,7 @@ $F{CONTA_CONTABIL}.substring(7)]]></textFieldExpression>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial"/>
+					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{VALOR}]]></textFieldExpression>
 			</textField>
@@ -260,7 +260,7 @@ $F{CONTA_CONTABIL}.substring(7)]]></textFieldExpression>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial"/>
+					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{EVENTO}]]></textFieldExpression>
 			</textField>
@@ -273,7 +273,7 @@ $F{CONTA_CONTABIL}.substring(7)]]></textFieldExpression>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement>
-					<font fontName="Arial"/>
+					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{CAMPO1} != null ? $F{CAMPO1} : "") +
 ($F{CAMPO2} != null ? "+" + $F{CAMPO2} : "") +
@@ -291,7 +291,7 @@ $F{CONTA_CONTABIL}.substring(7)]]></textFieldExpression>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial"/>
+					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{NATUREZA_EVENTO}]]></textFieldExpression>
 			</textField>
@@ -308,28 +308,28 @@ $F{CONTA_CONTABIL}.substring(7)]]></textFieldExpression>
 			<textField>
 				<reportElement uuid="8c18f2ea-9891-4fc7-a5ff-1b8d515c4f80" positionType="Float" x="682" y="0" width="80" height="12"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isItalic="true"/>
+					<font fontName="DejaVu Sans" size="8" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de "]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement uuid="2ba644a4-68c8-4fc6-b391-0d367a539397" positionType="FixRelativeToBottom" x="762" y="0" width="40" height="12"/>
 				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isItalic="true"/>
+					<font fontName="DejaVu Sans" size="8" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy HH.mm.ss">
 				<reportElement uuid="cf1e916f-2424-44c8-b4c5-4060eea6082e" x="2" y="0" width="270" height="12"/>
 				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isItalic="true"/>
+					<font fontName="DejaVu Sans" size="8" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["FONTE: SAE"]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy HH.mm.ss">
 				<reportElement uuid="b0167371-d9c5-43af-a8e4-05e7c5da1f5d" x="2" y="12" width="270" height="12"/>
 				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isItalic="true"/>
+					<font fontName="DejaVu Sans" size="8" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Emitido em " + new SimpleDateFormat("dd/MM/yyy HH:mm:ss").format(new Date())]]></textFieldExpression>
 			</textField>

@@ -3,7 +3,7 @@
 	
 	<persistence-unit name="sae" transaction-type="JTA">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:jboss/datasources/saeDS</jta-data-source>      
+        <jta-data-source>java:/XASaeDS</jta-data-source>      
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle9iDialect"/> 
             <property name="hibernate.show_sql" value="false"/>
@@ -14,7 +14,7 @@
     
     <persistence-unit name="prestacao" transaction-type="JTA">
     	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:/XARelatorioDS</jta-data-source>
+        <jta-data-source>java:/XAPostgresDS</jta-data-source>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
             <property name="hibernate.show_sql" value="false"/>
@@ -25,7 +25,7 @@
     
     <persistence-unit name="gestor" transaction-type="JTA">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:jboss/datasources/GestoresDS</jta-data-source>      
+        <jta-data-source>java:/XAGestoresDS</jta-data-source>      
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle9iDialect"/> 
             <property name="hibernate.show_sql" value="false"/>
