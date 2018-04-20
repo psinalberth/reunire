@@ -32,6 +32,7 @@ public class RelatorioViewModel {
 	/** Coleção de objetos recuperados na consulta: mantidos aqui para evitar acessos consecutivos ao mesmo registro durante exportação */
 	
 	private List<?> dados;
+	private Map<String, List<?>> dadosLote;
 	
 	/** Propriedades ZK */
 	
@@ -52,8 +53,16 @@ public class RelatorioViewModel {
 		params = new HashMap<String, Object>();
 		
 		params.put("reportDir", PATH_RELATORIOS);
-		params.put("tipoRelatorio", Executions.getCurrent().getParameter("tipoRelatorio"));
 		params.put("formato", Executions.getCurrent().getParameter("formato"));
+		
+		String [] result = Executions.getCurrent().getParameter("tipoRelatorio").split(",");
+		
+		if (result.length > 1) {
+			params.put("tipoRelatorio", result);
+			
+		} else {
+			params.put("tipoRelatorio", result[0]);
+		}
 		
 		formatoRelatorio = Executions.getCurrent().getParameter("formato").toUpperCase();
 		
@@ -77,7 +86,13 @@ public class RelatorioViewModel {
 		
 		urlRetorno = "http://br.yahoo.com";
 		
-		gerarRelatorio();
+		if (result.length == 1) {
+			gerarRelatorio();
+			
+		} else {
+			gerarRelatorioLote();
+		}
+		
 		exportarRelatorio();
 	}
 	
@@ -101,11 +116,31 @@ public class RelatorioViewModel {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
+		} else if (dadosLote != null && dadosLote.size() > 0) {
+			
+			Properties properties = service.getProperties(dadosLote, params, formatoRelatorio);
+			
+			String titulo = String.valueOf(properties.get("nome"));
+			String extensao = String.valueOf(properties.get("extensao"));
+			String formato = String.valueOf(properties.get("formato"));
+			File arquivo = (File) properties.get("arquivo");
+			
+			try {
+				
+				media = new AMedia(titulo, extensao, formato, arquivo, true);
+				
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	public void gerarRelatorio() {
 		dados = service.recuperarDados();
+	}
+	
+	public void gerarRelatorioLote() {
+		dadosLote = service.recuperarDadosLote();
 	}
 	
 	@Command

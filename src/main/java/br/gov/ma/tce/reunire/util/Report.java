@@ -6,11 +6,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRPrintPage;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -66,6 +69,73 @@ public class Report {
 		return null;
 	}
 	
+	public static Properties getProperties(String pathRelatorios, Map<String, List<?>> dados, Map<String, Object> params, String formato) {
+		
+		InputStream input = null;
+		JRBeanCollectionDataSource dataSource = null;
+		JasperPrint jasperPrintPrincipal = null;
+		
+		Iterator<Entry<String, List<?>>> iterator = dados.entrySet().iterator();
+		
+		Map.Entry<String, List<?>> primeiroReport = iterator.next(); 
+		
+		try {
+		
+			input = new FileInputStream(pathRelatorios + "/" + primeiroReport.getKey());
+			dataSource = new JRBeanCollectionDataSource(primeiroReport.getValue());
+			jasperPrintPrincipal = JasperFillManager.fillReport(input, params, dataSource);
+			
+			while (iterator.hasNext()) {
+				
+				Map.Entry<String, List<?>> dado = iterator.next();
+				
+				input = new FileInputStream(pathRelatorios + "/" + dado.getKey());
+				dataSource = new JRBeanCollectionDataSource(dado.getValue());
+				JasperPrint jasperPrintFilho = JasperFillManager.fillReport(input, params, dataSource);
+				
+				for (JRPrintPage page : jasperPrintFilho.getPages()) {
+					jasperPrintPrincipal.addPage(page);
+				}
+			}
+		
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			
+			String diretorioFinalRelatorio = System.getProperty("java.io.tmpdir");
+			
+			Properties properties = null;
+			
+			if (formato.toUpperCase().equals("PDF")) {
+				properties = exportarPDF(diretorioFinalRelatorio, jasperPrintPrincipal);
+				
+			} else if (formato.toUpperCase().equals("XLS")) {
+				properties = exportarXLS(diretorioFinalRelatorio, jasperPrintPrincipal);
+				
+			} else if (formato.toUpperCase().equals("CSV")) {
+				properties = exportarCSV(diretorioFinalRelatorio, jasperPrintPrincipal);
+				
+			} else if (formato.toUpperCase().equals("HTML")) {
+				properties = exportarHTML(diretorioFinalRelatorio, jasperPrintPrincipal);
+			}
+			
+			return properties;
+			
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 	private static Properties criarProperties(JasperPrint jasperPrint, String extensao, String formato, File arquivo) {
 		
 		Properties properties = new Properties();
@@ -87,8 +157,6 @@ public class Report {
 		
 		return properties;
 	}
-	
-	
 	
 	private static Properties exportarXLS(String path, JasperPrint jasperPrint) throws IOException, JRException {
 		

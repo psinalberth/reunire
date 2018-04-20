@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.TreeMap;
 
 import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
 import br.gov.ma.tce.reunire.dao.impl.gestor.ConsultasGestoresImpl;
@@ -24,9 +25,8 @@ public class RelatorioService {
 	
 	@SuppressWarnings("rawtypes")
 	private DemonstrativoDao dao;
-		
 	
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes" })
 	public RelatorioService(Map<String, Object> params) {
 		
 		this.params = params;
@@ -34,8 +34,12 @@ public class RelatorioService {
 		
 		try {
 			
-			Class<?> classe = this.getClass().getClassLoader().loadClass(properties.getProperty((String) params.get("tipoRelatorio")));
-			dao = (DemonstrativoDao) Lookup.dao(classe);
+			if (params.get("tipoRelatorio") instanceof String) {
+			
+				Class<?> classe = this.getClass().getClassLoader().loadClass(properties.getProperty((String) params.get("tipoRelatorio")));
+				dao = (DemonstrativoDao) Lookup.dao(classe);
+				
+			}
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -54,6 +58,30 @@ public class RelatorioService {
 		} catch (Exception ex) {
 			return null;
 		}
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map<String, List<?>> recuperarDadosLote() {
+		
+		String [] tiposRelatorio = (String[]) params.get("tipoRelatorio");
+		
+		Map<String, List<?>> sources = new TreeMap<String, List<?>>();
+		
+		for (int i = 0; i < tiposRelatorio.length; i++) {
+			
+			Class<?> classe;
+			try {
+				classe = this.getClass().getClassLoader().loadClass(properties.getProperty(tiposRelatorio[i]));
+				dao = (DemonstrativoDao) Lookup.dao(classe);
+				
+				sources.put(dao.getNomeRelatorio(), dao.recuperaDados(params));
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return sources;
 	}
 	
 	private Properties carregarProperties() {
@@ -75,9 +103,9 @@ public class RelatorioService {
 		
 		return properties;
 	}
-
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Properties getProperties(List<?> dados,  Map<String, Object> params, String formato) {
+	private void preencherParametrosRelatorio(Map<String, Object> params) {
 		
 		ConsultasGestoresImpl daoGestores = Lookup.dao(ConsultasGestoresImpl.class);
 		
@@ -111,8 +139,20 @@ public class RelatorioService {
 		}
 		
 		params.put("SUBREPORT_DIR", params.get("reportDir") + "/");
+	}
+	
+	public Properties getProperties(List<?> dados,  Map<String, Object> params, String formato) {
+		
+		preencherParametrosRelatorio(params);
 		
 		return Report.getProperties((String) params.get("reportDir"), dados, dao.getNomeRelatorio(), params, formato);
+	}
+	
+	public Properties getProperties(Map<String, List<?>> dados, Map<String, Object> params, String formato) {
+		
+		preencherParametrosRelatorio(params);
+		
+		return Report.getProperties((String) params.get("reportDir"), dados, params, formato);
 	}
 	
 	public Map<String, Object> getParams() {
