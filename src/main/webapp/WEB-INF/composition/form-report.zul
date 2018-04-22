@@ -1,15 +1,20 @@
 <zk>
  <div class="content">
    <div class="column">
-   	
-   	 <div style="padding-bottom: 2rem">
+   	 <a sclass="button" onClick="@command('voltar')">
+        <vlayout sclass="icon has-text-danger">
+          <vlayout sclass="fas fa-arrow-left"/>
+        </vlayout>
+        <label value="Voltar" />
+      </a>
+   	 <div style="padding-top: 2rem; padding-bottom: 2rem">
    	   <label sclass="title is-4 has-text-info" value="@load(vm.tipoRelatorio.descricao)" />
    	 </div>
    
      <div class="field">
        <label sclass="label" value="Módulo" />
        <div class="control">
-         <combobox sclass="input" model="@load(vm.modulos)" selectedItem="@bind(vm.modulo)">
+         <combobox sclass="input" model="@load(vm.modulos)" selectedItem="@bind(vm.modulo)" readonly="true">
            <template name="model">
              <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
            </template>
@@ -21,11 +26,26 @@
      <div class="field">
        <label sclass="label" value="Ente" />
        <div class="control">
-         <combobox sclass="input" model="@load(vm.entes)" onSelect="@command('preencherOrgaos')" selectedItem="@bind(vm.ente)">
-           <template name="model">
-             <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
-           </template>
-         </combobox>
+         <bandbox sclass="input" autodrop="true" onFocus="@command('abrirEnte')" open="@load(vm.selecaoEnteVisivel)"
+         		  onBlur="@command('fecharEnte')" 
+                  onChanging="@command('filtrarEnte', filtro = event.value)" placeholder="Digite parte do nome do ente" 
+                  id="ente" value="@load(vm.ente.nome)">
+           <bandpopup>
+             <listbox model="@load(vm.entes)" rows="5" mold="paging" autopaging="true" onSelect="@command('preencherOrgaos')" 
+                      selectedItem="@bind(vm.ente)">
+               <listhead>
+                 <listheader label="Id" sort="auto(id)" hflex="min"/>
+                 <listheader label="Nome" sort="auto(nome)"/>
+               </listhead>
+               <template name="model">
+                 <listitem>
+                   <listcell label="@load(each.id)" />
+                   <listcell label="@load(each.nome)" />
+                 </listitem>
+               </template>
+             </listbox>
+           </bandpopup>
+         </bandbox>
        </div>
      </div>
    </div>
@@ -33,11 +53,25 @@
      <div class="field">
        <label sclass="label" value="Órgão" />
        <div class="control">
-         <combobox sclass="input" model="@load(vm.orgaos)" onSelect="@command('preencherUnidades')" selectedItem="@bind(vm.orgao)" value="@bind(vm.orgao.nome)">
-           <template name="model">
-             <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
-           </template>
-         </combobox>
+         <bandbox sclass="input" onFocus="@command('abrirOrgao')" onChanging="@command('filtrarOrgao', filtro = event.value)"
+         		  open="@load(vm.selecaoOrgaoVisivel)" onBlur="@command('fecharOrgao')" 
+         		  placeholder="Digite parte do nome do órgão" id="orgao" value="@bind(vm.orgao.nome)">
+           <bandpopup>
+             <listbox model="@load(vm.orgaos)" rows="5" mold="paging" autopaging="true" onSelect="@command('preencherUnidades')" 
+                      selectedItem="@bind(vm.orgao)">
+               <listhead>
+                 <listheader label="Id" sort="auto(id)" hflex="min"/>
+                 <listheader label="Nome" sort="auto(nome)" hflex="true"/>
+               </listhead>
+               <template name="model">
+                 <listitem>
+                   <listcell label="@load(each.id)" />
+                   <listcell label="@load(each.nome)" />
+                 </listitem>
+               </template>
+             </listbox>
+           </bandpopup>
+         </bandbox>
        </div>
      </div>
    </div>
@@ -45,7 +79,7 @@
      <div class="field">
        <label sclass="label" value="Poder" />
        <div class="control">
-         <combobox sclass="input" model="@load(vm.poderes)">
+         <combobox sclass="input" model="@load(vm.poderes)" readonly="true">
            <template name="model">
              <comboitem label="@load(each.nome.toUpperCase())" value="@load(each.id)" />
            </template>
@@ -57,25 +91,39 @@
      <div class="field">
        <label sclass="label" value="Unidade Gestora" />
        <div class="control">
-         <combobox sclass="input" model="@load(vm.unidades)" selectedItem="@bind(vm.unidade)" value="@bind(vm.unidade.nome)">
-           <template name="model">
-             <comboitem label="@load(each.nome)" value="@load(each.id)" />
-           </template>
-         </combobox>
+         <bandbox sclass="input" onFocus="@command('abrirUnidade')" onChanging="@command('filtrarUnidade', filtro = event.value)"
+         		  open="@load(vm.selecaoUnidadeVisivel)" onBlur="@command('fecharUnidade')" 
+                  placeholder="Digite parte do nome da unidade" id="unidade" value="@bind(vm.unidade.nome)">
+           <bandpopup>
+             <listbox model="@load(vm.unidades)" rows="5" mold="paging" autopaging="true" 
+                      selectedItem="@bind(vm.unidade)" onSelect="@command('fecharUnidade')">
+               <listhead>
+                 <listheader label="Id" sort="auto(id)" hflex="min"/>
+                 <listheader label="Nome" sort="auto(nome)"/>
+               </listhead>
+               <template name="model">
+                 <listitem>
+                   <listcell label="@load(each.id)" />
+                   <listcell label="@load(each.nome)" />
+                 </listitem>
+               </template>
+             </listbox>
+           </bandpopup>
+         </bandbox>
        </div>
      </div>
    </div>
    <div class="column">
-   <div class="level">
-     <div class="level-item">
-       <a sclass="button is-primary">
-      <vlayout sclass="icon">
-        <vlayout sclass="fas fa-print"/>
-      </vlayout>
-      <label value="Imprimir" />
-    </a>
+     <div class="level">
+       <div class="level-item">
+         <a sclass="button is-primary">
+           <vlayout sclass="icon">
+             <vlayout sclass="fas fa-print"/>
+           </vlayout>
+           <label value="Imprimir" />
+         </a>
+       </div>
      </div>
-   </div>
    </div>
  </div>
 </zk>

@@ -41,6 +41,9 @@ public class IndexViewModel {
 	private List<ModuloRelatorioPrestacao> modulos;
 	
 	private boolean formularioVisivel = false;
+	private boolean selecaoEnteVisivel = false;
+	private boolean selecaoOrgaoVisivel = false;
+	private boolean selecaoUnidadeVisivel = false;
 	
 	@SuppressWarnings("rawtypes")
 	ConsultasGestoresImpl daoGestores = Lookup.dao(ConsultasGestoresImpl.class);
@@ -74,10 +77,40 @@ public class IndexViewModel {
 		}
 	}
 	
+	// Métodos relacionados ao lookup e seleção de Entes
+	
 	@SuppressWarnings("unchecked")
 	@Command
-	@NotifyChange({"orgaos", "orgao", "unidade", "unidades"})
+	@NotifyChange("entes")
+	public void filtrarEnte(@BindingParam("filtro") String filtro) {
+		
+		entes = daoGestores.findAll(EnteVO.class);
+		
+		if (filtro != null && filtro.trim().length() > 0) {
+			entes = entes.stream().filter(ente -> ente.getNome().toUpperCase().contains(filtro.toUpperCase())).collect(Collectors.toList());
+		}
+	}
+	
+	@Command
+	@NotifyChange("selecaoEnteVisivel")
+	public void abrirEnte() {
+		selecaoEnteVisivel = true;
+	}
+	
+	@Command
+	@NotifyChange("selecaoEnteVisivel")
+	public void fecharEnte() {
+		selecaoEnteVisivel = false;
+	}
+	
+	// Métodos relacionados ao lookup e seleção de Órgãos
+	
+	@SuppressWarnings("unchecked")
+	@Command
+	@NotifyChange({"orgaos", "orgao", "unidade", "unidades", "selecaoEnteVisivel"})
 	public void preencherOrgaos() {
+		
+		selecaoEnteVisivel = false;
 		
 		if (ente != null) {
 			
@@ -89,10 +122,37 @@ public class IndexViewModel {
 		}
 	}
 	
+	@Command
+	@NotifyChange("orgaos")
+	public void filtrarOrgao(@BindingParam("filtro") String filtro) {
+		
+		preencherOrgaos();
+		
+		if (filtro != null && filtro.trim().length() > 0) {
+			orgaos = orgaos.stream().filter(orgao -> orgao.getNome().toUpperCase().contains(filtro.toUpperCase())).collect(Collectors.toList());
+		}
+	}
+	
+	@Command
+	@NotifyChange("selecaoOrgaoVisivel")
+	public void abrirOrgao() {
+		selecaoOrgaoVisivel = true;
+	}
+	
+	@Command
+	@NotifyChange("selecaoOrgaoVisivel")
+	public void fecharOrgao() {
+		selecaoOrgaoVisivel = false;
+	}
+	
+	// Métodos relacionados ao lookup e seleção de Unidades Gestoras
+	
 	@SuppressWarnings("unchecked")
 	@Command
-	@NotifyChange({"unidades", "unidade"})
+	@NotifyChange({"unidades", "unidade", "selecaoOrgaoVisivel"})
 	public void preencherUnidades() {
+		
+		selecaoOrgaoVisivel = false;
 		
 		if (orgao != null) {
 			
@@ -107,11 +167,48 @@ public class IndexViewModel {
 	}
 	
 	@Command
+	@NotifyChange("unidades")
+	public void filtrarUnidade(@BindingParam("filtro") String filtro) {
+		
+		preencherUnidades();
+		
+		if (filtro != null && filtro.trim().length() > 0) {
+			unidades = unidades.stream().filter(unidade -> unidade.getNome().toUpperCase().contains(filtro.toUpperCase())).collect(Collectors.toList());
+		}
+	}
+	
+	@Command
+	@NotifyChange("selecaoUnidadeVisivel")
+	public void abrirUnidade() {
+		selecaoUnidadeVisivel = true;
+	}
+	
+	@Command
+	@NotifyChange("selecaoUnidadeVisivel")
+	public void fecharUnidade() {
+		selecaoUnidadeVisivel = false;
+	}
+	
+	@Command
 	@NotifyChange({"formularioVisivel", "tipoRelatorio"})
 	public void imprimirRelatorio(@BindingParam("tipoRelatorio") TipoRelatorio tipoRelatorio) {
 		
 		formularioVisivel = true;
 		this.tipoRelatorio = tipoRelatorio;
+	}
+	
+	@Command
+	@NotifyChange({"formularioVisivel", "tipoRelatorio", "ente", "orgao", "unidade", "poder", "modulo"})
+	public void voltar() {
+		
+		formularioVisivel = false;
+		
+		tipoRelatorio = null;
+		ente = null;
+		orgao = null;
+		unidade = null;
+		poder = null;
+		modulo = null;
 	}
 	
 	@Command
@@ -213,6 +310,30 @@ public class IndexViewModel {
 	
 	public void setModulos(List<ModuloRelatorioPrestacao> modulos) {
 		this.modulos = modulos;
+	}
+	
+	public void setSelecaoEnteVisivel(boolean selecaoEnteVisivel) {
+		this.selecaoEnteVisivel = selecaoEnteVisivel;
+	}
+	
+	public boolean isSelecaoEnteVisivel() {
+		return selecaoEnteVisivel;
+	}
+	
+	public void setSelecaoOrgaoVisivel(boolean selecaoOrgaoVisivel) {
+		this.selecaoOrgaoVisivel = selecaoOrgaoVisivel;
+	}
+	
+	public boolean isSelecaoOrgaoVisivel() {
+		return selecaoOrgaoVisivel;
+	}
+	
+	public void setSelecaoUnidadeVisivel(boolean selecaoUnidadeVisivel) {
+		this.selecaoUnidadeVisivel = selecaoUnidadeVisivel;
+	}
+	
+	public boolean isSelecaoUnidadeVisivel() {
+		return selecaoUnidadeVisivel;
 	}
 	
 	public void setFormularioVisivel(boolean formularioVisivel) {

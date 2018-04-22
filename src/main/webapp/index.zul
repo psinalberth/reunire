@@ -5,7 +5,7 @@
   <style src="./_assets/style/style.css" />
   <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"/>
   
-  <div sclass="column is-10 is-offset-1" style="padding: 3rem 0" viewModel="@id('vm') @init('br.gov.ma.tce.reunire.viewmodel.IndexViewModel')">
+  <div sclass="column is-10 is-offset-1" style="padding: 1rem 0" viewModel="@id('vm') @init('br.gov.ma.tce.reunire.viewmodel.IndexViewModel')">
     
     <div visible="@load(not vm.formularioVisivel)">
     
