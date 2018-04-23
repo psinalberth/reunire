@@ -4,14 +4,10 @@
 	<property name="ireport.zoom" value="0.9982500000000004"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="48"/>
+	<parameter name="exercicio" class="java.lang.Integer"/>
 	<parameter name="ente" class="java.lang.String"/>
-	<parameter name="dataInicio" class="java.util.Date"/>
-	<parameter name="dataFim" class="java.util.Date"/>
-	<parameter name="conexaoSaePlan" class="java.sql.Connection"/>
+	<parameter name="orgao" class="java.lang.String"/>
 	<parameter name="unidade" class="java.lang.String"/>
-	<queryString>
-		<![CDATA[]]>
-	</queryString>
 	<field name="efetivo" class="java.lang.String">
 		<fieldDescription><![CDATA[efetivo]]></fieldDescription>
 	</field>
@@ -678,55 +674,106 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="90" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="10" width="802" height="20" uuid="f980721a-2884-4a56-b3fb-9074bce1b93b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["SISTEMA DE AUDITORIA ELETRÔNICA - SAE"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="30" width="802" height="20" isRemoveLineWhenBlank="true" uuid="5106ac68-9687-4e87-a43a-c3412e1878ed">
-					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
+		<band height="116" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="48" width="802" height="16" uuid="b7483d76-e43a-4ed9-8cde-1b426da96203">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="11" isBold="true"/>
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["ENTE: "+ $P{ente}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[CONTROLES DA ADMINISTRAÇÃO PÚBLICA MUNICIPAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="106" width="802" height="10" uuid="1e0e7066-b896-48a2-a823-2d0c84265b55"/>
+				<text><![CDATA[]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="0" y="70" width="802" height="20" uuid="b5c6789f-89f1-4553-99f2-afe863d0dff6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["DEMONSTRATIVO N° 13: COMPROMETIMENTO DA RECEITA CORRENTE LÍQUIDA COM A DESPESA TOTAL COM PESSOAL"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="50" width="802" height="20" isRemoveLineWhenBlank="true" uuid="335dd6bf-f55b-4714-9ece-55bfc71ad59d">
-					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
+				<reportElement x="0" y="32" width="802" height="16" isRemoveLineWhenBlank="true" uuid="a5d21764-e1e7-4db9-b650-e909e42777a6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{unidade} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="11" isBold="true"/>
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="802" height="16" isRemoveLineWhenBlank="true" uuid="114f9535-1bc0-4e77-a178-c037a951aa40">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ENTE: " + $P{ente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="80" width="802" height="10" uuid="fc275555-36d8-48eb-8402-7ffcd1c6ec31"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="702" y="90" width="100" height="16" uuid="8a666f1e-1593-4e94-aef1-8852ee5d5d5e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["EXERCÍCIO: " + $P{exercicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="64" width="802" height="16" uuid="15414e63-c6c8-4285-abf7-c2ad0594fe64">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEMONSTRATIVO N° 13: COMPROMETIMENTO DA RECEITA CORRENTE LÍQUIDA COM A DESPESA TOTAL COM PESSOAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="16" width="802" height="16" isRemoveLineWhenBlank="true" uuid="643c6bbe-60fa-4a4b-9bf9-32277e0c0b96">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{orgao} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ÓRGÃO: " + $P{orgao}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
 	<pageFooter>
-		<band height="51" splitType="Stretch">
-			<textField>
-				<reportElement x="690" y="31" width="72" height="20" uuid="53d099b7-ec5c-4487-b709-3b69bdc42b14"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
-			</textField>
+		<band height="22" splitType="Stretch">
 			<textField evaluationTime="Report">
-				<reportElement x="762" y="31" width="40" height="20" uuid="feac1ad8-3281-4167-af4a-36f54a1dd50e"/>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<reportElement x="762" y="10" width="40" height="12" uuid="6bc58fe5-cd7d-44d7-a27a-25da2590b83d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="31" width="434" height="20" uuid="2b98a614-ebf9-4893-a87b-fceeaf8a1818"/>
-				<textFieldExpression><![CDATA["Emitido em " + new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+				<reportElement x="0" y="10" width="724" height="12" uuid="c8fa3192-17f1-4750-b8f1-ce81c3f9f8c3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fonte: e-PCA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="724" y="10" width="38" height="12" uuid="ba3ab039-c11a-4e12-b022-bba283eb0266"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="802" height="10" uuid="d2c2c1d8-96e5-44c4-a3e5-d6fc52eeeaec">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Data de Emissão: " + new java.text.SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
