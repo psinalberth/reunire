@@ -22,6 +22,7 @@ public class RelatorioCAM15DaoImpl extends PrestacaoDaoImpl<RelatorioCAM15VO> im
 		String sql = "select c.unidade_id, c.numero_oficio, c.natureza, c.cpf_cnpj_credor, c.valor_inscrito, c.valor_pago " +
 				"from prestacao.cam15 c " +
 				"where c.unidade_id in(:unidade) "+
+				"group by c.unidade_id, c.numero_oficio, c.natureza, c.cpf_cnpj_credor, c.valor_inscrito, c.valor_pago "+
 				"order by c.unidade_id, c.numero_oficio, c.natureza ";
 		
 		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(params);
