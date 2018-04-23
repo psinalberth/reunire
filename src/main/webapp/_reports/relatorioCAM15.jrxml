@@ -41,16 +41,6 @@
 					<text><![CDATA[NATUREZA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="1" y="39" width="159" height="30" uuid="72b9859e-f994-43ae-80cb-1e3705d7e3c3"/>
-					<box>
-						<pen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<text><![CDATA[N° DO OFÍCIO DA REQUISIÇÃO DE PAGAMENTO]]></text>
-				</staticText>
-				<staticText>
 					<reportElement x="490" y="39" width="160" height="30" uuid="e624bf5a-48d5-41ed-a1fa-a530508fe96d"/>
 					<box>
 						<pen lineWidth="0.5"/>
@@ -87,6 +77,21 @@
 					<reportElement x="0" y="25" width="802" height="10" uuid="fad97499-504d-4b2e-a100-6f9c64b4a853"/>
 					<text><![CDATA[]]></text>
 				</staticText>
+				<staticText>
+					<reportElement x="0" y="39" width="160" height="29" uuid="afa583b8-d78e-4505-bb21-c08882d2b486"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[N° DO OFÍCIO DA REQUISIÇÃO 
+DE PAGAMENTO]]></text>
+				</staticText>
 			</band>
 		</groupHeader>
 	</group>
@@ -97,10 +102,7 @@
 				<textField>
 					<reportElement x="0" y="0" width="160" height="30" uuid="9b406913-6a79-491f-ad2e-8cee451510d0"/>
 					<box>
-						<topPen lineWidth="1.0" lineColor="#000000"/>
-						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
@@ -119,7 +121,7 @@
 				</textField>
 				<textField pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="650" y="0" width="152" height="30" uuid="b7ff328e-72c7-4fe4-8a61-f9af09124b17"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -140,7 +142,7 @@
 				</textField>
 				<textField pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="490" y="0" width="160" height="30" uuid="c229c64f-5704-4a43-9314-f8622c9df249"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -230,10 +232,10 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="39" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
 			<staticText>
-				<reportElement x="160" y="9" width="130" height="30" uuid="6a20dd78-72a4-4b7d-ae6d-9619211d139f"/>
+				<reportElement x="160" y="0" width="130" height="30" uuid="6a20dd78-72a4-4b7d-ae6d-9619211d139f"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -243,7 +245,7 @@
 				<text><![CDATA[NATUREZA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="490" y="9" width="160" height="30" uuid="d465fc8f-054e-4b8f-b269-e5d039ae6cad"/>
+				<reportElement x="490" y="0" width="160" height="30" uuid="d465fc8f-054e-4b8f-b269-e5d039ae6cad"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -253,7 +255,7 @@
 				<text><![CDATA[VALOR INSCRITO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="290" y="9" width="200" height="30" uuid="eaec13e2-0120-493a-ac1b-fd7c4763d770"/>
+				<reportElement x="290" y="0" width="200" height="30" uuid="eaec13e2-0120-493a-ac1b-fd7c4763d770"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -263,17 +265,18 @@
 				<text><![CDATA[CREDOR(CPF/CNPJ)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="9" width="159" height="30" uuid="ea9fe6e1-2f1e-4042-bacb-7ea4bd89b075"/>
+				<reportElement x="0" y="0" width="160" height="30" uuid="ea9fe6e1-2f1e-4042-bacb-7ea4bd89b075"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[N° DO OFÍCIO DA REQUISIÇÃO DE PAGAMENTO]]></text>
+				<text><![CDATA[N° DO OFÍCIO DA REQUISIÇÃO 
+DE PAGAMENTO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="650" y="9" width="152" height="30" uuid="9e22c45f-088b-4f38-b962-63a6ae5803bb"/>
+				<reportElement x="650" y="0" width="152" height="30" uuid="9e22c45f-088b-4f38-b962-63a6ae5803bb"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
