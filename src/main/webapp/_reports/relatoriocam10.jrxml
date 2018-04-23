@@ -11,6 +11,7 @@
 	<field name="tipo" class="java.lang.String"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="endereco" class="java.lang.String"/>
+	<field name="servicos" class="java.lang.String"/>
 	<field name="numeroMedicos" class="java.lang.Integer"/>
 	<field name="numeroEnfermeiros" class="java.lang.Integer"/>
 	<field name="numeroOutros" class="java.lang.Integer"/>
@@ -18,24 +19,170 @@
 	<group name="UNIDADE">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
-			<band height="28"/>
+			<band height="35">
+				<staticText>
+					<reportElement x="0" y="25" width="802" height="10" uuid="27442b24-4d4e-403b-b538-f74d83c74408"/>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="10" width="802" height="15" uuid="ca68376e-a97f-4a6a-acc1-477a055cc0f0">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="802" height="10" uuid="eb473e3c-6749-4a13-8043-5852b7889639"/>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
 		</groupHeader>
 	</group>
 	<group name="TIPO">
 		<groupExpression><![CDATA[$F{tipo}]]></groupExpression>
 		<groupHeader>
-			<band height="43">
+			<band height="36">
 				<textField>
-					<reportElement x="0" y="0" width="802" height="15" uuid="5e44252f-f309-4d48-a424-e4607b52dc9d">
+					<reportElement x="0" y="10" width="802" height="15" uuid="5e44252f-f309-4d48-a424-e4607b52dc9d">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["TIPO DE ESTABELECIMENTO: " + $F{tipo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="NOME">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
+		<groupHeader>
+			<band height="83">
+				<textField>
+					<reportElement x="0" y="22" width="250" height="15" uuid="65a44ad7-8cdc-4442-9474-a2a43b16d0c7">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="250" y="22" width="250" height="15" uuid="806b2032-d0db-44fb-914e-2207e15640a2">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="5">
+						<topPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="500" y="22" width="60" height="15" uuid="379294a2-f1d5-4cef-91d3-c21ebe5cb2fc">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroMedicos}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="560" y="22" width="80" height="15" uuid="3099f0c7-fe12-4b6c-a926-aa4f235d382f">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroEnfermeiros}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="640" y="22" width="60" height="15" uuid="11946e26-d42d-43ce-9f99-c717748e6af6">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroOutros}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="700" y="22" width="102" height="15" uuid="5114b510-4176-4b26-becc-7be0bb6464ff">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{atendimentos}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="21" width="250" height="22" uuid="5627e404-9307-430f-ad87-43234902d011">
+					<reportElement x="0" y="37" width="802" height="22" uuid="540f60d2-6cc3-4725-b791-7c192fbd1b1f">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box leftPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SERVIÇOS DISPONÍVEIS]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="59" width="802" height="15" uuid="eedb973e-3a4c-4f21-941b-9d5e02a73c07">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{servicos}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="700" y="0" width="102" height="22" uuid="f3849892-e73f-41ab-881a-3ac88524749a">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -49,27 +196,10 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<text><![CDATA[NOME]]></text>
+					<text><![CDATA[ATENDIMENTOS REALIZADOS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="250" y="21" width="250" height="22" uuid="ab1264d9-f45e-46ac-9637-1ecc7e168849">
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					</reportElement>
-					<box>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<text><![CDATA[ENDEREÇO]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="500" y="21" width="60" height="22" uuid="ce9d9411-70cc-449c-b332-58af21214c2a">
+					<reportElement x="500" y="0" width="60" height="22" uuid="ce9d9411-70cc-449c-b332-58af21214c2a">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -86,7 +216,7 @@
 					<text><![CDATA[Nº DE MÉDICOS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="560" y="21" width="80" height="22" uuid="7c08aae7-7f00-4bea-80a7-42679b7738fb">
+					<reportElement x="560" y="0" width="80" height="22" uuid="7c08aae7-7f00-4bea-80a7-42679b7738fb">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -103,7 +233,7 @@
 					<text><![CDATA[Nº DE ENFERMEIROS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="640" y="21" width="60" height="22" uuid="6d97f6f0-897f-4d7e-ba1c-2ca476b548ca">
+					<reportElement x="640" y="0" width="60" height="22" uuid="6d97f6f0-897f-4d7e-ba1c-2ca476b548ca">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -120,7 +250,7 @@
 					<text><![CDATA[Nº DE OUTROS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="700" y="21" width="102" height="22" uuid="f3849892-e73f-41ab-881a-3ac88524749a">
+					<reportElement x="250" y="0" width="250" height="22" uuid="ab1264d9-f45e-46ac-9637-1ecc7e168849">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -134,106 +264,30 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<text><![CDATA[ATENDIMENTOS REALIZADOS]]></text>
+					<text><![CDATA[ENDEREÇO]]></text>
 				</staticText>
-			</band>
-		</groupHeader>
-	</group>
-	<group name="NOME">
-		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
-		<groupHeader>
-			<band height="15">
-				<textField>
-					<reportElement x="0" y="0" width="250" height="15" uuid="65a44ad7-8cdc-4442-9474-a2a43b16d0c7">
+				<staticText>
+					<reportElement x="0" y="0" width="250" height="22" uuid="5627e404-9307-430f-ad87-43234902d011">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					</reportElement>
-					<box leftPadding="5">
+					<box>
 						<topPen lineWidth="0.5"/>
 						<leftPen lineWidth="0.5"/>
 						<bottomPen lineWidth="0.5"/>
 						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="250" y="0" width="250" height="15" uuid="806b2032-d0db-44fb-914e-2207e15640a2">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="500" y="0" width="60" height="15" uuid="379294a2-f1d5-4cef-91d3-c21ebe5cb2fc">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{numeroMedicos}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="560" y="0" width="80" height="15" uuid="3099f0c7-fe12-4b6c-a926-aa4f235d382f">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{numeroEnfermeiros}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="640" y="0" width="60" height="15" uuid="11946e26-d42d-43ce-9f99-c717748e6af6">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{numeroOutros}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="700" y="0" width="102" height="15" uuid="5114b510-4176-4b26-becc-7be0bb6464ff">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{atendimentos}]]></textFieldExpression>
-				</textField>
+					<text><![CDATA[NOME]]></text>
+				</staticText>
 			</band>
 		</groupHeader>
+	</group>
+	<group name="SERVICO">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
 	</group>
 	<title>
 		<band height="115" splitType="Stretch">
@@ -295,113 +349,6 @@
 			</textField>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="22" splitType="Stretch">
-			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
-			<staticText>
-				<reportElement x="0" y="0" width="250" height="22" uuid="44de1d4e-a238-4c0b-b38d-9f25daeec4c7">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[NOME]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="250" y="0" width="250" height="22" uuid="b4bf4065-ae5b-4f59-bb4a-56266dd2a2d7">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ENDEREÇO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="500" y="0" width="60" height="22" uuid="6752b300-5f9c-489d-8026-501b11bbe261">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nº DE MÉDICOS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="560" y="0" width="80" height="22" uuid="3cb8e91f-e1d0-42d2-9515-acf6d30a2077">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nº DE ENFERMEIROS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="640" y="0" width="60" height="22" uuid="fa09c147-0749-4ccf-bfb9-ac372746870d">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nº DE OUTROS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="700" y="0" width="102" height="22" uuid="d3bc792f-a463-4e04-8bb0-4ce0b89280c8">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ATENDIMENTOS REALIZADOS]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
 	<pageFooter>
 		<band height="31" splitType="Stretch">
 			<textField>

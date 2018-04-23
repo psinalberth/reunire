@@ -25,14 +25,14 @@ public class RelatorioCAM10DaoImpl extends PrestacaoDaoImpl<RelatorioCAM10VO> im
 		String sql = 
 				
 		"select " + 
-			"unidade_id, upper(tipo_estabelecimento) tipo_estabelecimento, upper(nome) nome, upper(endereco) endereco, " +
+			"unidade_id, upper(tipo_estabelecimento) tipo_estabelecimento, upper(nome) nome, servico_disponivel, upper(endereco) endereco, " +
 			"quantidade_medico, quantidade_enfermeiro, quantidade_outro, quantidade_atendimento " +
 		"from " + 
 			"prestacao.cam10 " +
 		"where " +
 			"unidade_id in (:unidades) and " +
 			"((:modulo is null) or (modulo_id = :modulo)) " +
-		"order by unidade_id, tipo_estabelecimento, nome";
+		"order by unidade_id, tipo_estabelecimento, nome, servico_disponivel";
 		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidades", listaIdsUnidades)
@@ -53,11 +53,12 @@ public class RelatorioCAM10DaoImpl extends PrestacaoDaoImpl<RelatorioCAM10VO> im
 			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
 			dado.setTipo(String.valueOf(row[1]));
 			dado.setNome(String.valueOf(row[2]));
-			dado.setEndereco(String.valueOf(row[3]));
-			dado.setNumeroMedicos(Integer.parseInt(String.valueOf(row[4])));
-			dado.setNumeroEnfermeiros(Integer.parseInt(String.valueOf(row[5])));
-			dado.setNumeroOutros(Integer.parseInt(String.valueOf(row[6])));
-			dado.setAtendimentos(Integer.parseInt(String.valueOf(row[7])));
+			dado.setServicos(String.valueOf(String.valueOf(row[3])));
+			dado.setEndereco(String.valueOf(row[4]));
+			dado.setNumeroMedicos(Integer.parseInt(String.valueOf(row[5])));
+			dado.setNumeroEnfermeiros(Integer.parseInt(String.valueOf(row[6])));
+			dado.setNumeroOutros(Integer.parseInt(String.valueOf(row[7])));
+			dado.setAtendimentos(Integer.parseInt(String.valueOf(row[8])));
 			
 			dados.add(dado);
 		}

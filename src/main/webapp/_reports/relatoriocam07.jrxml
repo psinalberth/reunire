@@ -127,7 +127,7 @@
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{credor}]]></textFieldExpression>
 				</textField>
@@ -142,7 +142,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format( $F{dataVencimento})]]></textFieldExpression>
 				</textField>
@@ -157,7 +157,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorContrato}]]></textFieldExpression>
 				</textField>
@@ -172,7 +172,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{parcelasResgatadas}]]></textFieldExpression>
 				</textField>
@@ -187,9 +187,9 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{valorContrato}.subtract($F{parcelasResgatadas})]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

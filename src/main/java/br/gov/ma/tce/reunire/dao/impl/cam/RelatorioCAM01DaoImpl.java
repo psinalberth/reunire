@@ -28,7 +28,7 @@ public class RelatorioCAM01DaoImpl extends PrestacaoDaoImpl<RelatorioCAM01VO> im
 		"select " +
 			"cam.unidade_id, " + 
 			"(case when vw.id_natureza_receita is not null then vw.codigo_natureza_receita else " + 
-			"regexp_replace(cam.nr, '([[:digit:]]{1})([[:digit:]]{1})([[:digit:]]{1})([[:digit:]]{1})([[:digit:]]{2})([[:digit:]]{2})', '\1.\2.\3.\4.\5.\6') " +
+			"regexp_replace(lpad(cam.nr, '8', '0'), '([[:digit:]]{1})([[:digit:]]{1})([[:digit:]]{1})([[:digit:]]{1})([[:digit:]]{2})([[:digit:]]{2})', '\1.\2.\3.\4.\5.\6') " +
 			"end) codigo_natureza_receita, " + 
 			"coalesce(upper(case when vw.id_natureza_receita is not null then vw.descricao else nr.nome end), 'CLASSIFICAÇÃO DESCONHECIDA') descricao, " + 
 			"cam.x_menos_3, cam.x_menos_2, cam.x_menos_1, cam.x, cam.x_mais_1, cam.x_mais_2 " +
