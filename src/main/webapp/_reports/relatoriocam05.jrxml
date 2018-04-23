@@ -156,104 +156,107 @@
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 		<groupHeader>
 			<band height="27">
-				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="440" y="0" width="110" height="27" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{modeloVeiculo}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="550" y="0" width="120" height="27" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{plavaDoVeiculo}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="670" y="0" width="130" height="27" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{renavam}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="0" y="0" width="130" height="27" uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{orgao}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="TITULO" isBlankWhenNull="true">
-					<reportElement x="250" y="0" width="100" height="27" printWhenGroupChanges="TITULO" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{cpfCnpjProprietario}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="350" y="0" width="90" height="27" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{nomeProprietario}]]></textFieldExpression>
-				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="130" y="0" width="120" height="27" uuid="f8264049-f6cc-47d0-9275-2e7f1fa4bb3a"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{finalidade}]]></textFieldExpression>
-				</textField>
+				<frame>
+					<reportElement positionType="Float" x="0" y="0" width="800" height="27" uuid="e752f6f9-289c-496d-a339-f165fd7c44a3"/>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+						<reportElement x="440" y="0" width="110" height="27" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{modeloVeiculo}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+						<reportElement x="550" y="0" width="120" height="27" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{plavaDoVeiculo}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+						<reportElement x="670" y="0" width="130" height="27" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{renavam}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="0" y="0" width="130" height="27" uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{orgao}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" isBlankWhenNull="true">
+						<reportElement x="250" y="0" width="100" height="27" printWhenGroupChanges="TITULO" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{cpfCnpjProprietario}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+						<reportElement x="350" y="0" width="90" height="27" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{nomeProprietario}]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement x="130" y="0" width="120" height="27" uuid="f8264049-f6cc-47d0-9275-2e7f1fa4bb3a"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{finalidade}]]></textFieldExpression>
+					</textField>
+				</frame>
 			</band>
 		</groupHeader>
 	</group>
