@@ -20,6 +20,7 @@
 	<field name="numeroBiblioteca" class="java.lang.Integer"/>
 	<field name="numeroQuadraEsporte" class="java.lang.Integer"/>
 	<field name="idUnidade" class="java.lang.Integer"/>
+	<field name="descricaoUnidade" class="java.lang.String"/>
 	<group name="UNIDADE">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
@@ -31,7 +32,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="11" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade} +" - "+ $F{descricaoUnidade}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement mode="Transparent" x="0" y="21" width="140" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="63729031-5b14-40bc-9820-aa83587b1f41"/>
@@ -176,132 +177,135 @@
 		<groupExpression><![CDATA[$F{unidadeEnsino}]]></groupExpression>
 		<groupHeader>
 			<band height="27">
-				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="520" y="0" width="80" height="27" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{numeroSalaDeAula}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="600" y="0" width="80" height="27" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{numeroLaboratorio}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="680" y="0" width="70" height="27" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{numeroBiblioteca}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="0" y="0" width="140" height="27" uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{unidadeEnsino}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="TITULO" isBlankWhenNull="true">
-					<reportElement x="360" y="0" width="80" height="27" printWhenGroupChanges="TITULO" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{capacidadeAlunosFundamental}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="440" y="0" width="80" height="27" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{capacidadeAlunosEnsinoMedio}]]></textFieldExpression>
-				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="280" y="0" width="80" height="27" uuid="f8264049-f6cc-47d0-9275-2e7f1fa4bb3a"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{capacidadeAlunosPreEscolar}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="750" y="0" width="52" height="27" uuid="89965250-45f9-4e73-ae56-6e08fb4aa302"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{numeroQuadraEsporte}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="140" y="0" width="140" height="27" uuid="15f2d97f-6dce-439b-9505-a47703770b65"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
-				</textField>
+				<frame>
+					<reportElement positionType="Float" x="0" y="0" width="802" height="27" uuid="210fcca1-ce04-4da6-bdcd-7bee7603f625"/>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+						<reportElement x="520" y="0" width="80" height="27" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{numeroSalaDeAula}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+						<reportElement x="600" y="0" width="80" height="27" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{numeroLaboratorio}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+						<reportElement x="680" y="0" width="70" height="27" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{numeroBiblioteca}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="0" y="0" width="140" height="27" uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{unidadeEnsino}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" isBlankWhenNull="true">
+						<reportElement x="360" y="0" width="80" height="27" printWhenGroupChanges="TITULO" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{capacidadeAlunosFundamental}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+						<reportElement x="440" y="0" width="80" height="27" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{capacidadeAlunosEnsinoMedio}]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement x="280" y="0" width="80" height="27" uuid="f8264049-f6cc-47d0-9275-2e7f1fa4bb3a"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{capacidadeAlunosPreEscolar}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+						<reportElement x="750" y="0" width="52" height="27" uuid="89965250-45f9-4e73-ae56-6e08fb4aa302"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{numeroQuadraEsporte}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="140" y="0" width="140" height="27" uuid="15f2d97f-6dce-439b-9505-a47703770b65"/>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+					</textField>
+				</frame>
 			</band>
 		</groupHeader>
 	</group>

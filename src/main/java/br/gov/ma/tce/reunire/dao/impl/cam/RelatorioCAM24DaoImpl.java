@@ -24,8 +24,9 @@ public class RelatorioCAM24DaoImpl extends PrestacaoDaoImpl<RelatorioCAM24VO> im
 		
 		String sql = "select c.unidade_id, to_char(c.competencia,'dd/MM/yyyy') competencia, c.unidade_utilizacao_id, c.tipo_folha, c.cota_empregado, c.cota_empregador, c.regime, c.numero_documento " + 
 				"from prestacao.cam24 c " + 
-				"where c.unidade_id in(:unidade) and c.competencia is not null " + 
-				"order by c.unidade_id";
+				"where c.unidade_id in(:unidade) and c.competencia is not null "+
+				"group by c.unidade_id, competencia, c.unidade_utilizacao_id, c.tipo_folha, c.cota_empregado, c.cota_empregador, c.regime, c.numero_documento " +
+				"order by c.unidade_id, competencia, c.unidade_utilizacao_id, c.tipo_folha";
 		
 		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(params);
 		List<Integer> listaIdsUnidades = extrairIds(listaUnidadeVO);
@@ -41,7 +42,7 @@ public class RelatorioCAM24DaoImpl extends PrestacaoDaoImpl<RelatorioCAM24VO> im
 			
 			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
 			
-			for(UnidadeVO listaUnidade : listaUnidadeVO) {				
+			for(UnidadeVO listaUnidade : listaUnidadeVO) {
 				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue())
 					relatorio.setDescricaoUnidade(listaUnidade.getNome());				
 			}
