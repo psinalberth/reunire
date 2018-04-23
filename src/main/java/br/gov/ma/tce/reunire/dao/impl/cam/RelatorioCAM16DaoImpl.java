@@ -55,7 +55,7 @@ public class RelatorioCAM16DaoImpl extends PrestacaoDaoImpl<RelatorioCAM16VO> im
 			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
 			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
 			dado.setNumeroProcesso(String.valueOf(row[1]));
-			dado.setAnoProcesso(String.valueOf(row[2]));
+			dado.setAnoProcesso(String.valueOf(row[2]).substring(0, 4));
 			dado.setDataDoFato(getFormatador((Date) row[3]));
 			dado.setDataInstauracao(getFormatador((Date) row[4]));
 			dado.setValorDoDano(toBigDecimal(row[5]));
