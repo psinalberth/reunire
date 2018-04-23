@@ -31,6 +31,7 @@
 	</field>
 	<field name="idUnidade" class="java.lang.Integer"/>
 	<field name="id" class="java.lang.Integer"/>
+	<field name="descricaoUnidade" class="java.lang.String"/>
 	<group name="UNIDADE">
 		<groupHeader>
 			<band height="76">
@@ -147,7 +148,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade} +" - "+ $F{descricaoUnidade}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
