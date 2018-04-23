@@ -89,4 +89,22 @@ public interface DemonstrativoDao<T> {
 		
 		return new BigDecimal(String.valueOf(obj));
 	}
+	
+	public default String toPessoa(Object obj) {
+		
+		if (obj == null)
+			return "";
+		
+		String retorno = String.valueOf(obj);
+		
+		if (retorno.matches(".*000\\d{3}$")) {
+			System.out.println(String.format("", retorno));
+			return "Jurídica";
+			
+		} else if (retorno.matches("^[0-9]*$") && retorno.length() > 1 && retorno.length() < 14) {
+			return "Física";
+		} else {
+			return "Não sei";
+		}
+	}
 }

@@ -7,6 +7,7 @@ public class RelatorioCAM10VO extends DemonstrativoVO {
 	private String tipo;
 	private String nome;
 	private String endereco;
+	private String servicos;
 	private Integer numeroMedicos;
 	private Integer numeroEnfermeiros;
 	private Integer numeroOutros;
@@ -34,6 +35,14 @@ public class RelatorioCAM10VO extends DemonstrativoVO {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	
+	public String getServicos() {
+		return servicos;
+	}
+	
+	public void setServicos(String servicos) {
+		this.servicos = servicos;
 	}
 
 	public Integer getNumeroMedicos() {
