@@ -70,7 +70,7 @@ public class RelatorioCAM03DaoImpl extends PrestacaoDaoImpl<RelatorioCAM03VO> im
 
 	@Override
 	public String getNomeRelatorio() {
-		return "lei4320anexoiii_creditos_adicionais_exercicio.jasper";
+		return "relatoriocam03.jasper";
 	}
 
 }

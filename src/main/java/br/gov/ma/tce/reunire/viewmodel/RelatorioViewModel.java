@@ -53,7 +53,8 @@ public class RelatorioViewModel {
 		params = new HashMap<String, Object>();
 		
 		params.put("reportDir", PATH_RELATORIOS);
-		params.put("formato", Executions.getCurrent().getParameter("formato"));
+		params.put("formato", Executions.getCurrent().getParameter("formato") != null ? Executions.getCurrent().getParameter("formato") : "PDF");
+		params.put("exercicio", 2017);
 		
 		String [] result = Executions.getCurrent().getParameter("tipoRelatorio").split(",");
 		
@@ -64,7 +65,7 @@ public class RelatorioViewModel {
 			params.put("tipoRelatorio", result[0]);
 		}
 		
-		formatoRelatorio = Executions.getCurrent().getParameter("formato").toUpperCase();
+		formatoRelatorio = params.get("formato").toString().toUpperCase();
 		
 		if (Executions.getCurrent().getParameter("ente") != null) {
 			params.put("enteId", Integer.parseInt(Executions.getCurrent().getParameter("ente")));
