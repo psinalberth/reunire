@@ -42,7 +42,15 @@ public class Util {
 		BigDecimal total = BigDecimal.ZERO;
 		
 		for (Object [] obj : filtro) {
+			
 			total = total.add(new BigDecimal(String.valueOf(obj[posicao])));
+			
+			/*if (String.valueOf(obj[0]).startsWith("9")) {			
+				total = total.subtract(new BigDecimal(String.valueOf(obj[posicao])));
+				
+			} else {
+				
+			}*/
 		}
 		
 		return total;

@@ -72,7 +72,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 				  soma("^[17]6", rows, 1), soma("^[17]6", rows, 2), soma("^[17]6", rows, 3)));
 		
 		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Transferências Correntes", 
-				  soma("^[179]7", rows, 1), soma("^[179]7", rows, 2), soma("^[179]7", rows, 3)));
+				  soma("^[179]7", rows, 1).subtract(soma("^97", rows, 1)), soma("^[179]7", rows, 2).subtract(soma("^97", rows, 2)), soma("^[179]7", rows, 3).subtract(soma("^97", rows, 3))));
 		
 		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Outras Receitas Correntes", 
 				  soma("^[17]9", rows, 1), soma("^[17]9", rows, 2), soma("^[17]9", rows, 3)));

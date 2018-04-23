@@ -98,7 +98,10 @@ public interface DemonstrativoDao<T> {
 		String retorno = String.valueOf(obj);
 		
 		if (retorno.matches(".*000\\d{3}$")) {
-			System.out.println(String.format("", retorno));
+			
+			retorno = String.format("%014d", Long.valueOf(retorno));
+			
+			System.out.println(retorno.replaceFirst("\\d{2}\\d{3}\\d{3}\\d{4}\\d{2}", "$1.$2.$3/$4-$5"));
 			return "Jurídica";
 			
 		} else if (retorno.matches("^[0-9]*$") && retorno.length() > 1 && retorno.length() < 14) {
