@@ -56,7 +56,7 @@
          <listheader align="center" label="Código" hflex="min" />
          <listheader label="Descrição"  />
          <listheader align="center" width="180px">
-           <a sclass="has-text-white" disabled="@load(empty vm.listaRelatoriosSelecionados)">
+           <a sclass="has-text-white" disabled="@load(empty vm.listaRelatoriosSelecionados)" onClick="@command('imprimirRelatorio', params=vm.params)">
              <vlayout sclass="icon">
                <vlayout sclass="fas fa-print" />
              </vlayout>

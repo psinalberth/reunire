@@ -234,7 +234,21 @@ public class IndexViewModel {
 		
 		String url = "/report.zul?ente=" + ente.getId();
 		
-		if (tipoRelatorio != null && tipoRelatorio.trim().length()> 0) {
+		if (listaRelatoriosSelecionados != null && listaRelatoriosSelecionados.size() > 0) {
+			
+			String tiposRelatorio = "";
+			
+			for (int i = 0; i < listaRelatoriosSelecionados.size(); i++) {
+				
+				tiposRelatorio += listaRelatoriosSelecionados.get(i).getCodigo();
+				
+				if ((i+1) < listaRelatoriosSelecionados.size())
+					tiposRelatorio += ",";
+			}
+			
+			url = url + "&tipoRelatorio=" + tiposRelatorio.toLowerCase() + "&formato=PDF";
+			
+		} else if (tipoRelatorio != null && tipoRelatorio.trim().length()> 0) {
 			url = url + "&tipoRelatorio=" + tipoRelatorio.toLowerCase() + "&formato=PDF";
 		}
 		
