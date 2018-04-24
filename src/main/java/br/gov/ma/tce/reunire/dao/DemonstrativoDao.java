@@ -101,13 +101,15 @@ public interface DemonstrativoDao<T> {
 			
 			retorno = String.format("%014d", Long.valueOf(retorno));
 			
-			System.out.println(retorno.replaceFirst("\\d{2}\\d{3}\\d{3}\\d{4}\\d{2}", "$1.$2.$3/$4-$5"));
-			return "Jurídica";
+			return retorno.replaceFirst("(\\d{2})(\\d{3})(\\d{3})(\\d{4})(\\d{2})", "$1.$2.$3/$4-$5");
 			
 		} else if (retorno.matches("^[0-9]*$") && retorno.length() > 1 && retorno.length() < 14) {
-			return "Física";
-		} else {
-			return "Não sei";
+			
+			retorno = String.format("%011d", Long.valueOf(retorno));
+			
+			return retorno.replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", "$1.$2.$3-$4");
 		}
+		
+		return retorno;
 	}
 }
