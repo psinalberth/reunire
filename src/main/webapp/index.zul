@@ -5,64 +5,70 @@
   <style src="./_assets/style/style.css" />
   <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"/>
   
-  <div sclass="column is-10 is-offset-1" style="padding: 1rem 0" viewModel="@id('vm') @init('br.gov.ma.tce.reunire.viewmodel.IndexViewModel')">
-    
-    <div visible="@load(not vm.formularioVisivel)">
-    
-    <label sclass="title is-3" value="Relatórios" />
-    
-    <div class="field has-addons" style="padding: 2rem 0">
-      <div class="control is-expanded">
-        <textbox sclass="input" placeholder="Demonstrativo para pesquisar" value="@save(vm.filtroRelatorio)" onOK="@command('pesquisar')"/>
-        <label sclass="help" value="Digite parte do código ou descrição do demonstrativo" />
+  <div viewModel="@id('vm') @init('br.gov.ma.tce.reunire.viewmodel.IndexViewModel')">
+    <div class="hero is-fullheight" visible="@load(not vm.formularioVisivel)">
+      <div class="hero-body">
+        <div class="container">
+          <div class="content">
+            <div class="column">
+              <div class="level">
+                <div class="level-item">
+                  <label sclass="title is-5 has-text-info" value="Relatórios" />  
+                </div>
+              </div>
+            </div>
+            <div class="column is-6 is-offset-3">
+		      <div class="field">
+		        <label sclass="label" value="Ente" />
+		        <div class="control">
+		          <bandbox sclass="input" autodrop="true" onFocus="@command('abrirEnte')" open="@load(vm.selecaoEnteVisivel)"
+		         		  onBlur="@command('fecharEnte')" 
+		                  onChanging="@command('filtrarEnte', filtro = event.value)" placeholder="Digite parte do nome do ente" 
+		                  id="ente" value="@load(vm.ente.nome)">
+		            <bandpopup>
+		              <listbox model="@load(vm.entes)" rows="5" mold="paging" autopaging="true" onSelect="@command('preencherOrgaos')" 
+		                      selectedItem="@bind(vm.ente)">
+		                <listhead>
+		                  <listheader label="Id" sort="auto(id)" hflex="min"/>
+		                  <listheader label="Nome" sort="auto(nome)"/>
+		                </listhead>
+		                <template name="model">
+		                  <listitem>
+		                    <listcell label="@load(each.id)" />
+		                    <listcell label="@load(each.nome)" />
+		                  </listitem>
+		                </template>
+		              </listbox>
+		            </bandpopup>
+		          </bandbox>
+		        </div>
+		      </div>
+            </div>
+            <div class="column is-6 is-offset-3">
+              <div class="field">
+                <label sclass="label" value="Exercício"/>
+                <div class="control">
+                  <intbox sclass="input" placeholder="Exercício contábil" value="@load(vm.exercicio)" readonly="true" />
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="level">
+                <div class="level-item">
+                  <a sclass="button is-info" onClick="@command('irParaRelatorio')">
+                    <vlayout sclass="icon">
+                      <vlayout sclass="fas fa-arrow-circle-right"/>
+                    </vlayout>
+                    <label value="Prosseguir" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="control">
-        <a sclass="button is-primary" onClick="@command('pesquisar')">
-          <vlayout sclass="icon">
-          	<vlayout sclass="fas fa-search" />
-          </vlayout>
-          <label value="Pesquisar" />
-        </a>
-      </div>
-    </div>
-    
-    <listbox model="@load(vm.listaRelatorios)" multiple="true" checkmark="true" nonselectableTags="*" 
-             selectedItems="@bind(vm.listaRelatoriosSelecionados)"
-             emptyMessage="Nenhum registro encontrado para o critério selecionado.">
-      <listhead>
-      	<listheader align="center" width="50px" />
-      	<listheader align="center" label="#" width="50px" />
-        <listheader align="center" label="Código" hflex="min" />
-        <listheader label="Descrição"  />
-        <listheader align="center" width="180px">
-          <a sclass="has-text-white" disabled="@load(empty vm.listaRelatoriosSelecionados)">
-            <vlayout sclass="icon">
-            	<vlayout sclass="fas fa-print" />
-            </vlayout>
-            <label value="Imprimir Seleção" />
-          </a>
-        </listheader>
-      </listhead>
-      <template name="model">
-        <listitem>
-      	  <listcell />
-      	  <listcell label="${forEachStatus.index + 1}" />
-      	  <listcell label="@load(each.codigo)" />
-          <listcell label="@load(each.descricao)" />
-          <listcell>
-            <a sclass="button" onClick="@command('imprimirRelatorio', tipoRelatorio=each)">
-              <vlayout sclass="icon has-text-warning">
-                <vlayout sclass="fas fa-print"/>
-              </vlayout>
-              <label value="Imprimir" />
-            </a>
-          </listcell>
-        </listitem>
-      </template>
-    </listbox>
     </div>
     
     <include src="./WEB-INF/composition/form-report.zul" visible="@load(vm.formularioVisivel)"/>
-    
   </div>
 </zk>

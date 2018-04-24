@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
@@ -85,8 +86,6 @@ public class RelatorioViewModel {
 		
 		service = new RelatorioService(params);
 		
-		urlRetorno = "http://br.yahoo.com";
-		
 		if (result.length == 1) {
 			gerarRelatorio();
 			
@@ -102,6 +101,10 @@ public class RelatorioViewModel {
 	public void exportarRelatorio() {
 		
 		if (dados != null && dados.size() > 0) {
+			
+			if (params.get("formato") != null && formatoRelatorio == null) {
+				formatoRelatorio = (String) params.get("formato");
+			}
 			
 			Properties properties = service.getProperties(dados, params, formatoRelatorio);
 			
@@ -136,6 +139,37 @@ public class RelatorioViewModel {
 		}
 	}
 	
+	@Command
+	@NotifyChange("params")
+	public void imprimirRelatorio(@BindingParam("params") Map<String, Object> params, @BindingParam("tipoRelatorio") String tipoRelatorio) {
+		
+		this.params = new HashMap<String, Object>();
+		this.params.put("reportDir", PATH_RELATORIOS);
+		
+		if (params.get("ente") != null) {
+			this.params.put("enteId", Integer.valueOf(String.valueOf(params.get("ente"))));
+		}
+		
+		if (params.get("exercicio") != null) {
+			this.params.put("exercicio", Integer.valueOf(String.valueOf(params.get("exercicio"))));
+		}
+		
+		if (params.get("modulo") != null) {
+			
+		}
+		
+		if (tipoRelatorio != null && tipoRelatorio.trim().length() > 0) {
+			this.params.put("tipoRelatorio", tipoRelatorio.toLowerCase());
+		}
+		
+		this.params.put("formato", "PDF");
+		
+		service = new RelatorioService(this.params);
+		
+		gerarRelatorio();
+		exportarRelatorio();
+	}
+	
 	public void gerarRelatorio() {
 		dados = service.recuperarDados();
 	}
@@ -151,7 +185,24 @@ public class RelatorioViewModel {
 	
 	@Command
 	public void voltar() {
-		Executions.getCurrent().sendRedirect(urlRetorno);
+		
+		String url = "/?";
+		
+		if (urlRetorno != null && urlRetorno.trim().length() > 0) {
+			Executions.getCurrent().sendRedirect(urlRetorno);
+			
+		} else {
+			
+			if (params.get("enteId") != null) {
+				url = url + "ente=" + params.get("enteId");
+			}
+			
+			if (params.get("modulo") != null) {
+				url = url + "&modulo=" + params.get("modulo");
+			}
+			
+			Executions.getCurrent().sendRedirect(url);
+		}
 	}
 	
 	// Getters e Setters

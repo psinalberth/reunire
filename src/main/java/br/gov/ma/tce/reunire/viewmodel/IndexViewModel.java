@@ -1,12 +1,16 @@
 package br.gov.ma.tce.reunire.viewmodel;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zul.Messagebox;
 
 import br.gov.ma.tce.reunire.dao.TipoRelatorioDao;
 import br.gov.ma.tce.reunire.dao.impl.TipoRelatorioDaoImpl;
@@ -26,11 +30,15 @@ public class IndexViewModel {
 	private String filtroRelatorio;
 	
 	private EnteVO ente;
+	private Integer exercicio;
+	private Integer modulo;
 	private OrgaoVO orgao;
 	private UnidadeVO unidade;
 	private PoderVO poder;
 	private TipoRelatorio tipoRelatorio;
-	private ModuloRelatorioPrestacao modulo;
+	private ModuloRelatorioPrestacao moduloRelatorio;
+	
+	private Map<String, Object> params;
 	
 	private List<TipoRelatorio> listaRelatoriosSelecionados;
 	private List<TipoRelatorio> listaRelatorios;
@@ -55,11 +63,24 @@ public class IndexViewModel {
 	@Init
 	@NotifyChange("*")
 	public void init() {
-		 
-		 listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAll();
-		 entes = daoGestores.findAll(EnteVO.class);
-		 poderes = daoGestores.findAll(PoderVO.class);
-		 modulos = daoPrestacao.findAll(ModuloRelatorioPrestacao.class);
+		
+		if (Executions.getCurrent().getParameter("ente") != null) {
+			ente = (EnteVO) daoGestores.byId(EnteVO.class, Integer.valueOf(Executions.getCurrent().getParameter("ente")));
+		}
+		
+		if (Executions.getCurrent().getParameter("modulo") != null) {
+			modulo = Integer.valueOf(Executions.getCurrent().getParameter("modulo"));
+		}
+		
+		if (ente != null) {
+			formularioVisivel = true;
+		}
+		
+		exercicio = new Integer(2017);
+		listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAll();
+		entes = daoGestores.findAll(EnteVO.class);
+		poderes = daoGestores.findAll(PoderVO.class);
+		modulos = daoPrestacao.findAll(ModuloRelatorioPrestacao.class);
 	}
 	
 	@Command
@@ -190,11 +211,38 @@ public class IndexViewModel {
 	}
 	
 	@Command
-	@NotifyChange({"formularioVisivel", "tipoRelatorio"})
-	public void imprimirRelatorio(@BindingParam("tipoRelatorio") TipoRelatorio tipoRelatorio) {
+	@NotifyChange("formularioVisivel")
+	public void irParaRelatorio() {
+		
+		if (ente == null) {
+			
+			Messagebox.show("Para prosseguir, a seleção do ente é obrigatória", "Operação Não Permitida", Messagebox.OK, Messagebox.EXCLAMATION);
+			return;
+		}
+		
+		params = new HashMap<String, Object>();	
+		
+		params.put("ente", ente.getId());
+		params.put("exercicio", exercicio);
+		params.put("modulo", null);
 		
 		formularioVisivel = true;
-		this.tipoRelatorio = tipoRelatorio;
+	}
+	
+	@Command
+	public void imprimirRelatorio(@BindingParam("tipoRelatorio") String tipoRelatorio) {
+		
+		String url = "/report.zul?ente=" + ente.getId();
+		
+		if (tipoRelatorio != null && tipoRelatorio.trim().length()> 0) {
+			url = url + "&tipoRelatorio=" + tipoRelatorio.toLowerCase() + "&formato=PDF";
+		}
+		
+		if (modulo != null) {
+			url = url + "&modulo=" + modulo;
+		}
+		
+		Executions.sendRedirect(url);
 	}
 	
 	@Command
@@ -204,16 +252,12 @@ public class IndexViewModel {
 		formularioVisivel = false;
 		
 		tipoRelatorio = null;
+		
 		ente = null;
 		orgao = null;
 		unidade = null;
 		poder = null;
 		modulo = null;
-	}
-	
-	@Command
-	public void imprimirRelatorioEmLote() {
-		
 	}
 	
 	public String getFiltroRelatorio() {
@@ -246,6 +290,14 @@ public class IndexViewModel {
 
 	public void setEnte(EnteVO ente) {
 		this.ente = ente;
+	}
+	
+	public Integer getExercicio() {
+		return exercicio;
+	}
+	
+	public void setExercicio(Integer exercicio) {
+		this.exercicio = exercicio;
 	}
 
 	public OrgaoVO getOrgao() {
@@ -352,11 +404,27 @@ public class IndexViewModel {
 		this.tipoRelatorio = tipoRelatorio;
 	}
 	
-	public ModuloRelatorioPrestacao getModulo() {
+	public Integer getModulo() {
 		return modulo;
 	}
 	
-	public void setModulo(ModuloRelatorioPrestacao modulo) {
+	public void setModulo(Integer modulo) {
 		this.modulo = modulo;
+	}
+	
+	public ModuloRelatorioPrestacao getModuloRelatorio() {
+		return moduloRelatorio;
+	}
+	
+	public void setModuloRelatorio(ModuloRelatorioPrestacao moduloRelatorio) {
+		this.moduloRelatorio = moduloRelatorio;
+	}
+	
+	public Map<String, Object> getParams() {
+		return params;
+	}
+	
+	public void setParams(Map<String, Object> params) {
+		this.params = params;
 	}
 }
