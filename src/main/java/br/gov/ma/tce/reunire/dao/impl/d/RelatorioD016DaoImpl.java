@@ -29,7 +29,8 @@ public class RelatorioD016DaoImpl extends PrestacaoDaoImpl<RelatorioD016AVO> imp
 		String sql = "	select unidade_id, titulo, numero_lei, data_lei, valor_emissao, " + 
 					 "	saldo_circulacao, movimento_emissao,  movimento_resgate, saldo_seguinte_valor " + 
 					 "	from prestacao.d016 " + 
-					 "	where unidade_id in(:unidade)";
+					 "	where unidade_id in(:unidade) " +
+					 "	order by titulo";
 		
 		List<RelatorioD016AVO> listaVo = new ArrayList<>();
 		
