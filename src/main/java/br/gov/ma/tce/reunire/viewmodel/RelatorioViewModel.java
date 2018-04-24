@@ -84,6 +84,13 @@ public class RelatorioViewModel {
 			params.put("poderId", Integer.parseInt(Executions.getCurrent().getParameter("poder")));
 		}
 		
+		if (Executions.getCurrent().getParameter("modulo") != null) {
+			params.put("modulo", Integer.parseInt(Executions.getCurrent().getParameter("modulo")));
+			
+		} else {
+			params.put("modulo", Integer.valueOf(1));
+		}
+		
 		service = new RelatorioService(params);
 		
 		if (result.length == 1) {

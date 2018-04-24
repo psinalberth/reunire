@@ -216,7 +216,7 @@ public class IndexViewModel {
 		
 		if (ente == null) {
 			
-			Messagebox.show("Para prosseguir, a seleção do ente é obrigatória", "Operação Não Permitida", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Para prosseguir, a seleção do ente é obrigatória.", "Operação Não Permitida", Messagebox.OK, Messagebox.EXCLAMATION);
 			return;
 		}
 		
