@@ -48,10 +48,6 @@
 					</reportElement>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -62,10 +58,6 @@
 					<reportElement mode="Transparent" x="150" y="40" width="140" height="47" forecolor="#000000" backcolor="#FFFFFF" uuid="3e2aa3be-5cb8-4159-b7ac-6a30269d393f"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -78,10 +70,6 @@
 					</reportElement>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -92,10 +80,6 @@
 					<reportElement mode="Transparent" x="530" y="40" width="80" height="47" forecolor="#000000" backcolor="#FFFFFF" uuid="862fa943-1836-482b-9819-89d633b5fc32"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -106,10 +90,6 @@
 					<reportElement mode="Transparent" x="610" y="40" width="70" height="47" forecolor="#000000" backcolor="#FFFFFF" uuid="34525b07-b38e-4c81-952f-6cee59de64ee"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -120,10 +100,6 @@
 					<reportElement mode="Transparent" x="0" y="40" width="150" height="47" forecolor="#000000" backcolor="#FFFFFF" uuid="14b1c1de-2cb2-49af-8c9b-665cef651b53"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -136,10 +112,6 @@
 					</reportElement>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -152,10 +124,6 @@
 					</reportElement>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -168,10 +136,6 @@
 					</reportElement>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -189,10 +153,6 @@
 					<reportElement x="530" y="0" width="80" height="27" uuid="ed84d8ef-0ac5-4354-a7f3-6b2e5e141430"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
@@ -203,10 +163,6 @@
 					<reportElement x="610" y="0" width="70" height="27" uuid="7b3a4d3b-040f-43f1-909f-6a9eacb5dfb7"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
@@ -217,10 +173,6 @@
 					<reportElement x="680" y="0" width="70" height="27" uuid="c7e49579-c851-48de-bd7c-61633b9d2c74"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
@@ -231,10 +183,6 @@
 					<reportElement x="0" y="0" width="150" height="27" uuid="b1123520-c00d-4656-8a94-f8c9708313a5"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
@@ -245,10 +193,6 @@
 					<reportElement x="370" y="0" width="80" height="27" printWhenGroupChanges="TITULO" uuid="8eacda93-a805-4a09-a80d-019b425dbf17"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
@@ -259,10 +203,6 @@
 					<reportElement x="450" y="0" width="80" height="27" uuid="f24bc955-a652-4950-95c6-ecb86913081a"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
@@ -273,10 +213,6 @@
 					<reportElement x="290" y="0" width="80" height="27" uuid="c8fb7969-a0e3-4219-a308-aefac60beaa7"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
@@ -287,10 +223,6 @@
 					<reportElement x="750" y="0" width="52" height="27" uuid="4647b788-1d5a-4cba-9ede-084454b0abbe"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
@@ -301,10 +233,6 @@
 					<reportElement x="150" y="0" width="140" height="27" uuid="a788d6f6-7dac-46a4-9cfb-5f85cfd6a9b9"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>

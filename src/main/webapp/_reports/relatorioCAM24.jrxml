@@ -25,10 +25,7 @@
 				<staticText>
 					<reportElement x="701" y="40" width="101" height="30" uuid="ee49ef71-1792-4b3e-b68a-bf25bc22fb03"/>
 					<box>
-						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -38,10 +35,7 @@
 				<staticText>
 					<reportElement x="109" y="40" width="110" height="30" uuid="b3755134-e1a7-487c-8a3c-668c9aeec0c2"/>
 					<box>
-						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -49,12 +43,9 @@
 					<text><![CDATA[ÓRGÃO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="461" y="40" width="119" height="30" uuid="54a0ccac-0972-4426-af6a-c0bba536371b"/>
+					<reportElement x="460" y="40" width="120" height="30" uuid="54a0ccac-0972-4426-af6a-c0bba536371b"/>
 					<box>
-						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -62,12 +53,9 @@
 					<text><![CDATA[COTA-PARTE EMPREGADOR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="219" y="40" width="102" height="30" uuid="b443ed6f-523c-4a26-b4dc-04b0722129f2"/>
+					<reportElement x="219" y="40" width="103" height="30" uuid="b443ed6f-523c-4a26-b4dc-04b0722129f2"/>
 					<box>
-						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -77,10 +65,7 @@
 				<staticText>
 					<reportElement x="580" y="40" width="121" height="30" uuid="2ea8651c-7d48-401e-82b1-6f25afacd3ab"/>
 					<box>
-						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -88,12 +73,9 @@
 					<text><![CDATA[REGIME DE PREVIDÊNCIA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="320" y="40" width="139" height="30" uuid="eb84017f-5a60-499a-b7f7-351e320fdce8"/>
+					<reportElement x="322" y="40" width="138" height="30" uuid="eb84017f-5a60-499a-b7f7-351e320fdce8"/>
 					<box>
-						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -104,10 +86,7 @@ EMPREGADOS]]></text>
 				<staticText>
 					<reportElement x="0" y="40" width="109" height="30" uuid="df4be11c-e460-4039-aa04-69380c8bca52"/>
 					<box>
-						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -115,7 +94,7 @@ EMPREGADOS]]></text>
 					<text><![CDATA[COMPETÊNCIA]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="1" y="10" width="802" height="15" uuid="733ed15e-dbc7-402a-865f-520c355f4419">
+					<reportElement x="0" y="10" width="802" height="15" uuid="733ed15e-dbc7-402a-865f-520c355f4419">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -124,7 +103,7 @@ EMPREGADOS]]></text>
 					<textFieldExpression><![CDATA[$F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="1" y="25" width="802" height="10" uuid="c043a073-f3e2-49d9-ac5b-7c7d8f72adea"/>
+					<reportElement x="0" y="25" width="802" height="10" uuid="c043a073-f3e2-49d9-ac5b-7c7d8f72adea"/>
 					<text><![CDATA[]]></text>
 				</staticText>
 				<staticText>
@@ -141,10 +120,7 @@ EMPREGADOS]]></text>
 				<textField pattern="dd/MM/yyyy">
 					<reportElement x="0" y="-6" width="109" height="30" uuid="9b406913-6a79-491f-ad2e-8cee451510d0"/>
 					<box>
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
@@ -152,12 +128,9 @@ EMPREGADOS]]></text>
 					<textFieldExpression><![CDATA[$F{competencia}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="220" y="-6" width="101" height="30" uuid="43e8bda3-b89a-421d-8c2c-c8378d08ae45"/>
+					<reportElement x="219" y="-6" width="103" height="30" uuid="43e8bda3-b89a-421d-8c2c-c8378d08ae45"/>
 					<box>
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
@@ -167,10 +140,7 @@ EMPREGADOS]]></text>
 				<textField pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="460" y="-6" width="120" height="30" uuid="b7ff328e-72c7-4fe4-8a61-f9af09124b17"/>
 					<box rightPadding="5">
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
@@ -179,12 +149,9 @@ EMPREGADOS]]></text>
 					<textFieldExpression><![CDATA[$F{cota_empregador}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="110" y="-6" width="109" height="30" uuid="b9a4b3f8-d16c-4eb8-bba5-fe67fa33b8a2"/>
+					<reportElement x="109" y="-6" width="110" height="30" uuid="b9a4b3f8-d16c-4eb8-bba5-fe67fa33b8a2"/>
 					<box>
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
@@ -192,12 +159,9 @@ EMPREGADOS]]></text>
 					<textFieldExpression><![CDATA[$F{unidadeOrcamentaria}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00;(#,##0.00)">
-					<reportElement x="320" y="-6" width="140" height="30" uuid="c229c64f-5704-4a43-9314-f8622c9df249"/>
+					<reportElement x="322" y="-6" width="138" height="30" uuid="c229c64f-5704-4a43-9314-f8622c9df249"/>
 					<box rightPadding="5">
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
@@ -208,10 +172,7 @@ EMPREGADOS]]></text>
 				<textField>
 					<reportElement x="580" y="-6" width="121" height="30" uuid="d877b2f7-2e8e-4a18-9393-b1022a8fae4b"/>
 					<box>
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
@@ -222,10 +183,7 @@ EMPREGADOS]]></text>
 				<textField>
 					<reportElement x="701" y="-6" width="101" height="30" uuid="dbeedd48-b676-4afa-bf9f-2afb9408f964"/>
 					<box>
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
@@ -319,10 +277,7 @@ EMPREGADOS]]></text>
 			<staticText>
 				<reportElement x="110" y="0" width="110" height="30" uuid="6a20dd78-72a4-4b7d-ae6d-9619211d139f"/>
 				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<pen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -332,10 +287,7 @@ EMPREGADOS]]></text>
 			<staticText>
 				<reportElement x="322" y="0" width="138" height="30" uuid="d465fc8f-054e-4b8f-b269-e5d039ae6cad"/>
 				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<pen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -346,10 +298,7 @@ EMPREGADOS]]></text>
 			<staticText>
 				<reportElement x="220" y="0" width="102" height="30" uuid="eaec13e2-0120-493a-ac1b-fd7c4763d770"/>
 				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<pen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -357,12 +306,9 @@ EMPREGADOS]]></text>
 				<text><![CDATA[FOLHA DE PAGAMENTO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="0" width="109" height="30" uuid="ea9fe6e1-2f1e-4042-bacb-7ea4bd89b075"/>
+				<reportElement x="0" y="0" width="110" height="30" uuid="ea9fe6e1-2f1e-4042-bacb-7ea4bd89b075"/>
 				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<pen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -372,10 +318,7 @@ EMPREGADOS]]></text>
 			<staticText>
 				<reportElement x="460" y="0" width="120" height="30" uuid="9e22c45f-088b-4f38-b962-63a6ae5803bb"/>
 				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<pen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -384,12 +327,9 @@ EMPREGADOS]]></text>
 EMPREGADOR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="581" y="0" width="122" height="30" uuid="48316355-4ed1-406e-87be-96ef61b36e47"/>
+				<reportElement x="580" y="0" width="121" height="30" uuid="48316355-4ed1-406e-87be-96ef61b36e47"/>
 				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<pen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -398,12 +338,9 @@ EMPREGADOR]]></text>
 PREVIDÊNCIA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="702" y="0" width="100" height="30" uuid="1a617385-80c7-4ce7-93de-e83852243ae8"/>
+				<reportElement x="701" y="0" width="101" height="30" uuid="1a617385-80c7-4ce7-93de-e83852243ae8"/>
 				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<pen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
