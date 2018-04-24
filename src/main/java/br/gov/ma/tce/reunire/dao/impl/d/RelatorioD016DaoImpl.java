@@ -29,7 +29,7 @@ public class RelatorioD016DaoImpl extends PrestacaoDaoImpl<RelatorioD016AVO> imp
 		String sql = "	select unidade_id, titulo, numero_lei, data_lei, valor_emissao, " + 
 					 "	saldo_circulacao, movimento_emissao,  movimento_resgate, saldo_seguinte_valor " + 
 					 "	from prestacao.d016 " + 
-					 "	where unidade_id = :unidade";
+					 "	where unidade_id in(:unidade)";
 		
 		List<RelatorioD016AVO> listaVo = new ArrayList<>();
 		
@@ -60,9 +60,7 @@ public class RelatorioD016DaoImpl extends PrestacaoDaoImpl<RelatorioD016AVO> imp
 			
 			DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 			
-			String novaData = formatador.format(data);
-			
-			System.out.println(data);
+			String novaData = formatador.format(data);			
 			
 			relatorio.setDataDaLei(novaData);
 			relatorio.setValorEmissao(new BigDecimal(new Double(l[4].toString())));
