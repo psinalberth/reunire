@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.5.0.final using JasperReports Library version 6.5.0  -->
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demonstrativo_cam11" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a20000c8-8a2f-4e12-b0b2-6a03fcf39ca9">
 	<property name="ireport.zoom" value="0.9982500000000004"/>
 	<property name="ireport.x" value="0"/>
@@ -55,7 +55,7 @@
 						<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="11" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade} +" - "+ $F{descricaoUnidade}]]></textFieldExpression>
 				</textField>
@@ -63,13 +63,9 @@
 					<reportElement mode="Transparent" x="0" y="21" width="140" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="63729031-5b14-40bc-9820-aa83587b1f41"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[DESPESA COM PESSOAL]]></text>
 				</staticText>
@@ -79,10 +75,7 @@
 					</reportElement>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
 						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -93,10 +86,7 @@
 					<reportElement mode="Transparent" x="510" y="21" width="80" height="29" forecolor="#000000" backcolor="#FFFFFF" uuid="4ced0248-6ceb-4ec1-8341-22a8a983cbd0"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
 						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -107,10 +97,7 @@
 					<reportElement mode="Transparent" x="590" y="21" width="80" height="29" forecolor="#000000" backcolor="#FFFFFF" uuid="4932a0f3-8188-4b7b-b791-076231206ac0"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
 						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -122,12 +109,9 @@
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{exercicio} - 1]]></textFieldExpression>
 				</textField>
@@ -136,9 +120,8 @@
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
+						<pen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -150,9 +133,8 @@
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
+						<pen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -164,12 +146,9 @@
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{exercicio} - 1]]></textFieldExpression>
 				</textField>
@@ -178,9 +157,8 @@
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
+						<pen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -192,12 +170,9 @@
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{exercicio}]]></textFieldExpression>
 				</textField>
@@ -206,12 +181,9 @@
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{exercicio}]]></textFieldExpression>
 				</textField>
@@ -220,12 +192,9 @@
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{exercicio} + 1]]></textFieldExpression>
 				</textField>
@@ -234,12 +203,9 @@
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{exercicio} + 1]]></textFieldExpression>
 				</textField>
@@ -247,10 +213,7 @@
 					<reportElement mode="Transparent" x="670" y="21" width="70" height="29" forecolor="#000000" backcolor="#FFFFFF" uuid="82dd217b-7657-436a-86b5-1be2fb32ca3b"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
 						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -262,12 +225,9 @@
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{exercicio} + 2]]></textFieldExpression>
 				</textField>
@@ -275,10 +235,7 @@
 					<reportElement mode="Transparent" x="740" y="21" width="62" height="29" forecolor="#000000" backcolor="#FFFFFF" uuid="2216178f-c7c7-4322-99f5-a0c6fb531a64"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
 						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
@@ -286,16 +243,13 @@
 					<text><![CDATA[VALOR PAGO ]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="740" y="51" width="62" height="17" uuid="445cb0cc-1481-4a7e-bc76-c90e55c86c72"/>
+					<reportElement x="740" y="50" width="62" height="17" uuid="445cb0cc-1481-4a7e-bc76-c90e55c86c72"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{exercicio} + 2]]></textFieldExpression>
 				</textField>
@@ -307,55 +261,39 @@
 		<groupHeader>
 			<band height="27">
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
-					<reportElement x="510" y="0" width="80" height="27" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
+					<reportElement x="510" y="-1" width="80" height="28" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeEfetivoAnoMais1}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="590" y="0" width="80" height="27" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
-					<box>
+					<reportElement x="590" y="-1" width="80" height="28" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorEfetivoAnoMais1}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
-					<reportElement x="670" y="0" width="70" height="27" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef"/>
+					<reportElement x="670" y="-1" width="70" height="28" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeEfetivoAnoMais2}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="0" width="140" height="27" uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a"/>
+					<reportElement x="0" y="-1" width="140" height="28" uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" isBold="true"/>
@@ -363,72 +301,52 @@
 					<textFieldExpression><![CDATA[$F{efetivo}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
-					<reportElement x="340" y="0" width="90" height="27" printWhenGroupChanges="EFETIVO" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588"/>
+					<reportElement x="340" y="-1" width="90" height="28" printWhenGroupChanges="EFETIVO" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeEfetivo}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="430" y="0" width="80" height="27" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3"/>
-					<box>
+					<reportElement x="430" y="-1" width="80" height="28" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3"/>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorEfetivo}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="250" y="0" width="90" height="27" uuid="f8264049-f6cc-47d0-9275-2e7f1fa4bb3a"/>
-					<box>
+					<reportElement x="250" y="-1" width="90" height="28" uuid="f8264049-f6cc-47d0-9275-2e7f1fa4bb3a"/>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorEfetivoAnoMenos1}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="740" y="0" width="62" height="27" uuid="89965250-45f9-4e73-ae56-6e08fb4aa302"/>
-					<box>
+					<reportElement x="740" y="-1" width="62" height="28" uuid="89965250-45f9-4e73-ae56-6e08fb4aa302"/>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorEfetivoAnoMais2}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="140" y="0" width="110" height="27" uuid="15f2d97f-6dce-439b-9505-a47703770b65"/>
+					<reportElement x="140" y="-1" width="110" height="28" uuid="15f2d97f-6dce-439b-9505-a47703770b65"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeEfetivoAnoMenos1}]]></textFieldExpression>
 				</textField>
@@ -442,10 +360,6 @@
 					<reportElement x="0" y="0" width="140" height="27" uuid="a1807666-3ce5-4ef6-8202-d5b8af75ba2f"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" isBold="true"/>
@@ -456,27 +370,19 @@
 					<reportElement x="140" y="0" width="110" height="27" uuid="c4d46bea-464c-4ea4-901b-e6d2b19ac4ee"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionadoAnoMenos1}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="250" y="0" width="90" height="27" uuid="d8768db3-475b-448e-bd06-23243fe15eb7"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionadoAnoMenos1}]]></textFieldExpression>
 				</textField>
@@ -484,27 +390,19 @@
 					<reportElement x="340" y="0" width="90" height="27" printWhenGroupChanges="EFETIVO" uuid="53edc417-d6e2-413e-a1f9-ea975c129def"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionado}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="430" y="0" width="80" height="27" uuid="8fbe17b1-7980-4658-ae87-393b600c80e1"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionado}]]></textFieldExpression>
 				</textField>
@@ -512,27 +410,19 @@
 					<reportElement x="510" y="0" width="80" height="27" uuid="75a240cc-6320-4038-b6f9-482aa31d7093"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionadoAnoMais1}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="590" y="0" width="80" height="27" uuid="787fad77-baaa-4948-bda7-3eb5d2f11cfd"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionadoAnoMais1}]]></textFieldExpression>
 				</textField>
@@ -540,27 +430,19 @@
 					<reportElement x="670" y="0" width="70" height="27" uuid="fdb6b584-9851-4d78-8c29-e24472d69458"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionadoAnoMais2}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="740" y="0" width="62" height="27" uuid="6d625f20-6cc9-45f0-9cd4-dafdb13764c7"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionadoAnoMais2}]]></textFieldExpression>
 				</textField>
@@ -574,10 +456,6 @@
 					<reportElement x="0" y="0" width="140" height="27" uuid="26c2259f-efc4-4991-990b-4385d42f9aaf"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" isBold="true"/>
@@ -588,27 +466,19 @@
 					<reportElement x="140" y="0" width="110" height="27" uuid="8955692b-68c3-4d14-8ab2-66d1d694d4fd"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeTemporarioAnoMenos1}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="250" y="0" width="90" height="27" uuid="ef94c49f-83f3-4e9d-bf4e-6d2ef2453934"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporarioAnoMenos1}]]></textFieldExpression>
 				</textField>
@@ -616,27 +486,19 @@
 					<reportElement x="340" y="0" width="90" height="27" printWhenGroupChanges="EFETIVO" uuid="b7cf8384-8a0d-4b94-b19e-0c3a035a8266"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeTemporario}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="430" y="0" width="80" height="27" uuid="db52d9c0-ece9-4271-ac8a-d09a9b5e10cc"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporario}]]></textFieldExpression>
 				</textField>
@@ -644,27 +506,19 @@
 					<reportElement x="510" y="0" width="80" height="27" uuid="7f90d5a7-f597-4fc2-afe5-c4dca0226925"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionadoAnoMais1}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="590" y="0" width="80" height="27" uuid="5a524bbb-a861-48ed-9425-f50800d03303"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporarioAnoMais1}]]></textFieldExpression>
 				</textField>
@@ -672,27 +526,19 @@
 					<reportElement x="670" y="0" width="70" height="27" uuid="b5bf7939-bd68-4507-b2d5-d8a6923b6bb4"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidadeComissionadoAnoMais2}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="740" y="0" width="62" height="27" uuid="67cd44b1-0986-4189-a249-68aab18ba394"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporarioAnoMais2}]]></textFieldExpression>
 				</textField>
@@ -706,10 +552,6 @@
 					<reportElement x="0" y="0" width="140" height="27" uuid="d6c78678-2336-4c5c-8904-960243f8d6f3"/>
 					<box>
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" isBold="true"/>
@@ -718,57 +560,41 @@
 				</textField>
 				<textField pattern="#,##0.00#;(#,##0.00#)">
 					<reportElement x="140" y="0" width="150" height="27" uuid="7dad170e-4564-46e7-82be-007d031edba6"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{receitaLiquidaAnoMenos1}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="290" y="0" width="170" height="27" uuid="b2de0f8a-e231-4228-863d-7718c52c0822"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{receitaLiquida}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="460" y="0" width="180" height="27" printWhenGroupChanges="EFETIVO" uuid="36a70a5e-36ac-46d8-8089-0b9def910fe1"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{receitaLiquidaAnoMais1}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="640" y="0" width="162" height="27" uuid="6b0b8b11-ae41-493e-92c5-3e8a8ace68ae"/>
-					<box>
+					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true"/>
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{receitaLiquidaAnoMais2}]]></textFieldExpression>
 				</textField>
