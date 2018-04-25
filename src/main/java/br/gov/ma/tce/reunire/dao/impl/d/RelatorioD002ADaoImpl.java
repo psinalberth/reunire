@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.ejb.Stateless;
 
@@ -17,30 +18,50 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 
 	@Override
 	public String getNomeRelatorio() {
-		return "lei4320anexoii_receita.jasper";
+		return "relatoriod002a.jasper";
 	}
 
 	@Override
 	public List<RelatorioD002AVO> recuperaDados(Map<String, Object> params) {
 		
-		String sql = "select d.unidade_id unidade," + 
-				"	   cr.codigo || '.0.0.0.00.00' cod_cat, cr.descricao desc_cat, " +
-				"	   cr.codigo || '.'|| o.codigo || '.0.0.00.00' cod_ori, o.descricao desc_ori, " + 
-				"	   cr.codigo || '.'|| o.codigo || '.' ||  e.codigo || '.0.00.00' cod_esp, e.descricao desc_esp, " + 
-				"	   cr.codigo || '.'|| o.codigo || '.' ||  e.codigo || '.' || r.codigo || '.00.00' cod_rub, r.descricao desc_rub,  " + 
-				"	   cr.codigo || '.'|| o.codigo || '.' ||  e.codigo || '.' || r.codigo || '.' || to_char(a.codigo, 'FM00') || '.00' cod_ali, a.descricao desc_ali, " + 
-				"	   sum (d.valor_atual) valor " + 
-				"	   from prestacao.d002a d " + 
-				"		inner join sae.vw_natureza_receita vw_nr on regexp_replace(d.natureza_receita, '[.]', '', 'g') = regexp_replace(vw_nr.codigo_natureza_receita, '[.]','','g') and vw_nr.ativo = 'S' " + 
-				"		inner join sae.sae_natureza_receita nr on nr.id_natureza_receita = vw_nr.id_natureza_receita and nr.ativo = 'S' " + 
-				"		inner join sae.sae_categoria_ec_receita cr on cr.id_categoria_ec_receita = nr.id_categoria_ec_receita and cr.ativo = 'S' " + 
-				"		inner join sae.sae_origem o on o.id_origem = nr.id_origem and o.ativo = 'S' " + 
-				"		inner join sae.sae_especie e on e.id_especie = nr.id_especie and e.ativo = 'S' " + 
-				"		inner join sae.sae_rubrica r on r.id_rubrica = nr.id_rubrica and r.ativo = 'S' " + 
-				"		inner join sae.sae_alinea a on a.id_alinea = nr.id_alinea and a.ativo = 'S' "+ 
-				"		where d.unidade_id in(:unidade)"+
-				"		group by unidade, cod_cat, desc_cat, cod_ori, desc_ori, cod_esp, desc_esp, cod_rub, desc_rub, cod_ali, desc_ali "+
-				"		order by unidade, cod_cat, cod_ori, cod_esp, cod_rub, cod_ali";
+		String sql = 
+				
+		"select " + 
+		"	d.unidade_id, " + 
+		"	cr.codigo || '.0.0.0.00.00' cod_cat, cr.descricao desc_cat,  " + 
+		"	cr.codigo || '.'|| o.codigo || '.0.0.00.00' cod_ori, o.descricao desc_ori,  " + 
+		"	cr.codigo || '.'|| o.codigo || '.' ||  e.codigo || '.0.00.00' cod_esp, e.descricao desc_esp,  " + 
+		"	cr.codigo || '.'|| o.codigo || '.' ||  e.codigo || '.' || r.codigo || '.00.00' cod_rub, r.descricao desc_rub,   " + 
+		"	cr.codigo || '.'|| o.codigo || '.' ||  e.codigo || '.' || r.codigo || '.' || to_char(a.codigo, 'FM00') || '.00' cod_ali, a.descricao desc_ali,  " + 
+		"	d.valor_atual " + 
+		"from ( " + 
+		"	select " + 
+		"		unidade_id, substring(regexp_replace(natureza_receita, '[.]', '', 'g'), 1, 6) || '00' nr, descricao,  " + 
+		"		sum(case  " + 
+		"				when natureza_receita like '9%' and valor_atual > 0 then valor_atual * (-1) " + 
+		"				when natureza_receita like '9%' and valor_atual < 0 then valor_atual " + 
+		"				else valor_atual " + 
+		"			end) valor_atual " + 
+		"	from  " + 
+		"		prestacao.d002a " + 
+		"	where " + 
+		"		unidade_id in (:unidades) and " + 
+		"		((:modulo is null) or (modulo_id = :modulo)) " + 
+		"	group by " + 
+		"		unidade_id, substring(regexp_replace(natureza_receita, '[.]', '', 'g'), 1, 6), descricao " + 
+		"	order by " + 
+		"		unidade_id, substring(regexp_replace(natureza_receita, '[.]', '', 'g'), 1, 6), descricao) d	 " + 
+		"left join (select id_natureza_receita, regexp_replace(codigo_natureza_receita, '[.]', '', 'g') codigo_natureza_receita from sae.vw_natureza_receita where codigo_natureza_receita ~ '00$' and ativo = 'S') vw on " + 
+		"	vw.codigo_natureza_receita = d.nr " + 
+		"left join sae.sae_natureza_receita nr on nr.id_natureza_receita = vw.id_natureza_receita and nr.ativo = 'S'  " + 
+		"left join sae.sae_categoria_ec_receita cr on cr.id_categoria_ec_receita = nr.id_categoria_ec_receita and cr.ativo = 'S'  " + 
+		"left join sae.sae_origem o on o.id_origem = nr.id_origem and o.ativo = 'S'  " + 
+		"left join sae.sae_especie e on e.id_especie = nr.id_especie and e.ativo = 'S'  " + 
+		"left join sae.sae_rubrica r on r.id_rubrica = nr.id_rubrica and r.ativo = 'S'  " + 
+		"left join sae.sae_alinea a on a.id_alinea = nr.id_alinea and a.ativo = 'S' " + 
+		"left join sae.sae_sub_alinea s on s.id_sub_alinea = nr.id_sub_alinea and s.ativo = 'S' " + 
+		"order by " + 
+		"	cod_cat, cod_ori, cod_esp, cod_rub, cod_ali ";
 		
 		List<RelatorioD002AVO> listaVo = new ArrayList<>();
 		
@@ -50,19 +71,18 @@ public class RelatorioD002ADaoImpl extends PrestacaoDaoImpl<RelatorioD002AVO> im
 				
 		@SuppressWarnings("unchecked")
 		List<Object[]> lista = entityManager.createNativeQuery(sql)
-				.setParameter("unidade", listaIdsUnidades)
+				.setParameter("unidades", listaIdsUnidades)
+				.setParameter("modulo", Integer.valueOf(String.valueOf(params.get("modulo"))))
 				.getResultList();
 		
 		for(Object[] l : lista) {
+			
 			RelatorioD002AVO relatorio = new RelatorioD002AVO();
-			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
 			
-			for(UnidadeVO listaUnidade : listaUnidadeVO) {
-				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue()) {
-					relatorio.setDescricaoUnidade(listaUnidade.getNome());
-				}
-			}
+			Optional<UnidadeVO> unidade = listaUnidadeVO.stream().filter(u -> u.getId().equals(Integer.parseInt(String.valueOf(l[0])))).findFirst();
 			
+			relatorio.setIdUnidade(Integer.parseInt(String.valueOf(l[0])));
+			relatorio.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
 			relatorio.setCodigoCategoriaEconomica(l[1].toString());
 			relatorio.setDescricaoCategoriaEconomica(l[2].toString());
 			relatorio.setCodigoOrigem(l[3].toString());
