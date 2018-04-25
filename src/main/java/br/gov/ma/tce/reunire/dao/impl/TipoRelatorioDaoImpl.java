@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import br.gov.ma.tce.reunire.dao.TipoRelatorioDao;
 import br.gov.ma.tce.reunire.model.TipoRelatorio;
@@ -22,7 +23,9 @@ public class TipoRelatorioDaoImpl extends PrestacaoDaoImpl<TipoRelatorio> implem
 		
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 		CriteriaQuery<TipoRelatorio> cq = cb.createQuery(TipoRelatorio.class);
-		cq.select(cq.from(TipoRelatorio.class));
+		Root<TipoRelatorio> root = cq.from(TipoRelatorio.class);
+		cq.select(root);
+		cq.orderBy(cb.asc(root.get("id")));
 		
 		return entityManager.createQuery(cq).getResultList();
 	}

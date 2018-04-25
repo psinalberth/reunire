@@ -1,86 +1,70 @@
 package br.gov.ma.tce.reunire.dao.impl.cam;
 
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
+import javax.ejb.Stateless;
 
 import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
 import br.gov.ma.tce.reunire.dao.impl.PrestacaoDaoImpl;
 import br.gov.ma.tce.reunire.model.vo.cam.RelatorioCAM06VO;
 import br.gov.ma.tce.reunire.model.vo.gestor.UnidadeVO;
 
+@Stateless
 public class RelatorioCAM06DaoImpl extends PrestacaoDaoImpl<RelatorioCAM06VO> implements DemonstrativoDao<RelatorioCAM06VO> {
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<RelatorioCAM06VO> recuperaDados(Map<String, Object> params) {
 		
-		String sql = "select c.unidade_id, c.numero_processo, c.cpf_suprido, c.finalidade_adiantamento, c.data_recebimento, c.valor, c.prazo_aplicacao, c.data_prestacao, c.situacao " + 
-				"from prestacao.cam06 c " + 
-				"where c.unidade_id in(:unidade) " + 
-				"group by c.unidade_id, c.numero_processo, c.cpf_suprido, c.finalidade_adiantamento, c.data_recebimento, c.valor, c.prazo_aplicacao, c.data_prestacao, c.situacao " + 
-				"order by c.unidade_id, c.numero_processo, c.cpf_suprido, c.finalidade_adiantamento, c.data_recebimento, c.prazo_aplicacao, c.data_prestacao, c.situacao";
+		String sql = 
+				
+		"select " +
+			"unidade_id, data_recebimento, cpf_suprido, finalidade_adiantamento, valor, prazo_aplicacao, data_prestacao, situacao " +
+		"from " +
+			"prestacao.cam06 " +
+		"where " +
+			"unidade_id in (:unidades) and " +
+			"((:modulo is null) or (modulo_id = :modulo)) " +
+		"order by " +
+			"unidade_id, data_recebimento, cpf_suprido";
 		
-		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(params);
-		List<Integer> listaIdsUnidades = extrairIds(listaUnidadeVO);
+		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
+		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);
 		
-		List<RelatorioCAM06VO> listaVo = new ArrayList<>();
-		
-		List<Object[]> lista = entityManager.createNativeQuery(sql)
-				.setParameter("unidade", listaIdsUnidades)
+		List<Object[]> rows = entityManager.createNativeQuery(sql)
+				.setParameter("unidades", listaIdsUnidades)
+				.setParameter("modulo", 1)
 				.getResultList();
 		
-		for(Object[] l : lista) {
+		List<RelatorioCAM06VO> dados = new ArrayList<RelatorioCAM06VO>(rows.size());
+		
+		for(Object[] row : rows) {
 			
-			RelatorioCAM06VO relatorio = new RelatorioCAM06VO();
-			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
+			RelatorioCAM06VO dado = new RelatorioCAM06VO();
 			
-			for(UnidadeVO listaUnidade : listaUnidadeVO) {
-				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue()) {
-					relatorio.setDescricaoUnidade(listaUnidade.getNome());
-				}
-			}
-			relatorio.setNumeroProcesso(l[1].toString());
-			relatorio.setCpfSuprido(l[2].toString());
-			relatorio.setFinalidadeAdiantamento(l[3].toString());
+			Optional<UnidadeVO> unidade = listaUnidades.stream().filter(u -> u.getId().equals(Integer.parseInt(String.valueOf(row[0])))).findFirst();
 			
-			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
+			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
+			dado.setDataRecebimento(toDate(row[1]));
+			dado.setCpfSuprido(toPessoa(row[2]));
+			dado.setFinalidadeAdiantamento(String.valueOf(row[3]));
+			dado.setValor(toBigDecimal(row[4]));
+			dado.setPrazoAplicacao(Integer.valueOf(String.valueOf(row[5])));
+			dado.setDataPrestacaoContas(toDate(row[6]));
+			dado.setSituacao(String.valueOf(row[7]));
 			
-			Date data1 = null;
-			try {
-				data1 = formato.parse(l[4].toString());
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}			
-			
-			relatorio.setDataRecebimento(data1);
-			relatorio.setValor(new BigDecimal(Double.parseDouble(l[5].toString())));
-			relatorio.setPrazoAplicacao(Integer.parseInt(l[6].toString()));
-			
-			Date data2 = null;
-			try {
-				data2 = formato.parse(l[7].toString());
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}	
-			
-			relatorio.setDataPrestacaoContas(data2);
-			relatorio.setSituacao(l[8].toString());			
+			dados.add(dado);
 		}
 		
-		return listaVo;
+		return dados;
 	}
 
 	@Override
 	public String getNomeRelatorio() {		
-		return "";
+		return "relatoriocam06.jasper";
 	}
-
-	
-	
-
 }
