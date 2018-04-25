@@ -33,6 +33,9 @@ public class Report {
 		
 		try {
 			
+			//JRVirtualizer virtualizer = new JRSwapFileVirtualizer(1000, new JRSwapFile(pathRelatorios, 1024, 100), true);
+			//params.put(JRParameter.REPORT_VIRTUALIZER, virtualizer);
+			
 			InputStream input = new FileInputStream(pathRelatorios + "/" + relatorio);
 			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dados);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(input, params, dataSource);
