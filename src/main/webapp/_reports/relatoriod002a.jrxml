@@ -68,7 +68,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["RECEITAS SEGUNDO A CATEGORIA ECONÔMICA"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement style="Cabecalho" mode="Transparent" x="622" y="35" width="90" height="22" forecolor="#000000" backcolor="#313131" uuid="3dec9f7c-2402-403b-aa76-3888d627c9b6">
@@ -809,7 +809,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[DEMONSTRATIVO N° 2A: RECEITA SEGUNDO AS CATEGORIAS ECONÔMICAS]]></text>
+				<text><![CDATA[ANEXO 2: RECEITAS E DESPESAS SEGUNDO A CATEGORIA ECONÔMICA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="80" width="802" height="5" uuid="cb7321e1-8932-49df-9487-005921bbe468">
@@ -827,7 +827,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ANEXOS DA LEI 4320/64]]></text>
+				<text><![CDATA[DEMONSTRAÇÕES, QUADROS E DEMONSTRATIVOS DA LEI 4320/64]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="32" width="802" height="16" isRemoveLineWhenBlank="true" uuid="bed3fc29-421f-4f91-b01f-d119760f0dac">
