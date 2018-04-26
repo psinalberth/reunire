@@ -17,21 +17,6 @@
 		<groupHeader>
 			<band height="65">
 				<staticText>
-					<reportElement x="562" y="35" width="120" height="30" uuid="27c3cf9d-4f51-49f7-ba11-29912ebcde15">
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<text><![CDATA[DOTAÇÃO INICIAL]]></text>
-				</staticText>
-				<staticText>
 					<reportElement x="124" y="35" width="111" height="30" uuid="83c24fa1-c518-4181-9e2f-aba822eace96"/>
 					<box>
 						<pen lineWidth="0.0"/>
@@ -55,22 +40,7 @@
 					<text><![CDATA[N° DO DECRETO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="682" y="35" width="120" height="30" uuid="9bc1b273-75cd-42ca-96d1-2d5159d50f57">
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<text><![CDATA[DOTAÇÃO FINAL]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="442" y="35" width="120" height="30" uuid="6a50b2d2-3324-4e21-abf5-463f6bb13b4a">
+					<reportElement x="682" y="35" width="120" height="30" uuid="6a50b2d2-3324-4e21-abf5-463f6bb13b4a">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<box>
@@ -85,7 +55,7 @@
 					<text><![CDATA[VALOR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="235" y="35" width="207" height="30" uuid="d07b949c-ee5b-43fd-8d34-52f75888a64e"/>
+					<reportElement x="235" y="35" width="447" height="30" uuid="d07b949c-ee5b-43fd-8d34-52f75888a64e"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.5"/>
@@ -135,7 +105,7 @@
 					<textFieldExpression><![CDATA[$F{dataAto}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00;(#,##0.00)">
-					<reportElement x="442" y="0" width="120" height="30" uuid="941d75fc-842c-4153-922d-ffed5d5868ee">
+					<reportElement x="682" y="0" width="120" height="30" uuid="941d75fc-842c-4153-922d-ffed5d5868ee">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<box rightPadding="5">
@@ -149,23 +119,8 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00;(#,##0.00)">
-					<reportElement x="562" y="0" width="120" height="30" uuid="c0618a8c-ca0a-40eb-872a-e54250ac0e52">
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box rightPadding="5">
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{dotacaoInicial}]]></textFieldExpression>
-				</textField>
 				<textField>
-					<reportElement x="235" y="0" width="207" height="30" uuid="c01238d8-98e7-42c9-9817-dabd24e27795"/>
+					<reportElement x="235" y="0" width="447" height="30" uuid="c01238d8-98e7-42c9-9817-dabd24e27795"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.5"/>
@@ -187,19 +142,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numeroAto}]]></textFieldExpression>
 				</textField>
-				<staticText>
-					<reportElement x="682" y="0" width="120" height="30" uuid="6731008a-6d34-4ebd-ba65-759fbd6eb9ac">
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box>
-						<pen lineWidth="0.5"/>
-						<leftPen lineWidth="0.0"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<text><![CDATA[]]></text>
-				</staticText>
 			</band>
 		</groupHeader>
 	</group>
@@ -297,7 +239,7 @@
 				<text><![CDATA[DATA DO DECRETO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="235" y="0" width="207" height="30" uuid="a186ca19-ff9d-4aa8-8c80-2c736f98dd71"/>
+				<reportElement x="235" y="0" width="447" height="30" uuid="a186ca19-ff9d-4aa8-8c80-2c736f98dd71"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.5"/>
@@ -310,36 +252,6 @@
 				<text><![CDATA[TIPO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="562" y="0" width="120" height="30" uuid="a98fa5e0-8753-4650-abcb-c7059533c9a3">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[DOTAÇÃO INICIAL]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="682" y="0" width="120" height="30" uuid="f35dfc19-33bd-4f1f-8cbc-ed130679811a">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[DOTAÇÃO FINAL]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="0" y="0" width="124" height="30" uuid="3f8924a4-f564-4b6a-9828-6450fe99db8e"/>
 				<box>
 					<pen lineWidth="0.5"/>
@@ -350,7 +262,7 @@
 				<text><![CDATA[N° DO DECRETO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="442" y="0" width="120" height="30" uuid="a3e0066a-46d4-4ba9-b25b-6b8c17a4394f">
+				<reportElement x="682" y="0" width="120" height="30" uuid="a3e0066a-46d4-4ba9-b25b-6b8c17a4394f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>

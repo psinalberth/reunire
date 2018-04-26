@@ -48,11 +48,11 @@ public class RelatorioCAM05DaoImpl extends PrestacaoDaoImpl<RelatorioCAM05VO> im
 			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
 			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
 			dado.setFinalidade(String.valueOf(row[1]));
-			dado.setCpfCnpjProprietario(String.valueOf(row[2]));
+			dado.setCpfCnpjProprietario(toPessoa(row[2]));
 			dado.setNomeProprietario(String.valueOf(row[3]));
 			dado.setModeloVeiculo(String.valueOf(row[4]));
 			dado.setPlavaDoVeiculo(String.valueOf(row[5]));
-			dado.setRenavam(String.valueOf(row[6]));
+			dado.setRenavam(String.format("%011d", Long.valueOf(String.valueOf(row[6]))));
 			dado.setId(Integer.parseInt( String.valueOf(row[7])));
 			
 			dados.add(dado);
