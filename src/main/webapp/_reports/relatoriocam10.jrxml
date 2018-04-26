@@ -59,7 +59,7 @@
 	<group name="NOME">
 		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
 		<groupHeader>
-			<band height="83">
+			<band height="113">
 				<textField>
 					<reportElement x="0" y="22" width="250" height="15" uuid="65a44ad7-8cdc-4442-9474-a2a43b16d0c7">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -167,7 +167,7 @@
 					<text><![CDATA[SERVIÇOS DISPONÍVEIS]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="0" y="59" width="802" height="15" uuid="eedb973e-3a4c-4f21-941b-9d5e02a73c07">
+					<reportElement x="0" y="59" width="802" height="45" uuid="eedb973e-3a4c-4f21-941b-9d5e02a73c07">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box leftPadding="5">
