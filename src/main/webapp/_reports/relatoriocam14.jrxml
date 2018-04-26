@@ -268,7 +268,7 @@
 							<bottomPen lineWidth="0.5"/>
 							<rightPen lineWidth="0.5"/>
 						</box>
-						<textElement verticalAlignment="Middle">
+						<textElement textAlignment="Center" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$F{identificacaoContratado}]]></textFieldExpression>
