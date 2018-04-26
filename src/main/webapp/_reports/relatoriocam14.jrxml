@@ -70,23 +70,6 @@
 					<text><![CDATA[VALOR TOTAL CONTRATADO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="711" y="35" width="91" height="22" uuid="e277b71e-8761-4064-8126-4c7e5f954c0c">
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					</reportElement>
-					<box>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<text><![CDATA[VALOR TOTAL PAGO]]></text>
-				</staticText>
-				<staticText>
 					<reportElement x="270" y="35" width="80" height="22" uuid="8d106b30-728e-490d-94ed-73b1bf046fac">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -170,6 +153,40 @@
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<text><![CDATA[(CNPJ)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="711" y="35" width="91" height="11" uuid="3cfe7d0b-4e01-47bf-ae8e-4282335c0442">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VALOR TOTAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="711" y="46" width="91" height="11" uuid="4f2091d0-928b-4290-ac25-25cdebb5b25d">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PAGO]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
@@ -439,21 +456,21 @@
 				<text><![CDATA[VALOR TOTAL CONTRATADO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="711" y="0" width="91" height="22" uuid="896cb69b-b412-47f1-ae9f-7241c3dc8b9f">
+				<reportElement x="711" y="0" width="91" height="11" uuid="896cb69b-b412-47f1-ae9f-7241c3dc8b9f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<box>
 					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[VALOR TOTAL PAGO]]></text>
+				<text><![CDATA[VALOR TOTAL]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="0" width="90" height="11" uuid="abfd2552-3efd-4b8b-b329-f652fa128063">
@@ -488,6 +505,23 @@
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[(CNPJ)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="711" y="11" width="91" height="11" uuid="3a0e2187-357b-4a9a-ba69-59caeb2d0205">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAGO]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
