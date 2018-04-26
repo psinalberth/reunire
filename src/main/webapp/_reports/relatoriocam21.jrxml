@@ -284,7 +284,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[DEMONSTRATIVO N° 22: RECOMENDAÇÕES E DETERMINAÇÕES DO TCE/MA]]></text>
+				<text><![CDATA[DEMONSTRATIVO N° 21: RECOMENDAÇÕES E DETERMINAÇÕES DO TCE/MA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="80" width="802" height="10" uuid="2685d50a-bbfb-4b40-a211-d5a34ad85107"/>

@@ -69,7 +69,7 @@ public class RelatorioCAM14DaoImpl extends PrestacaoDaoImpl<RelatorioCAM14VO> im
 			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
 			dado.setIdentificacaoContratado(String.valueOf(row[1]));
 			dado.setNomeContratado(String.valueOf(row[2]));
-			dado.setIdentificacaoContratante(String.valueOf(row[3]));
+			dado.setIdentificacaoContratante(row[3] == null ? null : String.valueOf(row[3]));
 			dado.setNomeContratante(String.valueOf(row[4]));
 			
 			Calendar date = Calendar.getInstance();

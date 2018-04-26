@@ -375,7 +375,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[DEMONSTRATIVO N° 21: DÉBITOS IMPUTADOS PELO TCE/MA]]></text>
+				<text><![CDATA[DEMONSTRATIVO N° 20: DÉBITOS IMPUTADOS PELO TCE/MA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="48" width="802" height="16" uuid="dda52a1b-5527-496b-9a0f-235c78a9435c">

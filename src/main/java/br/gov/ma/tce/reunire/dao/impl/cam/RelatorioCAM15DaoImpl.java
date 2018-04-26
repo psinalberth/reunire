@@ -46,7 +46,7 @@ public class RelatorioCAM15DaoImpl extends PrestacaoDaoImpl<RelatorioCAM15VO> im
 			
 			relatorio.setNumeroOficio(l[1].toString());
 			relatorio.setNatureza(l[2].toString());
-			relatorio.setCpf_cnpj_credor(l[3].toString());
+			relatorio.setCpf_cnpj_credor(toPessoa(l[3]));
 			relatorio.setValorInscrito(new BigDecimal(Double.parseDouble(l[4].toString())));
 			relatorio.setValorPago(new BigDecimal(Double.parseDouble(l[5].toString())));
 			listaVo.add(relatorio);

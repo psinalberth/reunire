@@ -324,7 +324,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[DEMONSTRATIVO N° 15: RELAÇÃO DE SEGURADOS E PENSIONISTAS]]></text>
+				<text><![CDATA[DEMONSTRATIVO N° 13: BENEFICIÁRIOS E PENSIONISTAS]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="0" width="802" height="16" isRemoveLineWhenBlank="true" uuid="fdf727df-ff24-4d92-8173-48f03e72977e">

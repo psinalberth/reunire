@@ -241,7 +241,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[DEMONSTRATIVO N° 9: EMPRÉSTIMOS CONTRATADOS POR ANTECIPAÇÃO DA RECEITA ORÇAMENTÁRIA]]></text>
+				<text><![CDATA[DEMONSTRATIVO N° 7: EMPRÉSTIMOS CONTRATADOS POR ANTECIPAÇÃO DA RECEITA ORÇAMENTÁRIA]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="702" y="90" width="100" height="16" uuid="f05d6001-51b3-48e7-9bd4-5bfa5c6b9928">
