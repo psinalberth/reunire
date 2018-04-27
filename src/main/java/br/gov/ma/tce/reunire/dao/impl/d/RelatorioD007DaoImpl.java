@@ -17,7 +17,7 @@ public class RelatorioD007DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 	
 	@Override
 	public String getNomeRelatorio() {
-		return "lei4320anexovii.jasper";
+		return "relatoriod007.jasper";
 	}
 
 	@Override
@@ -87,6 +87,8 @@ public class RelatorioD007DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 			
 			listaVo.add(relatorio);
 		}
+		
+		params.put("tipo", 7);
 		
 		return listaVo;
 	}

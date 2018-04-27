@@ -291,7 +291,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["EXECUÇÃO DOS RESTOS A PAGAR PROCESSADOS E NÃO PROCESSADOS LIQUIDADOS"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["EXECUÇÃO DE RESTOS A PAGAR PROCESSADOS E NÃO PROCESSADOS LIQUIDADOS"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="40" width="802" height="12" uuid="3ad635b2-2011-4ae5-b952-0230c863949c">
@@ -300,7 +300,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["EXERCÍCIO: "]]></textFieldExpression>
+				<textFieldExpression><![CDATA["EXERCÍCIO: " + $P{exercicio}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

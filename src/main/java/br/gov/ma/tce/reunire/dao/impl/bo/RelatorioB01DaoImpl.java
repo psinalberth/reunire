@@ -21,7 +21,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 	
 	@Override
 	public String getNomeRelatorio() {
-		return "relatoriobo2.jasper";
+		return "relatoriobo01.jasper";
 	}
 
 	@SuppressWarnings("unchecked")
@@ -48,7 +48,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidades", listaIdsUnidades)
-				.setParameter("modulo", 1)
+				.setParameter("modulo", params.get("modulo") != null ? Integer.valueOf(String.valueOf(params.get("modulo"))) : 1)
 				.getResultList();
 		
 		List<RelatorioB01VO> dados = new ArrayList<RelatorioB01VO>();
@@ -112,7 +112,8 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		"	from  " + 
 		"		prestacao.bo01 bo " + 
 		"	where  " + 
-		"		bo.unidade_id in (:unidades) " + 
+		"		bo.unidade_id in (:unidades) and " +
+		"		((:modulo is null) or (bo.modulo_id = :modulo)) " +
 		"	group by " + 
 		"		regexp_replace(bo.natureza_receita, '[.]', '', 'g')) bo on bo.nr = regexp_replace(vw.codigo_natureza_receita, '[.]', '', 'g') " + 
 		"where " + 
@@ -159,7 +160,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		"	'' total, '' total_categoria, 'Saldos de Exercícios Anteriores (Utilizados Para Créditos Adicionais)' categoria, " + 
 		"	'Recursos Arrecadados em Exercícios Anteriores' origem, '' especie, null val_pin, sum(coalesce(arrecadado_anterior, 0)) val_pat, 0 val_rre " + 
 		"from  " + 
-		"	prestacao.bo05 where unidade_id in (:unidades) " + 
+		"	prestacao.bo05 where unidade_id in (:unidades) and ((:modulo is null) or (modulo_id = :modulo)) " + 
 		" " + 
 		"union all " + 
 		" " + 
@@ -167,7 +168,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		"	'' total, '' total_categoria, 'Saldos de Exercícios Anteriores (Utilizados Para Créditos Adicionais)' categoria, " + 
 		"	'Superávit Financeiro' origem, '' especie, null val_pin, sum(coalesce(superavit_financeiro, 0)) val_pat, 0 val_rre " + 
 		"from  " + 
-		"	prestacao.bo05 where unidade_id in (:unidades) " + 
+		"	prestacao.bo05 where unidade_id in (:unidades) and ((:modulo is null) or (modulo_id = :modulo)) " + 
 		"	 " + 
 		"union all " + 
 		" " + 
@@ -175,7 +176,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		"	'' total, '' total_categoria, 'Saldos de Exercícios Anteriores (Utilizados Para Créditos Adicionais)' categoria, " + 
 		"	'Reabertura de Créditos Adicionais' origem, '' especie, null val_pin, sum(coalesce(credito_adicional, 0)) val_pat, 0 val_rre " + 
 		"from  " + 
-		"	prestacao.bo05 where unidade_id in (:unidades)) result " + 
+		"	prestacao.bo05 where unidade_id in (:unidades) and ((:modulo is null) or (modulo_id = :modulo))) result " + 
 		"group by " + 
 		"	total, total_categoria, categoria, origem, especie " + 
 		"order by " + 
@@ -214,7 +215,10 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		"	when especie = 'Contratual' then 2 " + 
 		"end)";
 		
-		rows = entityManager.createNativeQuery(sql).setParameter("unidades", listaIdsUnidades).getResultList();
+		rows = entityManager.createNativeQuery(sql)
+				.setParameter("unidades", listaIdsUnidades)
+				.setParameter("modulo", params.get("modulo") != null ? Integer.valueOf(String.valueOf(params.get("modulo"))) : 1)
+				.getResultList();
 		
 		for (Object[] row : rows) {
 			
@@ -232,13 +236,13 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 			dados.add(dado);
 		}
 		
-		List<RelatorioB02VO> dadosPagina2 = recuperaDadosPagina2(listaIdsUnidades);
+		List<RelatorioB02VO> dadosPagina2 = recuperaDadosPagina2(listaIdsUnidades, params);
 		params.put("DATA2", dadosPagina2);
 		
-		List<RelatorioB03VO> dadosPagina3 = recuperarDadosPagina3(listaIdsUnidades);
+		List<RelatorioB03VO> dadosPagina3 = recuperarDadosPagina3(listaIdsUnidades, params);
 		params.put("DATA3", dadosPagina3);
 		
-		List<RelatorioB03VO> dadosPagina4 = recuperarDadosPagina4(listaIdsUnidades);
+		List<RelatorioB03VO> dadosPagina4 = recuperarDadosPagina4(listaIdsUnidades, params);
 		params.put("DATA4", dadosPagina4);
 		
 		BigDecimal totalPrevisaoInicial = dados.stream().filter(d -> d.getPrevisaoInicial() != null)
@@ -274,7 +278,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		return dados;
 	}
 	
-	private List<RelatorioB02VO> recuperaDadosPagina2(List<Integer> listaIdsUnidades) {
+	private List<RelatorioB02VO> recuperaDadosPagina2(List<Integer> listaIdsUnidades, Map<String, Object> params) {
 		
 		String sql = 
 				
@@ -291,7 +295,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		"	      	when vw.codigo ~ '^9' then 'Reserva de Contingência (X)' " + 
 		"		end) categoria, " + 
 		"		(case  " + 
-		"			when vw.codigo ~ '^3.1' then 'Pessoal e Encargos Pessoais' " + 
+		"			when vw.codigo ~ '^3.1' then 'Pessoal e Encargos Sociais' " + 
 		"	      	when vw.codigo ~ '^3.2' then 'Juros e Encargos da Dívida' " + 
 		"	      	when vw.codigo ~ '^3.3' then 'Outras Despesas Correntes' " + 
 		"	      	when vw.codigo ~ '^4.4' then 'Investimentos' " + 
@@ -310,7 +314,8 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		"		from  " + 
 		"			prestacao.bo02 bo " + 
 		"		where " + 
-		"			bo.unidade_id in (:unidades) " + 
+		"			bo.unidade_id in (:unidades) and " +
+		"		((:modulo is null) or (bo.modulo_id = :modulo)) " +
 		"		group by " + 
 		"			regexp_replace(bo.natureza_despesa, '[.]', '', 'g')) bo on bo.nd = regexp_replace(vw.codigo, '[.]', '', 'g') " + 
 		"	where " + 
@@ -372,7 +377,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		"	(case " + 
 		"	    when grupo = 'Amortização da Dívida Interna' then 1 " + 
 		"	    when grupo = 'Amortização da Dívida Externa' then 2 " + 
-		"	    when grupo = 'Pessoal e Encargos Pessoais' then 3 " + 
+		"	    when grupo = 'Pessoal e Encargos Sociais' then 3 " + 
 		"	    when grupo = 'Juros e Encargos da Dívida' then 4 " + 
 		"	    when grupo = 'Outras Despesas Correntes' then 5 " + 
 		"	    when grupo = 'Investimentos' then 6 " + 
@@ -385,7 +390,10 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		"	end)";	
 				
 		@SuppressWarnings("unchecked")
-		List<Object[]> rows = entityManager.createNativeQuery(sql).setParameter("unidades", listaIdsUnidades).getResultList();
+		List<Object[]> rows = entityManager.createNativeQuery(sql)
+		.setParameter("unidades", listaIdsUnidades)
+		.setParameter("modulo", params.get("modulo") != null ? Integer.valueOf(String.valueOf(params.get("modulo"))) : 1)
+		.getResultList();
 
 		List<RelatorioB02VO> dados = new ArrayList<RelatorioB02VO>(rows.size());
 
@@ -411,14 +419,14 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		return dados;
 	}
 	
-	private List<RelatorioB03VO> recuperarDadosPagina3(List<Integer> listaIdsUnidades) {
+	private List<RelatorioB03VO> recuperarDadosPagina3(List<Integer> listaIdsUnidades, Map<String, Object> params) {
 		
 		String sql = 
 		
 		"select " +
 			"(case when vw.codigo ~ '^3.' then 'Despesas Correntes' else 'Despesas de Capital' end) categoria, " +
 			"(case " + 
-				"when vw.codigo ~ '^3.1' then 'Pessoal e Encargos Pessoais' " +
+				"when vw.codigo ~ '^3.1' then 'Pessoal e Encargos Sociais' " +
 		      	"when vw.codigo ~ '^3.2' then 'Juros e Encargos da Dívida' " +
 		      	"when vw.codigo ~ '^3.3' then 'Outras Despesas Correntes' " +
 		      	"when vw.codigo ~ '^4.4' then 'Investimentos' " +
@@ -436,7 +444,8 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 			"from " + 
 				"prestacao.bo03 " +
 			"where " +
-				"unidade_id in (:unidades) " +
+				"unidade_id in (:unidades) and " +
+				" ((:modulo is null) or (modulo_id = :modulo)) " +
 			"group by " + 
 				"regexp_replace(natureza_despesa, '[.]', '', 'g')) bo on bo.nd = regexp_replace(vw.codigo, '[.]', '', 'g') and vw.ativo = 'S' " +
 		"where " +
@@ -453,7 +462,10 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 			"end)";
 		
 		@SuppressWarnings("unchecked")
-		List<Object[]> rows = entityManager.createNativeQuery(sql).setParameter("unidades", listaIdsUnidades).getResultList();
+		List<Object[]> rows = entityManager.createNativeQuery(sql)
+		.setParameter("unidades", listaIdsUnidades)
+		.setParameter("modulo", params.get("modulo") != null ? Integer.valueOf(String.valueOf(params.get("modulo"))) : 1)
+		.getResultList();
 		
 		List<RelatorioB03VO> dados = new ArrayList<RelatorioB03VO>(rows.size());
 		
@@ -475,14 +487,14 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		return dados;
 	}
 	
-	private List<RelatorioB03VO> recuperarDadosPagina4(List<Integer> listaIdsUnidades) {
+	private List<RelatorioB03VO> recuperarDadosPagina4(List<Integer> listaIdsUnidades, Map<String, Object> params) {
 		
 		String sql = 
 				
 		"select " +
 			"(case when vw.codigo ~ '^3.' then 'Despesas Correntes' else 'Despesas de Capital' end) categoria, " +
 			"(case " + 
-				"when vw.codigo ~ '^3.1' then 'Pessoal e Encargos Pessoais' " +
+				"when vw.codigo ~ '^3.1' then 'Pessoal e Encargos Sociais' " +
 		      	"when vw.codigo ~ '^3.2' then 'Juros e Encargos da Dívida' " +
 		      	"when vw.codigo ~ '^3.3' then 'Outras Despesas Correntes' " +
 		      	"when vw.codigo ~ '^4.4' then 'Investimentos' " +
@@ -500,7 +512,8 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 			"from " + 
 				"prestacao.bo04 " +
 			"where " + 
-				"unidade_id in (:unidades) " +
+				"unidade_id in (:unidades) and " +
+				"		((:modulo is null) or (modulo_id = :modulo)) " +
 			"group by " + 
 				"regexp_replace(natureza_despesa, '[.]', '', 'g')) bo on bo.nd = regexp_replace(vw.codigo, '[.]', '', 'g') and vw.ativo = 'S' " +
 		"where " +
@@ -517,7 +530,10 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 			"end)";
 		
 		@SuppressWarnings("unchecked")
-		List<Object[]> rows = entityManager.createNativeQuery(sql).setParameter("unidades", listaIdsUnidades).getResultList();
+		List<Object[]> rows = entityManager.createNativeQuery(sql)
+		.setParameter("unidades", listaIdsUnidades)
+		.setParameter("modulo", params.get("modulo") != null ? Integer.valueOf(String.valueOf(params.get("modulo"))) : 1)
+		.getResultList();
 		
 		List<RelatorioB03VO> dados = new ArrayList<RelatorioB03VO>(rows.size());
 		

@@ -103,7 +103,7 @@ public interface DemonstrativoDao<T> {
 			
 			return retorno.replaceFirst("(\\d{2})(\\d{3})(\\d{3})(\\d{4})(\\d{2})", "$1.$2.$3/$4-$5");
 			
-		} else if (retorno.matches("^[0-9]*$") && retorno.length() > 1 && retorno.length() < 14) {
+		} else if (retorno.matches("^[0-9]*$") && retorno.length() > 1 && retorno.length() <= 11) {
 			
 			retorno = String.format("%011d", Long.valueOf(retorno));
 			
