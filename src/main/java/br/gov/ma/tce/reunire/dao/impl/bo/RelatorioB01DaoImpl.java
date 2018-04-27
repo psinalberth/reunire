@@ -35,7 +35,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 				
 		"select " + 
 			"regexp_replace(bo.natureza_receita, '[.]', '', 'g') nr, " + 
-			"bo.previsao_inicial val_pin, bo.previsao_atualizada val_pat, bo.receita_realizada val_rre " + 
+			"sum(bo.previsao_inicial) val_pin, sum(bo.previsao_atualizada) val_pat, sum(bo.receita_realizada) val_rre " + 
 		"from " + 
 			"prestacao.bo01 bo " +
 		"where " + 
@@ -43,6 +43,8 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 			"((:modulo is null) or (bo.modulo_id = :modulo)) and " +
 			"regexp_replace(bo.natureza_receita, '[.]', '', 'g') ~ '^([17][12345679]|[28][123]|2[45]|9[7])' and " +
 			"(not regexp_replace(bo.natureza_receita, '[.]', '', 'g') ~ '^21(140600|230700)') " +
+		"group by " +
+			"regexp_replace(bo.natureza_receita, '[.]', '', 'g') " +
 		"order by " +
 			"regexp_replace(bo.natureza_receita, '[.]', '', 'g')";
 		
@@ -72,7 +74,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 				  soma("^[17]6", rows, 1), soma("^[17]6", rows, 2), soma("^[17]6", rows, 3)));
 		
 		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Transferências Correntes", 
-				  soma("^[179]7", rows, 1).subtract(soma("^97", rows, 1)), soma("^[179]7", rows, 2).subtract(soma("^97", rows, 2)), soma("^[179]7", rows, 3).subtract(soma("^97", rows, 3))));
+				  soma("^[17]7", rows, 1).subtract(soma("^97", rows, 1)), soma("^[17]7", rows, 2).subtract(soma("^97", rows, 2)), soma("^[17]7", rows, 3).subtract(soma("^97", rows, 3))));
 		
 		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Outras Receitas Correntes", 
 				  soma("^[17]9", rows, 1), soma("^[17]9", rows, 2), soma("^[17]9", rows, 3)));
@@ -423,43 +425,44 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		
 		String sql = 
 		
-		"select " +
-			"(case when vw.codigo ~ '^3.' then 'Despesas Correntes' else 'Despesas de Capital' end) categoria, " +
-			"(case " + 
-				"when vw.codigo ~ '^3.1' then 'Pessoal e Encargos Sociais' " +
-		      	"when vw.codigo ~ '^3.2' then 'Juros e Encargos da Dívida' " +
-		      	"when vw.codigo ~ '^3.3' then 'Outras Despesas Correntes' " +
-		      	"when vw.codigo ~ '^4.4' then 'Investimentos' " +
-		      	"when vw.codigo ~ '^4.5' then 'Inversões Financeiras' " +
-		      	"when vw.codigo ~ '^4.6' then 'Amortização da Dívida' " + 
-			"end) grupo, " +
-			"coalesce(bo.inscrito_anterior, 0) val_ria, coalesce(bo.inscrito_31_anterior, 0) val_rie, coalesce(bo.liquidado, 0) val_rli, " +
-			"coalesce(bo.pago, 0) val_rpg, coalesce(bo.cancelado, 0) val_rcn " +
-		"from " + 
-			"sae.vw_natureza_despesa vw " +
-		"left outer join ( " +
-			"select " + 
-				"regexp_replace(natureza_despesa, '[.]', '', 'g') nd, sum(inscrito_anterior) inscrito_anterior, sum(inscrito_31_anterior) inscrito_31_anterior, " + 
-				"sum(liquidado) liquidado, sum(pago) pago, sum(cancelado) cancelado " + 
-			"from " + 
-				"prestacao.bo03 " +
-			"where " +
-				"unidade_id in (:unidades) and " +
-				" ((:modulo is null) or (modulo_id = :modulo)) " +
-			"group by " + 
-				"regexp_replace(natureza_despesa, '[.]', '', 'g')) bo on bo.nd = regexp_replace(vw.codigo, '[.]', '', 'g') and vw.ativo = 'S' " +
-		"where " +
-			"vw.codigo ~ '^(3.[123]|4.[456])' and vw.ativo = 'S' " +
-		"order by " +
-			"(case when vw.codigo ~ '^3.' then 1 else 2 end), " +
-			"(case " +
-				"when vw.codigo ~ '^3.1' then 1 " +
-		      	"when vw.codigo ~ '^3.2' then 2 " +
-		      	"when vw.codigo ~ '^3.3' then 3 " +
-		      	"when vw.codigo ~ '^4.4' then 4 " +
-		      	"when vw.codigo ~ '^4.5' then 5 " +
-		      	"when vw.codigo ~ '^4.6' then 6 " + 
-			"end)";
+		"select  " + 
+			"(case when nd ~ '^3' then 'Despesas Correntes' else 'Despesas de Capital' end) categoria,  " + 
+			"(case  " + 
+				"when nd ~ '^31' then 'Pessoal e Encargos Sociais'  " + 
+				"when nd ~ '^32' then 'Juros e Encargos da Dívida'  " + 
+				"when nd ~ '^33' then 'Outras Despesas Correntes'  " + 
+				"when nd ~ '^44' then 'Investimentos'  " + 
+				"when nd ~ '^45' then 'Inversões Financeiras'  " + 
+				"when nd ~ '^46' then 'Amortização da Dívida'  " + 
+			"end) grupo,  " + 
+			"coalesce(inscrito_anterior, 0) val_ria, coalesce(inscrito_31_anterior, 0) val_rie,  " + 
+			"coalesce(liquidado, 0) val_rli, coalesce(pago, 0) val_rpg, coalesce(cancelado, 0) val_rcn  " +	
+		"from (  " +
+			"select  " + 
+				"regexp_replace(natureza_despesa, '[.]', '', 'g') nd,  " + 
+				"sum(inscrito_anterior) inscrito_anterior, sum(inscrito_31_anterior) inscrito_31_anterior,  " + 
+				"sum(liquidado) liquidado, sum(pago) pago, sum(cancelado) cancelado  " + 
+			"from  " + 
+				"prestacao.bo03  " + 
+			"where  " + 
+				"unidade_id in (:unidades) and  " + 
+				"((:modulo is null) or (modulo_id = :modulo))  " +
+			"group by  " + 
+				"regexp_replace(natureza_despesa, '[.]', '', 'g')  " +
+			"order by  " +
+				"regexp_replace(natureza_despesa, '[.]', '', 'g')) result  " +
+		"where  " +
+			"nd ~ '^(3[123]|4[456])'  " +
+		"order by  " +
+			"(case when nd ~ '^3' then 1 else 2 end),  " + 
+		"(case  " + 
+			"when nd ~ '^31' then 1  " + 
+			"when nd ~ '^32' then 2  " + 
+			"when nd ~ '^33' then 3  " + 
+			"when nd ~ '^44' then 4  " + 
+			"when nd ~ '^45' then 5  " + 
+			"when nd ~ '^46' then 6  " + 
+		"end)";
 		
 		@SuppressWarnings("unchecked")
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
@@ -491,43 +494,42 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		
 		String sql = 
 				
-		"select " +
-			"(case when vw.codigo ~ '^3.' then 'Despesas Correntes' else 'Despesas de Capital' end) categoria, " +
-			"(case " + 
-				"when vw.codigo ~ '^3.1' then 'Pessoal e Encargos Sociais' " +
-		      	"when vw.codigo ~ '^3.2' then 'Juros e Encargos da Dívida' " +
-		      	"when vw.codigo ~ '^3.3' then 'Outras Despesas Correntes' " +
-		      	"when vw.codigo ~ '^4.4' then 'Investimentos' " +
-		      	"when vw.codigo ~ '^4.5' then 'Inversões Financeiras' " +
-		      	"when vw.codigo ~ '^4.6' then 'Amortização da Dívida' " + 
-			"end) grupo, " +
-			"coalesce(bo.inscrito_anterior, 0) val_ria, coalesce(bo.inscrito_31_anterior, 0) val_rie, coalesce(bo.pago, 0) val_rpg, " + 
-			"coalesce(bo.cancelado, 0) val_rcn " +
-		"from " + 
-			"sae.vw_natureza_despesa vw " +
-		"left outer join ( " +
-			"select " + 
-				"regexp_replace(natureza_despesa, '[.]', '', 'g') nd, sum(inscrito_anterior) inscrito_anterior, sum(inscrito_31_anterior) inscrito_31_anterior, " + 
-				"sum(pago) pago, sum(cancelado) cancelado " + 
-			"from " + 
-				"prestacao.bo04 " +
-			"where " + 
-				"unidade_id in (:unidades) and " +
-				"		((:modulo is null) or (modulo_id = :modulo)) " +
-			"group by " + 
-				"regexp_replace(natureza_despesa, '[.]', '', 'g')) bo on bo.nd = regexp_replace(vw.codigo, '[.]', '', 'g') and vw.ativo = 'S' " +
-		"where " +
-			"vw.codigo ~ '^(3.[123]|4.[456])' and vw.ativo = 'S' " +
-		"order by " +
-			"(case when vw.codigo ~ '^3.' then 1 else 2 end), " +
-			"(case " + 
-				"when vw.codigo ~ '^3.1' then 1 " +
-		      	"when vw.codigo ~ '^3.2' then 2 " +
-		      	"when vw.codigo ~ '^3.3' then 3 " +
-		      	"when vw.codigo ~ '^4.4' then 4 " +
-		      	"when vw.codigo ~ '^4.5' then 5 " +
-		      	"when vw.codigo ~ '^4.6' then 6 " +
-			"end)";
+		"select " + 
+			"(case when nd ~ '^3' then 'Despesas Correntes' else 'Despesas de Capital' end) categoria,  " + 
+			"(case  " + 
+				"when nd ~ '^31' then 'Pessoal e Encargos Sociais'  " + 
+				"when nd ~ '^32' then 'Juros e Encargos da Dívida'  " + 
+				"when nd ~ '^33' then 'Outras Despesas Correntes'  " + 
+				"when nd ~ '^44' then 'Investimentos'  " + 
+				"when nd ~ '^45' then 'Inversões Financeiras'  " + 
+				"when nd ~ '^46' then 'Amortização da Dívida'  " + 
+			"end) grupo,  " + 
+			"coalesce(inscrito_anterior, 0) val_ria, coalesce(inscrito_31_anterior, 0) val_rie, coalesce(pago, 0) val_rpg, coalesce(cancelado, 0) val_rcn  " +	
+		"from (  " +
+			"select  " + 
+				"regexp_replace(natureza_despesa, '[.]', '', 'g') nd,  " + 
+				"sum(inscrito_anterior) inscrito_anterior, sum(inscrito_31_anterior) inscrito_31_anterior, sum(pago) pago, sum(cancelado) cancelado  " + 
+			"from  " + 
+				"prestacao.bo04  " + 
+			"where  " + 
+				"unidade_id in (:unidades) and  " + 
+				"((:modulo is null) or (modulo_id = :modulo))  " +
+			"group by  " + 
+				"regexp_replace(natureza_despesa, '[.]', '', 'g')  " +
+			"order by  " +
+				"regexp_replace(natureza_despesa, '[.]', '', 'g')) result  " +
+		"where  " +
+			"nd ~ '^(3[123]|4[456])'  " +
+		"order by  " +
+			"(case when nd ~ '^3' then 1 else 2 end),  " + 
+		"(case  " + 
+			"when nd ~ '^31' then 1  " + 
+			"when nd ~ '^32' then 2  " + 
+			"when nd ~ '^33' then 3  " + 
+			"when nd ~ '^44' then 4  " + 
+			"when nd ~ '^45' then 5  " + 
+			"when nd ~ '^46' then 6 " + 
+		"end)";
 		
 		@SuppressWarnings("unchecked")
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
