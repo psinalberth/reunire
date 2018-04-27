@@ -8,6 +8,8 @@ public class RelatorioD009AVO extends DemonstrativoVO {
 	
 	private BigDecimal[] saldos;	
 	
+	private String orgao;
+	
 	public RelatorioD009AVO() {		
 		
 		this.saldos = new BigDecimal[30];
@@ -23,6 +25,14 @@ public class RelatorioD009AVO extends DemonstrativoVO {
 
 	public void setSaldos(BigDecimal[] saldos) {
 		this.saldos = saldos;
+	}
+	
+	public String getOrgao() {
+		return orgao;
+	}
+	
+	public void setOrgao(String orgao) {
+		this.orgao = orgao;
 	}
 	
 	public void addValor(int index, BigDecimal valor) {

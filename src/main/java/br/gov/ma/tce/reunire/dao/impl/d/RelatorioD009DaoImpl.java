@@ -2,6 +2,7 @@ package br.gov.ma.tce.reunire.dao.impl.d;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -79,14 +80,17 @@ public class RelatorioD009DaoImpl extends PrestacaoDaoImpl<RelatorioD009AVO> imp
 			for(UnidadeVO listaUnidade : listaUnidadeVO) {
 				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue()) {
 					relatorio.setDescricaoUnidade(listaUnidade.getNome());
+					relatorio.setOrgao(listaUnidade.getOrgao().getId() +" - "+ listaUnidade.getOrgao().getNome());
 				}
 			}
-			int x = 1;
+			
 			for (int i = 0; i < 30; i++) {
-				relatorio.addValor(i, new BigDecimal(new Double(l[x].toString())));
-				x++;
-				if(x == 30) break;
-			}	
+				if(i+1 == 30) break;
+				relatorio.addValor(i, new BigDecimal(new Double(l[i+1].toString())));				
+			}
+			
+			BigDecimal total = Arrays.asList(relatorio.getSaldos()).stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+			relatorio.addValor(29, total);
 			
 			listaVo.add(relatorio);
 		}
