@@ -17,20 +17,20 @@ public class RelatorioB01VO implements Serializable {
 	private BigDecimal previsaoAtualizada;
 	private BigDecimal receitasRealizadas;
 	
-	public RelatorioB01VO(String categoria, String origem, BigDecimal previsaoInicial, BigDecimal previsaoAtualizada, BigDecimal receitasAtualizadas) {
+	public RelatorioB01VO(String categoria, String origem, String totalCategoria, String especie, BigDecimal previsaoInicial, BigDecimal previsaoAtualizada, BigDecimal receitasAtualizadas) {
 		
 		this.total = "TOTAL (VII) = (V + VI)";
-		this.totalCategoria = "SUBTOTAL DAS RECEITAS (III) = (I + II)";
+		this.totalCategoria = totalCategoria;
 		this.categoria = categoria;
 		this.origem = origem;
-		this.especie = "";
+		this.especie = especie;
 		this.previsaoInicial = previsaoInicial;
 		this.previsaoAtualizada = previsaoAtualizada;
 		this.receitasRealizadas = receitasAtualizadas;
 	}
 	
 	public RelatorioB01VO() {
-		
+		this.total = "TOTAL (VII) = (V + VI)";
 	}
 
 	public String getTotal() {

@@ -15,6 +15,18 @@ public class RelatorioB03VO implements Serializable {
 	private BigDecimal restosPagos;
 	private BigDecimal restosCancelados;
 	
+	public RelatorioB03VO(String categoria, String grupo, BigDecimal restosExercicioAnterior, BigDecimal restosTrintaEUm, 
+						  BigDecimal restosLiquidados, BigDecimal restosPagos, BigDecimal restosCancelados) {
+		
+		this.categoria = categoria;
+		this.grupo = grupo;
+		this.restosExercicioAnterior = restosExercicioAnterior;
+		this.restosTrintaEUm = restosTrintaEUm;
+		this.restosLiquidados = restosLiquidados;
+		this.restosPagos = restosPagos;
+		this.restosCancelados = restosCancelados;
+	}
+
 	public String getCategoria() {
 		return categoria;
 	}

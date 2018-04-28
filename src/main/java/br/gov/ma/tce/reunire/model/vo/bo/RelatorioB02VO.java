@@ -15,6 +15,24 @@ public class RelatorioB02VO {
 	private BigDecimal despesasLiquidadas;
 	private BigDecimal despesasPagas;
 	
+	public RelatorioB02VO(String categoria, String totalCategoria, String grupo, BigDecimal dotacaoInicial, BigDecimal dotacaoAtualizada, BigDecimal despesasEmpenhadas, BigDecimal despesasLiquidadas, BigDecimal despesasPagas) {
+		
+		this.total = "TOTAL (XIV) = (XII + XIII)";
+		this.totalCategoria = totalCategoria;
+		this.categoria = categoria;
+		this.grupo = grupo;
+		this.modalidade = "";
+		this.dotacaoInicial = dotacaoInicial;
+		this.dotacaoAtualizada = dotacaoAtualizada;
+		this.despesasEmpenhadas = despesasEmpenhadas;
+		this.despesasLiquidadas = despesasLiquidadas;
+		this.despesasPagas = despesasPagas;
+	}
+	
+	public RelatorioB02VO() {
+		this.total = "TOTAL (XIV) = (XII + XIII)";
+	}
+
 	public String getTotal() {
 		return total;
 	}
