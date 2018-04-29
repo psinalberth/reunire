@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 
 import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
 import br.gov.ma.tce.reunire.dao.impl.PrestacaoDaoImpl;
@@ -168,6 +169,46 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 		superavit.setDespesasEmpenhadas(totalReceitasRealizadas.compareTo(totalDespesasEmpenhadas) > 0 ? totalReceitasRealizadas.subtract(totalDespesasEmpenhadas) : null);
 		
 		dadosPagina2.add(superavit);
+		
+		// Dados Não Codificados
+		
+		sql = 
+				
+		"select " +
+			"sum(arrecadado_anterior) arrecadado_anterior, sum(superavit_financeiro) superavit_financeiro, " +
+			"sum(credito_adicional) credito_adicional, sum(reserva_rpps) reserva_rpps " +
+		"from " + 
+			"prestacao.bo05 " +
+		"where " +
+			"unidade_id in (:unidades) and " +
+			"((:modulo is null) or (modulo_id = :modulo))";
+		
+		RelatorioB02VO reservaRPPS = new RelatorioB02VO();
+		reservaRPPS.setTotal("Reserva do RPPS");
+		
+		try {
+		
+			Object[] row = (Object[]) entityManager.createNativeQuery(sql)
+					.setParameter("unidades", listaIdsUnidades)
+					.setParameter("modulo", params.get("modulo") != null ? Integer.valueOf(String.valueOf(params.get("modulo"))) : 1)
+					.getSingleResult();
+			
+			params.put("recursosAnteriores", toBigDecimal(row[0]));
+			params.put("superavit", toBigDecimal(row[1]));
+			params.put("creditoAdicional", toBigDecimal(row[2]));
+			
+			reservaRPPS.setDotacaoAtualizada(toBigDecimal(row[3]));
+		
+		} catch (NoResultException ex) {
+			
+			params.put("recursosAnteriores", BigDecimal.ZERO);
+			params.put("superavit", BigDecimal.ZERO);
+			params.put("creditoAdicional", BigDecimal.ZERO);
+			
+			reservaRPPS.setDotacaoAtualizada(BigDecimal.ZERO);
+		}
+		
+		dadosPagina2.add(reservaRPPS);
 		
 		return dados;
 	}
