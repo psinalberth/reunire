@@ -12,7 +12,7 @@
 	<field name="dataVencimento" class="java.util.Date"/>
 	<field name="valorContrato" class="java.math.BigDecimal"/>
 	<field name="parcelasResgatadas" class="java.math.BigDecimal"/>
-	<group name="UNIDADE">
+	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
 			<band height="54">
@@ -254,96 +254,6 @@
 			</textField>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="22" splitType="Stretch">
-			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
-			<staticText>
-				<reportElement x="0" y="0" width="297" height="22" uuid="793caeb1-8390-4a77-a1dd-f6c3d09cdc24">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CREDOR]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="662" y="0" width="140" height="22" uuid="df3d1259-d2ec-4854-824e-c32e95f797a1">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[SALDO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="522" y="0" width="140" height="22" uuid="9be05aea-ca29-4c99-93a4-fcf27f1dd8e4">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[PARCELAS RESGATADAS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="382" y="0" width="140" height="22" uuid="29b9dbe7-8d7c-4c0f-8f75-4c8fafa6288e">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[VALOR DO CONTRATO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="297" y="0" width="85" height="22" uuid="66920816-1f22-4554-b501-a2c8d9425645">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[DATA DO VENCIMENTO]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
 	<pageFooter>
 		<band height="31" splitType="Stretch">
 			<textField>

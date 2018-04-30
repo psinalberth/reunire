@@ -46,7 +46,7 @@
 	<field name="receitaLiquidaAnoMais1" class="java.math.BigDecimal"/>
 	<field name="receitaLiquidaAnoMais2" class="java.math.BigDecimal"/>
 	<field name="descricaoUnidade" class="java.lang.String"/>
-	<group name="UNIDADE">
+	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
 			<band height="68">
@@ -559,7 +559,7 @@
 					<textFieldExpression><![CDATA[$F{rcl}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement x="140" y="0" width="150" height="27" uuid="7dad170e-4564-46e7-82be-007d031edba6"/>
+					<reportElement x="140" y="0" width="200" height="27" uuid="7dad170e-4564-46e7-82be-007d031edba6"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 					</box>
@@ -569,7 +569,7 @@
 					<textFieldExpression><![CDATA[$F{receitaLiquidaAnoMenos1}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="290" y="0" width="170" height="27" uuid="b2de0f8a-e231-4228-863d-7718c52c0822"/>
+					<reportElement x="340" y="0" width="170" height="27" uuid="b2de0f8a-e231-4228-863d-7718c52c0822"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 					</box>
@@ -579,7 +579,7 @@
 					<textFieldExpression><![CDATA[$F{receitaLiquida}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="460" y="0" width="180" height="27" printWhenGroupChanges="EFETIVO" uuid="36a70a5e-36ac-46d8-8089-0b9def910fe1"/>
+					<reportElement x="510" y="0" width="160" height="27" printWhenGroupChanges="EFETIVO" uuid="36a70a5e-36ac-46d8-8089-0b9def910fe1"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 					</box>
@@ -589,7 +589,7 @@
 					<textFieldExpression><![CDATA[$F{receitaLiquidaAnoMais1}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="640" y="0" width="162" height="27" uuid="6b0b8b11-ae41-493e-92c5-3e8a8ace68ae"/>
+					<reportElement x="670" y="0" width="132" height="27" uuid="6b0b8b11-ae41-493e-92c5-3e8a8ace68ae"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 					</box>

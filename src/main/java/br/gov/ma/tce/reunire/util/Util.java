@@ -15,7 +15,11 @@ public class Util {
 	
 	public static BigDecimal soma(int modulo, String regex, List<Object[]> dados, int posicao) {
 		
+		// Código utilizado para pesquisar no segundo nível (origem/grupo)
+		
 		String codigoNivelDois = regex + "000000";
+		
+		// Query sem resultados
 		
 		if (dados == null || dados.size() == 0)
 			return BigDecimal.ZERO;
@@ -23,10 +27,16 @@ public class Util {
 		Optional<Object[]> objetoNivelDois = dados.stream().filter(obj -> String.valueOf(obj[1]).matches(codigoNivelDois) && 
 				Integer.valueOf(String.valueOf(obj[0])).intValue() == modulo).findAny();
 		
+		// Se possui registro no nível 2
+		
 		if (objetoNivelDois.isPresent())
 			return new BigDecimal(String.valueOf(objetoNivelDois.get()[posicao]));
 		
+		// Procurar todos os registros que se aplicam na regex
+		
 		List<Object[]> filtro = dados.stream().filter(item -> String.valueOf(item[1]).matches(regex + ".*")).collect(Collectors.toList());
+		
+		// Remove todas as "subárvores", restando somente as folhas da árvore
 		
 		filtro.removeIf(new Predicate<Object[]>() {
 

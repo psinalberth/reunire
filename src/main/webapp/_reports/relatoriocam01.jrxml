@@ -34,7 +34,7 @@
 	<variable name="NATUREZA_ANO_MAIS2" class="java.math.BigDecimal" resetType="Group" resetGroup="NATUREZA" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorAnoMais2}]]></variableExpression>
 	</variable>
-	<group name="UNIDADE">
+	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
 			<band height="47">
@@ -301,16 +301,7 @@
 				<textFieldExpression><![CDATA["EXERCÍCIO: " + $P{exercicio}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="802" height="16" uuid="b8bb8235-0623-44d2-8a91-e92467e17649">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["ENTE: " + $P{ente}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="16" width="802" height="16" uuid="ee057595-6842-4432-9599-22d0e6c81b42">
+				<reportElement x="0" y="16" width="802" height="16" isRemoveLineWhenBlank="true" uuid="eef939d8-ab90-455c-bdb3-cbc0c586d56e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<printWhenExpression><![CDATA[$P{orgao} != null]]></printWhenExpression>
 				</reportElement>
@@ -320,7 +311,7 @@
 				<textFieldExpression><![CDATA["ÓRGÃO: " + $P{orgao}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="32" width="802" height="16" uuid="358ce33f-66be-4010-8cba-9426984b4fc0">
+				<reportElement x="0" y="32" width="802" height="16" isRemoveLineWhenBlank="true" uuid="d4b2e130-0643-4f3c-90c6-4f9a5bd979c1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<printWhenExpression><![CDATA[$P{unidade} != null]]></printWhenExpression>
 				</reportElement>
@@ -329,126 +320,17 @@
 				</textElement>
 				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="802" height="16" isRemoveLineWhenBlank="true" uuid="221d91d7-e805-4d8e-a6d2-045202e2885e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ENTE: " + $P{ente}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="22" splitType="Stretch">
-			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
-			<staticText>
-				<reportElement x="0" y="0" width="112" height="22" uuid="dec6bc16-ecd8-48fe-8266-793573b90df3">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[NATUREZA DA RECEITA]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="227" y="0" width="115" height="22" uuid="63efa3cd-590a-472e-b8c9-514c47e585d2">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{exercicio} - 2]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="572" y="0" width="115" height="22" uuid="050d372d-2815-412f-b5e6-ff4d8f91da1c">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{exercicio} + 1]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="457" y="0" width="115" height="22" uuid="ef0acfd6-0167-46b4-9d09-09b787b4f715">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{exercicio}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="687" y="0" width="115" height="22" uuid="2324edc1-a73f-4853-8763-9b66faa8554e">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{exercicio} + 2]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="112" y="0" width="115" height="22" uuid="273c4c45-95e2-4066-8fd3-542dff4fe14e">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{exercicio} - 3]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="342" y="0" width="115" height="22" uuid="51c3c16f-bb57-4afc-959a-80fcedbea779">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{exercicio} - 1]]></textFieldExpression>
-			</textField>
-		</band>
-	</pageHeader>
 	<pageFooter>
 		<band height="31" splitType="Stretch">
 			<textField>

@@ -20,7 +20,7 @@
 	<field name="nomePovoado" class="java.lang.String"/>
 	<field name="distancia" class="java.lang.Double"/>
 	<field name="formaAcesso" class="java.lang.String"/>
-	<group name="UNIDADE">
+	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
 			<band height="46">
@@ -199,62 +199,6 @@
 			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="22" splitType="Stretch">
-			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
-			<staticText>
-				<reportElement x="0" y="0" width="268" height="22" uuid="cc1a2d0a-0a1d-47a0-863b-e6aa4d68c528">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[NOME DO POVOADO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="268" y="0" width="267" height="22" uuid="db21b6a4-ff80-4be3-8871-64045230790e">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[DISTÂNCIA EM RELAÇÃO À SEDE]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="535" y="0" width="267" height="22" uuid="b8f15f7c-389a-4412-b34a-54d7c236a350">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[FORMA DE ACESSO¹]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
 	<pageFooter>
 		<band height="38" splitType="Stretch">
 			<textField>

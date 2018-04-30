@@ -12,7 +12,7 @@
 	<field name="numeroAto" class="java.lang.String"/>
 	<field name="valor" class="java.math.BigDecimal"/>
 	<field name="dotacaoInicial" class="java.math.BigDecimal"/>
-	<group name="UNIDADE">
+	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
 			<band height="65">
@@ -222,62 +222,6 @@
 			</textField>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="30" splitType="Stretch">
-			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
-			<staticText>
-				<reportElement x="124" y="0" width="111" height="30" uuid="6f226d69-ead8-4801-b3b4-f7987ade7427"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[DATA DO DECRETO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="235" y="0" width="447" height="30" uuid="a186ca19-ff9d-4aa8-8c80-2c736f98dd71"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TIPO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="0" width="124" height="30" uuid="3f8924a4-f564-4b6a-9828-6450fe99db8e"/>
-				<box>
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[N° DO DECRETO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="682" y="0" width="120" height="30" uuid="a3e0066a-46d4-4ba9-b25b-6b8c17a4394f">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[VALOR]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
 	<pageFooter>
 		<band height="22" splitType="Stretch">
 			<textField>
