@@ -868,7 +868,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_ORIGEM}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SALDO_ORIGEM} != null ? $V{SALDO_ORIGEM} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="ORIGEM" pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="280" y="0" width="130" height="13" uuid="e0e9f8ea-e3bf-46b9-bbd6-1f67e26c9a81">
@@ -968,7 +968,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_ESPECIE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SALDO_ESPECIE} != null ? $V{SALDO_ESPECIE} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
