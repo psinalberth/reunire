@@ -325,7 +325,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$P{recursosAnteriores}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{recursosAnteriores} != null ? $P{recursosAnteriores} : "-"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="41" width="280" height="12" uuid="7a39378a-24c4-415f-9b17-aed2660eb0e1">
@@ -411,7 +411,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$P{superavit}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{superavit} != null ? $P{superavit} : "-"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="540" y="0" width="131" height="29" uuid="5d9d834a-eacb-4154-afc5-e4b4683ab5c6">
@@ -479,7 +479,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$P{creditoAdicional}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{creditoAdicional} != null ? $P{creditoAdicional} : "-"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="29" width="280" height="12" uuid="b886e4b3-27e0-485a-b94c-82549ce105c7">
