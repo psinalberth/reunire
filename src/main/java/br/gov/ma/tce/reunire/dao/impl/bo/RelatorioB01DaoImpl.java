@@ -74,7 +74,7 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 				soma(1, "^[17]1", rows, 2), soma(1, "^[17]1", rows, 3), soma(1, "^[17]1", rows, 4)));
 		
 		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Receita de Contribuições", "SUBTOTAL DAS RECEITAS (III) = (I + II)", "",
-				soma(1, "^[17]2", rows, 2), soma(1, "^[17]2", rows, 3), soma(1, "^[17]2", rows, 4)));
+				soma(1, "^[17]2", rows, 2).subtract(soma(1, "^93", rows, 2)), soma(1, "^[17]2", rows, 3).subtract(soma(1, "^93", rows, 3)), soma(1, "^[17]2", rows, 4).subtract(soma(1, "^93", rows, 4))));
 		
 		dados.add(new RelatorioB01VO("Receitas Correntes (I)", "Receita Patrimonial", "SUBTOTAL DAS RECEITAS (III) = (I + II)", "",
 				soma(1, "^[17]3", rows, 2), soma(1, "^[17]3", rows, 3), soma(1, "^[17]3", rows, 4)));
@@ -287,6 +287,34 @@ public class RelatorioB01DaoImpl extends PrestacaoDaoImpl<RelatorioB01VO> implem
 				soma(1, "99999900", rows, 2), soma(1, "99999900", rows, 3), soma(1, "99999900", rows, 4), soma(1, "99999900", rows, 5), soma(1, "99999900", rows, 6)));
 		
 		// Amortização da Dívida/Refinanciamento
+		
+		RelatorioB02VO adim = new RelatorioB02VO("Amortização da Dívida/Refinanciamento (XII)", "SUBTOTAL COM REFINANCIAMENTO (XIII) = (XI + XII)", "Amortização da Dívida Interna",
+				soma(2, "46907600", rows, 2), soma(2, "46907600", rows, 3), soma(2, "46907600", rows, 4), soma(2, "46907600", rows, 5), soma(2, "46907600", rows, 6));
+		
+		adim.setModalidade("Dívida Mobiliária");
+		
+		dados.add(adim);
+		
+		RelatorioB02VO adio = new RelatorioB02VO("Amortização da Dívida/Refinanciamento (XII)", "SUBTOTAL COM REFINANCIAMENTO (XIII) = (XI + XII)", "Amortização da Dívida Interna",
+				soma(2, "46907700", rows, 2), soma(2, "46907700", rows, 3), soma(2, "46907700", rows, 4), soma(2, "46907700", rows, 5), soma(2, "46907700", rows, 6));
+		
+		adio.setModalidade("Outras Dívidas");
+		
+		dados.add(adio);
+		
+		RelatorioB02VO adem = new RelatorioB02VO("Amortização da Dívida/Refinanciamento (XII)", "SUBTOTAL COM REFINANCIAMENTO (XIII) = (XI + XII)", "Amortização da Dívida Externa",
+				soma(2, "46907600", rows, 2), soma(2, "46907600", rows, 3), soma(2, "46907600", rows, 4), soma(2, "46907600", rows, 5), soma(2, "46907600", rows, 6));
+		
+		adem.setModalidade("Dívida Mobiliária");
+		
+		dados.add(adem);
+		
+		RelatorioB02VO adeo = new RelatorioB02VO("Amortização da Dívida/Refinanciamento (XII)", "SUBTOTAL COM REFINANCIAMENTO (XIII) = (XI + XII)", "Amortização da Dívida Externa",
+				soma(2, "46907700", rows, 2), soma(2, "46907700", rows, 3), soma(2, "46907700", rows, 4), soma(2, "46907700", rows, 5), soma(2, "46907700", rows, 6));
+		
+		adeo.setModalidade("Outras Dívidas");
+		
+		dados.add(adeo);
 		
 		return dados;
 	}

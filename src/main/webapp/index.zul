@@ -46,6 +46,14 @@
             </div>
             <div class="column is-6 is-offset-3">
               <div class="field">
+                <label sclass="label" value="Senha" />
+              </div>
+              <div class="control">
+                <textbox sclass="input" placeholder="Senha" type="password" value="@save(vm.senha)" />
+              </div>
+            </div>
+            <div class="column is-6 is-offset-3">
+              <div class="field">
                 <label sclass="label" value="Exercício"/>
                 <div class="control">
                   <intbox sclass="input" placeholder="Exercício contábil" value="@load(vm.exercicio)" readonly="true" />
