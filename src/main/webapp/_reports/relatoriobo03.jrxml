@@ -32,7 +32,7 @@
 	<variable name="SALDO_CATEGORIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CATEGORIA">
 		<variableExpression><![CDATA[$V{RIA_CATEGORIA}
 .add($V{RIE_CATEGORIA})
-.subtract($V{RLI_CATEGORIA})
+.subtract($V{RPG_CATEGORIA})
 .subtract($V{RCN_CATEGORIA})]]></variableExpression>
 	</variable>
 	<variable name="RIA_DESCRICAO" class="java.math.BigDecimal" resetType="Group" resetGroup="GRUPO" calculation="Sum">
@@ -53,7 +53,7 @@
 	<variable name="SALDO_DESCRICAO" class="java.math.BigDecimal" resetType="Group" resetGroup="GRUPO">
 		<variableExpression><![CDATA[$V{RIA_DESCRICAO}
 .add($V{RIE_DESCRICAO})
-.subtract($V{RLI_DESCRICAO})
+.subtract($V{RPG_DESCRICAO})
 .subtract($V{RCN_DESCRICAO})]]></variableExpression>
 	</variable>
 	<variable name="RIA_MASTER" class="java.math.BigDecimal" resetType="Group" resetGroup="MASTER" calculation="Sum">
@@ -74,7 +74,7 @@
 	<variable name="SALDO_MASTER" class="java.math.BigDecimal" resetType="Group" resetGroup="MASTER">
 		<variableExpression><![CDATA[$V{RIA_MASTER}
 .add($V{RIE_MASTER})
-.subtract($V{RLI_MASTER})
+.subtract($V{RPG_MASTER})
 .subtract($V{RCN_MASTER})]]></variableExpression>
 	</variable>
 	<group name="MASTER">
@@ -562,7 +562,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="9"/>
 				</textElement>
-				<text><![CDATA[(f) = (a + b - c - e)]]></text>
+				<text><![CDATA[(f) = (a + b - d - e)]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
