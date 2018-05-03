@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 import javax.ejb.Stateless;
 
@@ -41,36 +43,51 @@ public class RelatorioD002BDaoImpl extends PrestacaoDaoImpl<RelatorioD002BVO> im
 				"group by unidade, cod_cat, desc_cat, cod_gru, desc_gru, cod_mod, desc_mod, cod_elm, desc_elm " + 
 				"order by unidade, cod_cat, cod_gru, cod_mod, cod_elm ";
 		
-		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(params);
-		List<Integer> listaIdsUnidades = extrairIds(listaUnidadeVO);		
+		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
+		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);		
 		
-		List<RelatorioD002BVO> listaVo = new ArrayList<>();
+		List<RelatorioD002BVO> dados = new ArrayList<>();
 		
 		@SuppressWarnings("unchecked")
-		List<Object[]> lista = entityManager.createNativeQuery(sql)
-				.setParameter("unidade", listaIdsUnidades)
-				.getResultList();
+		List<Object[]> rows = entityManager.createNativeQuery(sql)
+			.setParameter("unidade", listaIdsUnidades)
+			.getResultList();
 				
-		for(Object[] l : lista) {
-			RelatorioD002BVO relatorio = new RelatorioD002BVO();	
-			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
-			for(UnidadeVO listaUnidade : listaUnidadeVO) {
-				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue()) {
-					relatorio.setDescricaoUnidade(listaUnidade.getNome());
-				}
-			}
-			relatorio.setCodigoCategoriaEconomica(l[1].toString());
-			relatorio.setDescricaoCategoriaEconomica(l[2].toString());
-			relatorio.setCodigoGrupoDespesa(l[3].toString());
-			relatorio.setDescricaoGrupoDespesa(l[4].toString());
-			relatorio.setCodigoModalidadeAplicacao(l[5].toString());
-			relatorio.setDescricaoModalidadeAplicacao(l[6].toString());
-			relatorio.setCodigoElementoDespesa(l[7].toString());
-			relatorio.setDescricaoElementoDespesa(l[8].toString());			
-			relatorio.setValor(new BigDecimal((new Double(l[9].toString()))));
-			listaVo.add(relatorio);
+		for(Object[] row : rows) {
+			
+			RelatorioD002BVO dado = new RelatorioD002BVO();	
+			
+			Optional<UnidadeVO> unidade = listaUnidades.stream().filter(u -> u.getId().equals(Integer.parseInt(String.valueOf(row[0])))).findFirst();
+			
+			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
+			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
+			dado.setCodigoCategoriaEconomica(row[1].toString());
+			dado.setDescricaoCategoriaEconomica(row[2].toString());
+			dado.setCodigoGrupoDespesa(row[3].toString());
+			dado.setDescricaoGrupoDespesa(row[4].toString());
+			dado.setCodigoModalidadeAplicacao(row[5].toString());
+			dado.setDescricaoModalidadeAplicacao(row[6].toString());
+			dado.setCodigoElementoDespesa(row[7].toString());
+			dado.setDescricaoElementoDespesa(row[8].toString());			
+			dado.setValor(new BigDecimal((new Double(row[9].toString()))));
+			
+			dados.add(dado);
 		}
 		
-		return listaVo;
+		Optional<RelatorioD002BVO> reservaContingencia = dados.stream().filter(d -> d.getCodigoElementoDespesa().equals("9.9.99.99.00")).findFirst();
+		
+		if (reservaContingencia != null && reservaContingencia.isPresent()) {
+			params.put("reservaContingencia", reservaContingencia.get().getValor());
+		}
+		
+		dados.removeIf(new Predicate<RelatorioD002BVO>() {
+
+			@Override
+			public boolean test(RelatorioD002BVO item) {
+				return item.getCodigoElementoDespesa().equals("9.9.99.99.00");
+			}
+		});
+		
+		return dados;
 	}
 }

@@ -39,6 +39,7 @@
 		<groupExpression><![CDATA[$P{ente}]]></groupExpression>
 		<groupFooter>
 			<band height="45">
+				<printWhenExpression><![CDATA[$P{reservaContingencia} != null]]></printWhenExpression>
 				<textField pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="712" y="27" width="90" height="18" uuid="bc4a60fd-8f42-407b-85fb-d57e4bbbcbca"/>
 					<box leftPadding="0" rightPadding="5">
