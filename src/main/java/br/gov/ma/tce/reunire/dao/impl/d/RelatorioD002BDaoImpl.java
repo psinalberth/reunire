@@ -17,7 +17,7 @@ public class RelatorioD002BDaoImpl extends PrestacaoDaoImpl<RelatorioD002BVO> im
 
 	@Override
 	public String getNomeRelatorio() {
-		return "lei4320anexoii_despesa.jasper";
+		return "relatoriod002b.jasper";
 	}
 
 	@Override
