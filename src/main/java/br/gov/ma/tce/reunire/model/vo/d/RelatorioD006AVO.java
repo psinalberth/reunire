@@ -5,8 +5,9 @@ import java.math.BigDecimal;
 public class RelatorioD006AVO {
 	
 	private Integer idUnidade;
-	//private String orgao;
 	private String descricaoUnidade;
+	private Integer idOrgao;
+	private String descricaoOrgao;
 	private String funcaoGoverno;
 	private String subfuncaoGoverno;
 	private String programa;
@@ -27,21 +28,29 @@ public class RelatorioD006AVO {
 	public void setIdUnidade(Integer idUnidade) {
 		this.idUnidade = idUnidade;
 	}
-
-	/*public String getOrgao() {
-		return orgao;
-	}
-
-	public void setOrgao(String orgao) {
-		this.orgao = orgao;
-	}*/
-
+	
 	public String getDescricaoUnidade() {
 		return descricaoUnidade;
 	}
 
 	public void setDescricaoUnidade(String descricaoUnidade) {
 		this.descricaoUnidade = descricaoUnidade;
+	}
+	
+	public Integer getIdOrgao() {
+		return idOrgao;
+	}
+	
+	public void setIdOrgao(Integer idOrgao) {
+		this.idOrgao = idOrgao;
+	}
+	
+	public String getDescricaoOrgao() {
+		return descricaoOrgao;
+	}
+	
+	public void setDescricaoOrgao(String descricaoOrgao) {
+		this.descricaoOrgao = descricaoOrgao;
 	}
 
 	public String getFuncaoGoverno() {

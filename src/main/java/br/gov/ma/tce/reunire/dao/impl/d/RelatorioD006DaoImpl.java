@@ -32,7 +32,7 @@ public class RelatorioD006DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 				"and d.programa = prog.codigo " + 
 				"and d.acao = acao.codigo_prefeitura " +
 				"and d.unidade_id in (:unidade) " +	
-				"order by d.unidade_id, d.funcao, d.subfuncao, d.programa, d.acao ";
+				"order by d.unidade_id, d.programa, d.acao ";
 		
 		List<RelatorioD006AVO> listaVo = new ArrayList<>();
 		
@@ -45,12 +45,17 @@ public class RelatorioD006DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 				.getResultList();
 		
 		for(Object[] l : lista) {
+			
 			RelatorioD006AVO relatorio = new RelatorioD006AVO();
 			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
 			
 			for(UnidadeVO listaUnidade : listaUnidadeVO) {
+				
 				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue()) {
+					
 					relatorio.setDescricaoUnidade(listaUnidade.getNome());
+					relatorio.setIdOrgao(listaUnidade.getOrgao().getId());
+					relatorio.setDescricaoOrgao(listaUnidade.getOrgao().getNome());
 				}
 			}
 			

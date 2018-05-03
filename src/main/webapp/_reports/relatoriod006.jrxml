@@ -8,7 +8,10 @@
 	<parameter name="ente" class="java.lang.String"/>
 	<parameter name="orgao" class="java.lang.String"/>
 	<parameter name="unidade" class="java.lang.String"/>
+	<field name="idUnidade" class="java.lang.Integer"/>
 	<field name="descricaoUnidade" class="java.lang.String"/>
+	<field name="idOrgao" class="java.lang.Integer"/>
+	<field name="descricaoOrgao" class="java.lang.String"/>
 	<field name="funcaoGoverno" class="java.lang.String">
 		<fieldDescription><![CDATA[funcaoGoverno]]></fieldDescription>
 	</field>
@@ -21,7 +24,6 @@
 	<field name="acao" class="java.lang.String">
 		<fieldDescription><![CDATA[acao]]></fieldDescription>
 	</field>
-	<field name="idUnidade" class="java.lang.Integer"/>
 	<field name="nomeSubFuncao" class="java.lang.String"/>
 	<field name="nomeFuncao" class="java.lang.String"/>
 	<field name="nomePrograma" class="java.lang.String"/>
@@ -64,11 +66,17 @@
 	<variable name="VALOR_TOTAL_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO">
 		<variableExpression><![CDATA[$V{VALOR_PROJETO_ACAO}.add( $V{VALOR_ATIVIDADE_ACAO})]]></variableExpression>
 	</variable>
-	<group name="UNIDADE">
+	<variable name="TOTAL_PROJETO_UNIDADE" class="java.math.BigDecimal" resetType="Group" resetGroup="UNIDADE" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_ATIVIDADE_UNIDADE" class="java.math.BigDecimal" resetType="Group" resetGroup="UNIDADE" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorAtividade}]]></variableExpression>
+	</variable>
+	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
 		<groupHeader>
-			<band height="55">
+			<band height="76">
 				<staticText>
-					<reportElement mode="Transparent" x="0" y="35" width="117" height="20" forecolor="#000000" backcolor="#777777" uuid="3b7d93f9-2e38-44f7-9c6f-92215bdcc372"/>
+					<reportElement mode="Transparent" x="0" y="56" width="117" height="20" forecolor="#000000" backcolor="#777777" uuid="3b7d93f9-2e38-44f7-9c6f-92215bdcc372"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5"/>
@@ -82,7 +90,7 @@
 					<text><![CDATA[CÓDIGO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="117" y="35" width="392" height="20" forecolor="#000000" backcolor="#777777" uuid="5e92e453-93ac-4e6f-8d42-5082c3841b51"/>
+					<reportElement mode="Transparent" x="117" y="56" width="392" height="20" forecolor="#000000" backcolor="#777777" uuid="5e92e453-93ac-4e6f-8d42-5082c3841b51"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5"/>
@@ -96,7 +104,7 @@
 					<text><![CDATA[ESPECIFICAÇÃO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="509" y="35" width="101" height="20" forecolor="#000000" backcolor="#777777" uuid="9c2a8577-27e5-47c6-9b19-d2b846d756cd"/>
+					<reportElement mode="Transparent" x="509" y="56" width="101" height="20" forecolor="#000000" backcolor="#777777" uuid="9c2a8577-27e5-47c6-9b19-d2b846d756cd"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5"/>
@@ -110,7 +118,7 @@
 					<text><![CDATA[PROJETOS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="694" y="35" width="108" height="20" forecolor="#000000" backcolor="#777777" uuid="a3e9ff38-5d15-4326-99de-53bafb6f4f5e"/>
+					<reportElement mode="Transparent" x="694" y="56" width="108" height="20" forecolor="#000000" backcolor="#777777" uuid="a3e9ff38-5d15-4326-99de-53bafb6f4f5e"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5"/>
@@ -124,7 +132,7 @@
 					<text><![CDATA[TOTAL]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="610" y="35" width="84" height="20" forecolor="#000000" backcolor="#777777" uuid="34de1a4e-1c49-403d-b465-533f43ed763e"/>
+					<reportElement mode="Transparent" x="610" y="56" width="84" height="20" forecolor="#000000" backcolor="#777777" uuid="34de1a4e-1c49-403d-b465-533f43ed763e"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5"/>
@@ -151,22 +159,96 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["ÓRGÃO: " + $F{idOrgao} + " - " + $F{descricaoOrgao}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="25" width="802" height="10" uuid="0896cd36-7d63-445e-b0d8-65a93900d4fa"/>
+					<reportElement x="0" y="46" width="802" height="10" uuid="0896cd36-7d63-445e-b0d8-65a93900d4fa"/>
 					<textElement>
 						<font fontName="DejaVu Sans"/>
 					</textElement>
 					<text><![CDATA[]]></text>
 				</staticText>
+				<textField>
+					<reportElement x="0" y="25" width="660" height="15" uuid="cd7337d9-ce86-44d2-9d47-f000d6a5f25a">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["UNIDADE ORÇAMENTÁRIA: " +  $F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="660" y="25" width="142" height="15" uuid="eb05953e-80cf-46f7-9e87-c243f7c1848e">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PROGRAMA DE TRABALHO]]></text>
+				</staticText>
 			</band>
 		</groupHeader>
+		<groupFooter>
+			<band height="23">
+				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement mode="Transparent" x="610" y="8" width="84" height="15" backcolor="#BFBFBF" uuid="06a3adc4-9eb3-4d30-b0ed-e27f823f0b34">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_ATIVIDADE_UNIDADE}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement mode="Transparent" x="694" y="8" width="108" height="15" backcolor="#BFBFBF" uuid="d3bdd70e-9645-4596-b2d8-0a75ed4ba3de">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_PROJETO_UNIDADE}.add($V{TOTAL_ATIVIDADE_UNIDADE})]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="#,##0.00#;(#,##0.00#)">
+					<reportElement mode="Transparent" x="509" y="8" width="101" height="15" backcolor="#BFBFBF" uuid="f91e5bbe-611e-4068-be63-5888afaebb1c">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_PROJETO_UNIDADE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="409" y="9" width="100" height="14" uuid="ec5923f0-3e08-4dd2-8b59-4f2b49a45c79"/>
+					<box rightPadding="5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
 	</group>
 	<group name="FUNCAO_GOVERNO">
 		<groupExpression><![CDATA[$F{funcaoGoverno}]]></groupExpression>
 		<groupHeader>
 			<band height="15">
+				<printWhenExpression><![CDATA[$F{funcaoGoverno} == null]]></printWhenExpression>
 				<textField>
 					<reportElement mode="Transparent" x="0" y="0" width="117" height="15" backcolor="#BFBFBF" uuid="a4589350-ad71-480e-8cd7-63193921b3f9">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -242,6 +324,7 @@
 		<groupExpression><![CDATA[$F{subfuncaoGoverno}]]></groupExpression>
 		<groupHeader>
 			<band height="15">
+				<printWhenExpression><![CDATA[$F{funcaoGoverno} == null]]></printWhenExpression>
 				<textField>
 					<reportElement mode="Transparent" x="117" y="0" width="392" height="15" backcolor="#BFBFBF" uuid="00502f54-fc7a-4c92-ba03-b37a2e8c3c16">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -325,23 +408,23 @@
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{funcaoGoverno} + "." + $F{subfuncaoGoverno} + "." + $F{programa}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{programa}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement mode="Transparent" x="117" y="0" width="392" height="15" backcolor="#DEDEDE" uuid="f268e20c-3e79-445c-a9d6-5be6663923d6">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
-					<box leftPadding="20">
+					<box leftPadding="5">
 						<topPen lineWidth="0.5"/>
 						<bottomPen lineWidth="0.5"/>
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{nomePrograma}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{nomePrograma}.toUpperCase()]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
 					<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="610" y="0" width="84" height="15" backcolor="#DEDEDE" uuid="81f9b256-ffeb-49bd-b116-8a924c75750e">
@@ -353,9 +436,9 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_PROGRAMA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
 					<reportElement mode="Transparent" x="509" y="0" width="101" height="15" backcolor="#DEDEDE" uuid="1c949d33-0a9a-4732-883a-1d4a70208d3a">
@@ -367,9 +450,9 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_PROJETO_PROGRAMA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
 					<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="694" y="0" width="108" height="15" backcolor="#DEDEDE" uuid="e697d38a-b75e-48d9-bedf-739c3d6aa399">
@@ -381,7 +464,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_PROGRAMA}]]></textFieldExpression>
 				</textField>
@@ -402,14 +485,14 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{funcaoGoverno} + "." + $F{subfuncaoGoverno}  + "." + $F{programa} + "." + $F{acao}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{programa} + "." + $F{acao}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement mode="Transparent" x="117" y="0" width="392" height="15" uuid="a62a410d-4e14-4515-8ab1-860bbc3deda0">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
-					<box leftPadding="25">
+					<box leftPadding="10">
 						<topPen lineWidth="0.5"/>
 						<bottomPen lineWidth="0.5"/>
 						<rightPen lineWidth="0.5"/>
@@ -531,7 +614,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ANEXO 6: DESPESA POR PROGRAMA DE TRABALHO]]></text>
+				<text><![CDATA[ANEXO 6: PROGRAMA DE TRABALHO]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="32" width="802" height="16" isRemoveLineWhenBlank="true" uuid="6a5a6909-73ce-4e6b-9d3a-e627397456f4">
@@ -545,81 +628,6 @@
 			</textField>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="20">
-			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
-			<staticText>
-				<reportElement mode="Transparent" x="509" y="0" width="101" height="20" forecolor="#000000" backcolor="#777777" uuid="dd01871a-a388-4440-b94c-eb636190ad21"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" isBold="true"/>
-				</textElement>
-				<text><![CDATA[PROJETOS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="0" y="0" width="117" height="20" forecolor="#000000" backcolor="#777777" uuid="6d48db4d-30f1-48fc-b542-381adc9d46e0"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CÓDIGO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="694" y="0" width="108" height="20" forecolor="#000000" backcolor="#777777" uuid="905a52a7-a60b-42fe-bb24-91004c3252b1"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TOTAL]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="610" y="0" width="84" height="20" forecolor="#000000" backcolor="#777777" uuid="f35f84cf-4256-48fd-86c0-7013c52ad29b"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ATIVIDADES]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="117" y="0" width="392" height="20" forecolor="#000000" backcolor="#777777" uuid="4284f8e0-768a-4394-9b7d-3f80052733a5"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ESPECIFICAÇÃO]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
 	<pageFooter>
 		<band height="22" splitType="Stretch">
 			<textField>
