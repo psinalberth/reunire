@@ -105,7 +105,7 @@
 		<variableExpression><![CDATA[$F{despesasPagas}]]></variableExpression>
 	</variable>
 	<variable name="SALDO_GRUPO" class="java.math.BigDecimal" resetType="Group" resetGroup="GRUPO">
-		<variableExpression><![CDATA[$V{DAT_GRUPO}.subtract($V{DEE_GRUPO})]]></variableExpression>
+		<variableExpression><![CDATA[$V{DAT_GRUPO} != null ? $V{DAT_GRUPO}.subtract($V{DEE_GRUPO}) : java.math.BigDecimal.ZERO.subtract($V{DEE_GRUPO})]]></variableExpression>
 	</variable>
 	<group name="TOTAL">
 		<groupExpression><![CDATA[$F{total}]]></groupExpression>

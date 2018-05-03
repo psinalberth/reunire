@@ -51,7 +51,7 @@
 		<variableExpression><![CDATA[$F{receitasRealizadas}]]></variableExpression>
 	</variable>
 	<variable name="SALDO_ORIGEM" class="java.math.BigDecimal" resetType="Group" resetGroup="ORIGEM">
-		<variableExpression><![CDATA[$V{SOMA_RRE_ORIGEM}.subtract($V{SOMA_PAT_ORIGEM})]]></variableExpression>
+		<variableExpression><![CDATA[$V{SOMA_RRE_ORIGEM}.subtract($V{SOMA_PAT_ORIGEM} != null ? $V{SOMA_PAT_ORIGEM}: java.math.BigDecimal.ZERO)]]></variableExpression>
 	</variable>
 	<variable name="SOMA_PIN_ESPECIE" class="java.math.BigDecimal" resetType="Group" resetGroup="ESPECIE" calculation="Sum">
 		<variableExpression><![CDATA[$F{previsaoInicial}]]></variableExpression>
