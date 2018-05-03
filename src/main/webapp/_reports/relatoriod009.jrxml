@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.5.0.final using JasperReports Library version 6.5.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demonstrativo_despesa_orgao_funcao" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98ea426d-de9a-42f9-a7dd-c5c2ebdd9408">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="3"/>
 	<property name="ireport.y" value="506"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Cabecalho" mode="Opaque" backcolor="#C0C0C0" isBlankWhenNull="true" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="exercicio" class="java.lang.Integer"/>
 	<parameter name="ente" class="java.lang.String"/>
 	<parameter name="orgao" class="java.lang.String"/>
 	<parameter name="unidade" class="java.lang.String"/>
-	<parameter name="dataInicio" class="java.util.Date"/>
-	<parameter name="dataFim" class="java.util.Date"/>
-	<parameter name="unidades" class="java.util.List"/>
-	<parameter name="conexaoSaePlan" class="java.sql.Connection"/>
-	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/usr/local/eclipse/workspace_limpa/saeexec_web/WebContent/reports/"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="DATA" class="java.util.List"/>
-	<parameter name="jurisdicionado" class="java.lang.String"/>
-	<parameter name="exercicio" class="java.lang.Integer"/>
 	<field name="idUnidade" class="java.lang.Integer"/>
 	<field name="descricaoUnidade" class="java.lang.String"/>
 	<field name="saldos" class="java.math.BigDecimal[]">
@@ -1024,7 +1015,7 @@
 					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="10" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{orgao}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["ÓRGÃO: " + $F{orgao}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -1850,7 +1841,7 @@
 					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="10" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{idUnidade}+" - "+$F{descricaoUnidade}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade}+" - "+$F{descricaoUnidade}]]></textFieldExpression>
 				</textField>
 				<break>
 					<reportElement x="0" y="4" width="800" height="1" uuid="f95e408e-a9e0-462d-ba99-00d40d815b15"/>
@@ -1862,64 +1853,28 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="145" splitType="Stretch">
-			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="1" width="802" height="20" isRemoveLineWhenBlank="true" uuid="c6020cc9-72f4-489a-8b3f-ff488ccfd3a3">
-					<printWhenExpression><![CDATA[$P{ente} != null]]></printWhenExpression>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="48" width="802" height="16" uuid="9e59a3b6-58dd-4b85-959e-c09ed790dd69">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="10" isBold="true"/>
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["ENTE: "+$P{ente}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="21" width="802" height="20" isRemoveLineWhenBlank="true" uuid="2e0a9b12-383e-4dea-bb0c-221c67210418">
-					<printWhenExpression><![CDATA[$P{orgao} != null]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="10" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["ÓRGÃO: "+$P{orgao}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="42" width="802" height="20" isRemoveLineWhenBlank="true" uuid="3f6d1911-6f63-41ae-a66c-4a411ebf275e">
+				<text><![CDATA[DEMONSTRAÇÕES, QUADROS E DEMONSTRATIVOS DA LEI 4320/64]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="32" width="802" height="16" isRemoveLineWhenBlank="true" uuid="a3156b80-8fdf-47ea-83f5-487f0baf4516">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<printWhenExpression><![CDATA[$P{unidade} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="10" isBold="true"/>
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["UNIDADE: "+$P{unidade}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="62" width="802" height="20" uuid="620b37e8-faee-45a0-91bc-cd9d366d3a6f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="10" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["ANEXO IX - DEMONSTRATIVO DA DESPESA POR ÓRGÃOS E FUNÇÕES"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="81" width="802" height="20" uuid="9af8645b-16ea-478e-b92e-b2e48cd6def5"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="10" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["PERÍODO: " + new SimpleDateFormat("dd/MM/yyyy").format($P{dataInicio}) + " A " +  new SimpleDateFormat("dd/MM/yyyy").format($P{dataFim})]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="103" width="802" height="10" uuid="fa52e4a6-6c9a-41c0-a740-f9802b7ccf37"/>
-				<textElement>
-					<font fontName="DejaVu Sans"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="135" width="802" height="10" uuid="fe51e344-7f44-4014-8842-6ddb1ef5db8f"/>
-				<textElement textAlignment="Center">
-					<font fontName="DejaVu Sans"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="700" y="117" width="100" height="16" uuid="282061d9-1d39-4915-b8be-9032523c3745">
+				<reportElement x="702" y="85" width="100" height="16" uuid="959cb829-2680-4b40-a5b1-3ff5a8c9e612">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -1927,30 +1882,87 @@
 				</textElement>
 				<textFieldExpression><![CDATA["EXERCÍCIO: " + $P{exercicio}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="101" width="802" height="5" uuid="ed946496-9ba8-43c1-8bed-2db01541f32b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="802" height="5" uuid="4996c370-c6f9-402a-9baf-0e577a10802a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="64" width="802" height="16" uuid="88cca529-fe2d-4aff-8d65-c7889c68f61c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANEXO 9: DEMONSTRATIVO DA DESPESA POR ÓRGÃOS E FUNÇÕES]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="0" width="802" height="16" isRemoveLineWhenBlank="true" uuid="b03eaffa-f1e8-4960-a4d9-e290efcc7d79">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ENTE: " + $P{ente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="16" width="802" height="16" isRemoveLineWhenBlank="true" uuid="dbf20e4b-2500-4a93-ba9c-1e785254b8e7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{orgao} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ÓRGÃO: " + $P{orgao}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageFooter>
-		<band height="23">
+		<band height="22">
 			<textField>
-				<reportElement x="-1" y="3" width="682" height="20" uuid="7902e311-8ee2-4d82-8667-98a7c0f0fd1a"/>
-				<textElement>
-					<font fontName="DejaVu Sans" size="9" isItalic="false"/>
+				<reportElement x="0" y="10" width="724" height="12" uuid="1041ed1f-a522-47ee-8438-4dacfb54b606">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["FONTE: SAE   Emitido em " + new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Fonte: e-PCA"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="678" y="3" width="80" height="20" uuid="20eac411-3eb3-4b15-80e8-ac304375a766"/>
-				<textElement textAlignment="Right">
-					<font fontName="DejaVu Sans" size="9" isItalic="false"/>
+				<reportElement x="0" y="0" width="802" height="10" uuid="f52164eb-458a-42c1-b26c-84c1ec4865bb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Data de Emissão: " + new java.text.SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="724" y="10" width="38" height="12" uuid="eed5ecb9-69c7-405d-9854-ef0c5c9bb815"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="760" y="3" width="40" height="20" uuid="df6b16ad-47b7-4661-8237-855cddce6205"/>
-				<textElement>
-					<font fontName="DejaVu Sans" size="9" isItalic="false"/>
+				<reportElement x="762" y="10" width="40" height="12" uuid="85eab217-c0b6-4d5e-ac3d-078548ba080a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
