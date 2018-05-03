@@ -1933,7 +1933,7 @@
 	<pageFooter>
 		<band height="22">
 			<textField>
-				<reportElement x="0" y="10" width="724" height="12" uuid="1041ed1f-a522-47ee-8438-4dacfb54b606">
+				<reportElement x="0" y="10" width="702" height="12" uuid="1041ed1f-a522-47ee-8438-4dacfb54b606">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -1951,7 +1951,7 @@
 				<textFieldExpression><![CDATA["Data de Emissão: " + new java.text.SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="724" y="10" width="38" height="12" uuid="eed5ecb9-69c7-405d-9854-ef0c5c9bb815"/>
+				<reportElement x="702" y="10" width="60" height="12" uuid="eed5ecb9-69c7-405d-9854-ef0c5c9bb815"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>

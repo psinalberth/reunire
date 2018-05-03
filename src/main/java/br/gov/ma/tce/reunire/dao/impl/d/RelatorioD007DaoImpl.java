@@ -32,7 +32,7 @@ public class RelatorioD007DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 				"and d.programa = prog.codigo " + 
 				"and d.acao = acao.codigo_prefeitura " +
 				"and d.unidade_id in (:unidade) " +	
-				"order by d.unidade_id, d.funcao, d.subfuncao, d.programa, d.acao ";
+				"order by d.unidade_id, d.funcao, d.programa, d.acao ";
 		
 		List<RelatorioD006AVO> listaVo = new ArrayList<>();
 		

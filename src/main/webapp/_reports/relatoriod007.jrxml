@@ -290,7 +290,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_FUNCAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.00#;(#,##0.00#)">
 					<reportElement mode="Transparent" x="430" y="0" width="90" height="15" backcolor="#BFBFBF" uuid="e151e73a-17dd-4cdb-953e-6ecf5c23d7aa">
@@ -304,7 +304,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_PROJETO_FUNCAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="#,##0.00#;(#,##0.00#)">
 					<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="720" y="0" width="82" height="15" backcolor="#BFBFBF" uuid="ebeaece2-a913-4c43-b16d-dddcbd9590e1">
@@ -332,7 +332,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_FUNCAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -341,6 +341,7 @@
 		<groupExpression><![CDATA[$F{subfuncaoGoverno}]]></groupExpression>
 		<groupHeader>
 			<band height="15">
+				<printWhenExpression><![CDATA[$P{tipo} != null && $P{tipo} == 8]]></printWhenExpression>
 				<textField>
 					<reportElement mode="Transparent" x="117" y="0" width="313" height="15" backcolor="#BFBFBF" uuid="00502f54-fc7a-4c92-ba03-b37a2e8c3c16">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
