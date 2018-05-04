@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.ejb.Stateless;
 
@@ -23,73 +24,83 @@ public class RelatorioD007DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 	@Override
 	public List<RelatorioD006AVO> recuperaDados(Map<String, Object> params) {
 		
-		String sql = "select d.unidade_id as UNIDADE, d.funcao, d.subfuncao, " + 
-				"d.acao, d.programa, f.nome as nomeFuncao, sub.nome as nomeSubFuncao, " + 
-				"prog.denominacao, acao.descricao, coalesce(d.valor_atual, 0) " +  
-				"from prestacao.d006 d, remessa.funcao f, remessa.subfuncao sub, sae.sae_programa prog, sae.sae_acao acao " + 
-				"where d.funcao = f.funcao_id " +
-				"and d.subfuncao = sub.subfuncao_id " + 
-				"and d.programa = prog.codigo " + 
-				"and d.acao = acao.codigo_prefeitura " +
-				"and d.unidade_id in (:unidade) " +	
-				"order by d.unidade_id, d.funcao, d.programa, d.acao ";
+		String sql = 
 		
-		List<RelatorioD006AVO> listaVo = new ArrayList<>();
+		"select " +
+			"d.unidade_orcamentaria_id, d.funcao, d.subfuncao, fg.nome nome_funcao, sf.nome nome_subfuncao, d.programa, d.acao, d.descricao, " +
+			"coalesce(d.valor_atual, 0) valor " +
+		"from " + 
+			"prestacao.d006 d " +
+		"left join remessa.funcao fg on " +
+			"fg.funcao_id = d.funcao " +
+		"left join remessa.subfuncao sf on " +
+			"sf.subfuncao_id = d.subfuncao " +
+		"where " +
+			"d.unidade_orcamentaria_id in (:unidades) " +
+		"order by " +
+			"d.unidade_orcamentaria_id, d.funcao, d.programa, d.acao";
 		
-		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(params);
-		List<Integer> listaIdsUnidades = extrairIds(listaUnidadeVO);		
+		List<RelatorioD006AVO> dados = new ArrayList<>();
+		
+		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
+		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);		
 		
 		@SuppressWarnings("unchecked")
-		List<Object[]> lista = entityManager.createNativeQuery(sql)
-				.setParameter("unidade", listaIdsUnidades)				
+		List<Object[]> rows = entityManager.createNativeQuery(sql)
+				.setParameter("unidades", listaIdsUnidades)				
 				.getResultList();
 		
-		for(Object[] l : lista) {
-			RelatorioD006AVO relatorio = new RelatorioD006AVO();
-			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
+		for(Object[] row : rows) {
 			
-			for(UnidadeVO listaUnidade : listaUnidadeVO) {
-				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue()) {
-					relatorio.setDescricaoUnidade(listaUnidade.getNome());
-				}
-			}
+			RelatorioD006AVO dado = new RelatorioD006AVO();
 			
-			relatorio.setFuncaoGoverno(l[1].toString());
-			relatorio.setSubfuncaoGoverno(l[2].toString());
-			relatorio.setAcao(l[3].toString());
-			relatorio.setPrograma(l[4].toString());
-			relatorio.setNomeFuncao(l[5].toString());
-			relatorio.setNomeSubFuncao(l[6].toString());
-			relatorio.setNomePrograma(l[7].toString());
-			relatorio.setNomeAcao(l[8].toString());
+			Optional<UnidadeVO> unidade = listaUnidades.stream().filter(u -> u.getId().equals(Integer.parseInt(String.valueOf(row[0])))).findFirst();
 			
+			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
+			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
 			
-			Integer codigoAcao = Integer.valueOf(l[3].toString());
-			Integer codigoFuncao = Integer.valueOf(l[1].toString());
-			
-			if(codigoAcao % 2 == 0) {
-				relatorio.setValorAtividade(new BigDecimal((new Double(l[9].toString()))));
-				relatorio.setValorProjeto(new BigDecimal(new Double(0)));
-				relatorio.setValorOperacoesEspeciais(new BigDecimal(new Double(0)));
+			if (unidade != null) {
 				
-			}else if(codigoFuncao == 28) {
-				relatorio.setValorOperacoesEspeciais(new BigDecimal((new Double(l[9].toString()))));
-				relatorio.setValorProjeto(new BigDecimal(new Double(0)));
-				relatorio.setValorAtividade(new BigDecimal(new Double(0)));
-			
-			}
-			else {
-				relatorio.setValorProjeto(new BigDecimal((new Double(l[9].toString()))));
-				relatorio.setValorAtividade(new BigDecimal(new Double(0)));
-				relatorio.setValorOperacoesEspeciais(new BigDecimal(new Double(0)));
+				dado.setIdOrgao(unidade.get().getOrgao().getId());
+				dado.setDescricaoOrgao(unidade.get().getOrgao().getNome());
 			}
 			
+			dado.setFuncaoGoverno(row[1].toString());
+			dado.setSubfuncaoGoverno(row[2].toString());
+			dado.setNomeFuncao(row[3].toString());
+			dado.setNomeSubFuncao(row[4].toString());
+			dado.setPrograma(row[5].toString());
+			dado.setAcao(row[6].toString());
+			dado.setNomePrograma("NÃO INFORMADO");
+			dado.setNomeAcao(row[7].toString());
 			
-			listaVo.add(relatorio);
+			Integer codigoAcao = Integer.valueOf(row[6].toString());
+			Integer codigoFuncao = Integer.valueOf(row[1].toString());
+			
+			if (codigoAcao % 2 == 0) {
+				
+				dado.setValorAtividade(toBigDecimal(row[8]));
+				dado.setValorProjeto(BigDecimal.ZERO);
+				dado.setValorOperacoesEspeciais(BigDecimal.ZERO);
+				
+			} else if(codigoFuncao == 28) {
+				
+				dado.setValorOperacoesEspeciais(toBigDecimal(row[8]));
+				dado.setValorProjeto(BigDecimal.ZERO);
+				dado.setValorAtividade(BigDecimal.ZERO);
+			
+			} else {
+				
+				dado.setValorProjeto(toBigDecimal(row[8]));
+				dado.setValorAtividade(BigDecimal.ZERO);
+				dado.setValorOperacoesEspeciais(BigDecimal.ZERO);
+			}
+			
+			dados.add(dado);
 		}
 		
 		params.put("tipo", 7);
 		
-		return listaVo;
+		return dados;
 	}
 }

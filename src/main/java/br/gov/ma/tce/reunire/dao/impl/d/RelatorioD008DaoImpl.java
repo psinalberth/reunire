@@ -23,7 +23,7 @@ public class RelatorioD008DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 	@Override
 	public List<RelatorioD006AVO> recuperaDados(Map<String, Object> params) {
 		
-		String sql = "select d.unidade_id as UNIDADE, d.funcao, d.subfuncao, " + 
+		String sql = "select d.unidade_orcamentaria_id as UNIDADE, d.funcao, d.subfuncao, " + 
 				"d.acao, d.programa, f.nome as nomeFuncao, sub.nome as nomeSubFuncao, " + 
 				"prog.denominacao, acao.descricao, coalesce(d.valor_atual, 0) " +  
 				"from prestacao.d006 d, remessa.funcao f, remessa.subfuncao sub, sae.sae_programa prog, sae.sae_acao acao " + 
@@ -31,8 +31,8 @@ public class RelatorioD008DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 				"and d.subfuncao = sub.subfuncao_id " + 
 				"and d.programa = prog.codigo " + 
 				"and d.acao = acao.codigo_prefeitura " +
-				"and d.unidade_id in (:unidade) " +	
-				"order by d.unidade_id, d.funcao, d.subfuncao, d.programa, d.acao ";
+				"and d.unidade_orcamentaria_id in (:unidade) " +	
+				"order by d.unidade_orcamentaria_id, d.funcao, d.subfuncao, d.programa, d.acao ";
 		
 		List<RelatorioD006AVO> listaVo = new ArrayList<>();
 		

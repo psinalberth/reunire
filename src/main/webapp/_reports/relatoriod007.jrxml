@@ -37,11 +37,17 @@
 	<variable name="VALOR_PROJETO_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
 	</variable>
+	<variable name="VALOR_OPERACOES_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
+	</variable>
 	<variable name="VALOR_ATIVIDADE_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorAtividade}]]></variableExpression>
 	</variable>
 	<variable name="VALOR_PROJETO_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_OPERACOES_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
 	</variable>
 	<variable name="VALOR_ATIVIDADE_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorAtividade}]]></variableExpression>
@@ -49,35 +55,29 @@
 	<variable name="VALOR_PROJETO_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
 	</variable>
+	<variable name="VALOR_OPERACOES_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
+	</variable>
 	<variable name="VALOR_ATIVIDADE_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorAtividade}]]></variableExpression>
 	</variable>
 	<variable name="VALOR_PROJETO_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
 	</variable>
-	<variable name="VALOR_TOTAL_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_FUNCAO}.add( $V{VALOR_ATIVIDADE_FUNCAO}).add($V{VALOR_OPERACOES_FUNCAO})]]></variableExpression>
-	</variable>
-	<variable name="VALOR_TOTAL_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_SUBFUNCAO}.add( $V{VALOR_ATIVIDADE_SUBFUNCAO}).add($V{VALOR_OPERACOES_SUBFUNCAO})]]></variableExpression>
-	</variable>
-	<variable name="VALOR_TOTAL_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_PROGRAMA}.add( $V{VALOR_ATIVIDADE_PROGRAMA}).add($V{VALOR_OPERACOES_PROGRAMA})]]></variableExpression>
-	</variable>
-	<variable name="VALOR_TOTAL_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO">
-		<variableExpression><![CDATA[$V{VALOR_PROJETO_ACAO}.add( $V{VALOR_ATIVIDADE_ACAO}).add($V{VALOR_OPERACOES_ACAO})]]></variableExpression>
-	</variable>
-	<variable name="VALOR_OPERACOES_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO" calculation="Sum">
-		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
-	</variable>
-	<variable name="VALOR_OPERACOES_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO" calculation="Sum">
-		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
-	</variable>
-	<variable name="VALOR_OPERACOES_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA" calculation="Sum">
-		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
-	</variable>
 	<variable name="VALOR_OPERACOES_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorOperacoesEspeciais}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_TOTAL_FUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="FUNCAO_GOVERNO">
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_FUNCAO}.add($V{VALOR_ATIVIDADE_FUNCAO}).add($V{VALOR_OPERACOES_FUNCAO})]]></variableExpression>
+	</variable>
+	<variable name="VALOR_TOTAL_SUBFUNCAO" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBFUNCAO_GOVERNO">
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_SUBFUNCAO}.add($V{VALOR_ATIVIDADE_SUBFUNCAO}).add($V{VALOR_OPERACOES_SUBFUNCAO})]]></variableExpression>
+	</variable>
+	<variable name="VALOR_TOTAL_PROGRAMA" class="java.math.BigDecimal" resetType="Group" resetGroup="PROGRAMA">
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_PROGRAMA}.add($V{VALOR_ATIVIDADE_PROGRAMA}).add($V{VALOR_OPERACOES_PROGRAMA})]]></variableExpression>
+	</variable>
+	<variable name="VALOR_TOTAL_ACAO" class="java.math.BigDecimal" resetType="Group" resetGroup="ACAO">
+		<variableExpression><![CDATA[$V{VALOR_PROJETO_ACAO}.add($V{VALOR_ATIVIDADE_ACAO}).add($V{VALOR_OPERACOES_ACAO})]]></variableExpression>
 	</variable>
 	<variable name="TOTAL_PROJETO_UNIDADE" class="java.math.BigDecimal" resetType="Group" resetGroup="UNIDADE" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorProjeto}]]></variableExpression>
@@ -189,7 +189,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{TOTAL_OPERACOES_UNIDADE}]]></textFieldExpression>
 				</textField>
@@ -204,7 +204,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{TOTAL_ATIVIDADE_UNIDADE}]]></textFieldExpression>
 				</textField>
@@ -218,7 +218,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{TOTAL_PROJETO_UNIDADE}.add($V{TOTAL_ATIVIDADE_UNIDADE}).add($V{TOTAL_OPERACOES_UNIDADE})]]></textFieldExpression>
 				</textField>
@@ -226,7 +226,7 @@
 					<reportElement x="330" y="8" width="100" height="14" uuid="2011880a-5346-4496-85cc-bc9c4a2f32ea"/>
 					<box rightPadding="5"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<text><![CDATA[TOTAL]]></text>
 				</staticText>
@@ -241,7 +241,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{TOTAL_PROJETO_UNIDADE}]]></textFieldExpression>
 				</textField>
@@ -260,7 +260,7 @@
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{funcaoGoverno}]]></textFieldExpression>
 				</textField>
@@ -274,7 +274,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{nomeFuncao}]]></textFieldExpression>
 				</textField>
@@ -288,7 +288,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
@@ -302,7 +302,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
@@ -316,7 +316,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_FUNCAO}]]></textFieldExpression>
 				</textField>
@@ -330,7 +330,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
@@ -352,7 +352,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{nomeSubFuncao}]]></textFieldExpression>
 				</textField>
@@ -364,7 +364,7 @@
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{funcaoGoverno} + "." + $F{subfuncaoGoverno}]]></textFieldExpression>
 				</textField>
@@ -378,7 +378,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_SUBFUNCAO}]]></textFieldExpression>
 				</textField>
@@ -392,7 +392,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_PROJETO_SUBFUNCAO}]]></textFieldExpression>
 				</textField>
@@ -406,7 +406,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_SUBFUNCAO}]]></textFieldExpression>
 				</textField>
@@ -420,7 +420,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_SUBFUNCAO}]]></textFieldExpression>
 				</textField>
@@ -439,7 +439,7 @@
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{funcaoGoverno} + "." + $F{subfuncaoGoverno} + "." + $F{programa}]]></textFieldExpression>
 				</textField>
@@ -453,7 +453,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{nomePrograma}]]></textFieldExpression>
 				</textField>
@@ -467,7 +467,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
@@ -481,7 +481,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
@@ -495,7 +495,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_PROGRAMA}]]></textFieldExpression>
 				</textField>
@@ -509,7 +509,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""]]></textFieldExpression>
 				</textField>
@@ -528,7 +528,7 @@
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{funcaoGoverno} + "." + $F{subfuncaoGoverno}  + "." + $F{programa} + "." + $F{acao}]]></textFieldExpression>
 				</textField>
@@ -542,7 +542,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{nomeAcao}]]></textFieldExpression>
 				</textField>
@@ -556,7 +556,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_ACAO}]]></textFieldExpression>
 				</textField>
@@ -570,7 +570,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_PROJETO_ACAO}]]></textFieldExpression>
 				</textField>
@@ -584,7 +584,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_ACAO}]]></textFieldExpression>
 				</textField>
@@ -598,7 +598,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_ACAO}]]></textFieldExpression>
 				</textField>
