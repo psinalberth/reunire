@@ -38,7 +38,7 @@ public class RelatorioD007DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 		"where " +
 			"d.unidade_orcamentaria_id in (:unidades) " +
 		"order by " +
-			"d.unidade_orcamentaria_id, d.funcao, d.programa, d.acao";
+			"d.funcao, d.programa, d.acao";
 		
 		List<RelatorioD006AVO> dados = new ArrayList<>();
 		
