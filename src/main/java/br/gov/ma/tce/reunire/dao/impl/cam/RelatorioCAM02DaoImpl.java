@@ -32,7 +32,8 @@ public class RelatorioCAM02DaoImpl extends PrestacaoDaoImpl<RelatorioCAM02VO> im
 		"		valor, objeto, inicio_prazo, fim_prazo, situacao, cam02_id " +
 		"	from prestacao.cam02 cam " +
 		"	where cam.unidade_id in (:unidades) and " +
-		"	((:modulo is null) or (cam.modulo_id = :modulo)) ";
+		"	((:modulo is null) or (cam.modulo_id = :modulo)) " +
+		" order by data_celebracao";
 		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidades", listaIdsUnidades)

@@ -38,9 +38,9 @@
 	<field name="id" class="java.lang.Integer"/>
 	<group name="UNIDADE">
 		<groupHeader>
-			<band height="68">
+			<band height="43">
 				<staticText>
-					<reportElement mode="Transparent" x="0" y="35" width="130" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="63729031-5b14-40bc-9820-aa83587b1f41">
+					<reportElement mode="Transparent" x="0" y="10" width="130" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="63729031-5b14-40bc-9820-aa83587b1f41">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -55,7 +55,7 @@
 					<text><![CDATA[CONCEDENTE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="130" y="35" width="120" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="244e13af-d4b4-446b-bae9-c2ee9aa20639">
+					<reportElement mode="Transparent" x="130" y="10" width="120" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="244e13af-d4b4-446b-bae9-c2ee9aa20639">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -69,7 +69,7 @@
 					<text><![CDATA[CONVENENTE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="250" y="35" width="80" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="ea59d9c9-c998-4b00-a01c-42edaaecc89b">
+					<reportElement mode="Transparent" x="250" y="10" width="80" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="ea59d9c9-c998-4b00-a01c-42edaaecc89b">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -84,7 +84,7 @@
 					<text><![CDATA[DATA DE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="330" y="35" width="90" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="ff712ef9-f05e-4252-958a-57401e987135">
+					<reportElement mode="Transparent" x="330" y="10" width="90" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="ff712ef9-f05e-4252-958a-57401e987135">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -99,7 +99,7 @@
 					<text><![CDATA[VALOR ]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="420" y="35" width="124" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="4ced0248-6ceb-4ec1-8341-22a8a983cbd0">
+					<reportElement mode="Transparent" x="420" y="10" width="124" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="4ced0248-6ceb-4ec1-8341-22a8a983cbd0">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -114,7 +114,7 @@
 					<text><![CDATA[OBJETO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="544" y="35" width="80" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="4932a0f3-8188-4b7b-b791-076231206ac0">
+					<reportElement mode="Transparent" x="544" y="10" width="80" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="4932a0f3-8188-4b7b-b791-076231206ac0">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -130,7 +130,7 @@
 					<text><![CDATA[INICIO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="624" y="35" width="80" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="e3a3513f-000d-42ed-a1ec-0773d50f5ca4">
+					<reportElement mode="Transparent" x="624" y="10" width="80" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="e3a3513f-000d-42ed-a1ec-0773d50f5ca4">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -146,7 +146,7 @@
 					<text><![CDATA[FIM]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="704" y="35" width="98" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="508c5153-1c46-4643-afe7-9c181bf2aac6">
+					<reportElement mode="Transparent" x="704" y="10" width="98" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="508c5153-1c46-4643-afe7-9c181bf2aac6">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -160,25 +160,12 @@
 					</textElement>
 					<text><![CDATA[SITUAÇÃO]]></text>
 				</staticText>
-				<textField>
-					<reportElement x="0" y="10" width="802" height="15" uuid="4371da53-5815-43a2-bb14-4d8ede88a02f">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
-				</textField>
 				<staticText>
 					<reportElement x="0" y="0" width="802" height="10" uuid="15130324-0967-4d3a-b63f-819bd34e7af8"/>
 					<text><![CDATA[]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="25" width="802" height="10" uuid="3acd8285-1d5b-4229-8eea-fcd5acd1d047"/>
-					<text><![CDATA[]]></text>
-				</staticText>
-				<staticText>
-					<reportElement mode="Transparent" x="0" y="51" width="130" height="17" forecolor="#000000" backcolor="#FFFFFF" uuid="9b009684-2f2d-4b19-8e75-fe24b3c34674">
+					<reportElement mode="Transparent" x="0" y="26" width="130" height="17" forecolor="#000000" backcolor="#FFFFFF" uuid="9b009684-2f2d-4b19-8e75-fe24b3c34674">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -193,7 +180,7 @@
 					<text><![CDATA[(CNPJ)]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="130" y="51" width="120" height="17" forecolor="#000000" backcolor="#FFFFFF" uuid="aa161509-836b-48ac-991b-1146c457f1dc">
+					<reportElement mode="Transparent" x="130" y="26" width="120" height="17" forecolor="#000000" backcolor="#FFFFFF" uuid="aa161509-836b-48ac-991b-1146c457f1dc">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -207,7 +194,7 @@
 					<text><![CDATA[(CNPJ)]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="250" y="51" width="80" height="17" forecolor="#000000" backcolor="#FFFFFF" uuid="30fb88e6-3a41-4cb5-8e7f-a37072d03ed3">
+					<reportElement mode="Transparent" x="250" y="26" width="80" height="17" forecolor="#000000" backcolor="#FFFFFF" uuid="30fb88e6-3a41-4cb5-8e7f-a37072d03ed3">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -254,7 +241,7 @@
 						</textElement>
 						<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
 					</textField>
-					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<textField evaluationTime="Group" evaluationGroup="TITULO" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
 						<reportElement x="330" y="0" width="90" height="45" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						</reportElement>
@@ -445,16 +432,25 @@
 		</band>
 	</title>
 	<pageFooter>
-		<band height="31" splitType="Stretch">
-			<textField>
-				<reportElement x="724" y="19" width="38" height="12" uuid="be3162d2-eaae-4e78-93e8-f6d37291688c"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+		<band height="27" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="15" width="40" height="12" uuid="fe23b910-e024-49f4-8514-d8b2929b979b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="9" width="802" height="10" uuid="ebee6ecd-eb0a-4f3c-a389-6457f02edcd6">
+				<reportElement x="0" y="15" width="702" height="12" uuid="649d20df-2fd7-4730-8f30-d00cb29496cb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fonte: e-PCA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="5" width="802" height="10" uuid="99442770-6c31-4452-a771-a71bf1eb1e36">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -462,21 +458,12 @@
 				</textElement>
 				<textFieldExpression><![CDATA["Data de Emissão: " + new java.text.SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="762" y="19" width="40" height="12" uuid="512b58bf-89d2-49aa-b499-a1910f86b7d5"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 			<textField>
-				<reportElement x="0" y="19" width="724" height="12" uuid="1d06d333-0811-4086-bc1c-ffc54d6aa2c9">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="702" y="15" width="60" height="12" uuid="c28303c1-c45e-4be4-9485-875e9c4ccbed"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Fonte: e-PCA"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

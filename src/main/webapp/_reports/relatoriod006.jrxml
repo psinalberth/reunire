@@ -599,8 +599,15 @@
 	</title>
 	<pageFooter>
 		<band height="22" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="10" width="40" height="12" uuid="35860d18-bb2f-460a-890f-0272685a5b61"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 			<textField>
-				<reportElement x="0" y="10" width="724" height="12" uuid="351287d1-8949-4796-a859-01999b0defc8">
+				<reportElement x="0" y="10" width="702" height="12" uuid="efab2bce-1bfa-4d45-9721-54bacb6c2550">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -609,14 +616,7 @@
 				<textFieldExpression><![CDATA["Fonte: e-PCA"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="724" y="10" width="38" height="12" uuid="6bcb459c-29c3-40fa-9b11-5c6d4b2c81fb"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="0" width="802" height="10" uuid="ac989422-111a-4b30-809f-b3d9a79cbc08">
+				<reportElement x="0" y="0" width="802" height="10" uuid="aa4358f6-ca46-4431-9365-936516e1c5d1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -624,12 +624,12 @@
 				</textElement>
 				<textFieldExpression><![CDATA["Data de Emissão: " + new java.text.SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="762" y="10" width="40" height="12" uuid="aaf966de-1778-42dd-840b-2f4aa3bf5d68"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+			<textField>
+				<reportElement x="702" y="10" width="60" height="12" uuid="7b371eac-2b3a-4911-a24d-90603131de7d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

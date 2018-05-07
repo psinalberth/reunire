@@ -37,18 +37,9 @@
 	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
-			<band height="47">
-				<textField>
-					<reportElement x="0" y="0" width="802" height="13" uuid="d7ef1123-4d0b-45f1-9a7e-f2b0b4030266">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
-				</textField>
+			<band height="22">
 				<staticText>
-					<reportElement x="0" y="25" width="112" height="22" uuid="1cee24aa-60f1-4afa-83b8-cc82582e5992">
+					<reportElement x="0" y="0" width="112" height="22" uuid="1cee24aa-60f1-4afa-83b8-cc82582e5992">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -65,7 +56,7 @@
 					<text><![CDATA[NATUREZA DA RECEITA]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="457" y="25" width="115" height="22" uuid="ed0cfd8a-e87c-44ba-86e7-8335a0ffd2d1">
+					<reportElement x="457" y="0" width="115" height="22" uuid="ed0cfd8a-e87c-44ba-86e7-8335a0ffd2d1">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -81,7 +72,7 @@
 					<textFieldExpression><![CDATA[$P{exercicio}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="572" y="25" width="115" height="22" uuid="0611395f-f669-4001-91e4-4e8b8e939453">
+					<reportElement x="572" y="0" width="115" height="22" uuid="0611395f-f669-4001-91e4-4e8b8e939453">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -97,7 +88,7 @@
 					<textFieldExpression><![CDATA[$P{exercicio} + 1]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="687" y="25" width="115" height="22" uuid="b2f3f691-4e41-4681-8bea-7185a8df2410">
+					<reportElement x="687" y="0" width="115" height="22" uuid="b2f3f691-4e41-4681-8bea-7185a8df2410">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -113,7 +104,7 @@
 					<textFieldExpression><![CDATA[$P{exercicio} + 2]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="227" y="25" width="115" height="22" uuid="8753eb5a-9a11-41e7-9451-d0d9c5a99a49">
+					<reportElement x="227" y="0" width="115" height="22" uuid="8753eb5a-9a11-41e7-9451-d0d9c5a99a49">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -129,7 +120,7 @@
 					<textFieldExpression><![CDATA[$P{exercicio} - 2]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="112" y="25" width="115" height="22" uuid="4cda331a-6d81-4192-b617-6839937ca38f">
+					<reportElement x="112" y="0" width="115" height="22" uuid="4cda331a-6d81-4192-b617-6839937ca38f">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -145,7 +136,7 @@
 					<textFieldExpression><![CDATA[$P{exercicio} - 3]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="342" y="25" width="115" height="22" uuid="e8e00fd0-bdde-4ab8-80bf-cd9c855aa486">
+					<reportElement x="342" y="0" width="115" height="22" uuid="e8e00fd0-bdde-4ab8-80bf-cd9c855aa486">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -181,7 +172,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{codigoNaturezaReceita}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
+				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="112" y="0" width="115" height="15" uuid="7a63f815-ba81-45dd-b366-2f7036b3366d">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -193,9 +184,9 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{NATUREZA_ANO_MENOS3}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{NATUREZA_ANO_MENOS3}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{NATUREZA_ANO_MENOS3} : "-"]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
+				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="227" y="0" width="115" height="15" uuid="697562fc-e7b1-4f75-8da1-047c73de19eb">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -207,9 +198,9 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{NATUREZA_ANO_MENOS2}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{NATUREZA_ANO_MENOS2}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{NATUREZA_ANO_MENOS2} : "-"]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
+				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="457" y="0" width="115" height="15" uuid="5865ee39-62cf-4baf-9a84-5404a985abe7">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -221,9 +212,9 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{NATUREZA_ANO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{NATUREZA_ANO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{NATUREZA_ANO} : "-"]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
+				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="572" y="0" width="115" height="15" uuid="5325fbce-3388-4658-a492-6ef83f673f39">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -235,9 +226,9 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{NATUREZA_ANO_MAIS1}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{NATUREZA_ANO_MAIS1}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{NATUREZA_ANO_MAIS1} : "-"]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
+				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="687" y="0" width="115" height="15" uuid="1b27296d-9997-4de8-b41a-b7f5cba583a1">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -249,9 +240,9 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{NATUREZA_ANO_MAIS2}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{NATUREZA_ANO_MAIS2}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{NATUREZA_ANO_MAIS2} : "-"]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
+				<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="342" y="0" width="115" height="15" uuid="b7beef42-f5f7-425c-a935-9596ec1fa804">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -263,7 +254,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{NATUREZA_ANO_MENOS1}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{NATUREZA_ANO_MENOS1}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{NATUREZA_ANO_MENOS1} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -332,18 +323,16 @@
 		</band>
 	</title>
 	<pageFooter>
-		<band height="31" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="9" width="802" height="10" uuid="cb73ba71-9bcd-4acb-8749-6cfa1c65dd99">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
+		<band height="22" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="10" width="40" height="12" uuid="6d6205e8-d778-4083-9477-020a22b9f686"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Data de Emissão: " + new java.text.SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="19" width="724" height="12" uuid="5b9e907e-ef62-419d-8b06-c2d48a8cb70c">
+				<reportElement x="0" y="10" width="702" height="12" uuid="23aee481-6ecd-4889-91b9-21024d3b7ce3">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -352,18 +341,20 @@
 				<textFieldExpression><![CDATA["Fonte: e-PCA"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="724" y="19" width="38" height="12" uuid="f58f18a8-9aee-4768-8f92-c47efdfe45f4"/>
+				<reportElement x="0" y="0" width="802" height="10" uuid="5487b7ae-1971-4794-a7a8-a916e351a57e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Data de Emissão: " + new java.text.SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="702" y="10" width="60" height="12" uuid="007589c9-f7c2-4975-be19-7a6a8a488fa4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="762" y="19" width="40" height="12" uuid="f126268f-369f-4fd7-9be2-e64bc3d78c02"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

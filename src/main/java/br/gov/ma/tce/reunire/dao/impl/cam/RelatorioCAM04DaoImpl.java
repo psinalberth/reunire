@@ -32,7 +32,7 @@ public class RelatorioCAM04DaoImpl extends PrestacaoDaoImpl<RelatorioCAM04VO> im
 		"	unidade_id in (:unidades) and " + 
 		"	((:modulo is null) or (modulo_id = :modulo)) " + 
 		"order by " + 
-		"	unidade_id, nome_povoado, distancia";
+		"	unidade_id, distancia, nome_povoado";
 		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidades", listaIdsUnidades)

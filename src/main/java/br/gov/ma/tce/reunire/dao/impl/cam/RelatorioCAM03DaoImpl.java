@@ -23,11 +23,11 @@ public class RelatorioCAM03DaoImpl extends PrestacaoDaoImpl<RelatorioCAM03VO> im
 	@Override
 	public List<RelatorioCAM03VO> recuperaDados(Map<String, Object> params) {
 		
-		String sql = "select cam03.unidade_id, to_char(cam03.data_ato,'dd/MM/yyyy') data_ato, CAM03.tipo_credito tipo_credito, upper(cam03.tipo_ato) ||' nº '|| LPAD(cam03.numero_ato, '8', '0') numero_ato, cam03.valor valor, cam03.dotacao_inicial dotacao_inicial " + 
+		String sql = "select upper(cam03.tipo_ato) ||' nº '|| LPAD(cam03.numero_ato, '8', '0') numero_ato, to_char(cam03.data_ato,'dd/MM/yyyy') data_ato, CAM03.tipo_credito tipo_credito, cam03.valor valor, cam03.dotacao_inicial dotacao_inicial " + 
 				" from prestacao.cam03 cam03 " +
 				"where cam03.unidade_id in(:unidade) " +
-				" group by cam03.unidade_id, data_ato, tipo_credito,  numero_ato, cam03.tipo_ato, valor, dotacao_inicial " +
-				" order by cam03.unidade_id, data_ato, tipo_credito, numero_ato, dotacao_inicial";
+				" group by numero_ato, data_ato, tipo_credito,  cam03.tipo_ato, valor, dotacao_inicial " +
+				" order by numero_ato, data_ato, tipo_credito, dotacao_inicial";
 		
 		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(params);
 		List<Integer> listaIdsUnidades = extrairIds(listaUnidadeVO);
@@ -40,13 +40,6 @@ public class RelatorioCAM03DaoImpl extends PrestacaoDaoImpl<RelatorioCAM03VO> im
 		for(Object[] l : lista) {
 			
 			RelatorioCAM03VO relatorio = new RelatorioCAM03VO();
-			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
-			
-			for(UnidadeVO listaUnidade : listaUnidadeVO) {
-				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue()) {
-					relatorio.setDescricaoUnidade(listaUnidade.getNome());
-				}
-			}
 			
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			Date data = null;
@@ -58,9 +51,9 @@ public class RelatorioCAM03DaoImpl extends PrestacaoDaoImpl<RelatorioCAM03VO> im
 			relatorio.setDataAto(data);
 			
 			relatorio.setTipoCredito(l[2].toString());
-			relatorio.setNumeroAto(l[3].toString());
-			relatorio.setValor(new BigDecimal(Double.parseDouble(l[4].toString())));
-			relatorio.setDotacaoInicial(new BigDecimal(Double.parseDouble(l[5].toString())));
+			relatorio.setNumeroAto(l[0].toString());
+			relatorio.setValor(new BigDecimal(Double.parseDouble(l[3].toString())));
+			relatorio.setDotacaoInicial(new BigDecimal(Double.parseDouble(l[4].toString())));
 			listaVo.add(relatorio);	
 			
 		}

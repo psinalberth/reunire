@@ -728,27 +728,38 @@
 		</band>
 	</title>
 	<pageFooter>
-		<band height="13" splitType="Stretch">
-			<textField pattern="dd/MM/yyyy HH.mm.ss">
-				<reportElement x="0" y="1" width="680" height="12" uuid="08dbf359-c7a7-4568-8a81-b81916cf4702"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="DejaVu Sans" size="9" isItalic="false"/>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="724" y="10" width="38" height="12" uuid="0b7521b4-d665-47bb-9c50-6d306927b042"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["FONTE: SAE       Emitido em " + new SimpleDateFormat("dd/MM/yyy HH:mm:ss").format(new Date())]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" x="680" y="1" width="80" height="12" uuid="60d5cb77-1703-457a-9233-3048ce74faf2"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="DejaVu Sans" size="9" isItalic="false"/>
+				<reportElement x="0" y="10" width="724" height="12" uuid="d868b771-ac77-41fe-8487-6df0b11693a6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de "]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Fonte: e-PCA"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement positionType="FixRelativeToBottom" x="760" y="1" width="40" height="12" uuid="a6d08224-42ca-4ac0-aa89-5b5f5c749dce"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="DejaVu Sans" size="9" isItalic="false"/>
+				<reportElement x="762" y="10" width="40" height="12" uuid="fbe54aea-f35b-4a61-bcac-f7889388713b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="802" height="10" uuid="4f5abec0-5586-4a6d-b573-e4aa68524945">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Data de Emissão: " + new java.text.SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
