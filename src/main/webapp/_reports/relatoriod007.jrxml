@@ -442,178 +442,194 @@
 	<group name="PROGRAMA">
 		<groupExpression><![CDATA[$F{programa}]]></groupExpression>
 		<groupHeader>
-			<band height="15">
-				<textField>
-					<reportElement mode="Transparent" x="0" y="0" width="117" height="15" backcolor="#BFBFBF" uuid="6feea67b-8a84-4d8f-a285-644344209e85">
+			<band height="30">
+				<frame>
+					<reportElement positionType="Float" x="0" y="0" width="802" height="30" uuid="1792e53e-33b3-4e70-ae6f-3893bf117087">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<pen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{funcaoGoverno} + "." + $F{subfuncaoGoverno} + "." + $F{programa}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement mode="Transparent" x="117" y="0" width="313" height="15" backcolor="#BFBFBF" uuid="f268e20c-3e79-445c-a9d6-5be6663923d6">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="20">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{nomePrograma}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="520" y="0" width="90" height="15" backcolor="#BFBFBF" uuid="81f9b256-ffeb-49bd-b116-8a924c75750e">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[""]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement mode="Transparent" x="430" y="0" width="90" height="15" backcolor="#BFBFBF" uuid="1c949d33-0a9a-4732-883a-1d4a70208d3a">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[""]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="720" y="0" width="82" height="15" backcolor="#BFBFBF" uuid="e697d38a-b75e-48d9-bedf-739c3d6aa399">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_PROGRAMA}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="610" y="0" width="110" height="15" backcolor="#BFBFBF" uuid="85b5df21-3fec-41a9-b64c-e26e355b70f7">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[""]]></textFieldExpression>
-				</textField>
+					<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
+						<reportElement mode="Transparent" x="430" y="0" width="90" height="30" backcolor="#BFBFBF" uuid="1c949d33-0a9a-4732-883a-1d4a70208d3a">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<box leftPadding="0" rightPadding="5">
+							<topPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[""]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
+						<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="610" y="0" width="110" height="30" backcolor="#BFBFBF" uuid="85b5df21-3fec-41a9-b64c-e26e355b70f7">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<box leftPadding="0" rightPadding="5">
+							<topPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[""]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
+						<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="520" y="0" width="90" height="30" backcolor="#BFBFBF" uuid="81f9b256-ffeb-49bd-b116-8a924c75750e">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<box leftPadding="0" rightPadding="5">
+							<topPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[""]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="#,##0.00#;(#,##0.00#)">
+						<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="720" y="0" width="82" height="30" backcolor="#BFBFBF" uuid="e697d38a-b75e-48d9-bedf-739c3d6aa399">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<box leftPadding="0" rightPadding="5">
+							<topPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{VALOR_TOTAL_PROGRAMA}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement mode="Transparent" x="0" y="0" width="117" height="30" backcolor="#BFBFBF" uuid="6feea67b-8a84-4d8f-a285-644344209e85">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<box leftPadding="0" rightPadding="5">
+							<pen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{funcaoGoverno} + "." + $F{subfuncaoGoverno} + "." + $F{programa}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement mode="Transparent" x="117" y="0" width="313" height="30" backcolor="#BFBFBF" uuid="f268e20c-3e79-445c-a9d6-5be6663923d6">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<box leftPadding="20">
+							<topPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{nomePrograma}]]></textFieldExpression>
+					</textField>
+				</frame>
 			</band>
 		</groupHeader>
 	</group>
 	<group name="ACAO">
 		<groupExpression><![CDATA[$F{acao}]]></groupExpression>
 		<groupHeader>
-			<band height="15">
-				<textField>
-					<reportElement mode="Transparent" x="0" y="0" width="117" height="15" backcolor="#BFBFBF" uuid="32699289-5df5-49fb-9528-2687956e51e1">
+			<band height="30">
+				<frame>
+					<reportElement positionType="Float" x="0" y="0" width="802" height="30" uuid="f23c3930-8df5-44bf-8237-9247d948a0bc">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<pen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{funcaoGoverno} + "." + $F{subfuncaoGoverno}  + "." + $F{programa} + "." + $F{acao}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement mode="Transparent" x="117" y="0" width="313" height="15" backcolor="#BFBFBF" uuid="a62a410d-4e14-4515-8ab1-860bbc3deda0">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="25">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{nomeAcao}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement mode="Transparent" x="520" y="0" width="90" height="15" backcolor="#BFBFBF" uuid="844daa12-9227-4842-9a5b-c2725793d06e">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_ACAO}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement mode="Transparent" x="430" y="0" width="90" height="15" backcolor="#BFBFBF" uuid="4fba17b4-082e-4738-a77b-db22c9c077ae">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_PROJETO_ACAO}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement mode="Transparent" x="720" y="0" width="82" height="15" backcolor="#BFBFBF" uuid="8e3b4c57-5143-47f6-be04-84fe879a9799">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_ACAO}]]></textFieldExpression>
-				</textField>
-				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement mode="Transparent" x="610" y="0" width="110" height="15" backcolor="#BFBFBF" uuid="a4e5f990-b91b-4a0c-a479-0ee0f929f8e9">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="0" rightPadding="5">
-						<topPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_ACAO}]]></textFieldExpression>
-				</textField>
+					<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
+						<reportElement mode="Transparent" x="430" y="0" width="90" height="30" backcolor="#BFBFBF" uuid="4fba17b4-082e-4738-a77b-db22c9c077ae">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<box leftPadding="0" rightPadding="5">
+							<topPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{VALOR_PROJETO_ACAO}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
+						<reportElement mode="Transparent" x="720" y="0" width="82" height="30" backcolor="#BFBFBF" uuid="8e3b4c57-5143-47f6-be04-84fe879a9799">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<box leftPadding="0" rightPadding="5">
+							<topPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{VALOR_TOTAL_ACAO}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement mode="Transparent" x="0" y="0" width="117" height="30" backcolor="#BFBFBF" uuid="32699289-5df5-49fb-9528-2687956e51e1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<box leftPadding="0" rightPadding="5">
+							<pen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{funcaoGoverno} + "." + $F{subfuncaoGoverno}  + "." + $F{programa} + "." + $F{acao}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
+						<reportElement mode="Transparent" x="520" y="0" width="90" height="30" backcolor="#BFBFBF" uuid="844daa12-9227-4842-9a5b-c2725793d06e">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<box leftPadding="0" rightPadding="5">
+							<topPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_ACAO}]]></textFieldExpression>
+					</textField>
+					<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
+						<reportElement mode="Transparent" x="610" y="0" width="110" height="30" backcolor="#BFBFBF" uuid="a4e5f990-b91b-4a0c-a479-0ee0f929f8e9">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<box leftPadding="0" rightPadding="5">
+							<topPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_ACAO}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement mode="Transparent" x="117" y="0" width="313" height="30" backcolor="#BFBFBF" uuid="a62a410d-4e14-4515-8ab1-860bbc3deda0">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<box leftPadding="25">
+							<topPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{nomeAcao}]]></textFieldExpression>
+					</textField>
+				</frame>
 			</band>
 		</groupHeader>
 	</group>
