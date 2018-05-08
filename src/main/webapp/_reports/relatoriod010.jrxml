@@ -11,17 +11,19 @@
 	<field name="descricao" class="java.lang.String"/>
 	<field name="valorOrcado" class="java.math.BigDecimal"/>
 	<field name="valorArrecadado" class="java.math.BigDecimal"/>
+	<field name="valorMais" class="java.math.BigDecimal"/>
+	<field name="valorMenos" class="java.math.BigDecimal"/>
 	<variable name="VALOR_ORCADO" class="java.math.BigDecimal" resetType="Group" resetGroup="NATUREZA" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorOrcado}]]></variableExpression>
 	</variable>
 	<variable name="VALOR_ARRECADADO" class="java.math.BigDecimal" resetType="Group" resetGroup="NATUREZA" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorArrecadado}]]></variableExpression>
 	</variable>
-	<variable name="VALOR_MAIS" class="java.math.BigDecimal" resetType="Group" resetGroup="NATUREZA">
-		<variableExpression><![CDATA[$V{VALOR_ARRECADADO}.subtract($V{VALOR_ORCADO})]]></variableExpression>
+	<variable name="VALOR_MAIS" class="java.math.BigDecimal" resetType="Group" resetGroup="NATUREZA" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorMais}]]></variableExpression>
 	</variable>
-	<variable name="VALOR_MENOS" class="java.math.BigDecimal" resetType="Group" resetGroup="NATUREZA">
-		<variableExpression><![CDATA[$V{VALOR_ORCADO}.subtract($V{VALOR_ARRECADADO})]]></variableExpression>
+	<variable name="VALOR_MENOS" class="java.math.BigDecimal" resetType="Group" resetGroup="NATUREZA" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorMenos}]]></variableExpression>
 	</variable>
 	<variable name="VALOR_ORCADO_UNIDADE" class="java.math.BigDecimal" resetType="Group" resetGroup="UNIDADE" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorOrcado}]]></variableExpression>
@@ -29,14 +31,14 @@
 	<variable name="VALOR_ARRECADADO_UNIDADE" class="java.math.BigDecimal" resetType="Group" resetGroup="UNIDADE" calculation="Sum">
 		<variableExpression><![CDATA[$F{valorArrecadado}]]></variableExpression>
 	</variable>
-	<variable name="VALOR_MAIS_UNIDADE" class="java.math.BigDecimal" resetType="Group" resetGroup="UNIDADE">
-		<variableExpression><![CDATA[$V{VALOR_MAIS}]]></variableExpression>
+	<variable name="VALOR_MAIS_UNIDADE" class="java.math.BigDecimal" resetType="Group" resetGroup="UNIDADE" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorMais}]]></variableExpression>
 	</variable>
-	<variable name="VALOR_MENOS_UNIDADE" class="java.math.BigDecimal" resetType="Group" resetGroup="UNIDADE">
-		<variableExpression><![CDATA[$V{VALOR_MENOS}]]></variableExpression>
+	<variable name="VALOR_MENOS_UNIDADE" class="java.math.BigDecimal" resetType="Group" resetGroup="UNIDADE" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorMenos}]]></variableExpression>
 	</variable>
 	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
-		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
+		<groupExpression><![CDATA[$P{ente}]]></groupExpression>
 		<groupHeader>
 			<band height="22">
 				<staticText>
@@ -180,7 +182,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_ORCADO_UNIDADE}.compareTo($V{VALOR_ARRECADADO_UNIDADE}) > 0 ? $V{VALOR_ORCADO_UNIDADE}.subtract($V{VALOR_ARRECADADO_UNIDADE}).abs() : ""]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_MENOS_UNIDADE}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="#,##0.00#;(#,##0.00#)">
 					<reportElement x="442" y="0" width="90" height="22" uuid="cf90296f-b165-470e-b75e-4f26275ca005">
@@ -208,7 +210,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_ARRECADADO_UNIDADE}.subtract($V{VALOR_ORCADO_UNIDADE})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_MAIS_UNIDADE}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -247,7 +249,7 @@
 						<textElement textAlignment="Right" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$V{VALOR_MAIS}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_MAIS} : " "]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$V{VALOR_MAIS}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_MAIS} : " "]]></textFieldExpression>
 					</textField>
 					<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
 						<reportElement x="532" y="0" width="90" height="22" uuid="bd16bde7-2d39-4a6c-82e1-a65455ba72ac">
@@ -290,7 +292,7 @@
 						<textElement textAlignment="Right" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$V{VALOR_MENOS}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_MENOS}.abs() : " "]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$V{VALOR_MENOS}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_MENOS}.abs() : " "]]></textFieldExpression>
 					</textField>
 					<textField>
 						<reportElement x="0" y="0" width="60" height="22" uuid="95f2b831-6dfb-4735-9d99-4cc4d150be4e">
