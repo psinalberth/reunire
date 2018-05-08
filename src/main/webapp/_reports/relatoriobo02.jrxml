@@ -139,7 +139,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DIN_TOTAL}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DIN_TOTAL}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DIN_TOTAL} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TOTAL" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="367" y="0" width="87" height="13" uuid="5d34c151-64b9-414f-b81d-2c93e6742326">
@@ -154,7 +154,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DAT_TOTAL}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DAT_TOTAL}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DAT_TOTAL} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TOTAL" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="454" y="0" width="87" height="13" uuid="b31bad77-250a-4028-a25d-19886efea365">
@@ -169,7 +169,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEE_TOTAL}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEE_TOTAL}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEE_TOTAL} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TOTAL" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="540" y="0" width="87" height="13" uuid="aa95e173-5a15-4aec-a214-f0f2551e8b01">
@@ -184,7 +184,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEL_TOTAL}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEL_TOTAL}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEL_TOTAL} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TOTAL" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="627" y="0" width="87" height="13" uuid="b69f16ee-64ee-49be-b767-715526dbe56d">
@@ -199,7 +199,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEP_TOTAL}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEP_TOTAL}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEP_TOTAL} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TOTAL" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="714" y="0" width="88" height="13" uuid="d48973f8-e12a-45c4-926c-1a8a5d2f6035">
@@ -214,7 +214,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_TOTAL}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SALDO_TOTAL}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{SALDO_TOTAL} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -251,7 +251,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DIN_TOTAL_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DIN_TOTAL_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DIN_TOTAL_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TOTAL_CATEGORIA" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="367" y="0" width="87" height="13" uuid="64d20e4d-42f6-48cc-b12b-209d53e5a214">
@@ -266,7 +266,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DAT_TOTAL_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DAT_TOTAL_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DAT_TOTAL_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TOTAL_CATEGORIA" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="454" y="0" width="87" height="13" uuid="6ada0675-2057-401d-9410-aea62e5fbd09">
@@ -281,7 +281,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEE_TOTAL_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEE_TOTAL_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEE_TOTAL_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TOTAL_CATEGORIA" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="540" y="0" width="87" height="13" uuid="56c51519-5d01-404e-9e9f-4ad534d3a8f7">
@@ -296,7 +296,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEL_TOTAL_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEL_TOTAL_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEL_TOTAL_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TOTAL_CATEGORIA" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="627" y="0" width="87" height="13" uuid="2241edf4-48b8-40ed-9683-2c14bd77b8a0">
@@ -311,7 +311,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEP_TOTAL_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEP_TOTAL_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEP_TOTAL_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="TOTAL_CATEGORIA" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="714" y="0" width="88" height="13" uuid="0741b696-453c-4069-8949-557dac06778c">
@@ -326,7 +326,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_TOTAL_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SALDO_TOTAL_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{SALDO_TOTAL_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -359,7 +359,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DIN_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DIN_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DIN_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="367" y="0" width="87" height="13" uuid="dcd0774b-d536-4578-b52e-1f0b76f6c4de">
@@ -374,7 +374,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DAT_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DAT_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DAT_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="454" y="0" width="87" height="13" uuid="091e8e27-7c68-4977-8c16-3db3bfd747d2">
@@ -389,7 +389,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEE_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEE_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEE_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="540" y="0" width="87" height="13" uuid="68920690-1e4a-45f4-83e2-06feb029d240">
@@ -404,7 +404,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEL_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEL_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEL_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="627" y="0" width="87" height="13" uuid="3565c2a5-767f-40f0-a4e8-3cbf3cd0d7e7">
@@ -419,7 +419,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEP_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEP_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEP_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="714" y="0" width="88" height="13" uuid="dd4792e1-60b1-4e95-9413-ccc82804390d">
@@ -434,7 +434,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_CATEGORIA} != null ? $V{SALDO_CATEGORIA}: "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SALDO_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{SALDO_CATEGORIA}: "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -467,7 +467,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DIN_GRUPO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DIN_GRUPO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DIN_GRUPO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="367" y="0" width="87" height="13" uuid="45cf20f7-b72d-4203-ad8f-6cc454312b08">
@@ -482,7 +482,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DAT_GRUPO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DAT_GRUPO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DAT_GRUPO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="454" y="0" width="87" height="13" uuid="604b9df8-133e-4f2c-8346-1e935d93db92">
@@ -497,7 +497,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEE_GRUPO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEE_GRUPO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEE_GRUPO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="540" y="0" width="87" height="13" uuid="5adbf0ac-7565-4a9d-8673-7c70d5495890">
@@ -512,7 +512,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEL_GRUPO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEL_GRUPO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEL_GRUPO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="627" y="0" width="87" height="13" uuid="3545359c-1874-4626-8d92-eb07fae99ef0">
@@ -527,7 +527,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEP_GRUPO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEP_GRUPO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEP_GRUPO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="714" y="0" width="88" height="13" uuid="f4f67d89-cd6d-480d-87a6-7143e25fa576">
@@ -542,7 +542,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_GRUPO} != null ? $V{SALDO_GRUPO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SALDO_GRUPO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{SALDO_GRUPO} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -575,7 +575,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DIN_MODALIDADE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DIN_MODALIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DIN_MODALIDADE} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="MODALIDADE" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="367" y="0" width="87" height="13" uuid="cc1c1452-54ef-4fa1-a6c2-e86580b1af58">
@@ -590,7 +590,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DAT_MODALIDADE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DAT_MODALIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DAT_MODALIDADE} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="MODALIDADE" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="454" y="0" width="87" height="13" uuid="ba86a158-5e64-424d-a05f-48143d141971">
@@ -605,7 +605,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEE_MODALIDADE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEE_MODALIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEE_MODALIDADE} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="MODALIDADE" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="540" y="0" width="87" height="13" uuid="ca3182d1-e2bb-40db-b5c8-ddea885cd971">
@@ -620,7 +620,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEL_MODALIDADE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEL_MODALIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEL_MODALIDADE} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="MODALIDADE" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="627" y="0" width="87" height="13" uuid="2f2d1283-2085-4187-ba27-d11adaad210b">
@@ -635,7 +635,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{DEP_MODALIDADE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{DEP_MODALIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{DEP_MODALIDADE} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="MODALIDADE" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 					<reportElement x="714" y="0" width="88" height="13" uuid="5aaf1983-102a-4825-a4c8-0552067ef8d5">
@@ -650,7 +650,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_MODALIDADE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SALDO_MODALIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{SALDO_MODALIDADE} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

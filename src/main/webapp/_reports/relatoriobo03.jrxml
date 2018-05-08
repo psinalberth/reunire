@@ -107,7 +107,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RIA_MASTER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RIA_MASTER}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RIA_MASTER} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="367" y="0" width="87" height="13" uuid="cc79fb60-9821-41bc-b2a1-e13a9df88185">
@@ -121,7 +121,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RIE_MASTER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RIE_MASTER}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RIE_MASTER} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="454" y="0" width="87" height="13" uuid="42152857-4352-442b-b2f1-1bc03d8f77eb">
@@ -135,7 +135,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RLI_MASTER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RLI_MASTER}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RLI_MASTER} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="541" y="0" width="87" height="13" uuid="53f280bd-1d21-4642-b15b-17cb4139918b">
@@ -149,7 +149,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RPG_MASTER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RPG_MASTER}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RPG_MASTER} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="628" y="0" width="87" height="13" uuid="22113df1-0eb5-43ee-89d9-88fdf52d2968">
@@ -163,7 +163,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RCN_MASTER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RCN_MASTER}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RCN_MASTER} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="MASTER" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="715" y="0" width="87" height="13" uuid="3d5f37b0-f92f-43dd-b704-a81f7321d656">
@@ -178,7 +178,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_MASTER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SALDO_MASTER}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{SALDO_MASTER} : "-"]]></textFieldExpression>
 				</textField>
 				<break>
 					<reportElement x="0" y="12" width="802" height="1" uuid="626a5d94-c8d8-4742-8468-ec25ac1367b8">
@@ -214,7 +214,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RIA_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RIA_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RIA_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="367" y="0" width="87" height="13" uuid="724b4534-e347-4920-babf-c0f5b38dbbc5">
@@ -226,7 +226,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RIE_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RIE_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RIE_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="454" y="0" width="87" height="13" uuid="6758bede-0968-46f7-8ff5-ea194a9eb446">
@@ -238,7 +238,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RLI_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RLI_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RLI_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="541" y="0" width="87" height="13" uuid="3e8a2c16-4bc8-48a1-ad1f-d07e51e431d7">
@@ -250,7 +250,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RPG_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RPG_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RPG_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="628" y="0" width="87" height="13" uuid="4eec36f9-4d18-42cc-a2bd-272a7f1c0322">
@@ -262,7 +262,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RCN_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RCN_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RCN_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CATEGORIA" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="715" y="0" width="87" height="13" uuid="b08e4e0e-5fd2-4e54-b080-62329b02f1c5">
@@ -275,7 +275,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SALDO_CATEGORIA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{SALDO_CATEGORIA} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -306,7 +306,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RIA_DESCRICAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RIA_DESCRICAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RIA_DESCRICAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="367" y="0" width="87" height="13" uuid="c316e0be-1fb2-4bf4-b075-06883086db36">
@@ -318,7 +318,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RIE_DESCRICAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RIE_DESCRICAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RIE_DESCRICAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="454" y="0" width="87" height="13" uuid="a9135ae7-f75b-45e4-aafa-836069fe3982">
@@ -330,7 +330,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RLI_DESCRICAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RLI_DESCRICAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RLI_DESCRICAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="541" y="0" width="87" height="13" uuid="c9777aa6-4940-45a2-84b0-f47599ee1cf6">
@@ -342,7 +342,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RPG_DESCRICAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RPG_DESCRICAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RPG_DESCRICAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="628" y="0" width="87" height="13" uuid="b9282c0c-c83a-4592-8405-9a4dcc8bcd1f">
@@ -354,7 +354,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{RCN_DESCRICAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{RCN_DESCRICAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{RCN_DESCRICAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="GRUPO" pattern="#,##0.00;(#,##0.00)">
 					<reportElement x="715" y="0" width="87" height="13" uuid="08dea04c-31ad-47d5-bc19-2e7650be6b07">
@@ -367,7 +367,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SALDO_DESCRICAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SALDO_DESCRICAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{SALDO_DESCRICAO} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

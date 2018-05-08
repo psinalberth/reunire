@@ -254,7 +254,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{TOTAL_ATIVIDADE_UNIDADE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{TOTAL_ATIVIDADE_UNIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{TOTAL_ATIVIDADE_UNIDADE} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="#,##0.00#;(#,##0.00#)">
 					<reportElement mode="Transparent" x="694" y="8" width="108" height="15" backcolor="#BFBFBF" uuid="d3bdd70e-9645-4596-b2d8-0a75ed4ba3de">
@@ -284,7 +284,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{TOTAL_PROJETO_UNIDADE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{TOTAL_PROJETO_UNIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{TOTAL_PROJETO_UNIDADE} : "-"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="330" y="9" width="100" height="14" uuid="ec5923f0-3e08-4dd2-8b59-4f2b49a45c79"/>
@@ -306,7 +306,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{TOTAL_OPERACOES_UNIDADE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{TOTAL_OPERACOES_UNIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{TOTAL_OPERACOES_UNIDADE} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -452,7 +452,7 @@
 						<textElement textAlignment="Right" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8" isBold="false"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$V{VALOR_PROJETO_ACAO}]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$V{VALOR_PROJETO_ACAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_PROJETO_ACAO} : "-"]]></textFieldExpression>
 					</textField>
 					<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
 						<reportElement mode="Transparent" x="694" y="0" width="108" height="31" backcolor="#BFBFBF" uuid="8e3b4c57-5143-47f6-be04-84fe879a9799">
@@ -467,7 +467,7 @@
 						<textElement textAlignment="Right" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8" isBold="false"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$V{VALOR_TOTAL_ACAO}]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$V{VALOR_TOTAL_ACAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_TOTAL_ACAO} : "-"]]></textFieldExpression>
 					</textField>
 					<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
 						<reportElement mode="Transparent" x="520" y="0" width="84" height="31" backcolor="#BFBFBF" uuid="844daa12-9227-4842-9a5b-c2725793d06e">
@@ -482,7 +482,7 @@
 						<textElement textAlignment="Right" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8" isBold="false"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_ACAO}]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$V{VALOR_ATIVIDADE_ACAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_ATIVIDADE_ACAO} : "-"]]></textFieldExpression>
 					</textField>
 					<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="#,##0.00#;(#,##0.00#)">
 						<reportElement mode="Transparent" x="604" y="0" width="90" height="31" backcolor="#BFBFBF" uuid="7d0f4efd-8924-4cf5-9755-f9613e1950f2">
@@ -497,7 +497,7 @@
 						<textElement textAlignment="Right" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8" isBold="false"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_ACAO}]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$V{VALOR_OPERACOES_ACAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_OPERACOES_ACAO} : "-"]]></textFieldExpression>
 					</textField>
 					<textField>
 						<reportElement mode="Transparent" x="0" y="0" width="117" height="31" uuid="32699289-5df5-49fb-9528-2687956e51e1">
