@@ -1,5 +1,6 @@
 package br.gov.ma.tce.reunire.dao.impl.d;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,14 @@ public class RelatorioD010DaoImpl extends PrestacaoDaoImpl<RelatorioD010VO> impl
 			"unidade_id,  " + 
 			"regexp_replace(natureza_receita, '[.]', '', 'g') nr,  " + 
 			"(case when nr.id_natureza_receita is not null then nr.descricao else 'CLASSIFICAÇÃO DESCONHECIDA' end) descricao,  " + 
-			"previsao_atualizada, receita_realizada  " +
+			"(case " +
+				"when natureza_receita like '9%' and previsao_atualizada > 0 then previsao_atualizada * (-1) " +
+				"when natureza_receita like '9%' and previsao_atualizada < 0 then previsao_atualizada " +
+				"else previsao_atualizada end) previsao_atualizada, " +
+			"(case " +
+				"when natureza_receita like '9%' and receita_realizada > 0 then receita_realizada * (-1) " +
+				"when natureza_receita like '9%' and receita_realizada < 0 then receita_realizada " +
+				"else receita_realizada end) receita_realizada " +
 		"from  " + 
 			"prestacao.bo01 bo  " +
 		"left join sae.vw_natureza_receita nr on  " + 
@@ -84,6 +92,8 @@ public class RelatorioD010DaoImpl extends PrestacaoDaoImpl<RelatorioD010VO> impl
 			dado.setDescricao(String.valueOf(row[2]));
 			dado.setValorOrcado(toBigDecimal(row[3]));
 			dado.setValorArrecadado(toBigDecimal(row[4]));
+			dado.setValorMais(dado.getValorArrecadado().compareTo(dado.getValorOrcado()) > 0 ? dado.getValorArrecadado().subtract(dado.getValorOrcado()) : BigDecimal.ZERO);
+			dado.setValorMenos(dado.getValorOrcado().compareTo(dado.getValorArrecadado()) > 0 ? dado.getValorOrcado().subtract(dado.getValorArrecadado()) : BigDecimal.ZERO);
 			
 			dados.add(dado);
 		}

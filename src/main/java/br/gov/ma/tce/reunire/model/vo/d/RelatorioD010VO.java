@@ -10,6 +10,8 @@ public class RelatorioD010VO extends DemonstrativoVO {
 	private String descricao;
 	private BigDecimal valorOrcado;
 	private BigDecimal valorArrecadado;
+	private BigDecimal valorMais;
+	private BigDecimal valorMenos;
 	
 	public String getCodigoNaturezaReceita() {
 		return codigoNaturezaReceita;
@@ -41,5 +43,21 @@ public class RelatorioD010VO extends DemonstrativoVO {
 	
 	public void setValorArrecadado(BigDecimal valorArrecadado) {
 		this.valorArrecadado = valorArrecadado;
+	}
+	
+	public BigDecimal getValorMais() {
+		return valorMais;
+	}
+	
+	public void setValorMais(BigDecimal valorMais) {
+		this.valorMais = valorMais;
+	}
+	
+	public BigDecimal getValorMenos() {
+		return valorMenos;
+	}
+	
+	public void setValorMenos(BigDecimal valorMenos) {
+		this.valorMenos = valorMenos;
 	}
 }
