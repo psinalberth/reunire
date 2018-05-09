@@ -155,7 +155,7 @@
 					</textElement>
 					<text><![CDATA[TOTAL]]></text>
 				</staticText>
-				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="#,##0.00#;(#,##0.00#)">
+				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="532" y="0" width="90" height="22" uuid="0bb47abf-5f0e-4d98-bba2-d699deeea205">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -169,7 +169,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_ARRECADADO_UNIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ?  $V{VALOR_ARRECADADO_UNIDADE} : "-"]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="#,##0.00#;(#,##0.00#)">
+				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="712" y="0" width="90" height="22" uuid="0c2cadf5-758d-4768-b578-6899f51c52f7">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -184,7 +184,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_MENOS_UNIDADE}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="#,##0.00#;(#,##0.00#)">
+				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="442" y="0" width="90" height="22" uuid="cf90296f-b165-470e-b75e-4f26275ca005">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -198,7 +198,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$V{VALOR_ORCADO_UNIDADE}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_ORCADO_UNIDADE} : "-"]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="#,##0.00#;(#,##0.00#)">
+				<textField evaluationTime="Group" evaluationGroup="UNIDADE" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="622" y="0" width="90" height="22" uuid="215e722d-1fab-4dcd-bf14-68c83c013454">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -237,7 +237,7 @@
 						</textElement>
 						<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
 					</textField>
-					<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
+					<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 						<reportElement x="622" y="0" width="90" height="22" uuid="70cb0e87-a88e-45ec-b7a5-9b98b5682264">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -251,7 +251,7 @@
 						</textElement>
 						<textFieldExpression><![CDATA[$V{VALOR_MAIS}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_MAIS} : " "]]></textFieldExpression>
 					</textField>
-					<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
+					<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 						<reportElement x="532" y="0" width="90" height="22" uuid="bd16bde7-2d39-4a6c-82e1-a65455ba72ac">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -265,7 +265,7 @@
 						</textElement>
 						<textFieldExpression><![CDATA[$V{VALOR_ARRECADADO}.compareTo(java.math.BigDecimal.ZERO) != 0 ?  $V{VALOR_ARRECADADO} : "-"]]></textFieldExpression>
 					</textField>
-					<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
+					<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 						<reportElement x="442" y="0" width="90" height="22" uuid="f7a25fd9-e010-4bdb-8cdc-b3d8c5225fb5">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -279,7 +279,7 @@
 						</textElement>
 						<textFieldExpression><![CDATA[$V{VALOR_ORCADO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_ORCADO} : "-"]]></textFieldExpression>
 					</textField>
-					<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="#,##0.00#;(#,##0.00#)">
+					<textField evaluationTime="Group" evaluationGroup="NATUREZA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 						<reportElement x="712" y="0" width="90" height="22" uuid="3e76b5cd-00eb-421b-9406-f3b59f061fae">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
