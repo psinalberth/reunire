@@ -53,9 +53,6 @@ public class IndexViewModel {
 	private boolean selecaoOrgaoVisivel = false;
 	private boolean selecaoUnidadeVisivel = false;
 	
-	private String senha;
-	private static final String SENHA = "=tE&3BoJKU";
-	
 	@SuppressWarnings("rawtypes")
 	ConsultasGestoresImpl daoGestores = Lookup.dao(ConsultasGestoresImpl.class);
 	
@@ -75,18 +72,15 @@ public class IndexViewModel {
 			modulo = Integer.valueOf(Executions.getCurrent().getParameter("modulo"));
 		}
 		
+		if (ente != null) {
+			formularioVisivel = true;
+		}
+		
 		exercicio = new Integer(2017);
 		listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAll();
 		entes = daoGestores.findAll(EnteVO.class);
 		poderes = daoGestores.findAll(PoderVO.class);
 		modulos = daoPrestacao.findAll(ModuloRelatorioPrestacao.class);
-		
-		if (Executions.getCurrent().getSession().getAttribute("senha") != null && String.valueOf(Executions.getCurrent().getSession().getAttribute("senha")).equals("=tE&3BoJKU")) {
-		
-			if (ente != null) {
-				formularioVisivel = true;
-			}
-		}
 	}
 	
 	@Command
@@ -224,23 +218,6 @@ public class IndexViewModel {
 			
 			Messagebox.show("Para prosseguir, a seleção do ente é obrigatória.", "Operação Não Permitida", Messagebox.OK, Messagebox.EXCLAMATION);
 			return;
-		}
-		
-		if (senha == null || senha.trim().length() == 0) {
-			
-			Messagebox.show("Senha obrigatória.", "Operação Não Permitida", Messagebox.OK, Messagebox.EXCLAMATION);
-			return;
-			
-		} else {
-			
-			if (!senha.equals(SENHA)) {
-				
-				Messagebox.show("Senha inválida.", "Operação Não Permitida", Messagebox.OK, Messagebox.EXCLAMATION);
-				return;
-				
-			} else {
-				Executions.getCurrent().getSession().setAttribute("senha", senha);
-			}
 		}
 		
 		params = new HashMap<String, Object>();	
@@ -447,14 +424,6 @@ public class IndexViewModel {
 	
 	public void setModulo(Integer modulo) {
 		this.modulo = modulo;
-	}
-	
-	public String getSenha() {
-		return senha;
-	}
-	
-	public void setSenha(String senha) {
-		this.senha = senha;
 	}
 	
 	public ModuloRelatorioPrestacao getModuloRelatorio() {

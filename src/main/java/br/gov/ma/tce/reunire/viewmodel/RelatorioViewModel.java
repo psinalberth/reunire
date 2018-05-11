@@ -51,59 +51,56 @@ public class RelatorioViewModel {
 	@NotifyChange("*")
 	public void init() {
 		
-		if (Executions.getCurrent().getSession().getAttribute("senha") != null && String.valueOf(Executions.getCurrent().getSession().getAttribute("senha")).equals("=tE&3BoJKU")) {
+		params = new HashMap<String, Object>();
 		
-			params = new HashMap<String, Object>();
+		params.put("reportDir", PATH_RELATORIOS);
+		params.put("formato", Executions.getCurrent().getParameter("formato") != null ? Executions.getCurrent().getParameter("formato") : "PDF");
+		params.put("exercicio", 2017);
+		
+		String [] result = Executions.getCurrent().getParameter("tipoRelatorio").split(",");
+		
+		if (result.length > 1) {
+			params.put("tipoRelatorio", result);
 			
-			params.put("reportDir", PATH_RELATORIOS);
-			params.put("formato", Executions.getCurrent().getParameter("formato") != null ? Executions.getCurrent().getParameter("formato") : "PDF");
-			params.put("exercicio", 2017);
-			
-			String [] result = Executions.getCurrent().getParameter("tipoRelatorio").split(",");
-			
-			if (result.length > 1) {
-				params.put("tipoRelatorio", result);
-				
-			} else {
-				params.put("tipoRelatorio", result[0]);
-			}
-			
-			formatoRelatorio = params.get("formato").toString().toUpperCase();
-			
-			if (Executions.getCurrent().getParameter("ente") != null) {
-				params.put("enteId", Integer.parseInt(Executions.getCurrent().getParameter("ente")));
-			}
-			
-			if (Executions.getCurrent().getParameter("orgao") != null) {
-				params.put("orgaoId", Integer.parseInt(Executions.getCurrent().getParameter("orgao")));
-			}
-			
-			if (Executions.getCurrent().getParameter("unidade") != null) {
-				params.put("unidadeId", Integer.parseInt(Executions.getCurrent().getParameter("unidade")));
-			}
-			
-			if (Executions.getCurrent().getParameter("poder") != null) {
-				params.put("poderId", Integer.parseInt(Executions.getCurrent().getParameter("poder")));
-			}
-			
-			if (Executions.getCurrent().getParameter("modulo") != null) {
-				params.put("modulo", Integer.parseInt(Executions.getCurrent().getParameter("modulo")));
-				
-			} else {
-				params.put("modulo", Integer.valueOf(1));
-			}
-			
-			service = new RelatorioService(params);
-			
-			if (result.length == 1) {
-				gerarRelatorio();
-				
-			} else {
-				gerarRelatorioLote();
-			}
-			
-			exportarRelatorio();
+		} else {
+			params.put("tipoRelatorio", result[0]);
 		}
+		
+		formatoRelatorio = params.get("formato").toString().toUpperCase();
+		
+		if (Executions.getCurrent().getParameter("ente") != null) {
+			params.put("enteId", Integer.parseInt(Executions.getCurrent().getParameter("ente")));
+		}
+		
+		if (Executions.getCurrent().getParameter("orgao") != null) {
+			params.put("orgaoId", Integer.parseInt(Executions.getCurrent().getParameter("orgao")));
+		}
+		
+		if (Executions.getCurrent().getParameter("unidade") != null) {
+			params.put("unidadeId", Integer.parseInt(Executions.getCurrent().getParameter("unidade")));
+		}
+		
+		if (Executions.getCurrent().getParameter("poder") != null) {
+			params.put("poderId", Integer.parseInt(Executions.getCurrent().getParameter("poder")));
+		}
+		
+		if (Executions.getCurrent().getParameter("modulo") != null) {
+			params.put("modulo", Integer.parseInt(Executions.getCurrent().getParameter("modulo")));
+			
+		} else {
+			params.put("modulo", Integer.valueOf(1));
+		}
+		
+		service = new RelatorioService(params);
+		
+		if (result.length == 1) {
+			gerarRelatorio();
+			
+		} else {
+			gerarRelatorioLote();
+		}
+		
+		exportarRelatorio();
 	}
 	
 	@Command
