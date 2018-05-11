@@ -323,7 +323,7 @@
 						<textElement textAlignment="Center" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
-						<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dataRessarcimento})]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$F{dataRessarcimento} != null ? new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dataRessarcimento}) : "N/A"]]></textFieldExpression>
 					</textField>
 					<textField pattern="#,##0.00#;(#,##0.00#)">
 						<reportElement x="713" y="0" width="89" height="60" uuid="1b517dde-517a-4150-bdef-792545764fd9">

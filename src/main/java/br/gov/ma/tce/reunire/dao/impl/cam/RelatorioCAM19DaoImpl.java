@@ -25,7 +25,7 @@ public class RelatorioCAM19DaoImpl extends PrestacaoDaoImpl<RelatorioCAM19VO> im
 		String sql =
 				
 		"select " +
-			"unidade_id, regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g') credor, " + 
+			"unidade_id, regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g') credor, tipo, " + 
 			"sum(valor_principal) valor_principal, sum(valor_multa) valor_multa, sum(valor_juro) valor_juro " +
 		"from " + 
 			"prestacao.cam19 " +
@@ -33,9 +33,9 @@ public class RelatorioCAM19DaoImpl extends PrestacaoDaoImpl<RelatorioCAM19VO> im
 			"unidade_id in (:unidades) and " +
 			"((:modulo is null) or (modulo_id = :modulo)) " +
 		"group by " +
-			"unidade_id, regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g') " +
+			"unidade_id, regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g'), tipo " +
 		"order by " +
-			"unidade_id, regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g')";
+			"unidade_id, regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g'), tipo";
 		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidades", listaIdsUnidades)
@@ -53,12 +53,15 @@ public class RelatorioCAM19DaoImpl extends PrestacaoDaoImpl<RelatorioCAM19VO> im
 			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
 			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
 			dado.setIdentificacaoDevedor(toPessoa(row[1]));
-			dado.setValorPrincipal(toBigDecimal(row[2]));
-			dado.setValorMulta(toBigDecimal(row[3]));
-			dado.setValorJuros(toBigDecimal(row[4]));
+			dado.setNomeDevedor(row[2] != null && String.valueOf(row[2]).trim().length() > 0 ? String.valueOf(row[2]) : "N/A");
+			dado.setValorPrincipal(toBigDecimal(row[3]));
+			dado.setValorMulta(toBigDecimal(row[4]));
+			dado.setValorJuros(toBigDecimal(row[5]));
 			
 			dados.add(dado);
 		}
+		
+		dados.sort((d1, d2) -> d1.getValorMulta().add(d2.getValorPrincipal()).add(d2.getValorJuros()).compareTo(d2.getValorMulta().add(d1.getValorPrincipal()).add(d1.getValorJuros())));
 		
 		return dados;
 	}

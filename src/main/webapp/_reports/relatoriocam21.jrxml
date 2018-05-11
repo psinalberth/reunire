@@ -32,7 +32,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Top">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<text><![CDATA[TCE/MA]]></text>
+					<text><![CDATA[DECISÃO DO TCE/MA]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="352" y="10" width="150" height="33" uuid="4eea6012-d7d2-4b82-addf-f3d4f626dda5">
@@ -77,7 +77,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
-					<text><![CDATA[NÚMERO DO ACÓRDAO/PROCESSO]]></text>
+					<text><![CDATA[NÚMERO DO ACÓRDÃO/]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="652" y="10" width="150" height="33" uuid="68f61c0c-1dc0-4a21-b872-bdb0fa2e7fbc">
