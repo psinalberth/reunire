@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.5.0.final using JasperReports Library version 6.5.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="despesa_ec" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98ea426d-de9a-42f9-a7dd-c5c2ebdd9408">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="despesa_ec" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98ea426d-de9a-42f9-a7dd-c5c2ebdd9408">
 	<property name="ireport.zoom" value="1.1"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -763,4 +763,89 @@
 			</textField>
 		</band>
 	</pageFooter>
+	<noData>
+		<band height="146">
+			<textField>
+				<reportElement x="702" y="85" width="100" height="16" uuid="465ab61e-661f-4e9b-92ed-4546ed49ead0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["EXERCÍCIO: " + $P{exercicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="48" width="802" height="16" uuid="791c9355-78e7-4a76-8e05-a3ac321b829e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEMONSTRAÇÕES, QUADROS E DEMONSTRATIVOS DA LEI 4320/64]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="64" width="802" height="16" uuid="0acfdbc2-2d2b-4d70-849b-d837ca802e16">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANEXO 2: RECEITAS E DESPESAS SEGUNDO A CATEGORIA ECONÔMICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="802" height="5" uuid="0882525f-949c-4cbf-a5cb-a40427457690">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="16" width="802" height="16" isRemoveLineWhenBlank="true" uuid="fc7c6478-de22-495a-afea-a612acd87a5b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{orgao} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ÓRGÃO: " + $P{orgao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="101" width="802" height="5" uuid="f6246870-b422-4027-a235-8cf54f781539">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="32" width="802" height="16" isRemoveLineWhenBlank="true" uuid="a6efb614-abb1-4284-b264-0e43e8ecae53">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{unidade} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["UNIDADE: " + $P{unidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="802" height="16" isRemoveLineWhenBlank="true" uuid="e2317799-2652-4685-b3cf-52f2fba0236a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ENTE: " + $P{ente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="116" width="802" height="30" uuid="d85fcdae-dc13-480c-915c-a821a92d3db8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Sem informações para exibir.]]></text>
+			</staticText>
+		</band>
+	</noData>
 </jasperReport>

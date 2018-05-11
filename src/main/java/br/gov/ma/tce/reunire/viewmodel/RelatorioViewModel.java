@@ -107,7 +107,7 @@ public class RelatorioViewModel {
 	@NotifyChange("media")
 	public void exportarRelatorio() {
 		
-		if (dados != null && dados.size() > 0) {
+		if (dados != null) {
 			
 			if (params.get("formato") != null && formatoRelatorio == null) {
 				formatoRelatorio = (String) params.get("formato");
@@ -127,7 +127,7 @@ public class RelatorioViewModel {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-		} else if (dadosLote != null && dadosLote.size() > 0) {
+		} else if (dadosLote != null) {
 			
 			Properties properties = service.getProperties(dadosLote, params, formatoRelatorio);
 			
