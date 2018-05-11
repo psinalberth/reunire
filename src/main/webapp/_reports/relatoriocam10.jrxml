@@ -18,27 +18,6 @@
 	<field name="atendimentos" class="java.lang.Integer"/>
 	<group name="UNIDADE">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
-		<groupHeader>
-			<band height="35">
-				<staticText>
-					<reportElement x="0" y="25" width="802" height="10" uuid="27442b24-4d4e-403b-b538-f74d83c74408"/>
-					<text><![CDATA[]]></text>
-				</staticText>
-				<textField>
-					<reportElement x="0" y="10" width="802" height="15" uuid="ca68376e-a97f-4a6a-acc1-477a055cc0f0">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
-				</textField>
-				<staticText>
-					<reportElement x="0" y="0" width="802" height="10" uuid="eb473e3c-6749-4a13-8043-5852b7889639"/>
-					<text><![CDATA[]]></text>
-				</staticText>
-			</band>
-		</groupHeader>
 	</group>
 	<group name="TIPO">
 		<groupExpression><![CDATA[$F{tipo}]]></groupExpression>
@@ -352,7 +331,7 @@
 	<pageFooter>
 		<band height="31" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="9" width="802" height="10" uuid="857c2a40-3cba-46a3-aa8c-fdac9a5b0e09">
+				<reportElement x="0" y="9" width="802" height="10" uuid="5236f623-3adb-4e85-a350-306207ff3866">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -361,27 +340,27 @@
 				<textFieldExpression><![CDATA["Data de Emissão: " + new java.text.SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="19" width="724" height="12" uuid="6c3c2786-3f08-44df-9204-40162ab02e4e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Fonte: e-PCA"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="724" y="19" width="38" height="12" uuid="ba57cf54-5785-44e7-bb86-4ac51e9d4ca4"/>
+				<reportElement x="702" y="19" width="60" height="12" uuid="fcd312b6-f922-4bef-98da-4a54330a97e7"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="762" y="19" width="40" height="12" uuid="9844c4ec-213d-420d-86ce-a3cc77cb13a2"/>
+				<reportElement x="762" y="19" width="40" height="12" uuid="6486434e-9d29-44ff-88eb-d6a76141c43f"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="19" width="702" height="12" uuid="230ab4b3-5a90-4cf6-aaa0-7821e3866788">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fonte: e-PCA"]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

@@ -19,9 +19,9 @@
 	<group name="UNIDADE">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
-			<band height="69">
+			<band height="40">
 				<staticText>
-					<reportElement x="290" y="39" width="200" height="30" uuid="1c003654-fdd3-4147-a19f-193f472798da"/>
+					<reportElement x="290" y="10" width="200" height="30" uuid="1c003654-fdd3-4147-a19f-193f472798da"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -35,7 +35,7 @@
 					<text><![CDATA[CREDOR(CPF/CNPJ)]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="160" y="39" width="130" height="30" uuid="bb495a3b-969a-4876-99f4-d5ed2bb0b2af"/>
+					<reportElement x="160" y="10" width="130" height="30" uuid="bb495a3b-969a-4876-99f4-d5ed2bb0b2af"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -49,7 +49,7 @@
 					<text><![CDATA[NATUREZA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="490" y="39" width="160" height="30" uuid="e624bf5a-48d5-41ed-a1fa-a530508fe96d"/>
+					<reportElement x="490" y="10" width="160" height="30" uuid="e624bf5a-48d5-41ed-a1fa-a530508fe96d"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -63,7 +63,7 @@
 					<text><![CDATA[VALOR INSCRITO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="650" y="39" width="152" height="30" uuid="bab80896-9a5a-4efd-b1bb-2832ccdafa6e"/>
+					<reportElement x="650" y="10" width="152" height="30" uuid="bab80896-9a5a-4efd-b1bb-2832ccdafa6e"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -76,25 +76,12 @@
 					</textElement>
 					<text><![CDATA[VALOR PAGO]]></text>
 				</staticText>
-				<textField>
-					<reportElement x="0" y="10" width="802" height="15" uuid="d18e0890-5e2b-42cc-93f1-dc6b645b505b">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
-				</textField>
 				<staticText>
 					<reportElement x="0" y="0" width="802" height="10" uuid="c02984e6-8241-494f-b097-e920b2395150"/>
 					<text><![CDATA[]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="25" width="802" height="10" uuid="fad97499-504d-4b2e-a100-6f9c64b4a853"/>
-					<text><![CDATA[]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="0" y="39" width="160" height="30" uuid="afa583b8-d78e-4505-bb21-c08882d2b486"/>
+					<reportElement x="0" y="10" width="160" height="30" uuid="afa583b8-d78e-4505-bb21-c08882d2b486"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -247,62 +234,6 @@ DE PAGAMENTO]]></text>
 			</textField>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="30" splitType="Stretch">
-			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
-			<staticText>
-				<reportElement x="160" y="0" width="130" height="30" uuid="6a20dd78-72a4-4b7d-ae6d-9619211d139f"/>
-				<box>
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[NATUREZA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="490" y="0" width="160" height="30" uuid="d465fc8f-054e-4b8f-b269-e5d039ae6cad"/>
-				<box>
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[VALOR INSCRITO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="290" y="0" width="200" height="30" uuid="eaec13e2-0120-493a-ac1b-fd7c4763d770"/>
-				<box>
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CREDOR(CPF/CNPJ)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="0" width="160" height="30" uuid="ea9fe6e1-2f1e-4042-bacb-7ea4bd89b075"/>
-				<box>
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[N° DO OFÍCIO DA REQUISIÇÃO 
-DE PAGAMENTO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="650" y="0" width="152" height="30" uuid="9e22c45f-088b-4f38-b962-63a6ae5803bb"/>
-				<box>
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[VALOR PAGO]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
 	<pageFooter>
 		<band height="22" splitType="Stretch">
 			<textField>

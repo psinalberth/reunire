@@ -15,9 +15,9 @@
 	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
-			<band height="54">
+			<band height="35">
 				<staticText>
-					<reportElement x="0" y="32" width="297" height="22" uuid="6c9b0025-e14e-4e88-8ffa-cbea2803f904">
+					<reportElement x="0" y="13" width="297" height="22" uuid="6c9b0025-e14e-4e88-8ffa-cbea2803f904">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -34,7 +34,7 @@
 					<text><![CDATA[CREDOR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="662" y="32" width="140" height="22" uuid="bc9b1f5a-a2e3-4deb-8d3d-ffb70af963f9">
+					<reportElement x="662" y="13" width="140" height="22" uuid="bc9b1f5a-a2e3-4deb-8d3d-ffb70af963f9">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -51,7 +51,7 @@
 					<text><![CDATA[SALDO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="522" y="32" width="140" height="22" uuid="55aea632-f70f-4bd5-97db-bf27123e52c3">
+					<reportElement x="522" y="13" width="140" height="22" uuid="55aea632-f70f-4bd5-97db-bf27123e52c3">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -68,7 +68,7 @@
 					<text><![CDATA[PARCELAS RESGATADAS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="382" y="32" width="140" height="22" uuid="f416cf92-dd44-4bcf-8a54-de16b4b27875">
+					<reportElement x="382" y="13" width="140" height="22" uuid="f416cf92-dd44-4bcf-8a54-de16b4b27875">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -85,7 +85,7 @@
 					<text><![CDATA[VALOR DO CONTRATO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="297" y="32" width="85" height="22" uuid="de297672-767a-4268-9fe2-16eea593b4cd">
+					<reportElement x="297" y="13" width="85" height="22" uuid="de297672-767a-4268-9fe2-16eea593b4cd">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -101,16 +101,6 @@
 					</textElement>
 					<text><![CDATA[DATA DO VENCIMENTO]]></text>
 				</staticText>
-				<textField>
-					<reportElement x="0" y="0" width="802" height="22" uuid="bd9e234e-6908-4336-b6b5-41c9c18fafae">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box leftPadding="5"/>
-					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
-				</textField>
 			</band>
 		</groupHeader>
 	</group>

@@ -81,8 +81,8 @@ public class RelatorioD007DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 			
 			dado.setFuncaoGoverno(row[1].toString());
 			dado.setSubfuncaoGoverno(row[2].toString());
-			dado.setNomeFuncao(row[3].toString());
-			dado.setNomeSubFuncao(row[4].toString());
+			dado.setNomeFuncao(row[3] != null ? String.valueOf(row[3]) : "NÃO INFORMADO");
+			dado.setNomeSubFuncao(row[4] != null ? String.valueOf(row[4]) : "NÃO INFORMADO");
 			dado.setPrograma(row[5] != null ? String.valueOf(row[5]) : "NÃO INFORMADO");
 			dado.setNomePrograma(row[6] != null ? String.valueOf(row[6]) : "NÃO INFORMADO");
 			dado.setAcao(row[7] != null ? String.valueOf(row[7]) : "NÃO INFORMADO");
