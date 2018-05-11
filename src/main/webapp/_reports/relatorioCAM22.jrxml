@@ -72,6 +72,9 @@
 				</staticText>
 				<staticText>
 					<reportElement x="0" y="1" width="802" height="10" uuid="ebdeb359-5c34-4101-a1d5-19fd02ea59b9"/>
+					<textElement>
+						<font fontName="DejaVu Sans"/>
+					</textElement>
 					<text><![CDATA[]]></text>
 				</staticText>
 			</band>
@@ -87,7 +90,7 @@
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9"/>
+						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{identificacao}]]></textFieldExpression>
 				</textField>

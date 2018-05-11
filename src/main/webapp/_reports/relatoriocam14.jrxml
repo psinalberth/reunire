@@ -20,6 +20,9 @@
 			<band height="32">
 				<staticText>
 					<reportElement x="0" y="0" width="802" height="10" uuid="464a965e-7a7f-4056-872e-f82ff26da347"/>
+					<textElement>
+						<font fontName="DejaVu Sans"/>
+					</textElement>
 					<text><![CDATA[]]></text>
 				</staticText>
 				<staticText>
