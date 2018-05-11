@@ -20,7 +20,7 @@ public class UnidadeVODaoImpl extends GestoresDaoImpl<UnidadeVO> {
 		String sql = 
 				
 		"select " +
-			"u.UNIDADE_ID, u.NOME, u.ORGAO_ID, o.ENTE_ID from GESTOR.UNIDADE u, GESTOR.ORGAO o " +
+			"u.UNIDADE_ID, u.NOME, u.ORGAO_ID, u.IDENTIFICACAO_LANCAMENTO_UG_ID, o.ENTE_ID from GESTOR.UNIDADE u, GESTOR.ORGAO o " +
 		"where " +
 			"u.ORGAO_ID = o.ORGAO_ID and " +
 			"o.ENTE_ID = :ente";

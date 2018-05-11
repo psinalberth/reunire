@@ -111,6 +111,29 @@ public class RelatorioD006DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 		
 		dados.sort((d1, d2) -> d1.getIdOrgao().compareTo(d2.getIdOrgao()));
 		
+		Optional<UnidadeVO> ugReservaContingencia = listaUnidades.stream().filter(unidade -> unidade.getIdentificacaoLancamentoUg().equals(4)).findFirst();
+		
+		if (ugReservaContingencia.isPresent()) {
+			
+			Optional<RelatorioD006AVO> reservaContingencia = dados.stream().filter(item -> item.getIdUnidade().equals(ugReservaContingencia.get().getId())).findFirst();
+			
+			if (reservaContingencia.isPresent()) {
+				
+				dados.remove(reservaContingencia.get());
+				
+				int indexOrgao = 0;
+				
+				for (int i = 0; i < dados.size(); i++) {
+					
+					if (dados.get(i).getIdOrgao().intValue() == reservaContingencia.get().getIdOrgao().intValue()) {
+						indexOrgao = i;
+					}
+				}
+				
+				dados.add(indexOrgao + 1, reservaContingencia.get());
+			}
+		}
+		
 		return dados;
 	}
 }

@@ -22,6 +22,9 @@ public class UnidadeVO {
 	@JoinColumn(name="ORGAO_ID")
 	private OrgaoVO orgao;
 	
+	@Column(name="IDENTIFICACAO_LANCAMENTO_UG_ID")
+	private Integer identificacaoLancamentoUg;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -44,5 +47,13 @@ public class UnidadeVO {
 	
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public Integer getIdentificacaoLancamentoUg() {
+		return identificacaoLancamentoUg;
+	}
+	
+	public void setIdentificacaoLancamentoUg(Integer identificacaoLancamentoUg) {
+		this.identificacaoLancamentoUg = identificacaoLancamentoUg;
 	}
 }
