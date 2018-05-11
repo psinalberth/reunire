@@ -12,26 +12,9 @@
 	<group name="UNIDADE">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
-			<band height="65">
+			<band height="42">
 				<staticText>
-					<reportElement x="0" y="0" width="802" height="10" uuid="a5a9f55e-968a-43ec-a255-dda369cf39a6"/>
-					<text><![CDATA[]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="0" y="25" width="802" height="10" uuid="3785fc95-8d9f-4522-b303-f3d2a80a7d5c"/>
-					<text><![CDATA[]]></text>
-				</staticText>
-				<textField>
-					<reportElement x="0" y="10" width="802" height="15" uuid="5a25de67-42c6-4165-a063-093ac6f165c0">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
-				</textField>
-				<staticText>
-					<reportElement x="0" y="35" width="712" height="15" uuid="69e8d05c-9377-4cf3-86ea-11d032b80857">
+					<reportElement x="0" y="12" width="712" height="15" uuid="69e8d05c-9377-4cf3-86ea-11d032b80857">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box leftPadding="5">
@@ -43,7 +26,7 @@
 					<text><![CDATA[CRÉDITOS INSCRITOS EM DÍVIDA ATIVA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="50" width="712" height="15" uuid="2b54c3ec-4ace-40d9-9e80-398e61479131">
+					<reportElement x="0" y="27" width="712" height="15" uuid="2b54c3ec-4ace-40d9-9e80-398e61479131">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box leftPadding="5">
@@ -55,7 +38,7 @@
 					<text><![CDATA[PROVISÃO PARA PERDAS DE DÍVIDA ATIVA]]></text>
 				</staticText>
 				<textField pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement x="712" y="35" width="90" height="15" uuid="800fa176-5c18-4ddf-a146-0d2f0cff0408">
+					<reportElement x="712" y="12" width="90" height="15" uuid="800fa176-5c18-4ddf-a146-0d2f0cff0408">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box rightPadding="5">
@@ -69,7 +52,7 @@
 					<textFieldExpression><![CDATA[$F{valorCredito}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00#;(#,##0.00#)">
-					<reportElement x="712" y="50" width="90" height="15" uuid="f5fc55dc-574c-4214-96ba-04c7b05dbe80">
+					<reportElement x="712" y="27" width="90" height="15" uuid="f5fc55dc-574c-4214-96ba-04c7b05dbe80">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box rightPadding="5">
@@ -153,9 +136,6 @@
 			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
 	<pageFooter>
 		<band height="22" splitType="Stretch">
 			<textField>

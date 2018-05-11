@@ -49,11 +49,12 @@ public class RelatorioCAM21DaoImpl extends PrestacaoDaoImpl<RelatorioCAM21VO> im
 			
 			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
 			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
-			dado.setDeliberacao(String.valueOf(row[1]));
+			dado.setDeliberacao(row[1] != null ? String.valueOf(row[1]) : "N/A");
 			dado.setExercicio(Integer.valueOf(String.valueOf(row[2])));
-			dado.setRecomendacao(String.valueOf(row[3]));
-			dado.setSituacao(String.valueOf(row[4]));
-			dado.setJustificativa(String.valueOf(row[5]));
+			dado.setRecomendacao(row[3] != null ? String.valueOf(row[3]) : "N/A");
+			dado.setSituacao(row[4] != null ? String.valueOf(row[4]) : "N/A");
+			dado.setProvidencias(row[5] != null ? String.valueOf(row[5]) : "N/A");
+			dado.setJustificativa(row[6] != null ? String.valueOf(row[6]) : "N/A");
 			
 			dados.add(dado);
 		}
