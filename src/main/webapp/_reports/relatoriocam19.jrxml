@@ -167,7 +167,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{nomeDevedor}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00#;(#,##0.00#)">
+				<textField pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="442" y="0" width="90" height="15" uuid="2693aec4-45b2-47c0-8581-d1096e71bb42">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
@@ -181,7 +181,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorPrincipal}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00#;(#,##0.00#)">
+				<textField pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="532" y="0" width="90" height="15" uuid="b00d50f9-6ec4-432d-a82a-45b19d435e59">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
@@ -195,7 +195,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorMulta}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00#;(#,##0.00#)">
+				<textField pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="622" y="0" width="90" height="15" uuid="2fca5f51-408e-4160-851d-0cbcc4c6f93f">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
@@ -209,7 +209,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorJuros}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00#;(#,##0.00#)">
+				<textField pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement x="712" y="0" width="90" height="15" uuid="746f477f-578f-429e-92d8-82b024b4322b">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>

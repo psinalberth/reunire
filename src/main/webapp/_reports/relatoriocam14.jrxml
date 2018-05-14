@@ -111,23 +111,6 @@
 					<text><![CDATA[CONTRATADA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="350" y="10" width="90" height="22" uuid="89c0fb2c-aad5-467d-bfc5-49676b935575">
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					</reportElement>
-					<box>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8" isBold="true"/>
-					</textElement>
-					<text><![CDATA[CONTRATANTE]]></text>
-				</staticText>
-				<staticText>
 					<reportElement x="0" y="21" width="90" height="11" uuid="7c02f286-2f3f-4d3c-a798-b5256890db43">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -178,6 +161,40 @@
 					</textElement>
 					<text><![CDATA[PAGO]]></text>
 				</staticText>
+				<staticText>
+					<reportElement x="350" y="10" width="90" height="11" uuid="41667862-ae8f-4d07-8957-92e8b40e200d">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CONTRATANTE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="350" y="21" width="90" height="11" uuid="5e7dca8a-2ab3-479e-9f1e-125d4249837e">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(CNPJ)]]></text>
+				</staticText>
 			</band>
 		</groupHeader>
 	</group>
@@ -204,7 +221,7 @@
 						</textElement>
 						<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dataContratacao})]]></textFieldExpression>
 					</textField>
-					<textField pattern="#,##0.00#;(#,##0.00#)">
+					<textField pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 						<reportElement x="711" y="0" width="91" height="30" uuid="e5c66b38-7d5f-488e-81f4-495f35a6b9e3">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -278,7 +295,7 @@
 						</textElement>
 						<textFieldExpression><![CDATA[$F{nomeContratante}]]></textFieldExpression>
 					</textField>
-					<textField pattern="#,##0.00#;(#,##0.00#)">
+					<textField pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 						<reportElement x="620" y="0" width="91" height="30" uuid="a7ae23ea-1675-4283-a8e8-a7d43032e848">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>

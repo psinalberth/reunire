@@ -6,9 +6,6 @@
 	<parameter name="ente" class="java.lang.String"/>
 	<parameter name="orgao" class="java.lang.String"/>
 	<parameter name="unidade" class="java.lang.String"/>
-	<queryString>
-		<![CDATA[]]>
-	</queryString>
 	<field name="idUnidade" class="java.lang.Integer"/>
 	<field name="descricaoUnidade" class="java.lang.String"/>
 	<field name="numeroOficio" class="java.lang.String"/>
@@ -16,8 +13,14 @@
 	<field name="cpf_cnpj_credor" class="java.lang.String"/>
 	<field name="valorInscrito" class="java.math.BigDecimal"/>
 	<field name="valorPago" class="java.math.BigDecimal"/>
-	<group name="UNIDADE">
-		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
+	<variable name="VALOR_INSCRITO_OFICIO" class="java.math.BigDecimal" resetType="Group" resetGroup="OFICIO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorInscrito}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_PAGO_OFICIO" class="java.math.BigDecimal" resetType="Group" resetGroup="OFICIO" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorPago}]]></variableExpression>
+	</variable>
+	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$P{ente}]]></groupExpression>
 		<groupHeader>
 			<band height="40">
 				<staticText>
@@ -99,7 +102,7 @@ DE PAGAMENTO]]></text>
 		</groupHeader>
 	</group>
 	<group name="OFICIO">
-		<groupExpression><![CDATA[$F{numeroOficio}]]></groupExpression>
+		<groupExpression><![CDATA[$F{cpf_cnpj_credor}]]></groupExpression>
 		<groupHeader>
 			<band height="30">
 				<textField>
@@ -122,7 +125,7 @@ DE PAGAMENTO]]></text>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{cpf_cnpj_credor}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00;(#,##0.00)">
+				<textField evaluationTime="Group" evaluationGroup="OFICIO" pattern="R$ #,##0.00;R$ (#,##0.00)">
 					<reportElement x="650" y="0" width="152" height="30" uuid="b7ff328e-72c7-4fe4-8a61-f9af09124b17"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -131,7 +134,7 @@ DE PAGAMENTO]]></text>
 						<font fontName="DejaVu Sans" size="9"/>
 						<paragraph lineSpacing="Single" rightIndent="0"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{valorPago}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_PAGO_OFICIO}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="160" y="0" width="130" height="30" uuid="b9a4b3f8-d16c-4eb8-bba5-fe67fa33b8a2"/>
@@ -143,7 +146,7 @@ DE PAGAMENTO]]></text>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{natureza}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00;(#,##0.00)">
+				<textField evaluationTime="Group" evaluationGroup="OFICIO" pattern="R$ #,##0.00;R$ (#,##0.00)">
 					<reportElement x="490" y="0" width="160" height="30" uuid="c229c64f-5704-4a43-9314-f8622c9df249"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -152,7 +155,7 @@ DE PAGAMENTO]]></text>
 						<font fontName="DejaVu Sans" size="9"/>
 						<paragraph rightIndent="0"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{valorInscrito}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_INSCRITO_OFICIO}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

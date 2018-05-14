@@ -19,40 +19,45 @@ public class RelatorioCAM15DaoImpl extends PrestacaoDaoImpl<RelatorioCAM15VO> im
 	@Override
 	public List<RelatorioCAM15VO> recuperaDados(Map<String, Object> params) {
 		
-		String sql = "select c.unidade_id, c.numero_oficio, c.natureza, c.cpf_cnpj_credor, c.valor_inscrito, c.valor_pago " +
-				"from prestacao.cam15 c " +
-				"where c.unidade_id in(:unidade) "+
-				"group by c.unidade_id, c.numero_oficio, c.natureza, c.cpf_cnpj_credor, c.valor_inscrito, c.valor_pago "+
-				"order by c.unidade_id, c.numero_oficio, c.natureza ";
+		String sql = 
+				
+		"select " +
+			"unidade_id, upper(numero_oficio) numero_oficio, upper(natureza) natureza, " + 
+			"regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g') cpf_cnpj_credor, " + 
+			"sum(valor_inscrito) valor_inscrito, sum(valor_pago) valor_pago " +
+		"from " + 
+			"prestacao.cam15 " +
+		"where " +
+			"unidade_id in (:unidades) " +
+		"group by " +
+			"unidade_id, upper(numero_oficio), upper(natureza), regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g') " +	
+		"order by " +
+			"unidade_id, upper(numero_oficio), upper(natureza), regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g')";
 		
-		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(params);
-		List<Integer> listaIdsUnidades = extrairIds(listaUnidadeVO);
+		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
+		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);
 		
-		List<RelatorioCAM15VO> listaVo = new ArrayList<>();
+		List<RelatorioCAM15VO> dados = new ArrayList<>();
 		
-		List<Object[]> lista = entityManager.createNativeQuery(sql)
-				.setParameter("unidade", listaIdsUnidades)
+		List<Object[]> rows = entityManager.createNativeQuery(sql)
+				.setParameter("unidades", listaIdsUnidades)
 				.getResultList();
 		
-		for(Object[] l : lista) {
-			RelatorioCAM15VO relatorio = new RelatorioCAM15VO();
-			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
+		for(Object[] row : rows) {
 			
-			for(UnidadeVO listaUnidade : listaUnidadeVO) {
-				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue()) {
-					relatorio.setDescricaoUnidade(listaUnidade.getNome());
-				}
-			}
+			RelatorioCAM15VO dado = new RelatorioCAM15VO();
 			
-			relatorio.setNumeroOficio(l[1].toString());
-			relatorio.setNatureza(l[2].toString());
-			relatorio.setCpf_cnpj_credor(toPessoa(l[3]));
-			relatorio.setValorInscrito(new BigDecimal(Double.parseDouble(l[4].toString())));
-			relatorio.setValorPago(new BigDecimal(Double.parseDouble(l[5].toString())));
-			listaVo.add(relatorio);
+			dado.setIdUnidade(Integer.parseInt(row[0].toString()));
+			
+			dado.setNumeroOficio(row[1].toString());
+			dado.setNatureza(row[2].toString());
+			dado.setCpf_cnpj_credor(toPessoa(row[3]));
+			dado.setValorInscrito(toBigDecimal(row[4]));
+			dado.setValorPago(toBigDecimal(row[5]));
+			dados.add(dado);
 		}
 		
-		return listaVo;
+		return dados;
 	}
 
 	@Override
