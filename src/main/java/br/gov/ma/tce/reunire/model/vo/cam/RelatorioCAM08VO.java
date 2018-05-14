@@ -13,6 +13,7 @@ public class RelatorioCAM08VO extends DemonstrativoVO {
 	private Integer numeroLaboratorio;
 	private Integer numeroBiblioteca;
 	private Integer numeroQuadraEsporte;
+	private Integer numeroCreches;
 	
 	public String getUnidadeEnsino() {
 		return unidadeEnsino;
@@ -69,5 +70,11 @@ public class RelatorioCAM08VO extends DemonstrativoVO {
 		this.numeroQuadraEsporte = numeroQuadraEsporte;
 	}
 	
+	public Integer getNumeroCreches() {
+		return numeroCreches;
+	}
 	
+	public void setNumeroCreches(Integer numeroCreches) {
+		this.numeroCreches = numeroCreches;
+	}
 }

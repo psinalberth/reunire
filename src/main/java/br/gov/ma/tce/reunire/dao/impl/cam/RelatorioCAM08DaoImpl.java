@@ -26,7 +26,7 @@ public class RelatorioCAM08DaoImpl extends PrestacaoDaoImpl<RelatorioCAM08VO> im
 				
 		"select unidade_id, unidade_ensino, endereco, " + 
 		"	vaga_pre_escola, vaga_fundamental, vaga_medio, " + 
-		"	quantidade_sala, quantidade_laboratorio, quantidade_biblioteca, quantidade_quadra " + 
+		"	quantidade_sala, quantidade_laboratorio, quantidade_biblioteca, quantidade_quadra, coalesce(vaga_creche, 0) vaga_creche " + 
 		"from prestacao.cam08 cam " +
 		"   where cam.unidade_id in (:unidades) and " +
 		"	((:modulo is null) or (cam.modulo_id = :modulo)) ";
@@ -57,6 +57,7 @@ public class RelatorioCAM08DaoImpl extends PrestacaoDaoImpl<RelatorioCAM08VO> im
 			dado.setNumeroLaboratorio(Integer.parseInt(String.valueOf(row[7])));
 			dado.setNumeroBiblioteca(Integer.parseInt(String.valueOf(row[8])));
 			dado.setNumeroQuadraEsporte(Integer.parseInt(String.valueOf(row[9])));
+			dado.setNumeroCreches(Integer.valueOf(String.valueOf(row[10])));
 			
 			dados.add(dado);
 		}
