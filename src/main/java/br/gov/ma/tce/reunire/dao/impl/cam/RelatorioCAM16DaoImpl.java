@@ -62,28 +62,28 @@ public class RelatorioCAM16DaoImpl extends PrestacaoDaoImpl<RelatorioCAM16VO> im
 			dado.setSituacao(String.valueOf(row[6]));
 			
 			if(row[7] != null) {
-				dado.setCpf1(String.valueOf(row[7]));
+				dado.setCpf1(toPessoa(row[7]));
 				
 			}else if(row[8] != null){
-				dado.setCpf2(String.valueOf(row[8]));
+				dado.setCpf2(toPessoa(row[8]));
 				
 			}else if(row[9] != null) {
-				dado.setCpf3(String.valueOf(row[9]));
+				dado.setCpf3(toPessoa(row[9]));
 				
 			}else if(row[10] != null) {
-				dado.setCpf4(String.valueOf(row[10]));
+				dado.setCpf4(toPessoa(row[10]));
 				
 			}else if(row[11] != null) {
-				dado.setCpf5(String.valueOf(row[11]));
+				dado.setCpf5(toPessoa(row[11]));
 				
 			}else if(row[12] != null) {
-				dado.setCpf6(String.valueOf(row[12]));
+				dado.setCpf6(toPessoa(row[12]));
 				
 			}else if(row[13] != null) {
-				dado.setCpf7(String.valueOf(row[13]));
+				dado.setCpf7(toPessoa(row[13]));
 				
 			}else if(row[14] != null) {	
-				dado.setCpf8(String.valueOf(row[14]));
+				dado.setCpf8(toPessoa(row[14]));
 			
 			}
 			
