@@ -21,9 +21,9 @@
 	<group name="UNIDADE">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
-			<band height="40">
+			<band height="66">
 				<staticText>
-					<reportElement x="701" y="10" width="101" height="30" uuid="ee49ef71-1792-4b3e-b68a-bf25bc22fb03"/>
+					<reportElement x="701" y="36" width="101" height="30" uuid="ee49ef71-1792-4b3e-b68a-bf25bc22fb03"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -33,7 +33,7 @@
 					<text><![CDATA[DOCUMENTO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="109" y="10" width="110" height="30" uuid="b3755134-e1a7-487c-8a3c-668c9aeec0c2"/>
+					<reportElement x="109" y="36" width="110" height="30" uuid="b3755134-e1a7-487c-8a3c-668c9aeec0c2"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -43,7 +43,7 @@
 					<text><![CDATA[ÓRGÃO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="460" y="10" width="120" height="30" uuid="54a0ccac-0972-4426-af6a-c0bba536371b"/>
+					<reportElement x="460" y="36" width="120" height="30" uuid="54a0ccac-0972-4426-af6a-c0bba536371b"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -53,7 +53,7 @@
 					<text><![CDATA[COTA-PARTE EMPREGADOR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="219" y="10" width="103" height="30" uuid="b443ed6f-523c-4a26-b4dc-04b0722129f2"/>
+					<reportElement x="219" y="36" width="103" height="30" uuid="b443ed6f-523c-4a26-b4dc-04b0722129f2"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -63,7 +63,7 @@
 					<text><![CDATA[FOLHA DE PAGAMENTO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="580" y="10" width="121" height="30" uuid="2ea8651c-7d48-401e-82b1-6f25afacd3ab"/>
+					<reportElement x="580" y="36" width="121" height="30" uuid="2ea8651c-7d48-401e-82b1-6f25afacd3ab"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -73,7 +73,7 @@
 					<text><![CDATA[REGIME DE PREVIDÊNCIA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="322" y="10" width="138" height="30" uuid="eb84017f-5a60-499a-b7f7-351e320fdce8"/>
+					<reportElement x="322" y="36" width="138" height="30" uuid="eb84017f-5a60-499a-b7f7-351e320fdce8"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -84,7 +84,7 @@
 EMPREGADOS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="10" width="109" height="30" uuid="df4be11c-e460-4039-aa04-69380c8bca52"/>
+					<reportElement x="0" y="36" width="109" height="30" uuid="df4be11c-e460-4039-aa04-69380c8bca52"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -94,18 +94,37 @@ EMPREGADOS]]></text>
 					<text><![CDATA[COMPETÊNCIA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="0" width="802" height="10" uuid="c56507aa-8a6c-446c-b9f7-871ff11b55b1"/>
+					<reportElement x="0" y="26" width="802" height="10" uuid="ee199146-bc59-4279-aa15-136c55f4a294"/>
+					<textElement>
+						<font fontName="DejaVu Sans"/>
+					</textElement>
 					<text><![CDATA[]]></text>
 				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="802" height="10" uuid="fb06314b-156c-4ae5-8a10-f8846f0de7fd"/>
+					<textElement>
+						<font fontName="DejaVu Sans"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="11" width="802" height="15" uuid="b75a7551-5b35-4a1e-8fa2-46b77ae326a0">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["UNIDADE: " +  $F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 	</group>
 	<group name="ORGAO">
 		<groupExpression><![CDATA[$F{unidadeOrcamentaria}]]></groupExpression>
 		<groupHeader>
-			<band height="24">
+			<band height="30">
 				<textField pattern="dd/MM/yyyy">
-					<reportElement x="0" y="-6" width="109" height="30" uuid="9b406913-6a79-491f-ad2e-8cee451510d0"/>
+					<reportElement x="0" y="0" width="109" height="30" uuid="9b406913-6a79-491f-ad2e-8cee451510d0"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -115,7 +134,7 @@ EMPREGADOS]]></text>
 					<textFieldExpression><![CDATA[$F{competencia}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="219" y="-6" width="103" height="30" uuid="43e8bda3-b89a-421d-8c2c-c8378d08ae45"/>
+					<reportElement x="219" y="0" width="103" height="30" uuid="43e8bda3-b89a-421d-8c2c-c8378d08ae45"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -125,7 +144,7 @@ EMPREGADOS]]></text>
 					<textFieldExpression><![CDATA[$F{folhaPagamento}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00;(#,##0.00)">
-					<reportElement x="460" y="-6" width="120" height="30" uuid="b7ff328e-72c7-4fe4-8a61-f9af09124b17"/>
+					<reportElement x="460" y="0" width="120" height="30" uuid="b7ff328e-72c7-4fe4-8a61-f9af09124b17"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 					</box>
@@ -136,7 +155,7 @@ EMPREGADOS]]></text>
 					<textFieldExpression><![CDATA[$F{cota_empregador}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="109" y="-6" width="110" height="30" uuid="b9a4b3f8-d16c-4eb8-bba5-fe67fa33b8a2"/>
+					<reportElement x="109" y="0" width="110" height="30" uuid="b9a4b3f8-d16c-4eb8-bba5-fe67fa33b8a2"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -146,7 +165,7 @@ EMPREGADOS]]></text>
 					<textFieldExpression><![CDATA[$F{unidadeOrcamentaria}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00;(#,##0.00)">
-					<reportElement x="322" y="-6" width="138" height="30" uuid="c229c64f-5704-4a43-9314-f8622c9df249"/>
+					<reportElement x="322" y="0" width="138" height="30" uuid="c229c64f-5704-4a43-9314-f8622c9df249"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 					</box>
@@ -157,7 +176,7 @@ EMPREGADOS]]></text>
 					<textFieldExpression><![CDATA[$F{cota_empregado}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="580" y="-6" width="121" height="30" uuid="d877b2f7-2e8e-4a18-9393-b1022a8fae4b"/>
+					<reportElement x="580" y="0" width="121" height="30" uuid="d877b2f7-2e8e-4a18-9393-b1022a8fae4b"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -168,7 +187,7 @@ EMPREGADOS]]></text>
 					<textFieldExpression><![CDATA[$F{regime}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="701" y="-6" width="101" height="30" uuid="dbeedd48-b676-4afa-bf9f-2afb9408f964"/>
+					<reportElement x="701" y="0" width="101" height="30" uuid="dbeedd48-b676-4afa-bf9f-2afb9408f964"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>

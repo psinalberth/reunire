@@ -23,13 +23,11 @@ public class RelatorioCAM15DaoImpl extends PrestacaoDaoImpl<RelatorioCAM15VO> im
 		"select " +
 			"unidade_id, upper(numero_oficio) numero_oficio, upper(natureza) natureza, " + 
 			"regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g') cpf_cnpj_credor, " + 
-			"sum(valor_inscrito) valor_inscrito, sum(valor_pago) valor_pago " +
+			"valor_inscrito, valor_pago " +
 		"from " + 
 			"prestacao.cam15 " +
 		"where " +
 			"unidade_id in (:unidades) " +
-		"group by " +
-			"unidade_id, upper(numero_oficio), upper(natureza), regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g') " +	
 		"order by " +
 			"unidade_id, upper(numero_oficio), upper(natureza), regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g')";
 		

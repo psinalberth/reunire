@@ -19,9 +19,9 @@
 	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>
-			<band height="41">
+			<band height="66">
 				<staticText>
-					<reportElement x="680" y="11" width="122" height="30" uuid="1ca8f8c0-ed8a-4a04-9760-94102e74448f"/>
+					<reportElement x="680" y="36" width="122" height="30" uuid="1ca8f8c0-ed8a-4a04-9760-94102e74448f"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -31,7 +31,7 @@
 					<text><![CDATA[DATA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="390" y="11" width="130" height="30" uuid="5f5942e0-1fbe-4066-8e86-860f8c23ea60"/>
+					<reportElement x="390" y="36" width="130" height="30" uuid="5f5942e0-1fbe-4066-8e86-860f8c23ea60"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -41,7 +41,7 @@
 					<text><![CDATA[VALOR HISTÓRICO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="11" width="170" height="30" uuid="85c6d8e7-cd98-4612-bf72-f6568821c36e"/>
+					<reportElement x="0" y="36" width="170" height="30" uuid="85c6d8e7-cd98-4612-bf72-f6568821c36e"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -51,7 +51,7 @@
 					<text><![CDATA[IDENTIFICAÇÃO E CARACTERÍSTICAS DO BEM]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="520" y="11" width="160" height="30" uuid="82d53172-495f-457e-9d66-7940a8aea965"/>
+					<reportElement x="520" y="36" width="160" height="30" uuid="82d53172-495f-457e-9d66-7940a8aea965"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -61,7 +61,7 @@
 					<text><![CDATA[SITUAÇÃO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="170" y="11" width="220" height="30" uuid="b825daf2-2251-415c-a2de-c51509832bc2"/>
+					<reportElement x="170" y="36" width="220" height="30" uuid="b825daf2-2251-415c-a2de-c51509832bc2"/>
 					<box>
 						<pen lineWidth="0.5"/>
 					</box>
@@ -71,12 +71,28 @@
 					<text><![CDATA[DESTINAÇÃO DE USO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="1" width="802" height="10" uuid="ebdeb359-5c34-4101-a1d5-19fd02ea59b9"/>
+					<reportElement x="0" y="26" width="802" height="10" uuid="406fd25b-0252-4405-b4e2-cc1703e3655e"/>
 					<textElement>
 						<font fontName="DejaVu Sans"/>
 					</textElement>
 					<text><![CDATA[]]></text>
 				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="802" height="10" uuid="e3dfdec8-a163-4bc7-b227-40c7c224e3f9"/>
+					<textElement>
+						<font fontName="DejaVu Sans"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="11" width="802" height="15" uuid="ce91cc4f-03a6-4060-b1a3-b3696caa93c4">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["UNIDADE: " +  $F{idUnidade} + " - " + $F{descricaoUnidade}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 	</group>
@@ -116,7 +132,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dataAquisicao}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00;(#,##0.00)">
+				<textField pattern="R$ #,##0.00;R$ (#,##0.00)">
 					<reportElement x="390" y="0" width="130" height="30" uuid="43e8bda3-b89a-421d-8c2c-c8378d08ae45"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>

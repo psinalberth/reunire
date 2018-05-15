@@ -251,7 +251,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -357,7 +357,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -463,7 +463,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -569,7 +569,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -675,7 +675,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -781,7 +781,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -887,7 +887,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -993,7 +993,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
