@@ -272,7 +272,7 @@
 		<groupExpression><![CDATA[$F{efetivo}]]></groupExpression>
 		<groupHeader>
 			<band height="27">
-				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.###" isBlankWhenNull="true">
 					<reportElement x="462" y="-1" width="80" height="28" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
 					<box>
 						<pen lineWidth="0.5"/>
@@ -294,7 +294,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorEfetivoAnoMais1}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.###" isBlankWhenNull="true">
 					<reportElement x="632" y="-1" width="80" height="28" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -316,7 +316,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{efetivo}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.###" isBlankWhenNull="true">
 					<reportElement x="292" y="-1" width="80" height="28" printWhenGroupChanges="EFETIVO" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -362,7 +362,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorEfetivoAnoMais2}]]></textFieldExpression>
 				</textField>
-				<textField>
+				<textField pattern="#,##0.###">
 					<reportElement x="122" y="-1" width="80" height="28" uuid="15f2d97f-6dce-439b-9505-a47703770b65">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -390,7 +390,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{comissionado}]]></textFieldExpression>
 				</textField>
-				<textField>
+				<textField pattern="#,##0.###">
 					<reportElement x="122" y="0" width="80" height="27" uuid="c4d46bea-464c-4ea4-901b-e6d2b19ac4ee">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -412,7 +412,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionadoAnoMenos1}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.###" isBlankWhenNull="true">
 					<reportElement x="292" y="0" width="80" height="27" printWhenGroupChanges="EFETIVO" uuid="53edc417-d6e2-413e-a1f9-ea975c129def">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -436,7 +436,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionado}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.###" isBlankWhenNull="true">
 					<reportElement x="462" y="0" width="80" height="27" uuid="75a240cc-6320-4038-b6f9-482aa31d7093"/>
 					<box>
 						<pen lineWidth="0.5"/>
@@ -458,7 +458,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorComissionadoAnoMais1}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.###" isBlankWhenNull="true">
 					<reportElement x="632" y="0" width="80" height="27" uuid="fdb6b584-9851-4d78-8c29-e24472d69458">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -498,7 +498,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{temporario}]]></textFieldExpression>
 				</textField>
-				<textField>
+				<textField pattern="#,##0.###">
 					<reportElement x="122" y="0" width="80" height="27" uuid="8955692b-68c3-4d14-8ab2-66d1d694d4fd">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -520,7 +520,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporarioAnoMenos1}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.###" isBlankWhenNull="true">
 					<reportElement x="292" y="0" width="80" height="27" printWhenGroupChanges="EFETIVO" uuid="b7cf8384-8a0d-4b94-b19e-0c3a035a8266">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
@@ -544,7 +544,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporario}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.###" isBlankWhenNull="true">
 					<reportElement x="462" y="0" width="80" height="27" uuid="7f90d5a7-f597-4fc2-afe5-c4dca0226925"/>
 					<box>
 						<pen lineWidth="0.5"/>
@@ -566,7 +566,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorTemporarioAnoMais1}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="EFETIVO" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="EFETIVO" pattern="#,##0.###" isBlankWhenNull="true">
 					<reportElement x="632" y="0" width="80" height="27" uuid="b5bf7939-bd68-4507-b2d5-d8a6923b6bb4">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>

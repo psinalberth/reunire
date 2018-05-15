@@ -68,7 +68,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
 				</textField>
-				<textField>
+				<textField pattern="#,##0.###">
 					<reportElement x="500" y="22" width="60" height="15" uuid="379294a2-f1d5-4cef-91d3-c21ebe5cb2fc">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -83,7 +83,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numeroMedicos}]]></textFieldExpression>
 				</textField>
-				<textField>
+				<textField pattern="#,##0.###">
 					<reportElement x="560" y="22" width="80" height="15" uuid="3099f0c7-fe12-4b6c-a926-aa4f235d382f">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -98,7 +98,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numeroEnfermeiros}]]></textFieldExpression>
 				</textField>
-				<textField>
+				<textField pattern="#,##0.###">
 					<reportElement x="640" y="22" width="60" height="15" uuid="11946e26-d42d-43ce-9f99-c717748e6af6">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -113,7 +113,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numeroOutros}]]></textFieldExpression>
 				</textField>
-				<textField>
+				<textField pattern="#,##0.###">
 					<reportElement x="700" y="22" width="102" height="15" uuid="5114b510-4176-4b26-becc-7be0bb6464ff">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
