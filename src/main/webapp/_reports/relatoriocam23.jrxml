@@ -5,12 +5,30 @@
 	<parameter name="ente" class="java.lang.String"/>
 	<parameter name="orgao" class="java.lang.String"/>
 	<parameter name="unidade" class="java.lang.String"/>
+	<field name="idOrgao" class="java.lang.Integer"/>
+	<field name="descricaoOrgao" class="java.lang.String"/>
 	<field name="idUnidade" class="java.lang.Integer"/>
 	<field name="descricaoUnidade" class="java.lang.String"/>
 	<field name="identificacaoBem" class="java.lang.String"/>
 	<field name="quantidade" class="java.lang.Integer"/>
 	<field name="valorUnitario" class="java.math.BigDecimal"/>
 	<field name="setorResponsavel" class="java.lang.String"/>
+	<group name="ORGAO">
+		<groupExpression><![CDATA[$F{idOrgao}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField>
+					<reportElement x="0" y="10" width="802" height="15" uuid="dbfaae9f-4acb-4d3d-ad3c-09b0b0d4a83e">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["ÓRGÃO: " + $F{idOrgao} + " - " + $F{descricaoOrgao}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
 	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
 		<groupHeader>

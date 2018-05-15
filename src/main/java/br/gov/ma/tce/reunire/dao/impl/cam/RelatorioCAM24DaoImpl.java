@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.ejb.Stateless;
 
@@ -28,45 +29,52 @@ public class RelatorioCAM24DaoImpl extends PrestacaoDaoImpl<RelatorioCAM24VO> im
 				"group by c.unidade_id, competencia, c.unidade_utilizacao_id, c.tipo_folha, c.cota_empregado, c.cota_empregador, c.regime, c.numero_documento " +
 				"order by c.unidade_id, competencia, c.unidade_utilizacao_id, c.tipo_folha";
 		
-		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(params);
-		List<Integer> listaIdsUnidades = extrairIds(listaUnidadeVO);
+		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
+		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);
 		
-		List<RelatorioCAM24VO> listaVo = new ArrayList<>();
+		List<RelatorioCAM24VO> dados = new ArrayList<>();
 		
-		List<Object[]> lista = entityManager.createNativeQuery(sql)
+		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidade", listaIdsUnidades)
 				.getResultList();
 		
-		for(Object[] l : lista) {
-			RelatorioCAM24VO relatorio = new RelatorioCAM24VO();
+		for(Object[] row : rows) {
 			
-			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
+			RelatorioCAM24VO dado = new RelatorioCAM24VO();
 			
-			for(UnidadeVO listaUnidade : listaUnidadeVO) {
-				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue())
-					relatorio.setDescricaoUnidade(listaUnidade.getNome());				
+			Optional<UnidadeVO> unidade = listaUnidades.stream().filter(u -> u.getId().equals(Integer.parseInt(String.valueOf(row[0])))).findFirst();
+			
+			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
+			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
+			
+			if (unidade != null) {
+				
+				dado.setIdOrgao(unidade.get().getOrgao().getId());
+				dado.setDescricaoOrgao(unidade.get().getOrgao().getNome());
 			}
 			
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			
 			Date data = null;
 			try {
-				data = formato.parse(l[1].toString());
+				data = formato.parse(row[1].toString());
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			
-			relatorio.setCompetencia(data);
-			relatorio.setUnidadeOrcamentaria(Integer.parseInt(l[2].toString()));
-			relatorio.setFolhaPagamento(l[3].toString());
-			relatorio.setCota_empregado(new BigDecimal(Double.parseDouble(l[4].toString())));
-			relatorio.setCota_empregador(new BigDecimal(Double.parseDouble(l[5].toString())));
-			relatorio.setRegime(l[6].toString());
-			relatorio.setDocumento(l[7].toString());
-			listaVo.add(relatorio);	
-		}		
+			dado.setCompetencia(data);
+			dado.setUnidadeOrcamentaria(Integer.parseInt(row[2].toString()));
+			dado.setFolhaPagamento(row[3].toString());
+			dado.setCota_empregado(new BigDecimal(Double.parseDouble(row[4].toString())));
+			dado.setCota_empregador(new BigDecimal(Double.parseDouble(row[5].toString())));
+			dado.setRegime(row[6].toString());
+			dado.setDocumento(row[7].toString());
+			dados.add(dado);	
+		}
 		
-		return listaVo;
+		dados.sort((d1, d2) -> d1.getIdOrgao().compareTo(d2.getIdOrgao()));
+		
+		return dados;
 	}
 
 	@Override

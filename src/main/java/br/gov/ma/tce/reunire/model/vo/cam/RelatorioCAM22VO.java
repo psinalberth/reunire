@@ -6,12 +6,30 @@ import java.util.Date;
 import br.gov.ma.tce.reunire.model.vo.generic.DemonstrativoVO;
 
 public class RelatorioCAM22VO extends DemonstrativoVO {
-
+	
+	private Integer idOrgao;
+	private String descricaoOrgao;
 	private String identificacao;
 	private String destinacao;
 	private BigDecimal valor;
 	private String situacao;
 	private Date dataAquisicao;
+	
+	public Integer getIdOrgao() {
+		return idOrgao;
+	}
+	
+	public void setIdOrgao(Integer idOrgao) {
+		this.idOrgao = idOrgao;
+	}
+	
+	public String getDescricaoOrgao() {
+		return descricaoOrgao;
+	}
+	
+	public void setDescricaoOrgao(String descricaoOrgao) {
+		this.descricaoOrgao = descricaoOrgao;
+	}
 
 	public String getIdentificacao() {
 		return identificacao;

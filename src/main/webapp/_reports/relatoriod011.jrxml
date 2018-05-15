@@ -91,11 +91,11 @@
 		<variableExpression><![CDATA[$V{VALOR_TOTAL_ACAO}.subtract($V{VALOR_DESPESA_ACAO})]]></variableExpression>
 	</variable>
 	<group name="UNIDADE" isReprintHeaderOnEachPage="true">
-		<groupExpression><![CDATA[$F{idUnidade}]]></groupExpression>
+		<groupExpression><![CDATA[$P{ente}]]></groupExpression>
 		<groupHeader>
-			<band height="80">
+			<band height="52">
 				<staticText>
-					<reportElement mode="Transparent" x="0" y="41" width="90" height="39" forecolor="#000000" backcolor="#777777" uuid="3b7d93f9-2e38-44f7-9c6f-92215bdcc372">
+					<reportElement mode="Transparent" x="0" y="13" width="90" height="39" forecolor="#000000" backcolor="#777777" uuid="3b7d93f9-2e38-44f7-9c6f-92215bdcc372">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<box>
@@ -111,7 +111,7 @@
 					<text><![CDATA[CÓDIGO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="90" y="41" width="266" height="39" forecolor="#000000" backcolor="#777777" uuid="5e92e453-93ac-4e6f-8d42-5082c3841b51"/>
+					<reportElement mode="Transparent" x="90" y="13" width="266" height="39" forecolor="#000000" backcolor="#777777" uuid="5e92e453-93ac-4e6f-8d42-5082c3841b51"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -125,7 +125,7 @@
 					<text><![CDATA[ESPECIFICAÇÃO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="356" y="41" width="90" height="39" forecolor="#000000" backcolor="#777777" uuid="9c2a8577-27e5-47c6-9b19-d2b846d756cd"/>
+					<reportElement mode="Transparent" x="356" y="13" width="90" height="39" forecolor="#000000" backcolor="#777777" uuid="9c2a8577-27e5-47c6-9b19-d2b846d756cd"/>
 					<box leftPadding="1" rightPadding="1">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -139,7 +139,7 @@
 					<text><![CDATA[CRÉDITOS ORÇAMENTÁRIOS E SUPLEMENTARES]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="550" y="41" width="80" height="39" forecolor="#000000" backcolor="#777777" uuid="a3e9ff38-5d15-4326-99de-53bafb6f4f5e"/>
+					<reportElement mode="Transparent" x="550" y="13" width="80" height="39" forecolor="#000000" backcolor="#777777" uuid="a3e9ff38-5d15-4326-99de-53bafb6f4f5e"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -153,7 +153,7 @@
 					<text><![CDATA[TOTAL]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="446" y="41" width="104" height="39" forecolor="#000000" backcolor="#777777" uuid="34de1a4e-1c49-403d-b465-533f43ed763e"/>
+					<reportElement mode="Transparent" x="446" y="13" width="104" height="39" forecolor="#000000" backcolor="#777777" uuid="34de1a4e-1c49-403d-b465-533f43ed763e"/>
 					<box leftPadding="1" rightPadding="1">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -166,18 +166,8 @@
 					</textElement>
 					<text><![CDATA[CRÉDITOS ESPECIAIS E EXTRAORDINÁRIOS]]></text>
 				</staticText>
-				<textField isBlankWhenNull="true">
-					<reportElement x="0" y="10" width="802" height="20" isRemoveLineWhenBlank="true" uuid="0050e93f-6a6c-464e-8160-5c041a7c8219">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<printWhenExpression><![CDATA[$F{idUnidade} != null]]></printWhenExpression>
-					</reportElement>
-					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA["UNIDADE: " + $F{idUnidade} + " - " +$F{descricaoUnidade}]]></textFieldExpression>
-				</textField>
 				<staticText>
-					<reportElement mode="Transparent" x="630" y="41" width="90" height="39" forecolor="#000000" backcolor="#777777" uuid="7af208df-434e-400c-8718-d4bca99eb044"/>
+					<reportElement mode="Transparent" x="630" y="13" width="90" height="39" forecolor="#000000" backcolor="#777777" uuid="7af208df-434e-400c-8718-d4bca99eb044"/>
 					<box leftPadding="1" rightPadding="1">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -191,7 +181,7 @@
 					<text><![CDATA[DESPESA REALIZADA (R$)]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="720" y="41" width="82" height="39" forecolor="#000000" backcolor="#777777" uuid="77a8e2af-c320-43ec-9906-84cf8c893a7b"/>
+					<reportElement mode="Transparent" x="720" y="13" width="82" height="39" forecolor="#000000" backcolor="#777777" uuid="77a8e2af-c320-43ec-9906-84cf8c893a7b"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -253,7 +243,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ESPECIAL_FUNCAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_CREDITO_ESPECIAL_FUNCAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ESPECIAL_FUNCAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_CREDITO_ESPECIAL_FUNCAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement mode="Transparent" x="356" y="0" width="90" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="e151e73a-17dd-4cdb-953e-6ecf5c23d7aa">
@@ -267,7 +257,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ORCAMENTARIO_FUNCAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_CREDITO_ORCAMENTARIO_FUNCAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ORCAMENTARIO_FUNCAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_CREDITO_ORCAMENTARIO_FUNCAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="550" y="0" width="80" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="ebeaece2-a913-4c43-b16d-dddcbd9590e1">
@@ -281,7 +271,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_FUNCAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_TOTAL_FUNCAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_FUNCAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_TOTAL_FUNCAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="630" y="0" width="90" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="b2e097b9-d9d7-4de9-91a3-96cb909efc7f">
@@ -295,7 +285,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_DESPESA_FUNCAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_DESPESA_FUNCAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_DESPESA_FUNCAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_DESPESA_FUNCAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="FUNCAO_GOVERNO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="720" y="0" width="82" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="c07206a2-2f61-4b7a-b3cf-67c4c794cb6a">
@@ -309,7 +299,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_DIFERENCA_FUNCAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_DIFERENCA_FUNCAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_DIFERENCA_FUNCAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_DIFERENCA_FUNCAO} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -362,7 +352,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ESPECIAL_SUBFUNCAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_CREDITO_ESPECIAL_SUBFUNCAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ESPECIAL_SUBFUNCAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_CREDITO_ESPECIAL_SUBFUNCAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="SUBFUNCAO_GOVERNO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement mode="Transparent" x="356" y="0" width="90" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="f15a9068-aa09-4fc6-be2b-fbc4feaf5d80">
@@ -377,7 +367,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ORCAMENTARIO_SUBFUNCAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_CREDITO_ORCAMENTARIO_SUBFUNCAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ORCAMENTARIO_SUBFUNCAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_CREDITO_ORCAMENTARIO_SUBFUNCAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="SUBFUNCAO_GOVERNO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement mode="Transparent" x="550" y="0" width="80" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="2c5391a5-694b-4083-9205-9b595d9053ee">
@@ -392,7 +382,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_SUBFUNCAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_TOTAL_SUBFUNCAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_SUBFUNCAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_TOTAL_SUBFUNCAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="SUBFUNCAO_GOVERNO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement mode="Transparent" x="630" y="0" width="90" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="0579c3db-18d0-4b5e-9725-cef62131168b">
@@ -407,7 +397,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_DESPESA_SUBFUNCAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_DESPESA_SUBFUNCAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_DESPESA_SUBFUNCAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_DESPESA_SUBFUNCAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="SUBFUNCAO_GOVERNO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement mode="Transparent" x="720" y="0" width="82" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="9d781daf-1908-4adf-a8fc-112b22a4bd58">
@@ -422,7 +412,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_DIFERENCA_SUBFUNCAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_DIFERENCA_SUBFUNCAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_DIFERENCA_SUBFUNCAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_DIFERENCA_SUBFUNCAO} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -474,7 +464,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ESPECIAL_PROGRAMA}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_CREDITO_ESPECIAL_PROGRAMA} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ESPECIAL_PROGRAMA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_CREDITO_ESPECIAL_PROGRAMA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement mode="Transparent" x="356" y="0" width="90" height="30" forecolor="#000000" backcolor="#DEDEDE" uuid="1c949d33-0a9a-4732-883a-1d4a70208d3a">
@@ -488,7 +478,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ORCAMENTARIO_PROGRAMA}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_CREDITO_ORCAMENTARIO_PROGRAMA} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ORCAMENTARIO_PROGRAMA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_CREDITO_ORCAMENTARIO_PROGRAMA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="550" y="0" width="80" height="30" forecolor="#000000" backcolor="#DEDEDE" uuid="e697d38a-b75e-48d9-bedf-739c3d6aa399">
@@ -502,7 +492,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_PROGRAMA}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_TOTAL_PROGRAMA} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_PROGRAMA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_TOTAL_PROGRAMA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="630" y="0" width="90" height="30" forecolor="#000000" backcolor="#DEDEDE" uuid="85b5df21-3fec-41a9-b64c-e26e355b70f7">
@@ -516,7 +506,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_DESPESA_PROGRAMA}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_DESPESA_PROGRAMA} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_DESPESA_PROGRAMA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_DESPESA_PROGRAMA} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="PROGRAMA" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="720" y="0" width="82" height="30" forecolor="#000000" backcolor="#DEDEDE" uuid="cbbaf0cd-8b97-4997-935d-03607a1e200a">
@@ -531,7 +521,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_DIFERENCA_PROGRAMA}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_DIFERENCA_PROGRAMA} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_DIFERENCA_PROGRAMA}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_DIFERENCA_PROGRAMA} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -582,7 +572,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ESPECIAL_ACAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_CREDITO_ESPECIAL_ACAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ESPECIAL_ACAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_CREDITO_ESPECIAL_ACAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement mode="Transparent" x="356" y="0" width="90" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="4fba17b4-082e-4738-a77b-db22c9c077ae">
@@ -596,7 +586,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ORCAMENTARIO_ACAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_CREDITO_ORCAMENTARIO_ACAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_CREDITO_ORCAMENTARIO_ACAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_CREDITO_ORCAMENTARIO_ACAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement mode="Transparent" x="550" y="0" width="80" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="8e3b4c57-5143-47f6-be04-84fe879a9799">
@@ -611,7 +601,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_ACAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_TOTAL_ACAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_TOTAL_ACAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_TOTAL_ACAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement mode="Transparent" x="630" y="0" width="90" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="a4e5f990-b91b-4a0c-a479-0ee0f929f8e9">
@@ -626,7 +616,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_DESPESA_ACAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_DESPESA_ACAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_DESPESA_ACAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_DESPESA_ACAO} : "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="ACAO" pattern="R$ #,##0.00#;R$ (#,##0.00#)">
 					<reportElement mode="Transparent" x="720" y="0" width="82" height="30" forecolor="#000000" backcolor="#BFBFBF" uuid="08a02e9b-d6f2-40be-8fe8-19b20e46d194">
@@ -641,7 +631,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{VALOR_DIFERENCA_ACAO}.compareTo(java.math.BigDecimal.ZERO) > 0 ? $V{VALOR_DIFERENCA_ACAO} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{VALOR_DIFERENCA_ACAO}.compareTo(java.math.BigDecimal.ZERO) != 0 ? $V{VALOR_DIFERENCA_ACAO} : "-"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

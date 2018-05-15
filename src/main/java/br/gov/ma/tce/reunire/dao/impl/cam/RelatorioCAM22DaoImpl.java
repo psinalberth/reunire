@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.ejb.Stateless;
 
@@ -28,45 +29,53 @@ public class RelatorioCAM22DaoImpl extends PrestacaoDaoImpl<RelatorioCAM22VO> im
 				+ "group by c.unidade_id, c.identificacao, c.destinacao, c.valor, c.situacao, data_aquisicao "
 				+ "order by c.unidade_id, c.identificacao, c.destinacao, c.situacao, data_aquisicao";
 
-		List<UnidadeVO> listaUnidadeVO = recuperarUnidades(params);
-		List<Integer> listaIdsUnidades = extrairIds(listaUnidadeVO);
+		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
+		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);
 		
-		List<RelatorioCAM22VO> listaVo = new ArrayList<>();
+		List<RelatorioCAM22VO> dados = new ArrayList<>();
 		
-		List<Object[]> lista = entityManager.createNativeQuery(sql)
+		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidade", listaIdsUnidades)
 				.getResultList();
 		
-		for(Object[] l : lista) {
-			RelatorioCAM22VO relatorio = new RelatorioCAM22VO();
+		for(Object[] row : rows) {
 			
-			relatorio.setIdUnidade(Integer.parseInt(l[0].toString()));
+			RelatorioCAM22VO dado = new RelatorioCAM22VO();
 			
-			for(UnidadeVO listaUnidade : listaUnidadeVO) {
-				if(listaUnidade.getId() == relatorio.getIdUnidade().intValue()) {
-					relatorio.setDescricaoUnidade(listaUnidade.getNome());
-				}
+			dado.setIdUnidade(Integer.parseInt(row[0].toString()));
+			
+			Optional<UnidadeVO> unidade = listaUnidades.stream().filter(u -> u.getId().equals(Integer.parseInt(String.valueOf(row[0])))).findFirst();
+			
+			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
+			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
+			
+			if (unidade != null) {
+				
+				dado.setIdOrgao(unidade.get().getOrgao().getId());
+				dado.setDescricaoOrgao(unidade.get().getOrgao().getNome());
 			}
 			
-			relatorio.setIdentificacao(l[1].toString());
-			relatorio.setDestinacao(l[2].toString());
-			relatorio.setValor(new BigDecimal(Double.parseDouble(l[3].toString())));
-			relatorio.setSituacao(l[4].toString());
+			dado.setIdentificacao(row[1].toString());
+			dado.setDestinacao(row[2].toString());
+			dado.setValor(new BigDecimal(Double.parseDouble(row[3].toString())));
+			dado.setSituacao(row[4].toString());
 			
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			
 			Date data = null;
 			try {
-				data = formato.parse(l[5].toString());
+				data = formato.parse(row[5].toString());
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			
-			relatorio.setDataAquisicao(data);
-			listaVo.add(relatorio);			
+			dado.setDataAquisicao(data);
+			dados.add(dado);			
 		}
 		
-		return listaVo;
+		dados.sort((d1, d2) -> d1.getIdOrgao().compareTo(d2.getIdOrgao()));
+		
+		return dados;
 	}
 
 	@Override
