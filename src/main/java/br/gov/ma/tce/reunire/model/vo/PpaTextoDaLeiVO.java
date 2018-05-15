@@ -38,7 +38,6 @@ public class PpaTextoDaLeiVO implements Serializable {
 	}
 
 	public byte[] getTextoDaLei() throws UnsupportedEncodingException {
-		String s = new String(textoDaLei, "ISO-8859-1");
 		return textoDaLei;
 	}
 
