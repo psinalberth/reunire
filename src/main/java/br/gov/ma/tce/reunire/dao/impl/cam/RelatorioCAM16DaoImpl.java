@@ -1,9 +1,9 @@
 package br.gov.ma.tce.reunire.dao.impl.cam;
 
-import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class RelatorioCAM16DaoImpl extends PrestacaoDaoImpl<RelatorioCAM16VO> im
 		String sql = 
 				
 		"select unidade_id, numero_processo, extract (year from data_fato ) as anoProcesso, " + 
-		"	data_fato, data_instauracao, valor_dano, situacao, " + 
+		"	data_fato, data_instauracao, valor_dano, upper(situacao) situacao, " + 
 		"	cpf_cnpj_responsavel, cpf_cnpj_responsavel2, cpf_cnpj_responsavel3, " + 
 		"	cpf_cnpj_responsavel4, cpf_cnpj_responsavel5, cpf_cnpj_responsavel6, " + 
 		"	cpf_cnpj_responsavel7, cpf_cnpj_responsavel8 " + 
@@ -97,6 +97,13 @@ public class RelatorioCAM16DaoImpl extends PrestacaoDaoImpl<RelatorioCAM16VO> im
 	public static String getFormatador(Date data) {
 		DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 		String novaData = formatador.format(data);
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(data);
+		
+		if (cal.get(Calendar.YEAR) < 1900)
+			return "N/A";
+		
 		return  novaData;
 	}
 	

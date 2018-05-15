@@ -20,7 +20,15 @@ public class RelatorioCAM09DaoImpl extends PrestacaoDaoImpl<RelatorioCAM09VO> im
 		String sql =
 				
 		"select " +
-			"unidade_id, unidade_ensino, nome_aluno, genero, data_nascimento, " + 
+			"unidade_id, (case when length(genero) > 10 then genero else unidade_ensino end) unidade_ensino, nome_aluno, " +
+			"(case " +
+				"when length(genero) > 10 then unidade_ensino " +
+				"when upper(genero) like 'M%' then 'M' " +
+				"when upper(genero) like 'F%' then 'F' " +
+				"when genero = '1' then 'M' " +
+				"when genero = '2' then 'F' " +
+				"when genero = 'D' then 'F' " +
+				"else genero end) genero, data_nascimento, " + 
 			"(case " + 
 				"when serie = 1 then '1º ano do Ensino Fundamental' " +
 				"when serie = 2 then '2º ano do Ensino Fundamental' " +

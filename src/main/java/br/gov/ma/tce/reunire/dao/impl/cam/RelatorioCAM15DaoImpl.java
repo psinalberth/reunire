@@ -1,6 +1,5 @@
 package br.gov.ma.tce.reunire.dao.impl.cam;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

@@ -21,22 +21,22 @@ public class RelatorioCAM06DaoImpl extends PrestacaoDaoImpl<RelatorioCAM06VO> im
 		
 		String sql = 
 				
-		"select " +
-			"unidade_id, data_recebimento, cpf_suprido, finalidade_adiantamento, valor, prazo_aplicacao, data_prestacao, situacao " +
+		"select " + 
+			"unidade_id, numero_processo, cpf_suprido, finalidade_adiantamento, data_recebimento, valor, prazo_aplicacao, data_prestacao, situacao " +
 		"from " +
 			"prestacao.cam06 " +
 		"where " +
 			"unidade_id in (:unidades) and " +
 			"((:modulo is null) or (modulo_id = :modulo)) " +
 		"order by " +
-			"unidade_id, data_recebimento, cpf_suprido";
+			"unidade_id, numero_processo, cpf_suprido, finalidade_adiantamento, data_recebimento, valor, prazo_aplicacao, data_prestacao, situacao";
 		
 		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
 		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);
 		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidades", listaIdsUnidades)
-				.setParameter("modulo", 1)
+				.setParameter("modulo", params.get("modulo"))
 				.getResultList();
 		
 		List<RelatorioCAM06VO> dados = new ArrayList<RelatorioCAM06VO>(rows.size());
@@ -49,13 +49,14 @@ public class RelatorioCAM06DaoImpl extends PrestacaoDaoImpl<RelatorioCAM06VO> im
 			
 			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
 			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
-			dado.setDataRecebimento(toDate(row[1]));
+			dado.setNumeroProcesso(String.valueOf(row[1]));
 			dado.setCpfSuprido(toPessoa(row[2]));
 			dado.setFinalidadeAdiantamento(String.valueOf(row[3]));
-			dado.setValor(toBigDecimal(row[4]));
-			dado.setPrazoAplicacao(Integer.valueOf(String.valueOf(row[5])));
-			dado.setDataPrestacaoContas(toDate(row[6]));
-			dado.setSituacao(String.valueOf(row[7]));
+			dado.setDataRecebimento(toDate(row[4]));
+			dado.setValor(toBigDecimal(row[5]));
+			dado.setPrazoAplicacao(Integer.valueOf(String.valueOf(row[6])));
+			dado.setDataPrestacaoContas(toDate(row[7]));
+			dado.setSituacao(String.valueOf(row[8]));
 			
 			dados.add(dado);
 		}

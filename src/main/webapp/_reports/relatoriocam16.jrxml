@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.5.0.final using JasperReports Library version 6.5.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demonstrativo_cam002" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a20000c8-8a2f-4e12-b0b2-6a03fcf39ca9">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatoriocam16" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a20000c8-8a2f-4e12-b0b2-6a03fcf39ca9">
 	<property name="ireport.zoom" value="0.9982500000000004"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="48"/>
@@ -101,7 +101,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<text><![CDATA[DATA DA INSTAURAÇÃO ]]></text>
+					<text><![CDATA[DATA DA INSTAURAÇÃO DA TCE]]></text>
 				</staticText>
 				<staticText>
 					<reportElement mode="Transparent" x="560" y="11" width="110" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="4ced0248-6ceb-4ec1-8341-22a8a983cbd0"/>
@@ -169,7 +169,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{cpf1}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="120" height="27" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -251,7 +251,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -275,7 +275,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{cpf2}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="120" height="27" uuid="88759cc3-e94b-478e-800d-c67333fc320f"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -357,7 +357,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -381,7 +381,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{cpf3}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="120" height="27" uuid="e5df3245-d159-4ead-9dc1-e0889bbf257e"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -463,7 +463,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -487,7 +487,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{cpf4}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="120" height="27" uuid="1d33d78d-051d-4931-9fb5-99b9bb9b26ec"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -569,7 +569,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -593,7 +593,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{cpf5}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="120" height="27" uuid="e2716819-efde-4264-9ff9-a6c336087e5d"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -675,7 +675,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -699,7 +699,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{cpf6}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="120" height="27" uuid="329ee1eb-388e-48c8-83b0-8e12f30587ec"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -781,7 +781,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -805,7 +805,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{cpf7}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="120" height="27" uuid="66f7c385-2a8f-440c-8305-93cf4b2eb000"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -887,7 +887,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -911,7 +911,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{cpf8}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
 					<reportElement x="440" y="0" width="120" height="27" uuid="2c067cee-091d-495f-ae44-a9bdf2f6d83b"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -993,7 +993,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[Integer.valueOf($F{anoProcesso}).compareTo(1899) > 0 ? $F{anoProcesso} : "N/A"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

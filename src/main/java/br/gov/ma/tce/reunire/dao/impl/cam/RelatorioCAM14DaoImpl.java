@@ -75,7 +75,7 @@ public class RelatorioCAM14DaoImpl extends PrestacaoDaoImpl<RelatorioCAM14VO> im
 			Calendar date = Calendar.getInstance();
 			date.setTimeInMillis(((Timestamp) row[5]).getTime());
 			
-			dado.setDataContratacao(date.getTime());
+			dado.setDataContratacao(date.get(Calendar.YEAR) > 1899 ? date.getTime() : null);
 			dado.setValorContratacao(row[6] != null ? new BigDecimal(String.valueOf(row[6])) : null);
 			dado.setValorPago(row[7] != null ? new BigDecimal(String.valueOf(row[7])) : null);
 			

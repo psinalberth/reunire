@@ -52,8 +52,8 @@ public class RelatorioCAM02DaoImpl extends PrestacaoDaoImpl<RelatorioCAM02VO> im
 			
 			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
 			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
-			dado.setConcedente(String.valueOf(row[1]));
-			dado.setConvenente(String.valueOf(row[2]));
+			dado.setConcedente(toPessoa(String.valueOf(row[1])));
+			dado.setConvenente(toPessoa(String.valueOf(row[2])));
 			
 			dado.setDataCelebracao(getFormatador((Date) row[3]));
 			
