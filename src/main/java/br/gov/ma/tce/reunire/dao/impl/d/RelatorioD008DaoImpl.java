@@ -20,52 +20,51 @@ public class RelatorioD008DaoImpl extends PrestacaoDaoImpl<RelatorioD008VO> impl
 		
 		String sql =
 				
-		"select " + 
-		"	emp.unidade_id, emp.funcao_id, emp.subfuncao_id, fg.nome nome_funcao, sf.nome nome_subfuncao, " + 
-		"	(case when prog.id_programa is not null then prog.codigo else d.programa end) programa,  " + 
-		"	(case when prog.id_programa is not null then prog.denominacao else 'NÃO INFORMADO' end) nome_programa,  " + 
-		"	(case when acao.id_acao is not null then acao.codigo_prefeitura else d.acao end) acao, " + 
-		"	(case when acao.id_acao is not null then acao.descricao else d.descricao end) descricao, " + 
-		"	(case when fon.codigo = '0.1.00.000000' then sum(coalesce(emp.valor, 0) + coalesce(ref.valor, 0) - coalesce(anu.valor, 0)) else 0 end) valor_ordinario, " + 
-		"	(case when fon.codigo <> '0.1.00.000000' then sum(coalesce(emp.valor, 0) + coalesce(ref.valor, 0) - coalesce(anu.valor, 0)) else 0 end) valor_vinculado " + 
-		"from  " + 
-		"	remessa.empenho emp " + 
-		"left join gestor.unidade_ente und on " + 
-		"	und.unidade_id = emp.unidade_id " + 
-		"left join remessa.funcao fg on " + 
-		"	fg.funcao_id = emp.funcao_id " + 
-		"left join remessa.subfuncao sf on	 " + 
-		"	sf.subfuncao_id = emp.subfuncao_id " + 
-		"left join sae.sae_acao acao on " + 
-		"	acao.codigo_prefeitura = emp.acao and " + 
-		"	acao.funcao = emp.funcao_id and " + 
-		"	acao.subfuncao = emp.subfuncao_id " + 
-		"left join sae.sae_programa prog on " + 
-		"	(prog.id_programa = acao.id_programa or prog.codigo = emp.programa and prog.ente = und.ente_id) " + 
-		"left join remessa.fonte_recursos fon on " + 
-		"	fon.fonte_recursos_id = emp.fonte_recurso_id " + 
-		"left outer join ( " + 
-		"	select  " + 
-		"		ref.empenho_id, sum(ref.valor) valor " + 
-		"	from  " + 
-		"		remessa.empenho_reforco ref " + 
-		"	group by " + 
-		"		ref.empenho_id " + 
-		") ref on ref.empenho_id = emp.empenho_id " + 
-		"left outer join ( " + 
-		"	select  " + 
-		"		anu.empenho_id, sum(anu.valor) valor  " + 
-		"	from  " + 
-		"		remessa.empenho_anulado anu " + 
-		"	group by " + 
-		"		anu.empenho_id " + 
-		") anu on anu.empenho_id = emp.empenho_id " + 
-		"where " + 
-		"	emp.unidade_id in (:unidades) " + 
-		"group by " + 
-		"	emp.funcao_id, emp.subfuncao_id, emp.programa, emp.acao " + 
-		"order by " + 
-		"	emp.funcao_id, emp.subfuncao_id, emp.programa, emp.acao";
+		"select  " + 
+		"	emp.unidade_id, emp.funcao_id, emp.subfuncao_id, fg.nome nome_funcao, sf.nome nome_subfuncao,  " + 
+		"	(case when prog.id_programa is not null then prog.codigo else cast(emp.programa as integer) end) programa,   " + 
+		"	(case when prog.id_programa is not null then prog.denominacao else 'NÃO INFORMADO' end) nome_programa,   " + 
+		"	(case when acao.id_acao is not null then acao.codigo_prefeitura else cast(regexp_replace(emp.acao, '(.0000)', '', 'g') as integer) end) acao,  " + 
+		"	(case when acao.id_acao is not null then acao.descricao else 'NÃO INFORMADO' end) descricao,  " + 
+		"	(case when fon.codigo = '0.1.00.000000' then (coalesce(emp.valor, 0) + coalesce(ref.valor, 0) - coalesce(anu.valor, 0)) else 0 end) valor_ordinario,  " + 
+		"	(case when fon.codigo <> '0.1.00.000000' then (coalesce(emp.valor, 0) + coalesce(ref.valor, 0) - coalesce(anu.valor, 0)) else 0 end) valor_vinculado  " + 
+		"from   " + 
+		"	remessa.empenho emp  " + 
+		"left join gestor.unidade_ente und on  " + 
+		"	und.unidade_id = emp.unidade_id  " + 
+		"left join remessa.funcao fg on  " + 
+		"	fg.funcao_id = emp.funcao_id  " + 
+		"left join remessa.subfuncao sf on	  " + 
+		"	sf.subfuncao_id = emp.subfuncao_id  " + 
+		"left join sae.sae_acao acao on  " + 
+		"	acao.codigo_prefeitura = cast(regexp_replace(acao, '(.0000)', '', 'g') as integer) and " + 
+		"	acao.funcao = emp.funcao_id and  " + 
+		"	acao.subfuncao = emp.subfuncao_id and " + 
+		"	acao.unidade = emp.unidade_id " + 
+		"left join sae.sae_programa prog on  " + 
+		"	(prog.id_programa = acao.id_programa or cast(prog.codigo as integer) = cast(emp.programa as integer) and prog.ente = und.ente_id)  " + 
+		"left join remessa.fonte_recursos fon on  " + 
+		"	fon.fonte_recursos_id = emp.fonte_recurso_id  " + 
+		"left outer join (  " + 
+		"	select   " + 
+		"		ref.empenho_id, sum(ref.valor) valor  " + 
+		"	from   " + 
+		"		remessa.empenho_reforco ref  " + 
+		"	group by  " + 
+		"		ref.empenho_id  " + 
+		") ref on ref.empenho_id = emp.empenho_id  " + 
+		"left outer join (  " + 
+		"	select   " + 
+		"		anu.empenho_id, sum(anu.valor) valor   " + 
+		"	from   " + 
+		"		remessa.empenho_anulado anu  " + 
+		"	group by  " + 
+		"		anu.empenho_id  " + 
+		") anu on anu.empenho_id = emp.empenho_id  " + 
+		"where  " + 
+		"	emp.unidade_id in (:unidades) and emp.valor <> 0 " + 
+		"order by  " + 
+		"	emp.funcao_id, emp.subfuncao_id, programa, acao";
 		
 		List<RelatorioD008VO> dados = new ArrayList<>();
 		
