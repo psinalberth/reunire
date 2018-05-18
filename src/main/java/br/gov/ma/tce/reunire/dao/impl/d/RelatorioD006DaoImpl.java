@@ -48,7 +48,7 @@ public class RelatorioD006DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 			"acao.funcao = d.funcao and  " +
 			"acao.subfuncao = d.subfuncao  " +
 		"left join sae.sae_programa prog on  " +
-			"(prog.id_programa = acao.id_programa or prog.codigo = d.programa and prog.ente = und.ente_id) " +
+			"prog.id_programa = acao.id_programa " +
 		"where  " + 
 			"d.unidade_orcamentaria_id in (:unidades)  " + 
 		"order by  " + 
@@ -111,7 +111,7 @@ public class RelatorioD006DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 		
 		dados.sort((d1, d2) -> d1.getIdOrgao().compareTo(d2.getIdOrgao()));
 		
-		Optional<UnidadeVO> ugReservaContingencia = listaUnidades.stream().filter(unidade -> unidade.getIdentificacaoLancamentoUg().equals(4)).findFirst();
+		Optional<UnidadeVO> ugReservaContingencia = listaUnidades.stream().filter(unidade -> unidade.getIdentificacaoLancamentoUg() != null && unidade.getIdentificacaoLancamentoUg().equals(4)).findFirst();
 		
 		if (ugReservaContingencia.isPresent()) {
 			
