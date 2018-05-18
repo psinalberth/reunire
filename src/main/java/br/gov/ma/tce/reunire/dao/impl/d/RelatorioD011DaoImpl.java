@@ -48,7 +48,7 @@ public class RelatorioD011DaoImpl extends PrestacaoDaoImpl<RelatorioD011AVO> imp
 		"	acao.funcao = d.funcao and   " + 
 		"	acao.subfuncao = d.subfuncao   " + 
 		"left join sae.sae_programa prog on   " + 
-		"	(prog.id_programa = acao.id_programa or prog.codigo = d.programa and prog.ente = und.ente_id)  " + 
+		"	prog.id_programa = acao.id_programa " + 
 		"where  " + 
 		"	d.unidade_orcamentaria_id in (:unidades) and " + 
 		"	((:modulo is null) or (d.modulo_id = :modulo)) " + 
