@@ -69,7 +69,9 @@ public class RelatorioD008DaoImpl extends PrestacaoDaoImpl<RelatorioD008VO> impl
 		"	acao.subfuncao = emp.subfuncao_id and  " + 
 		"	acao.unidade = emp.unidade_id " + 
 		"left join sae.sae_programa prog on   " + 
-		"	prog.id_programa = acao.id_programa";
+		"	prog.id_programa = acao.id_programa " +
+		"order by " + 
+			"emp.funcao_id, emp.subfuncao_id, programa, acao asc";
 		
 		List<RelatorioD008VO> dados = new ArrayList<>();
 		
