@@ -27,6 +27,12 @@
            <label sclass="is-6" value="@load(vm.unidade.nome)" />
          </div>
        </div>
+        <div class="column has-text-centered" visible="@load(vm.moduloRelatorio ne null)">
+         <div class="field">
+           <label sclass="heading" value="Módulo" />
+           <label sclass="is-6" value="@load(vm.moduloRelatorio.nome)" />
+         </div>
+       </div>
        <div class="column has-text-centered">
          <div class="field">
            <label sclass="heading" value="Exercício" />

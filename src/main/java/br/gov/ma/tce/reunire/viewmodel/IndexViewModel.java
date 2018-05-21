@@ -77,7 +77,9 @@ public class IndexViewModel {
 		}
 		
 		if (Executions.getCurrent().getParameter("modulo") != null) {
+			
 			modulo = Integer.valueOf(Executions.getCurrent().getParameter("modulo"));
+			moduloRelatorio = (ModuloRelatorioPrestacao) daoPrestacao.byId(ModuloRelatorioPrestacao.class, modulo);
 		}
 		
 		if (ente != null || unidade != null) {
