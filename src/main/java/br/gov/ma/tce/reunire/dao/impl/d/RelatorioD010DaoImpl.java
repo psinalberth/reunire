@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 
 import br.gov.ma.tce.reunire.dao.DemonstrativoDao;
 import br.gov.ma.tce.reunire.dao.impl.PrestacaoDaoImpl;
@@ -24,31 +25,34 @@ public class RelatorioD010DaoImpl extends PrestacaoDaoImpl<RelatorioD010VO> impl
 	public List<RelatorioD010VO> recuperaDados(Map<String, Object> params) {
 	
 		String sql = 
-			
-		"select " + 
-			"unidade_id,  " + 
-			"regexp_replace(natureza_receita, '[.]', '', 'g') nr,  " + 
-			"(case when nr.id_natureza_receita is not null then nr.descricao else 'CLASSIFICAÇÃO DESCONHECIDA' end) descricao,  " + 
-			"(case " +
-				"when natureza_receita like '9%' and previsao_atualizada > 0 then previsao_atualizada * (-1) " +
-				"when natureza_receita like '9%' and previsao_atualizada < 0 then previsao_atualizada " +
-				"else previsao_atualizada end) previsao_atualizada, " +
-			"(case " +
-				"when natureza_receita like '9%' and receita_realizada > 0 then receita_realizada * (-1) " +
-				"when natureza_receita like '9%' and receita_realizada < 0 then receita_realizada " +
-				"else receita_realizada end) receita_realizada " +
-		"from  " + 
-			"prestacao.bo01 bo  " +
-		"left join sae.vw_natureza_receita nr on  " + 
-			"(regexp_replace(nr.codigo_natureza_receita, '[.]', '', 'g') = regexp_replace(natureza_receita, '[.]', '', 'g') and nr.ativo = 'S' or  " + 
-			"(regexp_replace(nr.codigo_natureza_receita, '[.]', '', 'g') = regexp_replace(natureza_receita, '[.]', '', 'g') and  " +
-			"nr.id_natureza_receita = (select max(d2.id_natureza_receita) from sae.vw_natureza_receita d2 where nr.codigo_natureza_receita = d2.codigo_natureza_receita and d2.ativo = 'N')))  " +
-		"where  " + 
-			"unidade_id in (:unidades) and  " +
-			"((:modulo is null) or (modulo_id = :modulo)) and  " +
-			"cast(regexp_replace(natureza_receita, '[.]', '', 'g') as integer) > 0  " +
-		"order by  " +
-			"unidade_id, regexp_replace(natureza_receita, '[.]', '', 'g')";
+		
+		"select " +
+			"unidade_id, nr, descricao, sum(previsao_atualizada) previsao_atualizada, sum(receita_realizada) receita_realizada " +
+		"from (" +
+			"select " + 
+				"unidade_id,  " + 
+				"regexp_replace(natureza_receita, '[.]', '', 'g') nr,  " + 
+				"(case when nr.id_natureza_receita is not null then nr.descricao else 'CLASSIFICAÇÃO DESCONHECIDA' end) descricao,  " + 
+				"(case " +
+					"when natureza_receita like '9%' and previsao_atualizada > 0 then previsao_atualizada * (-1) " +
+					"when natureza_receita like '9%' and previsao_atualizada < 0 then previsao_atualizada " +
+					"else previsao_atualizada end) previsao_atualizada, " +
+				"(case " +
+					"when natureza_receita like '9%' and receita_realizada > 0 then receita_realizada * (-1) " +
+					"when natureza_receita like '9%' and receita_realizada < 0 then receita_realizada " +
+					"else receita_realizada end) receita_realizada " +
+			"from  " + 
+				"prestacao.bo01 bo  " +
+			"left join sae.vw_natureza_receita nr on  " + 
+				"(regexp_replace(nr.codigo_natureza_receita, '[.]', '', 'g') = regexp_replace(natureza_receita, '[.]', '', 'g') and nr.ativo = 'S') " +
+			"where  " + 
+				"unidade_id in (:unidades) and  " +
+				"((:modulo is null) or (modulo_id = :modulo)) and  " +
+				"cast(regexp_replace(natureza_receita, '[.]', '', 'g') as integer) > 0  " +
+			"order by  " +
+				"unidade_id, regexp_replace(natureza_receita, '[.]', '', 'g')) r " + 
+		"group by unidade_id, nr, descricao " + 
+		"order by unidade_id, nr";
 		
 		List<RelatorioD010VO> dados = new ArrayList<RelatorioD010VO>();
 		
@@ -88,8 +92,28 @@ public class RelatorioD010DaoImpl extends PrestacaoDaoImpl<RelatorioD010VO> impl
 			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
 			dado.setCodigoNaturezaReceita(String.valueOf(row[1]).
 					replaceFirst("(\\d{1})(\\d{1})(\\d{1})(\\d{1})(\\d{2})(\\d{2})", "$1.$2.$3.$4.$5.$6"));
-			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
+			
 			dado.setDescricao(String.valueOf(row[2]));
+			
+			if (dado.getDescricao().equals("CLASSIFICAÇÃO DESCONHECIDA")) {
+				
+				try {
+					
+					Object naturezaReceita = entityManager.createNativeQuery("select descricao from sae.vw_natureza_receita where codigo_natureza_receita = :natureza limit 1")
+							.setParameter("natureza", dado.getCodigoNaturezaReceita())
+							.getSingleResult();
+					
+					if (naturezaReceita != null) {
+						dado.setDescricao(String.valueOf(naturezaReceita));
+					}
+					
+				} catch (NoResultException ex) {
+					dado.setDescricao("CLASSIFICAÇÃO DESCONHECIDA");
+				}
+			}
+			
+			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
+			
 			dado.setValorOrcado(toBigDecimal(row[3]));
 			dado.setValorArrecadado(toBigDecimal(row[4]));
 			dado.setValorMais(dado.getValorArrecadado().compareTo(dado.getValorOrcado()) > 0 ? dado.getValorArrecadado().subtract(dado.getValorOrcado()) : BigDecimal.ZERO);
