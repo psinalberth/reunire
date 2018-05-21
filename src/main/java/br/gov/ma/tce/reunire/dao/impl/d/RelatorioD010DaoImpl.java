@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -68,7 +64,7 @@ public class RelatorioD010DaoImpl extends PrestacaoDaoImpl<RelatorioD010VO> impl
 		
 		// Remover todos os itens que possuam descendentes
 		
-		rows.removeIf(new Predicate<Object[]>() {
+		/*rows.removeIf(new Predicate<Object[]>() {
 
 			@Override
 			public boolean test(Object[] obj) {
@@ -81,7 +77,7 @@ public class RelatorioD010DaoImpl extends PrestacaoDaoImpl<RelatorioD010VO> impl
 				
 				return (rows.stream().filter(item -> String.valueOf(item[1]).startsWith(codigo.substring(0, matcher.end())) && Integer.valueOf(String.valueOf(item[1])).compareTo(Integer.valueOf(String.valueOf(obj[1]))) > 0).collect(Collectors.toList())).size() > 0;
 			}
-		});
+		});*/
 		
 		for (Object [] row : rows) {
 		
