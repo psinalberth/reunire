@@ -14,7 +14,7 @@
    </div>
    
    <div class="column is-10 is-offset-1">
-     <div class="columns is-gapless">
+     <div class="columns">
        <div class="column has-text-centered">
          <div class="field">
            <label sclass="heading" value="Ente" />

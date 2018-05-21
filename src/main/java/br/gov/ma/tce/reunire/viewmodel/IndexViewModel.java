@@ -66,6 +66,8 @@ public class IndexViewModel {
 	@NotifyChange("*")
 	public void init() {
 		
+		moduloRelatorio = (ModuloRelatorioPrestacao) daoPrestacao.byId(ModuloRelatorioPrestacao.class, moduloContasGoverno);
+		
 		if (Executions.getCurrent().getParameter("ente") != null) {
 			ente = (EnteVO) daoGestores.byId(EnteVO.class, Integer.valueOf(Executions.getCurrent().getParameter("ente")));
 		}
