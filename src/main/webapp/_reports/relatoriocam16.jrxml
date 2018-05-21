@@ -42,7 +42,7 @@
 		<groupHeader>
 			<band height="57">
 				<staticText>
-					<reportElement mode="Transparent" x="0" y="11" width="130" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="63729031-5b14-40bc-9820-aa83587b1f41"/>
+					<reportElement mode="Transparent" x="0" y="11" width="186" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="63729031-5b14-40bc-9820-aa83587b1f41"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -56,23 +56,7 @@
 					<text><![CDATA[PROCESSO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="220" y="11" width="120" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="244e13af-d4b4-446b-bae9-c2ee9aa20639">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="true"/>
-					</textElement>
-					<text><![CDATA[ANO DO PROCESSO]]></text>
-				</staticText>
-				<staticText>
-					<reportElement mode="Transparent" x="340" y="11" width="100" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="ea59d9c9-c998-4b00-a01c-42edaaecc89b">
+					<reportElement mode="Transparent" x="276" y="11" width="100" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="ea59d9c9-c998-4b00-a01c-42edaaecc89b">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -88,7 +72,7 @@
 					<text><![CDATA[DATA DO FATO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="130" y="11" width="90" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="ff712ef9-f05e-4252-958a-57401e987135">
+					<reportElement mode="Transparent" x="186" y="11" width="90" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="ff712ef9-f05e-4252-958a-57401e987135">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -104,7 +88,7 @@
 					<text><![CDATA[DATA DA INSTAURAÇÃO DA TCE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="560" y="11" width="110" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="4ced0248-6ceb-4ec1-8341-22a8a983cbd0"/>
+					<reportElement mode="Transparent" x="496" y="11" width="154" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="4ced0248-6ceb-4ec1-8341-22a8a983cbd0"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -118,7 +102,7 @@
 					<text><![CDATA[RESPONSÁVEIS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="440" y="11" width="120" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="4932a0f3-8188-4b7b-b791-076231206ac0"/>
+					<reportElement mode="Transparent" x="376" y="11" width="120" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="4932a0f3-8188-4b7b-b791-076231206ac0"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -132,7 +116,7 @@
 					<text><![CDATA[VALOR HISTÓRICO DO DANO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="670" y="11" width="130" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="e3a3513f-000d-42ed-a1ec-0773d50f5ca4">
+					<reportElement mode="Transparent" x="650" y="11" width="150" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="e3a3513f-000d-42ed-a1ec-0773d50f5ca4">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -156,7 +140,7 @@
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf1} != null]]></printWhenExpression>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="560" y="0" width="110" height="27" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
+					<reportElement x="496" y="0" width="154" height="27" uuid="318eb644-f38d-4f85-b71e-8f9496cbcf30"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -170,7 +154,7 @@
 					<textFieldExpression><![CDATA[$F{cpf1}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="440" y="0" width="120" height="27" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
+					<reportElement x="376" y="0" width="120" height="27" uuid="d65a0ded-6601-4675-b48b-0b14a489688a"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -184,7 +168,7 @@
 					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="670" y="0" width="130" height="27" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef"/>
+					<reportElement x="650" y="0" width="150" height="27" uuid="07cb03e8-33b5-477f-8ac1-59d6aaa6caef"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -198,7 +182,7 @@
 					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="0" width="130" height="27" uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a"/>
+					<reportElement x="0" y="0" width="186" height="27" uuid="6733c9c8-16d4-4c88-a827-588dfc297b8a"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -212,7 +196,7 @@
 					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
-					<reportElement x="340" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588"/>
+					<reportElement x="276" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="a35f421f-f7a8-4874-8f28-62c5d4484588"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -226,7 +210,7 @@
 					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="130" y="0" width="90" height="27" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3"/>
+					<reportElement x="186" y="0" width="90" height="27" uuid="1b244758-c4a5-49ae-98fc-c80ea3f82bc3"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -239,20 +223,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
 				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="220" y="0" width="120" height="27" uuid="f8264049-f6cc-47d0-9275-2e7f1fa4bb3a"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
-				</textField>
 			</band>
 		</groupHeader>
 	</group>
@@ -262,7 +232,7 @@
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf2} != null]]></printWhenExpression>
 				<textField evaluationTime="Group" evaluationGroup="CPF2" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="560" y="0" width="110" height="27" uuid="88dfb7d5-5935-487d-98bd-c05f100bf483"/>
+					<reportElement x="496" y="0" width="154" height="27" uuid="88dfb7d5-5935-487d-98bd-c05f100bf483"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -276,7 +246,7 @@
 					<textFieldExpression><![CDATA[$F{cpf2}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="440" y="0" width="120" height="27" uuid="88759cc3-e94b-478e-800d-c67333fc320f"/>
+					<reportElement x="376" y="0" width="120" height="27" uuid="88759cc3-e94b-478e-800d-c67333fc320f"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -290,7 +260,7 @@
 					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="670" y="0" width="130" height="27" uuid="6f9d715d-9b68-4a0b-b1c6-1535c256155a"/>
+					<reportElement x="650" y="0" width="150" height="27" uuid="6f9d715d-9b68-4a0b-b1c6-1535c256155a"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -304,7 +274,7 @@
 					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="0" width="130" height="27" uuid="f4d58b18-a2b9-4544-b5a1-82878b31d66d"/>
+					<reportElement x="0" y="0" width="186" height="27" uuid="f4d58b18-a2b9-4544-b5a1-82878b31d66d"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -318,7 +288,7 @@
 					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
-					<reportElement x="340" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="f822d3ba-ad23-411c-acac-e08f51b8f401"/>
+					<reportElement x="276" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="f822d3ba-ad23-411c-acac-e08f51b8f401"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -332,7 +302,7 @@
 					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="130" y="0" width="90" height="27" uuid="a0fb8c19-9f12-474d-bced-b99104dbd42e"/>
+					<reportElement x="186" y="0" width="90" height="27" uuid="a0fb8c19-9f12-474d-bced-b99104dbd42e"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -345,20 +315,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
 				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="220" y="0" width="120" height="27" uuid="3f6a108a-f0e4-424f-8fc2-d6a27fe94664"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
-				</textField>
 			</band>
 		</groupHeader>
 	</group>
@@ -368,7 +324,7 @@
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf3} != null]]></printWhenExpression>
 				<textField evaluationTime="Group" evaluationGroup="CPF3" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="560" y="0" width="110" height="27" uuid="e546d8ea-82a7-404b-a003-28e9808c7dcd"/>
+					<reportElement x="496" y="0" width="154" height="27" uuid="e546d8ea-82a7-404b-a003-28e9808c7dcd"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -382,7 +338,7 @@
 					<textFieldExpression><![CDATA[$F{cpf3}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="440" y="0" width="120" height="27" uuid="e5df3245-d159-4ead-9dc1-e0889bbf257e"/>
+					<reportElement x="376" y="0" width="120" height="27" uuid="e5df3245-d159-4ead-9dc1-e0889bbf257e"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -396,7 +352,7 @@
 					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="670" y="0" width="130" height="27" uuid="fc36359f-4f03-447b-b0c8-5c10d7ff5c69"/>
+					<reportElement x="650" y="0" width="150" height="27" uuid="fc36359f-4f03-447b-b0c8-5c10d7ff5c69"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -410,7 +366,7 @@
 					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="0" width="130" height="27" uuid="783cc87b-223f-487e-b2af-923e664db108"/>
+					<reportElement x="0" y="0" width="186" height="27" uuid="783cc87b-223f-487e-b2af-923e664db108"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -424,7 +380,7 @@
 					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
-					<reportElement x="340" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="70a62e1f-1835-4d97-a3a6-6ed519912b2b"/>
+					<reportElement x="276" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="70a62e1f-1835-4d97-a3a6-6ed519912b2b"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -438,7 +394,7 @@
 					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="130" y="0" width="90" height="27" uuid="c245c6e9-e88b-4132-a892-57360202bf37"/>
+					<reportElement x="186" y="0" width="90" height="27" uuid="c245c6e9-e88b-4132-a892-57360202bf37"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -451,20 +407,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
 				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="220" y="0" width="120" height="27" uuid="97b15e53-643b-40d6-8f80-faee28b63e68"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
-				</textField>
 			</band>
 		</groupHeader>
 	</group>
@@ -474,7 +416,7 @@
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf4} != null]]></printWhenExpression>
 				<textField evaluationTime="Group" evaluationGroup="CPF4" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="560" y="0" width="110" height="27" uuid="c2db276b-553c-49c9-9c8b-3fcbf9450be9"/>
+					<reportElement x="496" y="0" width="154" height="27" uuid="c2db276b-553c-49c9-9c8b-3fcbf9450be9"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -488,7 +430,7 @@
 					<textFieldExpression><![CDATA[$F{cpf4}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="440" y="0" width="120" height="27" uuid="1d33d78d-051d-4931-9fb5-99b9bb9b26ec"/>
+					<reportElement x="376" y="0" width="120" height="27" uuid="1d33d78d-051d-4931-9fb5-99b9bb9b26ec"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -502,7 +444,7 @@
 					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="670" y="0" width="130" height="27" uuid="11601aba-2864-4298-8146-e7623eadaced"/>
+					<reportElement x="650" y="0" width="150" height="27" uuid="11601aba-2864-4298-8146-e7623eadaced"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -516,7 +458,7 @@
 					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="0" width="130" height="27" uuid="00462e89-5ca8-4f25-8f98-0c9929c12485"/>
+					<reportElement x="0" y="0" width="186" height="27" uuid="00462e89-5ca8-4f25-8f98-0c9929c12485"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -530,7 +472,7 @@
 					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
-					<reportElement x="340" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="2785dee5-df8c-4b30-8012-4bccf8641e96"/>
+					<reportElement x="276" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="2785dee5-df8c-4b30-8012-4bccf8641e96"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -544,7 +486,7 @@
 					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="130" y="0" width="90" height="27" uuid="518b792b-d2ad-4168-9324-58325b65324b"/>
+					<reportElement x="186" y="0" width="90" height="27" uuid="518b792b-d2ad-4168-9324-58325b65324b"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -557,20 +499,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
 				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="220" y="0" width="120" height="27" uuid="e00d4f68-4f2a-4fb0-b0cc-2f6fca82df17"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
-				</textField>
 			</band>
 		</groupHeader>
 	</group>
@@ -580,7 +508,7 @@
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf5} != null]]></printWhenExpression>
 				<textField evaluationTime="Group" evaluationGroup="CPF5" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="560" y="0" width="110" height="27" uuid="947585cf-f1de-45ae-9f0b-909697a8cadb"/>
+					<reportElement x="496" y="0" width="154" height="27" uuid="947585cf-f1de-45ae-9f0b-909697a8cadb"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -594,7 +522,7 @@
 					<textFieldExpression><![CDATA[$F{cpf5}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="440" y="0" width="120" height="27" uuid="e2716819-efde-4264-9ff9-a6c336087e5d"/>
+					<reportElement x="376" y="0" width="120" height="27" uuid="e2716819-efde-4264-9ff9-a6c336087e5d"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -608,7 +536,7 @@
 					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="670" y="0" width="130" height="27" uuid="75b890a6-4a21-49a9-9dc5-f2b74455310a"/>
+					<reportElement x="650" y="0" width="150" height="27" uuid="75b890a6-4a21-49a9-9dc5-f2b74455310a"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -622,7 +550,7 @@
 					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="0" width="130" height="27" uuid="407c1975-64e2-4d95-988f-727a70bb001b"/>
+					<reportElement x="0" y="0" width="186" height="27" uuid="407c1975-64e2-4d95-988f-727a70bb001b"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -636,7 +564,7 @@
 					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
-					<reportElement x="340" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="dce10a74-ed96-403c-8cdf-b228d070f803"/>
+					<reportElement x="276" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="dce10a74-ed96-403c-8cdf-b228d070f803"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -650,7 +578,7 @@
 					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="130" y="0" width="90" height="27" uuid="e562a80f-390c-4981-a419-23b886c45e15"/>
+					<reportElement x="186" y="0" width="90" height="27" uuid="e562a80f-390c-4981-a419-23b886c45e15"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -663,20 +591,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
 				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="220" y="0" width="120" height="27" uuid="b4da845d-85fc-42b0-933d-3e0e69b88cf6"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
-				</textField>
 			</band>
 		</groupHeader>
 	</group>
@@ -686,7 +600,7 @@
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf6} != null]]></printWhenExpression>
 				<textField evaluationTime="Group" evaluationGroup="CPF6" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="560" y="0" width="110" height="27" uuid="3591c8b7-f397-47cf-b21a-370c2e7ac97e"/>
+					<reportElement x="496" y="0" width="154" height="27" uuid="3591c8b7-f397-47cf-b21a-370c2e7ac97e"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -700,7 +614,7 @@
 					<textFieldExpression><![CDATA[$F{cpf6}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="440" y="0" width="120" height="27" uuid="329ee1eb-388e-48c8-83b0-8e12f30587ec"/>
+					<reportElement x="376" y="0" width="120" height="27" uuid="329ee1eb-388e-48c8-83b0-8e12f30587ec"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -714,7 +628,7 @@
 					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="670" y="0" width="130" height="27" uuid="5e90319d-02a3-4287-b1f7-d17b04051bba"/>
+					<reportElement x="650" y="0" width="150" height="27" uuid="5e90319d-02a3-4287-b1f7-d17b04051bba"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -728,7 +642,7 @@
 					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="0" width="130" height="27" uuid="a45dbdf8-f309-4e32-928a-c897f06147f3"/>
+					<reportElement x="0" y="0" width="186" height="27" uuid="a45dbdf8-f309-4e32-928a-c897f06147f3"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -742,7 +656,7 @@
 					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
-					<reportElement x="340" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="107a725f-543f-4c73-ad4c-da6a101dc9ce"/>
+					<reportElement x="276" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="107a725f-543f-4c73-ad4c-da6a101dc9ce"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -756,7 +670,7 @@
 					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="130" y="0" width="90" height="27" uuid="299007d9-41a6-44ae-ae98-349d5c5f1047"/>
+					<reportElement x="186" y="0" width="90" height="27" uuid="299007d9-41a6-44ae-ae98-349d5c5f1047"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -769,20 +683,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
 				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="220" y="0" width="120" height="27" uuid="29e3012f-837e-4758-961a-bbf8dbdeb849"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
-				</textField>
 			</band>
 		</groupHeader>
 	</group>
@@ -792,7 +692,7 @@
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf7} != null]]></printWhenExpression>
 				<textField evaluationTime="Group" evaluationGroup="CPF7" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="560" y="0" width="110" height="27" uuid="df031b41-4414-4ea9-985b-a13792e2301a"/>
+					<reportElement x="496" y="0" width="154" height="27" uuid="df031b41-4414-4ea9-985b-a13792e2301a"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -806,7 +706,7 @@
 					<textFieldExpression><![CDATA[$F{cpf7}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="440" y="0" width="120" height="27" uuid="66f7c385-2a8f-440c-8305-93cf4b2eb000"/>
+					<reportElement x="376" y="0" width="120" height="27" uuid="66f7c385-2a8f-440c-8305-93cf4b2eb000"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -820,7 +720,7 @@
 					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="670" y="0" width="130" height="27" uuid="1ad9a7e7-32ba-4722-8c2a-87a22c4d8d86"/>
+					<reportElement x="650" y="0" width="150" height="27" uuid="1ad9a7e7-32ba-4722-8c2a-87a22c4d8d86"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -834,7 +734,7 @@
 					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="0" width="130" height="27" uuid="d65f2a34-5aa7-4970-a62a-9c3916b92adc"/>
+					<reportElement x="0" y="0" width="186" height="27" uuid="d65f2a34-5aa7-4970-a62a-9c3916b92adc"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -848,7 +748,7 @@
 					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
-					<reportElement x="340" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="75da609a-5fc3-484d-b97a-74652435435b"/>
+					<reportElement x="276" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="75da609a-5fc3-484d-b97a-74652435435b"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -862,7 +762,7 @@
 					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="130" y="0" width="90" height="27" uuid="c3b348de-1319-4650-ae59-c2298443a0e1"/>
+					<reportElement x="186" y="0" width="90" height="27" uuid="c3b348de-1319-4650-ae59-c2298443a0e1"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -875,20 +775,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
 				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="220" y="0" width="120" height="27" uuid="842a6035-ca86-4677-9b91-9afd10ded8f1"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
-				</textField>
 			</band>
 		</groupHeader>
 	</group>
@@ -898,7 +784,7 @@
 			<band height="27">
 				<printWhenExpression><![CDATA[$F{cpf8} != null]]></printWhenExpression>
 				<textField evaluationTime="Group" evaluationGroup="CPF8" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="560" y="0" width="110" height="27" uuid="af4ff028-17e3-43a8-9e0a-d46781ecf98c"/>
+					<reportElement x="496" y="0" width="154" height="27" uuid="af4ff028-17e3-43a8-9e0a-d46781ecf98c"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -912,7 +798,7 @@
 					<textFieldExpression><![CDATA[$F{cpf8}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="R$ #,##0.00#;R$ (#,##0.00#)" isBlankWhenNull="true">
-					<reportElement x="440" y="0" width="120" height="27" uuid="2c067cee-091d-495f-ae44-a9bdf2f6d83b"/>
+					<reportElement x="376" y="0" width="120" height="27" uuid="2c067cee-091d-495f-ae44-a9bdf2f6d83b"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -926,7 +812,7 @@
 					<textFieldExpression><![CDATA[$F{valorDoDano}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="670" y="0" width="130" height="27" uuid="8ea1180e-6a5c-4057-881f-52e6269dab11"/>
+					<reportElement x="650" y="0" width="150" height="27" uuid="8ea1180e-6a5c-4057-881f-52e6269dab11"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -940,7 +826,7 @@
 					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="0" width="130" height="27" uuid="200c98cd-ced3-4278-8f1f-030ea72d881f"/>
+					<reportElement x="0" y="0" width="186" height="27" uuid="200c98cd-ced3-4278-8f1f-030ea72d881f"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -954,7 +840,7 @@
 					<textFieldExpression><![CDATA[$F{numeroProcesso}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" isBlankWhenNull="true">
-					<reportElement x="340" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="a7835692-ef0f-4675-a91b-4b459dc5ff5c"/>
+					<reportElement x="276" y="0" width="100" height="27" printWhenGroupChanges="CPF1" uuid="a7835692-ef0f-4675-a91b-4b459dc5ff5c"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -968,7 +854,7 @@
 					<textFieldExpression><![CDATA[$F{dataDoFato}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Group" evaluationGroup="CPF1" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-					<reportElement x="130" y="0" width="90" height="27" uuid="936f16a7-c01e-4edd-9cb6-e2d8981e974e"/>
+					<reportElement x="186" y="0" width="90" height="27" uuid="936f16a7-c01e-4edd-9cb6-e2d8981e974e"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -980,20 +866,6 @@
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dataInstauracao}]]></textFieldExpression>
-				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="220" y="0" width="120" height="27" uuid="47671fd4-e1da-493e-ad15-a1ef792c829d"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{anoProcesso}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

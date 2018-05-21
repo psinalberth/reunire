@@ -146,7 +146,7 @@ EMPREGADOS]]></text>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{competencia}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("MM/yyyy").format($F{competencia})]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="219" y="0" width="103" height="30" uuid="43e8bda3-b89a-421d-8c2c-c8378d08ae45"/>
@@ -158,7 +158,7 @@ EMPREGADOS]]></text>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{folhaPagamento}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00;(#,##0.00)">
+				<textField pattern="R$ #,##0.00; R$(#,##0.00)">
 					<reportElement x="460" y="0" width="120" height="30" uuid="b7ff328e-72c7-4fe4-8a61-f9af09124b17"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>
@@ -179,7 +179,7 @@ EMPREGADOS]]></text>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{unidadeOrcamentaria}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00;(#,##0.00)">
+				<textField pattern="R$ #,##0.00; R$(#,##0.00)">
 					<reportElement x="322" y="0" width="138" height="30" uuid="c229c64f-5704-4a43-9314-f8622c9df249"/>
 					<box rightPadding="5">
 						<pen lineWidth="0.5"/>

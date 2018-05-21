@@ -286,6 +286,8 @@ public class IndexViewModel {
 		unidade = null;
 		poder = null;
 		modulo = null;
+		
+		Executions.sendRedirect("/");
 	}
 	
 	public String getFiltroRelatorio() {
