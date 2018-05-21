@@ -15,13 +15,19 @@
    
    <div class="column is-10 is-offset-1">
      <div class="columns is-gapless">
-       <div class="column">
+       <div class="column has-text-centered">
          <div class="field">
            <label sclass="heading" value="Ente" />
            <label value="@load(vm.ente.nome)" />
          </div>
        </div>
-       <div class="column">
+       <div class="column has-text-centered" visible="@load(vm.unidade ne null)">
+         <div class="field">
+           <label sclass="heading" value="Unidade Gestora" />
+           <label sclass="is-6" value="@load(vm.unidade.nome)" />
+         </div>
+       </div>
+       <div class="column has-text-centered">
          <div class="field">
            <label sclass="heading" value="Exercício" />
            <label value="@load(vm.exercicio)" />

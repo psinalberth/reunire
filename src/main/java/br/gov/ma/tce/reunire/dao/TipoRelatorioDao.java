@@ -9,4 +9,6 @@ public interface TipoRelatorioDao {
 	public TipoRelatorio byId(int id);
 	
 	public List<TipoRelatorio> findAll();
+	
+	public List<TipoRelatorio> findAllByModulo(Integer modulo);
 }

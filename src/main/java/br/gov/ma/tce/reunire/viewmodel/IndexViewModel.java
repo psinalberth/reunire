@@ -53,6 +53,8 @@ public class IndexViewModel {
 	private boolean selecaoOrgaoVisivel = false;
 	private boolean selecaoUnidadeVisivel = false;
 	
+	final Integer moduloContasGoverno = 1;
+	
 	@SuppressWarnings("rawtypes")
 	ConsultasGestoresImpl daoGestores = Lookup.dao(ConsultasGestoresImpl.class);
 	
@@ -68,16 +70,22 @@ public class IndexViewModel {
 			ente = (EnteVO) daoGestores.byId(EnteVO.class, Integer.valueOf(Executions.getCurrent().getParameter("ente")));
 		}
 		
+		if (Executions.getCurrent().getParameter("unidade") != null) {
+			
+			unidade = (UnidadeVO) daoGestores.byId(UnidadeVO.class, Integer.valueOf(Executions.getCurrent().getParameter("unidade")));
+			ente = unidade.getOrgao().getEnte();
+		}
+		
 		if (Executions.getCurrent().getParameter("modulo") != null) {
 			modulo = Integer.valueOf(Executions.getCurrent().getParameter("modulo"));
 		}
 		
-		if (ente != null) {
+		if (ente != null || unidade != null) {
 			formularioVisivel = true;
 		}
 		
 		exercicio = new Integer(2017);
-		listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAll();
+		listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAllByModulo(modulo != null ? modulo : moduloContasGoverno);
 		entes = daoGestores.findAll(EnteVO.class);
 		poderes = daoGestores.findAll(PoderVO.class);
 		modulos = daoPrestacao.findAll(ModuloRelatorioPrestacao.class);
@@ -86,6 +94,8 @@ public class IndexViewModel {
 	@Command
 	@NotifyChange("listaRelatorios")
 	public void pesquisar() {
+		
+		listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAllByModulo(modulo != null ? modulo : moduloContasGoverno);
 		
 		listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAll();
 		
@@ -232,7 +242,7 @@ public class IndexViewModel {
 	@Command
 	public void imprimirRelatorio(@BindingParam("tipoRelatorio") String tipoRelatorio) {
 		
-		String url = "/report.zul?ente=" + ente.getId();
+		String url =  unidade != null ? "/report.zul?unidade=" + unidade.getId() : "/report.zul?ente=" + ente.getId();
 		
 		if (listaRelatoriosSelecionados != null && listaRelatoriosSelecionados.size() > 0) {
 			

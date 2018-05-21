@@ -68,16 +68,15 @@ public class RelatorioViewModel {
 		
 		formatoRelatorio = params.get("formato").toString().toUpperCase();
 		
-		if (Executions.getCurrent().getParameter("ente") != null) {
+		if (Executions.getCurrent().getParameter("unidade") != null) {
+			params.put("unidadeId", Integer.parseInt(Executions.getCurrent().getParameter("unidade")));
+			
+		} else if (Executions.getCurrent().getParameter("ente") != null) {
 			params.put("enteId", Integer.parseInt(Executions.getCurrent().getParameter("ente")));
 		}
 		
 		if (Executions.getCurrent().getParameter("orgao") != null) {
 			params.put("orgaoId", Integer.parseInt(Executions.getCurrent().getParameter("orgao")));
-		}
-		
-		if (Executions.getCurrent().getParameter("unidade") != null) {
-			params.put("unidadeId", Integer.parseInt(Executions.getCurrent().getParameter("unidade")));
 		}
 		
 		if (Executions.getCurrent().getParameter("poder") != null) {
@@ -162,7 +161,7 @@ public class RelatorioViewModel {
 		}
 		
 		if (params.get("modulo") != null) {
-			
+			this.params.put("modulo", params.get("modulo"));
 		}
 		
 		if (tipoRelatorio != null && tipoRelatorio.trim().length() > 0) {
@@ -200,7 +199,10 @@ public class RelatorioViewModel {
 			
 		} else {
 			
-			if (params.get("enteId") != null) {
+			if (params.get("unidadeId") != null) {
+				url = url + "unidade=" + params.get("unidadeId");
+				
+			} else if (params.get("enteId") != null) {
 				url = url + "ente=" + params.get("enteId");
 			}
 			

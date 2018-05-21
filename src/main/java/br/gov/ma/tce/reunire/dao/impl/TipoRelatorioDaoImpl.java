@@ -17,6 +17,22 @@ public class TipoRelatorioDaoImpl extends PrestacaoDaoImpl<TipoRelatorio> implem
 	public TipoRelatorio byId(int id) {
 		return entityManager.find(TipoRelatorio.class, id);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<TipoRelatorio> findAllByModulo(Integer modulo) {
+		
+		String sql = 
+				
+		"select tipo.id_tipo_relatorio, tipo.codigo, tipo.descricao from reunire.tipo_relatorio tipo " +
+			"inner join reunire.tipo_relatorio_modulo modulo on " +
+				"modulo.id_tipo_relatorio = tipo.id_tipo_relatorio " +
+		"where " +
+			"modulo.id_modulo = :modulo " +
+		"order by " +
+			"tipo.codigo";
+		
+		return entityManager.createNativeQuery(sql, TipoRelatorio.class).setParameter("modulo", modulo).getResultList();
+	}
 
 	@Override
 	public List<TipoRelatorio> findAll() {
