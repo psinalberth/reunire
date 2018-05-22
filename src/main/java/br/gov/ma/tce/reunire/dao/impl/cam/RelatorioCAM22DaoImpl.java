@@ -25,7 +25,7 @@ public class RelatorioCAM22DaoImpl extends PrestacaoDaoImpl<RelatorioCAM22VO> im
 		
 		String sql = "select c.unidade_id, c.identificacao, c.destinacao, c.valor, c.situacao, to_char(c.data_aquisicao,'dd/MM/yyyy') data_aquisicao " + 
 				"from prestacao.cam22 c "
-				+ "where c.unidade_id in(:unidade) "
+				+ "where c.unidade_id in(:unidade) and c.modulo_id = :modulo "
 				+ "group by c.unidade_id, c.identificacao, c.destinacao, c.valor, c.situacao, data_aquisicao "
 				+ "order by c.unidade_id, c.identificacao, c.destinacao, c.situacao, data_aquisicao";
 
@@ -36,6 +36,7 @@ public class RelatorioCAM22DaoImpl extends PrestacaoDaoImpl<RelatorioCAM22VO> im
 		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidade", listaIdsUnidades)
+				.setParameter("modulo", params.get("modulo"))
 				.getResultList();
 		
 		for(Object[] row : rows) {

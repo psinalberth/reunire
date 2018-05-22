@@ -36,7 +36,7 @@ public class RelatorioCAM21DaoImpl extends PrestacaoDaoImpl<RelatorioCAM21VO> im
 		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidades", listaIdsUnidades)
-				.setParameter("modulo", 1)
+				.setParameter("modulo", params.get("modulo"))
 				.getResultList();
 		
 		List<RelatorioCAM21VO> dados = new ArrayList<RelatorioCAM21VO>(rows.size());
