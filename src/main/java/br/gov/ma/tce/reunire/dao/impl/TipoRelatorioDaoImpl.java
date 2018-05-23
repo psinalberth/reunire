@@ -29,7 +29,7 @@ public class TipoRelatorioDaoImpl extends PrestacaoDaoImpl<TipoRelatorio> implem
 		"where " +
 			"modulo.id_modulo = :modulo " +
 		"order by " +
-			"tipo.codigo";
+			"tipo.id_tipo_relatorio";
 		
 		return entityManager.createNativeQuery(sql, TipoRelatorio.class).setParameter("modulo", modulo).getResultList();
 	}
