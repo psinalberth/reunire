@@ -26,7 +26,7 @@ public class RelatorioD011DaoImpl extends PrestacaoDaoImpl<RelatorioD011AVO> imp
 		String sql = 
 				
 		"select  " + 
-		"	d.unidade_orcamentaria_id, " + 
+		"	d.unidade_id, " + 
 		"	d.funcao, d.subfuncao, fg.nome nome_funcao, sf.nome nome_subfuncao, " + 
 		"	(case when prog.id_programa is not null then prog.codigo else d.programa end) programa, " + 
 		"	(case when prog.id_programa is not null then prog.denominacao else 'NÃO INFORMADO' end) nome_programa, " + 
@@ -50,7 +50,7 @@ public class RelatorioD011DaoImpl extends PrestacaoDaoImpl<RelatorioD011AVO> imp
 		"left join sae.sae_programa prog on   " + 
 		"	prog.id_programa = acao.id_programa " + 
 		"where  " + 
-		"	d.unidade_orcamentaria_id in (:unidades) and " + 
+		"	d.unidade_id in (:unidades) and " + 
 		"	((:modulo is null) or (d.modulo_id = :modulo)) " + 
 		"order by " + 
 		"	d.funcao, d.subfuncao, programa, acao";
