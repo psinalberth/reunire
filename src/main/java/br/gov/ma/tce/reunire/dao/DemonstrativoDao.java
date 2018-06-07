@@ -79,6 +79,9 @@ public interface DemonstrativoDao<T> {
 		if (obj == null)
 			return null;
 		
+		if (obj instanceof Date)
+			return (Date) obj;
+		
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeInMillis(((Timestamp) obj).getTime());
 		

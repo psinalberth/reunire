@@ -7,6 +7,8 @@ import br.gov.ma.tce.reunire.model.vo.generic.DemonstrativoVO;
 
 public class RelatorioCAM25VO extends DemonstrativoVO {
 	
+	private Integer idOrgao;
+	private String descricaoOrgao;
 	private String numeroEmpenho;
 	private String modalidade;
 	private Date dataContabil;
@@ -17,7 +19,24 @@ public class RelatorioCAM25VO extends DemonstrativoVO {
 	private BigDecimal valorAnulado;
 	private BigDecimal valorLiquidado;
 	private BigDecimal valorPago;
+	private String documento;
 	private BigDecimal saldo;
+	
+	public Integer getIdOrgao() {
+		return idOrgao;
+	}
+	
+	public void setIdOrgao(Integer idOrgao) {
+		this.idOrgao = idOrgao;
+	}
+	
+	public String getDescricaoOrgao() {
+		return descricaoOrgao;
+	}
+	
+	public void setDescricaoOrgao(String descricaoOrgao) {
+		this.descricaoOrgao = descricaoOrgao;
+	}
 
 	public String getNumeroEmpenho() {
 		return numeroEmpenho;
@@ -97,6 +116,14 @@ public class RelatorioCAM25VO extends DemonstrativoVO {
 
 	public void setValorPago(BigDecimal valorPago) {
 		this.valorPago = valorPago;
+	}
+	
+	public String getDocumento() {
+		return documento;
+	}
+	
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 
 	public BigDecimal getSaldo() {

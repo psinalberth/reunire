@@ -32,7 +32,7 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 		"    coalesce(liq.valor, 0) val_liq, coalesce(pag.valor, 0) val_pag, " + 
 		"    (case when pag.forma_pagamento_id = 1 then pag.numero_cheque_fisico end) doc, " + 
 		"    (case  " + 
-		"    	when coalesce(pag.valor, 0) > 0 then coalesce(pag.valor, 0) - coalesce(liq.valor, 0) " + 
+		"    	when coalesce(pag.valor, 0) > 0 then coalesce(liq.valor, 0) - coalesce(pag.valor, 0) " + 
 		"    	when coalesce(liq.valor, 0) > 0 then coalesce(liq.valor, 0) - coalesce(emp.valor, 0) - coalesce(anu.valor, 0) - coalesce(ref.valor, 0) " + 
 		"    	when coalesce(anu.valor, 0) > 0 then emp.valor + coalesce(ref.valor, 0) - coalesce(anu.valor, 0) " + 
 		"    	when coalesce(ref.valor, 0) > 0 then emp.valor + coalesce(ref.valor, 0)  " + 
@@ -105,7 +105,7 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);
 		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
-				.setParameter("unidade", listaIdsUnidades)
+				.setParameter("unidades", listaIdsUnidades)
 				.getResultList();
 		
 		List<RelatorioCAM25VO> dados = new ArrayList<RelatorioCAM25VO>();
@@ -118,6 +118,13 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 			
 			dado.setIdUnidade(Integer.parseInt(String.valueOf(row[0])));
 			dado.setDescricaoUnidade(unidade != null ? unidade.get().getNome().toUpperCase() : "");
+			
+			if (unidade != null) {
+				
+				dado.setIdOrgao(unidade.get().getOrgao().getId());
+				dado.setDescricaoOrgao(unidade.get().getOrgao().getNome());
+			}
+			
 			dado.setNumeroEmpenho(String.valueOf(row[1]));
 			dado.setModalidade(String.valueOf(row[2]));
 			dado.setDataContabil(toDate(row[3]));
@@ -126,8 +133,10 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 			dado.setValorEmpenhado(toBigDecimal(row[6]));
 			dado.setValorReforcado(toBigDecimal(row[7]));
 			dado.setValorAnulado(toBigDecimal(row[8]));
-			dado.setValorPago(toBigDecimal(row[9]));
-			dado.setSaldo(toBigDecimal(row[11]));
+			dado.setValorLiquidado(toBigDecimal(row[9]));
+			dado.setValorPago(toBigDecimal(row[10]));
+			dado.setDocumento(row[11] != null ? String.valueOf(row[11]) : "");
+			dado.setSaldo(toBigDecimal(row[12]));
 			
 			dados.add(dado);
 		}
