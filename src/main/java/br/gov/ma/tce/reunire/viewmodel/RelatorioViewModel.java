@@ -55,7 +55,7 @@ public class RelatorioViewModel {
 		
 		params.put("reportDir", PATH_RELATORIOS);
 		params.put("formato", Executions.getCurrent().getParameter("formato") != null ? Executions.getCurrent().getParameter("formato") : "PDF");
-		params.put("exercicio", 2017);
+		params.put("exercicio", Executions.getCurrent().getParameter("exercicio") != null ? Integer.valueOf(Executions.getCurrent().getParameter("exercicio")) : 2017);
 		
 		String [] result = Executions.getCurrent().getParameter("tipoRelatorio").split(",");
 		
@@ -208,6 +208,10 @@ public class RelatorioViewModel {
 			
 			if (params.get("modulo") != null) {
 				url = url + "&modulo=" + params.get("modulo");
+			}
+			
+			if (params.get("exercicio") != null) {
+				url = url + "&exercicio=" + params.get("exercicio");
 			}
 			
 			Executions.getCurrent().sendRedirect(url);

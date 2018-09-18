@@ -88,7 +88,12 @@ public class IndexViewModel {
 			formularioVisivel = true;
 		}
 		
-		exercicio = new Integer(2017);
+		if (Executions.getCurrent().getParameter("exercicio") != null) {
+			exercicio = new Integer(Executions.getCurrent().getParameter("exercicio"));
+		} else {
+			exercicio = new Integer(2017);
+		}
+		
 		listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAllByModulo(modulo != null ? modulo : moduloContasGoverno);
 		entes = daoGestores.findAll(EnteVO.class);
 		poderes = daoGestores.findAll(PoderVO.class);
@@ -268,6 +273,10 @@ public class IndexViewModel {
 		
 		if (modulo != null) {
 			url = url + "&modulo=" + modulo;
+		}
+		
+		if (exercicio != null) {
+			url = url + "&exercicio=" + exercicio;
 		}
 		
 		Executions.sendRedirect(url);
