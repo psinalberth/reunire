@@ -80,7 +80,7 @@ public class RelatorioCAM24DaoImpl extends PrestacaoDaoImpl<RelatorioCAM24VO> im
 
 	@Override
 	public String getNomeRelatorio() {
-		return "relatorioCAM24.jasper";
+		return "relatoriocam24.jasper";
 	}
 
 }
