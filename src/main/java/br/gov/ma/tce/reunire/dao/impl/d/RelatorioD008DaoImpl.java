@@ -24,7 +24,7 @@ public class RelatorioD008DaoImpl extends PrestacaoDaoImpl<RelatorioD008VO> impl
 		"	emp.unidade_id, emp.funcao_id, emp.subfuncao_id, fg.nome nome_funcao, sf.nome nome_subfuncao,   " + 
 		"	(case when prog.id_programa is not null then prog.codigo else cast(emp.programa as integer) end) programa,    " + 
 		"	(case when prog.id_programa is not null then prog.denominacao else 'NÃO INFORMADO' end) nome_programa,    " + 
-		"	(case when acao.id_acao is not null then acao.codigo_prefeitura else cast(regexp_replace(emp.acao, '(.0000+$)', '', 'g') as integer) end) acao,   " + 
+		"	(case when acao.id_acao is not null then acao.codigo_prefeitura else cast(regexp_replace(emp.acao, '(.0000+$)', '', 'g') as decimal) end) acao,   " + 
 		"	(case when acao.id_acao is not null then acao.descricao else 'NÃO INFORMADO' end) descricao, " + 
 		"	emp.valor_ordinario, emp.valor_vinculado  " + 
 		"from " + 
@@ -64,7 +64,7 @@ public class RelatorioD008DaoImpl extends PrestacaoDaoImpl<RelatorioD008VO> impl
 		"left join remessa.subfuncao sf on	   " + 
 		"	sf.subfuncao_id = emp.subfuncao_id   " + 
 		"left join sae.sae_acao acao on   " + 
-		"	acao.codigo_prefeitura = cast(regexp_replace(acao, '(.0000+$)', '', 'g') as integer) and  " + 
+		"	cast(acao.codigo_prefeitura as text) = cast(regexp_replace(acao, '(.0000+$)', '', 'g') as text) and  " + 
 		"	acao.funcao = emp.funcao_id and   " + 
 		"	acao.subfuncao = emp.subfuncao_id and  " + 
 		"	acao.unidade = emp.unidade_id " + 
