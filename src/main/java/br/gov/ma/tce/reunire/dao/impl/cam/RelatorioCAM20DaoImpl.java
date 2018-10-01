@@ -64,9 +64,12 @@ public class RelatorioCAM20DaoImpl extends PrestacaoDaoImpl<RelatorioCAM20VO> im
 			dado.setValorRessarcido(row[4] != null ? new BigDecimal(String.valueOf(row[4])) : null);
 			
 			Calendar cal = Calendar.getInstance();
-			cal.setTimeInMillis(((Timestamp)row[5]).getTime());
 			
-			dado.setDataRessarcimento(cal.get(Calendar.YEAR) >= 1900 ? cal.getTime() : null);
+			if (row[5] != null) {
+				cal.setTimeInMillis(((Timestamp)row[5]).getTime());
+			}
+			
+			dado.setDataRessarcimento(row[5] != null ? cal.getTime() : null);
 			dado.setValorDebito(row[6] != null ? new BigDecimal(String.valueOf(row[6])) : null);
 			
 			dados.add(dado);

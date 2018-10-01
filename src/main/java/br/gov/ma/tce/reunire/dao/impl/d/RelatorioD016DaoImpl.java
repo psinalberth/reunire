@@ -56,14 +56,18 @@ public class RelatorioD016DaoImpl extends PrestacaoDaoImpl<RelatorioD016AVO> imp
 			relatorio.setLeis(l[2].toString());
 			
 			Date data = new Date();
+			String novaData = null;
 			
-			data = (Date) l[3];
+			if (l[3] != null) {
 			
-			DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+				data = (Date) l[3];
+				
+				DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+				
+				 novaData = formatador.format(data);
+			}
 			
-			String novaData = formatador.format(data);			
-			
-			relatorio.setDataDaLei(novaData);
+			relatorio.setDataDaLei(l[3]  != null ? novaData : "N/A");
 			relatorio.setValorEmissao(new BigDecimal(new Double(l[4].toString())));
 			relatorio.setSaldoAnterior(new BigDecimal(new Double(l[5].toString())));
 			relatorio.setMovimentoEmissao(new BigDecimal(new Double(l[6].toString())));

@@ -30,6 +30,7 @@ public class RelatorioCAM14DaoImpl extends PrestacaoDaoImpl<RelatorioCAM14VO> im
 		"select " +
 			"unidade_id, " +
 			"(case " +
+				"when cpf_cnpj_contratado ~ '[a-zA-Z]' then cpf_cnpj_contratado " +
 				"when length(cpf_cnpj_contratado) = 11 then regexp_replace(cpf_cnpj_contratado, '([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})', '\\1.\\2.\\3-\\4') " + 
 				"when length(cpf_cnpj_contratado) = 14 then regexp_replace(cpf_cnpj_contratado, '([[:digit:]]{2})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{4})([[:digit:]]{2})', '\\1.\\2.\\3/\\4-\\5') " +
 				"else cpf_cnpj_contratado " +
@@ -73,7 +74,11 @@ public class RelatorioCAM14DaoImpl extends PrestacaoDaoImpl<RelatorioCAM14VO> im
 			dado.setNomeContratante(String.valueOf(row[4]));
 			
 			Calendar date = Calendar.getInstance();
-			date.setTimeInMillis(((Timestamp) row[5]).getTime());
+			
+			if (row[5] != null) {
+			
+				date.setTimeInMillis(((Timestamp) row[5]).getTime());
+			}
 			
 			dado.setDataContratacao(date.get(Calendar.YEAR) > 1899 ? date.getTime() : null);
 			dado.setValorContratacao(row[6] != null ? new BigDecimal(String.valueOf(row[6])) : null);

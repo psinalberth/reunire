@@ -59,15 +59,20 @@ public class RelatorioCAM17DaoImpl extends PrestacaoDaoImpl<RelatorioCAM17VO> im
 			dado.setNumeroProcesso(String.valueOf(row[1]));
 			
 			Calendar date = Calendar.getInstance();
-			date.setTimeInMillis(((Timestamp) row[2]).getTime());
 			
-			dado.setDataAcao(date.get(Calendar.YEAR) > 1899 ? date.getTime() : null);
+			if (row[2] != null) {
+				date.setTimeInMillis(((Timestamp) row[2]).getTime());
+			}
+			
+			dado.setDataAcao(row[2] != null ? date.getTime() : null);
 			dado.setIdentificacaoCredor(String.valueOf(row[3]));
 			dado.setObjeto(String.valueOf(row[4]));
 			
-			date.setTimeInMillis(((Timestamp) row[5]).getTime());
+			if (row[5] != null) {
+				date.setTimeInMillis(((Timestamp) row[5]).getTime());
+			}
 			
-			dado.setDataPagamento(date.get(Calendar.YEAR) > 1899 ? date.getTime() : null);
+			dado.setDataPagamento(row[5] != null ? date.getTime() : null);
 			dado.setValorPagamento(row[6] != null ? new BigDecimal(String.valueOf(row[6])) : null);
 			
 			dados.add(dado);
