@@ -103,6 +103,12 @@ public interface DemonstrativoDao<T> {
 		
 		String retorno = String.valueOf(obj);
 		
+		if (retorno.matches("^.*[a-zA-Z].*+")) {
+			
+			retorno = retorno.replaceAll("[0-9]", "");
+			return retorno;
+		}
+		
 		if (retorno.matches(".*000\\d{3}$")) {
 			
 			retorno = String.format("%014d", Long.valueOf(retorno));
