@@ -32,7 +32,6 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 		"    end) credor, emp.valor val_emp, " + 
 		"    coalesce(ref.valor, 0) val_ref, coalesce(anu.valor, 0) val_anu, " + 
 		"    coalesce(liq.valor, 0) val_liq, coalesce(pag.valor, 0) val_pag, " + 
-		"    (case when pag.forma_pagamento_id = 1 then pag.numero_cheque_fisico end) doc, " + 
 		"    (case  " + 
 		"    	when coalesce(pag.valor, 0) > 0 then coalesce(liq.valor, 0) - coalesce(pag.valor, 0) " + 
 		"    	when coalesce(liq.valor, 0) > 0 then coalesce(liq.valor, 0) - coalesce(emp.valor, 0) - coalesce(anu.valor, 0) - coalesce(ref.valor, 0) " + 
@@ -80,7 +79,7 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 		") liq on liq.empenho_id = emp.empenho_id " + 
 		"left join ( " + 
 		"    select  " + 
-		"		liq.empenho_id, pag.forma_pagamento_id, pag.numero_cheque_fisico, sum(coalesce(sub.valor, 0) - coalesce(subdev.valor, 0)) valor " + 
+		"		liq.empenho_id, sum(coalesce(sub.valor, 0) - coalesce(subdev.valor, 0)) valor " + 
 		"    from  " + 
 		"		remessa.pagamento pag " + 
 		"    inner join remessa.liquidacao liq on " + 
@@ -96,7 +95,7 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 		"    where " + 
 		"		est.pagamento_id is null and liq.empenho_id is not null " + 
 		"    group by " + 
-		"		liq.empenho_id, pag.forma_pagamento_id, pag.numero_cheque_fisico " + 
+		"		liq.empenho_id " + 
 		") pag on pag.empenho_id = emp.empenho_id " + 
 		"where " + 
 		"	unidade_id in (:unidades) " + 
@@ -116,7 +115,6 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 				"else cast(emp.credor_cpf_cnpj as text) " +
 			"end) credor, " + 
 			"emp.valor val_emp, coalesce(ref.valor, 0) val_ref, coalesce(anu.valor, 0) val_anu, coalesce(liq.valor, 0) val_liq, coalesce(pag.valor, 0) val_pag, " +
-			 "(case when pag.forma_pagamento = 1 then pag.numero_cheque_fisico end) doc, " +
 			 "(case " +  
 			    	"when coalesce(pag.valor, 0) > 0 then coalesce(liq.valor, 0) - coalesce(pag.valor, 0) " + 
 			    	"when coalesce(liq.valor, 0) > 0 then coalesce(liq.valor, 0) - coalesce(emp.valor, 0) - coalesce(anu.valor, 0) - coalesce(ref.valor, 0) " + 
@@ -157,7 +155,7 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 		") liq on liq.empenho_id = emp.empenho_id " +
 		"left join ( " +
 			"select " + 
-				"liq.empenho_id, pag.forma_pagamento, pag.numero_cheque_fisico, sum(coalesce(sub.valor_subelemento, 0) - coalesce(dev.valor, 0)) valor " +
+				"liq.empenho_id, sum(coalesce(sub.valor_subelemento, 0) - coalesce(dev.valor, 0)) valor " +
 			"from  " +
 				"sae_importacao.pagamento pag " +
 			"inner join sae_importacao.liquidacao liq on liq.liquidacao_id = pag.liquidacao_id " +
@@ -167,7 +165,7 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 			"where " +
 				"est.pagamento_id is null and liq.empenho_id is not null " +
 			"group by " +
-				"liq.empenho_id, pag.forma_pagamento, pag.numero_cheque_fisico " +
+				"liq.empenho_id " +
 		") pag on pag.empenho_id = emp.empenho_id " +
 		"where " +
 			"emp.unidade_id in (:unidades) " +
@@ -208,8 +206,7 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 			dado.setValorAnulado(toBigDecimal(row[8]));
 			dado.setValorLiquidado(toBigDecimal(row[9]));
 			dado.setValorPago(toBigDecimal(row[10]));
-			dado.setDocumento(row[11] != null ? String.valueOf(row[11]) : "");
-			dado.setSaldo(toBigDecimal(row[12]));
+			dado.setSaldo(toBigDecimal(row[11]));
 			
 			dados.add(dado);
 		}
