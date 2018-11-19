@@ -79,7 +79,7 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 		") liq on liq.empenho_id = emp.empenho_id " + 
 		"left join ( " + 
 		"    select  " + 
-		"		liq.empenho_id, sum(coalesce(sub.valor, 0) - coalesce(subdev.valor, 0)) valor " + 
+		"liq.empenho_id, (sum(pag.valor_pagamento) - sum(coalesce(subdev.valor, 0))) valor " + 
 		"    from  " + 
 		"		remessa.pagamento pag " + 
 		"    inner join remessa.liquidacao liq on " + 
@@ -155,7 +155,7 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 		") liq on liq.empenho_id = emp.empenho_id " +
 		"left join ( " +
 			"select " + 
-				"liq.empenho_id, sum(coalesce(sub.valor_subelemento, 0) - coalesce(dev.valor, 0)) valor " +
+				"liq.empenho_id, (sum(pag.valor_pagamento) - sum(coalesce(dev.valor, 0))) valor " +
 			"from  " +
 				"sae_importacao.pagamento pag " +
 			"inner join sae_importacao.liquidacao liq on liq.liquidacao_id = pag.liquidacao_id " +
