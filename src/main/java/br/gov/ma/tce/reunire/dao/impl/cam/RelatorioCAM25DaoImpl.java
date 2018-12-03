@@ -114,9 +114,9 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 				"when emp.unidade_ug is not null then cast(emp.unidade_ug as text) " +
 				"else cast(emp.credor_cpf_cnpj as text) " +
 			"end) credor, " + 
-			"emp.valor val_emp, coalesce(ref.valor, 0) val_ref, coalesce(anu.valor, 0) val_anu, coalesce(liq.valor, 0) val_liq, coalesce(pag.valor, 0) val_pag, " +
+			"emp.valor val_emp, coalesce(ref.valor, 0) val_ref, coalesce(anu.valor, 0) val_anu, coalesce(liq.valor, 0) val_liq, (coalesce(pag.valor, 0) + coalesce(con.valor, 0)) val_pag, " +
 			 "(case " +  
-			    	"when coalesce(pag.valor, 0) > 0 then coalesce(liq.valor, 0) - coalesce(pag.valor, 0) " + 
+			    	"when coalesce(pag.valor, 0) > 0 then coalesce(liq.valor, 0) - (coalesce(pag.valor, 0) + coalesce(con.valor, 0)) " + 
 			    	"when coalesce(liq.valor, 0) > 0 then coalesce(liq.valor, 0) - coalesce(emp.valor, 0) - coalesce(anu.valor, 0) - coalesce(ref.valor, 0) " + 
 			    	"when coalesce(anu.valor, 0) > 0 then emp.valor + coalesce(ref.valor, 0) - coalesce(anu.valor, 0) " + 
 			    	"when coalesce(ref.valor, 0) > 0 then emp.valor + coalesce(ref.valor, 0) " +  
@@ -167,6 +167,16 @@ public class RelatorioCAM25DaoImpl extends PrestacaoDaoImpl<RelatorioCAM25VO> im
 			"group by " +
 				"liq.empenho_id " +
 		") pag on pag.empenho_id = emp.empenho_id " +
+		" left join ( " +
+			"select " + 
+				"liq.empenho_id, sum(con.valor) valor " + 
+			"from sae_importacao.consignacao_retencao con " +
+				"inner join sae_importacao.liquidacao liq on liq.liquidacao_id = con.liquidacao_id " +
+				"left join sae_importacao.estorno_liquidacao estliq on estliq.liquidacao_id = liq.liquidacao_id " +
+				"left join sae_importacao.estorno_consignacao_retencao est on " +
+					"est.consignacao_retencao_id = con.consignacao_retencao_id " +
+				"where est.consignacao_retencao_id is null and estliq.liquidacao_id is null and con.liquidacao_id is not null " +
+			"group by liq.empenho_id) con on con.empenho_id = emp.empenho_id " +
 		"where " +
 			"emp.unidade_id in (:unidades) " +
 		"order by " +
