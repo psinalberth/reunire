@@ -141,6 +141,7 @@ public class RelatorioCAM26DaoImpl extends PrestacaoDaoImpl<RelatorioCAM26VO> im
 				
 				dado.setIdOrgao(unidade.get().getOrgao().getId());
 				dado.setDescricaoOrgao(unidade.get().getOrgao().getNome());
+				dado.setIdEnte(unidade.get().getOrgao().getEnte().getId());
 			}
 			
 			dado.setNumeroEmpenho(String.valueOf(row[1]));

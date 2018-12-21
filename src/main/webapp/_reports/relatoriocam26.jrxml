@@ -23,6 +23,7 @@
 	<field name="documento" class="java.lang.String"/>
 	<field name="descricaoNaturezaDespesa" class="java.lang.String"/>
 	<field name="nomeCredor" class="java.lang.String"/>
+	<field name="idEnte" class="java.lang.Integer"/>
 	<group name="ORGAO">
 		<groupExpression><![CDATA[$F{idOrgao}]]></groupExpression>
 		<groupHeader>
@@ -308,7 +309,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorPago}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00#;(#,##0.00#)">
+				<textField pattern="#,##0.00#;(#,##0.00#)" hyperlinkType="Reference" hyperlinkTarget="_blank">
 					<reportElement x="0" y="0" width="80" height="30" uuid="a2d07806-5a66-4092-8665-76c0a5641394">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -316,10 +317,12 @@
 					<box leftPadding="0" rightPadding="0">
 						<pen lineWidth="0.5"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numeroEmpenho}]]></textFieldExpression>
+					<hyperlinkReferenceExpression><![CDATA["ftp://prestacao@172.16.0.28:10021/" + $F{idEnte}+"/" +$P{exercicio} +"/"+ $F{idOrgao}+"/"+$F{idUnidade}+"/"+"COMPROBATORIOS"+"/"+$F{numeroEmpenho}+".pdf"]]></hyperlinkReferenceExpression>
+					<hyperlinkAnchorExpression><![CDATA["www.google.com"]]></hyperlinkAnchorExpression>
 				</textField>
 				<textField pattern="#,##0.00#;(#,##0.00#)">
 					<reportElement x="430" y="0" width="90" height="30" uuid="13bbb31f-baba-4ea0-9d70-2d94c42c7a8b">

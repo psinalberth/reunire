@@ -8,6 +8,7 @@ import br.gov.ma.tce.reunire.model.vo.generic.DemonstrativoVO;
 public class RelatorioCAM26VO extends DemonstrativoVO {
 	
 	private Integer idOrgao;
+	private Integer idEnte;
 	private String descricaoOrgao;
 	private String numeroEmpenho;
 	private String modalidade;
@@ -32,6 +33,14 @@ public class RelatorioCAM26VO extends DemonstrativoVO {
 		this.idOrgao = idOrgao;
 	}
 	
+	public Integer getIdEnte() {
+		return idEnte;
+	}
+
+	public void setIdEnte(Integer idEnte) {
+		this.idEnte = idEnte;
+	}
+
 	public String getDescricaoOrgao() {
 		return descricaoOrgao;
 	}
