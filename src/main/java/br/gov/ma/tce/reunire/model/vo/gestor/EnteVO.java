@@ -11,16 +11,19 @@ public class EnteVO {
 	
 	@Id
 	@Column(name="ENTE_ID")
-	private int id;
+	private Integer id;
 	
 	@Column(name="NOME")
 	private String nome;
 	
-	public int getId() {
+	@Column(name="ESTADO_ID")
+	private Integer estadoId;
+	
+	public Integer getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -31,4 +34,13 @@ public class EnteVO {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public Integer getEstadoId() {
+		return estadoId;
+	}
+
+	public void setEstadoId(Integer estadoId) {
+		this.estadoId = estadoId;
+	}
+	
 }

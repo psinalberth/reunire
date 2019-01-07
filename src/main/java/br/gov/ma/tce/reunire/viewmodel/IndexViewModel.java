@@ -95,7 +95,7 @@ public class IndexViewModel {
 		}
 		
 		listaRelatorios = ((TipoRelatorioDao) Lookup.dao(TipoRelatorioDaoImpl.class)).findAllByModulo(modulo != null ? modulo : moduloContasGoverno);
-		entes = daoGestores.findAll(EnteVO.class);
+		entes = daoGestores.findAllEnte();
 		poderes = daoGestores.findAll(PoderVO.class);
 		modulos = daoPrestacao.findAll(ModuloRelatorioPrestacao.class);
 	}
@@ -124,7 +124,7 @@ public class IndexViewModel {
 	@NotifyChange("entes")
 	public void filtrarEnte(@BindingParam("filtro") String filtro) {
 		
-		entes = daoGestores.findAll(EnteVO.class);
+		entes = daoGestores.findAllEnte();
 		
 		if (filtro != null && filtro.trim().length() > 0) {
 			entes = entes.stream().filter(ente -> ente.getNome().toUpperCase().contains(filtro.toUpperCase())).collect(Collectors.toList());

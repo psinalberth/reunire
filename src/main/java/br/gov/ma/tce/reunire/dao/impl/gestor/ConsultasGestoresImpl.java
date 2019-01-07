@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
 import br.gov.ma.tce.reunire.dao.impl.GestoresDaoImpl;
+import br.gov.ma.tce.reunire.model.vo.gestor.EnteVO;
 
 @Stateless
 public class ConsultasGestoresImpl<T> extends GestoresDaoImpl<T> {
@@ -43,5 +44,12 @@ public class ConsultasGestoresImpl<T> extends GestoresDaoImpl<T> {
 		
 		String sql =  "from " + clazz.getSimpleName() + " obj where obj.poder.id = :poder";
 		return entityManager.createQuery(sql).setParameter("poder", id).getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<EnteVO> findAllEnte (){
+		
+		String sql = "select e.* from gestor.ente e where e.estado_id= 21";
+		return entityManager.createNativeQuery(sql, EnteVO.class).getResultList();
 	}
 }
