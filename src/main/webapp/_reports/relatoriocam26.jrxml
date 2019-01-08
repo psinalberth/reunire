@@ -321,7 +321,7 @@
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numeroEmpenho}]]></textFieldExpression>
-					<hyperlinkReferenceExpression><![CDATA["ftp://prestacao@172.16.0.28:10021/" + $F{idEnte}+"/" +$P{exercicio} +"/"+ $F{idOrgao}+"/"+$F{idUnidade}+"/"+"COMPROBATORIOS"+"/"+$F{numeroEmpenho}+".pdf"]]></hyperlinkReferenceExpression>
+					<hyperlinkReferenceExpression><![CDATA["ftp://anonymous@172.16.0.28:10021/pub/prestacao/" + $F{idEnte}+"/" +$P{exercicio} +"/"+ $F{idOrgao}+"/"+$F{idUnidade}+"/"+"COMPROBATORIOS"+"/"+$F{numeroEmpenho}+".pdf"]]></hyperlinkReferenceExpression>
 					<hyperlinkAnchorExpression><![CDATA["www.google.com"]]></hyperlinkAnchorExpression>
 				</textField>
 				<textField pattern="#,##0.00#;(#,##0.00#)">
