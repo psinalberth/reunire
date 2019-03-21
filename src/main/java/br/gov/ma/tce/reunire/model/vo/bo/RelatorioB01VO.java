@@ -7,6 +7,7 @@ public class RelatorioB01VO implements Serializable {
 	
 	private static final long serialVersionUID = 5062856128767170139L;
 	
+	private String ente;
 	private String total;
 	private String subtotal;
 	private String totalCategoria;
@@ -27,6 +28,14 @@ public class RelatorioB01VO implements Serializable {
 		this.previsaoInicial = previsaoInicial;
 		this.previsaoAtualizada = previsaoAtualizada;
 		this.receitasRealizadas = receitasAtualizadas;
+	}
+	
+	public String getEnte() {
+		return ente;
+	}
+	
+	public void setEnte(String ente) {
+		this.ente = ente;
 	}
 	
 	public RelatorioB01VO() {

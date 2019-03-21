@@ -54,6 +54,9 @@ public class RelatorioD006DaoImpl extends PrestacaoDaoImpl<RelatorioD006AVO> imp
 		"order by  " + 
 			"d.unidade_orcamentaria_id, programa, acao";
 		
+		String schema = params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(new Integer(2018)) ? "prestacao2018" : "prestacao";
+		sql = sql.replaceAll("prestacao", schema);
+		
 		List<RelatorioD006AVO> dados = new ArrayList<>();
 		
 		List<UnidadeVO> listaUnidades = recuperarUnidades(params);

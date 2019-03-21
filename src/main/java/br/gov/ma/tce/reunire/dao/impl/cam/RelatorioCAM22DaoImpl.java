@@ -28,6 +28,9 @@ public class RelatorioCAM22DaoImpl extends PrestacaoDaoImpl<RelatorioCAM22VO> im
 				+ "where c.unidade_id in(:unidade) and c.modulo_id = :modulo "
 				+ "group by c.unidade_id, c.identificacao, c.destinacao, c.valor, c.situacao, data_aquisicao "
 				+ "order by c.unidade_id, c.identificacao, c.destinacao, c.situacao, data_aquisicao";
+		
+		String schema = params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(new Integer(2018)) ? "prestacao2018" : "prestacao";
+		sql = sql.replaceAll("prestacao", schema);
 
 		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
 		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);

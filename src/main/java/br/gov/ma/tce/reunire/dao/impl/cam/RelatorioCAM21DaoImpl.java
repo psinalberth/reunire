@@ -34,6 +34,9 @@ public class RelatorioCAM21DaoImpl extends PrestacaoDaoImpl<RelatorioCAM21VO> im
 		"order by " +
 			"cam.unidade_id, cam.exercicio, cam.numero_deliberacao";
 		
+		String schema = params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(new Integer(2018)) ? "prestacao2018" : "prestacao";
+		sql = sql.replaceAll("prestacao", schema);
+		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidades", listaIdsUnidades)
 				.setParameter("modulo", params.get("modulo"))

@@ -24,7 +24,7 @@ public class Util {
 		if (dados == null || dados.size() == 0)
 			return BigDecimal.ZERO;
 		
-		Optional<Object[]> objetoNivelDois = dados.stream().filter(obj -> String.valueOf(obj[1]).matches(codigoNivelDois) && 
+		Optional<Object[]> objetoNivelDois = dados.stream().filter(obj -> String.valueOf(obj[2]).matches(codigoNivelDois) && 
 				Integer.valueOf(String.valueOf(obj[0])).intValue() == modulo).findAny();
 		
 		// Se possui registro no nível 2
@@ -34,7 +34,7 @@ public class Util {
 		
 		// Procurar todos os registros que se aplicam na regex
 		
-		List<Object[]> filtro = dados.stream().filter(item -> String.valueOf(item[1]).matches(regex + ".*")).collect(Collectors.toList());
+		List<Object[]> filtro = dados.stream().filter(item -> String.valueOf(item[2]).matches(regex + ".*")).collect(Collectors.toList());
 		
 		// Remove todas as "subárvores", restando somente as folhas da árvore
 		
@@ -44,12 +44,12 @@ public class Util {
 			public boolean test(Object[] obj) {
 				
 				Pattern pattern = Pattern.compile(".*([1-9]+)");
-				String codigo = String.valueOf(obj[1]);
+				String codigo = String.valueOf(obj[2]);
 				Matcher matcher = pattern.matcher(codigo);
 				
 				matcher.find();
 				
-				return (filtro.stream().filter(item -> String.valueOf(item[1]).startsWith(codigo.substring(0, matcher.end())) && Integer.valueOf(String.valueOf(item[0])).compareTo(Integer.valueOf(String.valueOf(obj[0]))) > 0).collect(Collectors.toList())).size() > 0;
+				return (filtro.stream().filter(item -> String.valueOf(item[2]).startsWith(codigo.substring(0, matcher.end())) && Integer.valueOf(String.valueOf(item[0])).compareTo(Integer.valueOf(String.valueOf(obj[0]))) > 0).collect(Collectors.toList())).size() > 0;
 			}
 		});
 		

@@ -43,6 +43,8 @@ public class RelatorioCAM07DaoImpl extends PrestacaoDaoImpl<RelatorioCAM07VO> im
 		"order by " +
 			"unidade_id, cpf_cnpj_credor, data_vencimento";
 		
+		String schema = params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(new Integer(2018)) ? "prestacao2018" : "prestacao";
+		sql = sql.replaceAll("prestacao", schema);
 		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidades", listaIdsUnidades)
@@ -51,7 +53,7 @@ public class RelatorioCAM07DaoImpl extends PrestacaoDaoImpl<RelatorioCAM07VO> im
 		
 		List<RelatorioCAM07VO> dados = new ArrayList<RelatorioCAM07VO>(rows.size());
 		
-		params.put("exercicio", 2017);
+		params.put("exercicio", params.get("exercicio"));
 		
 		for (Object [] row : rows) {
 			

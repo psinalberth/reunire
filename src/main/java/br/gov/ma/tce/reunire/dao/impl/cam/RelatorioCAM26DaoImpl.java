@@ -22,7 +22,7 @@ public class RelatorioCAM26DaoImpl extends PrestacaoDaoImpl<RelatorioCAM26VO> im
 		
 		String sql = 
 				
-		//params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(new Integer(2017)) ?
+		params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(new Integer(2017)) ?
 				
 		"select" + 
 		"    emp.unidade_id, emp.numero_empenho ne, vw.descricao, emp.data_contabilizacao, nd.codigo, " + 
@@ -113,6 +113,92 @@ public class RelatorioCAM26DaoImpl extends PrestacaoDaoImpl<RelatorioCAM26VO> im
 		"		est.pagamento_id is null and liq.empenho_id is not null " + 
 		"    group by " + 
 		"		liq.empenho_id " + 
+		") pag on pag.empenho_id = emp.empenho_id " + 
+		"where " + 
+		"	emp.unidade_id in (:unidades) " + 
+		"order by " + 
+		"	unidade_id, data_contabilizacao, numero_empenho"
+		
+		:
+			
+		"select" + 
+		"    emp.unidade_id, emp.numero_empenho ne, nd.descricao, emp.data_contabilizacao, regexp_replace(cast(nd.natureza_despesa_id as text), '([[:digit:]]{1})([[:digit:]]{1})([[:digit:]]{2})([[:digit:]]{2})([[:digit:]]{2})','\\1.\\2.\\3.\\4.\\5'), " + 
+		"    (case  " + 
+		" when emp.credor_cpf_cnpj is not null and length(cast(emp.credor_cpf_cnpj as text)) = 11 then regexp_replace(cast(credor_cpf_cnpj as text), '([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})', '\\1.\\2.\\3-\\4') " +
+		"when emp.credor_cpf_cnpj is not null and length(cast(emp.credor_cpf_cnpj as text)) > 11 then regexp_replace(lpad(cast(credor_cpf_cnpj as text), '14', '0'), '([[:digit:]]{2})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{4})([[:digit:]]{2})', '\\1.\\2.\\3/\\4-\\5')  " +
+		"        when emp.credor_extraordinario is not null then regexp_replace(jur.cnpj, '([[:digit:]]{2})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{4})([[:digit:]]{2})', '\\1.\\2.\\3/\\4-\\5')" + 
+		"        when emp.unidade_ug is not null then cast(unidade_ug as text) " + 
+		"		 else '-' " + 
+		"    end) credor," + 
+		"	(case  " + 
+		"        when emp.credor_extraordinario is not null then jur.nome_empresarial" + 
+		"        when emp.credor_cpf_cnpj is not null then fis.nome " + 
+		"		 when emp.unidade_ug is not null then u.nome " + 
+		"             end) nomeCredor,  emp.valor val_emp, " + 
+		"    coalesce(ref.valor, 0) val_ref, coalesce(anu.valor, 0) val_anu, " + 
+		"    coalesce(liq.valor, 0) val_liq, coalesce(pag.valor, 0) val_pag, " + 
+		"    (case  " + 
+		"    	when coalesce(pag.valor, 0) > 0 then coalesce(liq.valor, 0) - coalesce(pag.valor, 0) " + 
+		"    	when coalesce(liq.valor, 0) > 0 then coalesce(liq.valor, 0) - coalesce(emp.valor, 0) - coalesce(anu.valor, 0) - coalesce(ref.valor, 0) " + 
+		"    	when coalesce(anu.valor, 0) > 0 then emp.valor + coalesce(ref.valor, 0) - coalesce(anu.valor, 0) " + 
+		"    	when coalesce(ref.valor, 0) > 0 then emp.valor + coalesce(ref.valor, 0)  " + 
+		"    	else emp.valor " + 
+		"    end) saldo " + 
+		"from  " + 
+		"	sae_importacao.empenho emp " + 
+		"left join gestor.unidade u on " + 
+		"	u.unidade_id = emp.unidade_ug " + 
+		"left join pessoa_rf.pessoa_fisica fis on " + 
+		"	lpad(cast(emp.credor_cpf_cnpj as text), 11, '0') = fis.cpf " + 
+		"left join pessoa_rf.pessoa_juridica jur on " + 
+		"	lpad(cast(emp.credor_cpf_cnpj as text), 14, '0') = jur.cnpj " + 
+		"left join sae_importacao.natureza_despesa nd on  " + 
+		"	nd.natureza_despesa_id = emp.natureza_despesa " + 
+		"left join sae_importacao.fonte_recurso fon on " + 
+		"	fon.numero = emp.destinacao_recursos " + 
+		"left join ( " + 
+		"    select  " + 
+		"		ref.empenho_id, sum(ref.valor) valor " + 
+		"    from  " + 
+		"		sae_importacao.reforco_empenho ref " + 
+		"    group by " + 
+		"		ref.empenho_id " + 
+		") ref on ref.empenho_id = emp.empenho_id " + 
+		"left join ( " + 
+		"	select  " + 
+		"		anu.empenho_id, sum(anu.valor) valor  " + 
+		"	from  " + 
+		"		sae_importacao.anulacao_empenho anu " + 
+		"	group by " + 
+		"		anu.empenho_id " + 
+		") anu on anu.empenho_id = emp.empenho_id " + 
+		"left join ( " + 
+		"	select " + 
+		"		liq.empenho_id, sum(sub.valor_subelemento) valor " + 
+		"	from  " + 
+		"		sae_importacao.liquidacao liq " + 
+		"	inner join sae_importacao.sublemento_liquidacao sub on " + 
+		"		sub.liquidacao_id = liq.liquidacao_id " + 
+		"	left join sae_importacao.estorno_liquidacao est on " + 
+		"		est.liquidacao_id = liq.liquidacao_id " + 
+		"	where " + 
+		"		est.liquidacao_id is null and liq.empenho_id is not null " + 
+		"	group by " + 
+		"		liq.empenho_id " + 
+		") liq on liq.empenho_id = emp.empenho_id " + 
+		"left join ( " + 
+		"select " + 
+		"liq.empenho_id, (sum(pag.valor_pagamento) - sum(coalesce(dev.valor, 0))) valor " + 
+		"from  " + 
+		"sae_importacao.pagamento pag " + 
+		"inner join sae_importacao.liquidacao liq on liq.liquidacao_id = pag.liquidacao_id " + 
+		"inner join sae_importacao.sublemento_liquidacao sub on sub.liquidacao_id = liq.liquidacao_id " + 
+		"left join sae_importacao.estorno_pagamento est on est.pagamento_id = pag.pagamento_id " + 
+		"left join sae_importacao.devolucao_pagamento dev on dev.pagamento_id = pag.pagamento_id " + 
+		"where " + 
+		"est.pagamento_id is null and liq.empenho_id is not null " + 
+		"group by " + 
+		"liq.empenho_id " + 
 		") pag on pag.empenho_id = emp.empenho_id " + 
 		"where " + 
 		"	emp.unidade_id in (:unidades) " + 

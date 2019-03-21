@@ -31,6 +31,9 @@ public class RelatorioCAM15DaoImpl extends PrestacaoDaoImpl<RelatorioCAM15VO> im
 		"order by " +
 			"unidade_id, upper(numero_oficio), upper(natureza), regexp_replace(cpf_cnpj_credor, '[./-]', '', 'g')";
 		
+		String schema = params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(new Integer(2018)) ? "prestacao2018" : "prestacao";
+		sql = sql.replaceAll("prestacao", schema);
+		
 		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
 		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);
 		

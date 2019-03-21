@@ -76,6 +76,9 @@ public class RelatorioD001DaoImpl extends PrestacaoDaoImpl<RelatorioD001VO> impl
 		"order by " +
 			"id, nr";
 		
+		String schema = params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(new Integer(2018)) ? "prestacao2018" : "prestacao";
+		sql = sql.replaceAll("prestacao", schema);
+		
 		List<Object[]> rows = entityManager.createNativeQuery(sql)
 				.setParameter("unidades", listaIdsUnidades)
 				.setParameter("modulo", params.get("modulo") != null ? Integer.valueOf(String.valueOf(params.get("modulo"))) : 1)

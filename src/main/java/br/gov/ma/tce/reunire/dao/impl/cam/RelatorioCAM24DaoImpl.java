@@ -29,6 +29,9 @@ public class RelatorioCAM24DaoImpl extends PrestacaoDaoImpl<RelatorioCAM24VO> im
 				"group by c.unidade_id, competencia, c.unidade_utilizacao_id, c.tipo_folha, c.cota_empregado, c.cota_empregador, c.regime, c.numero_documento " +
 				"order by c.unidade_id, competencia, c.unidade_utilizacao_id, c.tipo_folha";
 		
+		String schema = params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(new Integer(2018)) ? "prestacao2018" : "prestacao";
+		sql = sql.replaceAll("prestacao", schema);
+		
 		List<UnidadeVO> listaUnidades = recuperarUnidades(params);
 		List<Integer> listaIdsUnidades = extrairIds(listaUnidades);
 		

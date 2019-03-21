@@ -309,13 +309,17 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valorPago}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00#;(#,##0.00#)" hyperlinkType="Reference" hyperlinkTarget="_blank">
-					<reportElement x="0" y="0" width="80" height="30" uuid="a2d07806-5a66-4092-8665-76c0a5641394">
+				<textField pattern="#,##0.00#;(#,##0.00#)" hyperlinkType="Reference" hyperlinkTarget="Top">
+					<reportElement x="0" y="0" width="80" height="30" forecolor="#0C27F5" uuid="a2d07806-5a66-4092-8665-76c0a5641394">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<box leftPadding="0" rightPadding="0">
 						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5" lineColor="#000000"/>
+						<leftPen lineWidth="0.5" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 						<font fontName="DejaVu Sans" size="7"/>
@@ -385,7 +389,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[EMPENHOS POR UNIDADE ORÇAMENTÁRIA ANALÍTICO]]></text>
+				<text><![CDATA[EMPENHOS POR UNIDADE ORÇAMENTÁRIA (ANALÍTICO)]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="16" width="802" height="16" isRemoveLineWhenBlank="true" uuid="f51367b3-20c0-40b2-9a7b-3a3e474dac7a">

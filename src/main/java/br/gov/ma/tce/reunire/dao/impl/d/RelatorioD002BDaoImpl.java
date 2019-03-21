@@ -71,6 +71,9 @@ public class RelatorioD002BDaoImpl extends PrestacaoDaoImpl<RelatorioD002BVO> im
 		"left join sae.sae_sub_elemento_despesa sub on sub.id_sub_elemento_despesa = nd.id_sub_elemento_despesa and sub.ativo = 'S' " + 
 		"order by " + 
 		"	cod_cat, cod_gru, cod_mod, cod_ele";
+		
+		String schema = params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(new Integer(2018)) ? "prestacao2018" : "prestacao";
+		sql = sql.replaceAll("prestacao", schema);
 			
 				/*"select " + 
 				"   d.unidade_id unidade, " + 
