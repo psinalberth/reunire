@@ -1,7 +1,6 @@
 package br.gov.ma.tce.reunire.viewmodel;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -117,15 +116,10 @@ public class RelatorioViewModel {
 			String titulo = String.valueOf(properties.get("nome"));
 			String extensao = String.valueOf(properties.get("extensao"));
 			String formato = String.valueOf(properties.get("formato"));
-			File arquivo = (File) properties.get("arquivo");
+			ByteArrayOutputStream arquivo = (ByteArrayOutputStream) properties.get("arquivo");
+				
+			media = new AMedia(titulo, extensao, formato, arquivo.toByteArray());
 			
-			try {
-				
-				media = new AMedia(titulo, extensao, formato, arquivo, true);
-				
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
 		} else if (dadosLote != null) {
 			
 			Properties properties = service.getProperties(dadosLote, params, formatoRelatorio);
@@ -133,15 +127,9 @@ public class RelatorioViewModel {
 			String titulo = String.valueOf(properties.get("nome"));
 			String extensao = String.valueOf(properties.get("extensao"));
 			String formato = String.valueOf(properties.get("formato"));
-			File arquivo = (File) properties.get("arquivo");
-			
-			try {
+			ByteArrayOutputStream arquivo = (ByteArrayOutputStream) properties.get("arquivo");
 				
-				media = new AMedia(titulo, extensao, formato, arquivo, true);
-				
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+			media = new AMedia(titulo, extensao, formato, arquivo.toByteArray());
 		}
 	}
 	

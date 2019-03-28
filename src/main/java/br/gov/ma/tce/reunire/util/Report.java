@@ -1,9 +1,8 @@
 package br.gov.ma.tce.reunire.util;
 
-import java.io.File;
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
@@ -14,18 +13,31 @@ import java.util.Properties;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRPrintPage;
-import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.HtmlExporter;
 import net.sf.jasperreports.engine.export.JRCsvExporter;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.export.CsvExporterConfiguration;
+import net.sf.jasperreports.export.CsvReportConfiguration;
+import net.sf.jasperreports.export.Exporter;
+import net.sf.jasperreports.export.ExporterInput;
+import net.sf.jasperreports.export.HtmlExporterConfiguration;
+import net.sf.jasperreports.export.HtmlExporterOutput;
+import net.sf.jasperreports.export.HtmlReportConfiguration;
+import net.sf.jasperreports.export.OutputStreamExporterOutput;
+import net.sf.jasperreports.export.PdfExporterConfiguration;
+import net.sf.jasperreports.export.PdfReportConfiguration;
 import net.sf.jasperreports.export.SimpleCsvExporterConfiguration;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleHtmlExporterOutput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimpleWriterExporterOutput;
+import net.sf.jasperreports.export.WriterExporterOutput;
+import net.sf.jasperreports.export.XlsExporterConfiguration;
+import net.sf.jasperreports.export.XlsReportConfiguration;
 
 public class Report {
 	
@@ -40,21 +52,19 @@ public class Report {
 			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dados);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(input, params, dataSource);
 			
-			String diretorioFinalRelatorio = System.getProperty("java.io.tmpdir");
-			
 			Properties properties = null;
 			
 			if (formato.toUpperCase().equals("PDF")) {
-				properties = exportarPDF(diretorioFinalRelatorio, jasperPrint);
+				properties = exportarPDF(jasperPrint);
 				
 			} else if (formato.toUpperCase().equals("XLS")) {
-				properties = exportarXLS(diretorioFinalRelatorio, jasperPrint);
+				properties = exportarXLS(jasperPrint);
 				
 			} else if (formato.toUpperCase().equals("CSV")) {
-				properties = exportarCSV(diretorioFinalRelatorio, jasperPrint);
+				properties = exportarCSV(jasperPrint);
 				
 			} else if (formato.toUpperCase().equals("HTML")) {
-				properties = exportarHTML(diretorioFinalRelatorio, jasperPrint);
+				properties = exportarHTML(jasperPrint);
 			}
 			
 			return properties;
@@ -110,21 +120,19 @@ public class Report {
 		
 		try {
 			
-			String diretorioFinalRelatorio = System.getProperty("java.io.tmpdir");
-			
 			Properties properties = null;
 			
 			if (formato.toUpperCase().equals("PDF")) {
-				properties = exportarPDF(diretorioFinalRelatorio, jasperPrintPrincipal);
+				properties = exportarPDF(jasperPrintPrincipal);
 				
 			} else if (formato.toUpperCase().equals("XLS")) {
-				properties = exportarXLS(diretorioFinalRelatorio, jasperPrintPrincipal);
+				properties = exportarXLS(jasperPrintPrincipal);
 				
 			} else if (formato.toUpperCase().equals("CSV")) {
-				properties = exportarCSV(diretorioFinalRelatorio, jasperPrintPrincipal);
+				properties = exportarCSV(jasperPrintPrincipal);
 				
 			} else if (formato.toUpperCase().equals("HTML")) {
-				properties = exportarHTML(diretorioFinalRelatorio, jasperPrintPrincipal);
+				properties = exportarHTML(jasperPrintPrincipal);
 			}
 			
 			return properties;
@@ -139,7 +147,7 @@ public class Report {
 		return null;
 	}
 	
-	private static Properties criarProperties(JasperPrint jasperPrint, String extensao, String formato, File arquivo) {
+	private static Properties criarProperties(JasperPrint jasperPrint, String extensao, String formato, ByteArrayOutputStream arquivo) {
 		
 		Properties properties = new Properties();
 		
@@ -151,65 +159,67 @@ public class Report {
 		return properties;
 	}
 	
-	private static Properties exportarPDF(String path, JasperPrint jasperPrint) throws IOException, JRException {
+	private static Properties exportarPDF(JasperPrint jasperPrint) throws IOException, JRException {
 		
-		File file = File.createTempFile(jasperPrint.getName(), ".pdf", new File(path));
-		JasperExportManager.exportReportToPdfFile(jasperPrint, file.getAbsolutePath());
+		ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
 		
-		Properties properties = criarProperties(jasperPrint, "pdf", "application/pdf", file);
-		
-		return properties;
-	}
-	
-	private static Properties exportarXLS(String path, JasperPrint jasperPrint) throws IOException, JRException {
-		
-		File file = File.createTempFile(jasperPrint.getName(), ".xls", new File(path));	
-        FileOutputStream fos = new FileOutputStream(file);
-
-		JRXlsExporter exporter = new JRXlsExporter();
-		
+		Exporter<ExporterInput, PdfReportConfiguration, PdfExporterConfiguration, OutputStreamExporterOutput> exporter = new JRPdfExporter();
 		exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-		exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(fos));
+		exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(arrayOutputStream));
 		exporter.exportReport();
+		arrayOutputStream.close();
 		
-		Properties properties = criarProperties(jasperPrint, "xls", "application/vnd.ms-excel", file);
+		Properties properties = criarProperties(jasperPrint, "pdf", "application/pdf", arrayOutputStream);
 		
 		return properties;
 	}
 	
-	private static Properties exportarCSV(String path, JasperPrint jasperPrint) throws IOException, JRException {
+	private static Properties exportarXLS(JasperPrint jasperPrint) throws IOException, JRException {
 		
-		File file = File.createTempFile(jasperPrint.getName(), ".csv", new File(path));
-		
-		FileOutputStream output = new FileOutputStream(file);
-		
-		JRCsvExporter exporter= new JRCsvExporter();
+		ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+
+		Exporter<ExporterInput, XlsReportConfiguration, XlsExporterConfiguration, OutputStreamExporterOutput> exporter = new  JRXlsExporter();
+			
 		exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-		exporter.setExporterOutput(new SimpleWriterExporterOutput(output));
+		exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(arrayOutputStream));
+		exporter.exportReport();
+		arrayOutputStream.close();
 		
+		Properties properties = criarProperties(jasperPrint, "xls", "application/vnd.ms-excel", arrayOutputStream);
+		
+		return properties;
+	}
+	
+	private static Properties exportarCSV(JasperPrint jasperPrint) throws IOException, JRException {
+		
+		ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+		
+		Exporter<ExporterInput, CsvReportConfiguration, CsvExporterConfiguration, WriterExporterOutput> exporter = new JRCsvExporter();
+		exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+		exporter.setExporterOutput(new SimpleWriterExporterOutput(arrayOutputStream));
 		SimpleCsvExporterConfiguration configuration = new SimpleCsvExporterConfiguration();
 		configuration.setWriteBOM(Boolean.TRUE);
-		configuration.setRecordDelimiter("\r|");
+		configuration.setRecordDelimiter(",");
 		exporter.setConfiguration(configuration);
 		exporter.exportReport();
+		arrayOutputStream.close();
 		
-		Properties properties = criarProperties(jasperPrint, "csv", "application/csv", file);
+		Properties properties = criarProperties(jasperPrint, "csv", "application/csv", arrayOutputStream);
 		
 		return properties;
 	}
 	
-	private static Properties exportarHTML(String path, JasperPrint jasperPrint) throws IOException, JRException {
+	private static Properties exportarHTML(JasperPrint jasperPrint) throws IOException, JRException {
 		
-		File file = File.createTempFile(jasperPrint.getName(), ".html", new File(path));
-		FileOutputStream output = new FileOutputStream(file);
-		
-		HtmlExporter exporter = new HtmlExporter();
+		ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+		Exporter<ExporterInput, HtmlReportConfiguration, HtmlExporterConfiguration, HtmlExporterOutput> exporter = new HtmlExporter();
 		exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-		exporter.setExporterOutput(new SimpleHtmlExporterOutput(output));
+		exporter.setExporterOutput(new SimpleHtmlExporterOutput(arrayOutputStream));
 		
 		exporter.exportReport();
+		arrayOutputStream.close();
 		
-		Properties properties = criarProperties(jasperPrint, "html", "text/html", file);
+		Properties properties = criarProperties(jasperPrint, "html", "text/html", arrayOutputStream);
 		
 		return properties;
 	}
