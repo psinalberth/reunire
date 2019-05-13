@@ -177,7 +177,7 @@ public class RelatorioCAM26DaoImpl extends PrestacaoDaoImpl<RelatorioCAM26VO> im
 		"		liq.empenho_id, sum(sub.valor_subelemento) valor " + 
 		"	from  " + 
 		"		sae_importacao.liquidacao liq " + 
-		"	inner join sae_importacao.sublemento_liquidacao sub on " + 
+		"	inner join sae_importacao.subelemento_liquidacao sub on " + 
 		"		sub.liquidacao_id = liq.liquidacao_id " + 
 		"	left join sae_importacao.estorno_liquidacao est on " + 
 		"		est.liquidacao_id = liq.liquidacao_id " + 
@@ -192,7 +192,7 @@ public class RelatorioCAM26DaoImpl extends PrestacaoDaoImpl<RelatorioCAM26VO> im
 		"from  " + 
 		"sae_importacao.pagamento pag " + 
 		"inner join sae_importacao.liquidacao liq on liq.liquidacao_id = pag.liquidacao_id " + 
-		"inner join sae_importacao.sublemento_liquidacao sub on sub.liquidacao_id = liq.liquidacao_id " + 
+		"inner join sae_importacao.subelemento_liquidacao sub on sub.liquidacao_id = liq.liquidacao_id " + 
 		"left join sae_importacao.estorno_pagamento est on est.pagamento_id = pag.pagamento_id " + 
 		"left join sae_importacao.devolucao_pagamento dev on dev.pagamento_id = pag.pagamento_id " + 
 		"where " + 

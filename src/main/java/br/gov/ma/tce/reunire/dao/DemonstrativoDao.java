@@ -2,10 +2,13 @@ package br.gov.ma.tce.reunire.dao;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -92,6 +95,19 @@ public interface DemonstrativoDao<T> {
 		
 		if (obj == null)
 			return null;
+		
+		if (obj instanceof Double) {
+			
+			Double valor = (Double) obj;
+			DecimalFormat format = new DecimalFormat("#,##0.##", new DecimalFormatSymbols(new Locale("pt", "BR")));
+			
+			String formatted = format.format(valor);
+			formatted = formatted.replace(".", "");
+			formatted = formatted.replace(",", ".");
+			formatted = formatted.trim();
+			
+			return new BigDecimal(formatted);
+		}
 		
 		return new BigDecimal(String.valueOf(obj));
 	}

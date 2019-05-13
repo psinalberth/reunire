@@ -2,9 +2,12 @@ package br.gov.ma.tce.reunire.util;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
@@ -30,7 +33,7 @@ public class Util {
 		// Se possui registro no nível 2
 		
 		if (objetoNivelDois.isPresent())
-			return new BigDecimal(String.valueOf(objetoNivelDois.get()[posicao]));
+			return toBigDecimal(objetoNivelDois.get()[posicao]);
 		
 		// Procurar todos os registros que se aplicam na regex
 		
@@ -56,10 +59,31 @@ public class Util {
 		BigDecimal total = BigDecimal.ZERO;
 		
 		for (Object [] obj : filtro) {
-			total = total.add(new BigDecimal(String.valueOf(obj[posicao])));
+			total = total.add(toBigDecimal(obj[posicao]));
 		}
 		
 		return total;
+	}
+	
+	public static BigDecimal toBigDecimal(Object obj) {
+		
+		if (obj == null)
+			return null;
+		
+		if (obj instanceof Double) {
+			
+			Double valor = (Double) obj;
+			DecimalFormat format = new DecimalFormat("#,##0.##", new DecimalFormatSymbols(new Locale("pt", "BR")));
+			
+			String formatted = format.format(valor);
+			formatted = formatted.replace(".", "");
+			formatted = formatted.replace(",", ".");
+			formatted = formatted.trim();
+			
+			return new BigDecimal(formatted);
+		}
+		
+		return new BigDecimal(String.valueOf(obj));
 	}
 	
 	public static Date toDate(Object obj) {
