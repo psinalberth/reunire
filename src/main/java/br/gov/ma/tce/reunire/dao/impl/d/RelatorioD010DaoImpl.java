@@ -20,7 +20,7 @@ public class RelatorioD010DaoImpl extends PrestacaoDaoImpl<RelatorioD010VO> impl
 	@Override
 	public List<RelatorioD010VO> recuperaDados(Map<String, Object> params) {
 	
-		String sql = 
+		String sql = params.get("exercicio") != null && ((Integer) params.get("exercicio")).equals(2017) ?
 		
 		"select " +
 			"unidade_id, nr, descricao, sum(previsao_atualizada) previsao_atualizada, sum(receita_realizada) receita_realizada " +
@@ -48,6 +48,33 @@ public class RelatorioD010DaoImpl extends PrestacaoDaoImpl<RelatorioD010VO> impl
 			"order by  " +
 				"unidade_id, regexp_replace(natureza_receita, '[.]', '', 'g')) r " + 
 		"group by unidade_id, nr, descricao " + 
+		"order by unidade_id, nr"
+		:
+		"select  " + 
+		"	unidade_id, nr, descricao, sum(previsao_atualizada) previsao_atualizada, sum(receita_realizada) receita_realizada  " + 
+		"from ( " + 
+		"	select  " + 
+		"		unidade_id,   " + 
+		"		regexp_replace(bo.natureza_receita, '[.]', '', 'g') nr,   " + 
+		"		(case when nr.nome is not null then nr.nome else 'CLASSIFICAÇÃO DESCONHECIDA' end) descricao, " + 
+		"		(case  " + 
+		"			when natureza_receita like '9%' and previsao_atualizada > 0 then previsao_atualizada * (-1)  " + 
+		"			when natureza_receita like '9%' and previsao_atualizada < 0 then previsao_atualizada  " + 
+		"		else previsao_atualizada end) previsao_atualizada,  " + 
+		"		(case  " + 
+		"			when natureza_receita like '9%' and receita_realizada > 0 then receita_realizada * (-1)  " + 
+		"			when natureza_receita like '9%' and receita_realizada < 0 then receita_realizada  " + 
+		"		else receita_realizada end) receita_realizada  " + 
+		"	from   " + 
+		"		prestacao2018.bo01 bo   " + 
+		"	left join sae_importacao.natureza_receita nr on  nr.natureza_receita_id = cast(regexp_replace(bo.natureza_receita, '[.]', '', 'g') as integer) " + 
+		"	where   " + 
+		"		unidade_id in (:unidades) and   " + 
+		"		((:modulo is null) or (modulo_id = :modulo)) and   " + 
+		"		cast(regexp_replace(bo.natureza_receita, '[.]', '', 'g') as integer) > 0   " + 
+		"	order by   " + 
+		"	unidade_id, regexp_replace(natureza_receita, '[.]', '', 'g')) r  " + 
+		"group by unidade_id, nr, descricao  " + 
 		"order by unidade_id, nr";
 		
 		List<RelatorioD010VO> dados = new ArrayList<RelatorioD010VO>();
@@ -91,7 +118,7 @@ public class RelatorioD010DaoImpl extends PrestacaoDaoImpl<RelatorioD010VO> impl
 			
 			dado.setDescricao(String.valueOf(row[2]));
 			
-			if (dado.getDescricao().equals("CLASSIFICAÇÃO DESCONHECIDA")) {
+			if (dado.getDescricao().equals("CLASSIFICAÇÃO DESCONHECIDA") && params.get("exercicio") != null && ((Integer)params.get("exercicio")).equals(2017)) {
 				
 				try {
 					
